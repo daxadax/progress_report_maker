@@ -8,6 +8,7 @@ gem 'rails', '3.2.12'
 gem 'sqlite3'
 gem "autotest"
 gem 'autotest-growl'
+gem 'webrat'
 
 #GROUPS 
 
@@ -15,6 +16,7 @@ gem 'autotest-growl'
 
 group :development do
   gem "rspec-rails", "~> 2.13.0"
+  
 end
 
 #test
