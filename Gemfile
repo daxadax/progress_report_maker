@@ -13,13 +13,13 @@ gem "autotest"
 #development
 
 group :development do
-  gem 'rspec-rails''~>2.13.0'
+  gem 'rspec-rails', '~>2.0'
 end
 
 #test
 
 group :test do
-  gem 'rpec' '~>2.13.0'
+  gem "rspec", "~> 2.13.0"
 end
 
 
@@ -44,7 +44,7 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
+#gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
