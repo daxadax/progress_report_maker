@@ -3,6 +3,7 @@ require 'spec_helper'
 describe PagesController do
   render_views
 
+ 
   describe "GET 'contact'" do
     it "returns http success" do
       get 'contact'
@@ -13,7 +14,7 @@ describe PagesController do
       get 'contact'
       response.should have_selector("title", 
         :content => "Ganesh | Contact")
-    end
+    end      
   end         
 
   describe "GET 'about'" do
