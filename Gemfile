@@ -13,7 +13,7 @@ gem "autotest"
 #development
 
 group :development do
-  gem 'rspec-rails', '~>2.0'
+  gem "rspec-rails", "~> 2.13.0"
 end
 
 #test

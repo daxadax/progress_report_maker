@@ -128,7 +128,7 @@ DEPENDENCIES
   jquery-rails
   rails (= 3.2.12)
   rspec (~> 2.13.0)
-  rspec-rails (~> 2.0)
+  rspec-rails (~> 2.13.0)
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
