@@ -1,0 +1,64 @@
+.container {
+	width: 710px;
+}
+
+body {
+	background: #166658;
+}
+
+header img {
+	padding: 1em;
+}
+
+section {
+	margin-top: 1em;
+	font-size: 120%;
+	padding: 20px;
+	background: #fff;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+	
+}
+
+a:hover {
+	color: #581566;
+}
+
+a:visited {
+	color: #581566;
+}
+
+nav {
+	float: right;
+	whitespace: nowrap;
+	padding: 1em;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	list-style-type: none;
+	display: inline-block;
+	padding: 0.2em;
+}
+
+nav ul li a {
+	padding: 0 3px;
+	font-weight: bold;
+}
+
+nav ul li a:visited {
+	color: #fff;
+}
+
+.round {
+	-moz-border-radius:    10px;
+	-webkit-border-radius: 10px;
+	border-radius:         10px;
+}
