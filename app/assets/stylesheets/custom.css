@@ -3,29 +3,37 @@
 }
 
 .signup-button {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 25px;
-	padding: 20px;
-	width: 190px;
-	display: block;
-	text-align: center;
-	background: #C65622;
-	color: #fff;
-	font-size: 130%;
-	font-weight: bold;	
+	margin-left:   auto;
+	margin-right:  auto;
+	margin-top:    25px;
+	padding:       20px;
+	width: 		   190px;
+	display:       block;
+	text-align:    center;
+	background:    #C65622;
+	color:         #fff;
+	font-size:     130%;
+	font-weight:   bold;	
 }
 
+.header_title {
+	margin-right: auto;
+	margin-left:  auto;
+	font-weight:  bold;
+	font-family:  verdana;
+	color:        #C65622;
+}
 body {
 	background: #223D68;
 }
 
 header img {
-	margin-top: 2em;
+	margin-top: 1em;
+/*	float: left;*/
 }
 
 section {
-	margin-top: 1em;
+	margin-top: 2em;
 	font-size: 120%;
 	padding: 20px;
 	background: #fff;
@@ -38,6 +46,10 @@ section h1 {
 a {
 	color: #fff;
 	text-decoration: none;
+}
+
+a:hover {
+	color: #ddd;
 }
 
 nav {

@@ -5,7 +5,7 @@ describe PagesController do
 
  before(:each) do
    @base_title = "Ganesh"
-end
+ end
 
   describe "GET 'contact'" do
     it "returns http success" do
