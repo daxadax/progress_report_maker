@@ -3,11 +3,11 @@
 }
 
 body {
-	background: #166658;
+	background: #3C6AB5;
 }
 
 header img {
-	padding: 1em;
+	margin-top: 2em;
 }
 
 section {
@@ -24,11 +24,11 @@ a {
 }
 
 a:hover {
-	color: #581566;
+	color: #B44A3C;
 }
 
 a:visited {
-	color: #581566;
+	color: #B44A3C;
 }
 
 nav {
@@ -61,4 +61,13 @@ nav ul li a:visited {
 	-moz-border-radius:    10px;
 	-webkit-border-radius: 10px;
 	border-radius:         10px;
+}
+
+footer {
+	background: #fff;
+	text-align: right;
+	width: 710px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
 }
