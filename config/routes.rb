@@ -1,8 +1,7 @@
-TeacherApp::Application.routes.draw do
-  get "pages/contact"
-
-  get "pages/about"
-
-  get "pages/help"
+Ganesh::Application.routes.draw do
+  root              :to => 'pages#home' 
+  match '/contact', :to => 'pages#contact'
+  match '/about',   :to => 'pages#about'
+  match '/help',    :to => 'pages#help'
 
  end

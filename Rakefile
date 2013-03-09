@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-TeacherApp::Application.load_tasks
+Ganesh::Application.load_tasks
