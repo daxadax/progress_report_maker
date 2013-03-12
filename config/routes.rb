@@ -1,9 +1,15 @@
 Ganesh::Application.routes.draw do
+  
+  # pages
+  
   root              :to => 'pages#home' 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
   
+  # users
+  
+  resources :users
   match '/signup',   :to => 'users#new'
 
  end
