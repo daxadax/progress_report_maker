@@ -2,11 +2,12 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  encrypted_password :string(255)
 #
 
 require 'spec_helper'
@@ -14,7 +15,12 @@ require 'spec_helper'
 describe User do
   
   before(:each) do
-    @attr = {name: "user", email: "user@example.com"}
+    @attr = {
+      name: "user", 
+      email: "user@example.com", 
+      password: "password",
+      password_confirmation: "password"
+    }
   end
   
   it "should create a new instance given a valid attribute" do
@@ -28,11 +34,12 @@ describe User do
     no_name_user.should_not be_valid
   end
   
-  it "should require a name between 3 and 15 characters" do
-    long_name = "a" * 20
+  it "should require a name between 3 and 20 characters" do
+    long_name = "a" * 21
     short_name = "a" * 2
     
     wrong_namelength_user = User.new(@attr.merge(name: long_name) || User.new(@attr.merge(name: short_name)))
+    wrong_namelength_user.should_not be_valid
   end
   
   # :EMAIL
@@ -68,5 +75,54 @@ describe User do
     User.create!(@attr.merge(:email => @attr[:email].upcase))
     duplicate_email_user = User.new(@attr)
     duplicate_email_user.should_not be_valid
+  end
+  
+  # :PASSWORDS
+  
+  describe "passwords" do
+    
+    before(:each) do
+      @user = User.new(@attr)
+    end
+    
+    it "should have a password attribute" do
+      @user.should respond_to(:password)
+    end
+    
+    it "should have a password confirmation attribute" do
+      @user.should respond_to(:password_confirmation)
+    end
+    
+  end
+  
+  describe "password validations" do
+    
+    it "should require a password" do
+      User.new(@attr.merge(:password => "", :password_confirmation => "")).should_not be_valid      
+    end
+    
+    it "should require a matching password confirmation" do
+      User.new(@attr.merge(:password_confirmation => "wrong_password")).should_not be_valid
+    end
+    
+    it "should require a password between 6 and 15 characters" do
+      long_pass = "a" * 16
+      short_pass = "a" * 5
+
+      wrong_passlength_user = User.new(@attr.merge(password: long_pass, password_confirmation: long_pass) || User.new(@attr.merge(password: short_pass, password_confirmation: short_pass)))
+      wrong_passlength_user.should_not be_valid
+    end
+  end
+  
+  describe "password encryption" do
+    
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+    
+    it "should have an encrypted password attribute" do
+      @user.should respond_to(:encrypted_password)
+    end
+    
   end
 end
