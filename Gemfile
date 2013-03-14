@@ -16,13 +16,17 @@ gem 'webrat'
 
 group :development do
   gem "rspec-rails", "~> 2.13.0"
+  gem 'annotate'
+
   
 end
 
 #test
 
 group :test do
-  gem "rspec", "~> 2.13.0"
+  gem "rspec",                '~> 2.13.0'
+  gem "factory_girl_rails",   '~> 1.0'
+
 end
 
 
