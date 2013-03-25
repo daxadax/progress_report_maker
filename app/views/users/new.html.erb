@@ -1,15 +1,10 @@
-<h1>Sign up</h1>
-
 <%= form_for(@user) do |f| %>
-	<div class="field">
-		<%= f.label :name, "Name:" %><br />
-		<%= f.text_field :name %><br />
-		<%= f.label :email, "Email address:" %><br />
-		<%= f.email_field :email %><br />
-		<%= f.label :password, "Password:" %><br />
-		<%= f.password_field :password %><br />
-		<%= f.label :password_confirmation, "Confirm password:" %><br />
-		<%= f.password_field :password_confirmation %><br />
+	<%= render 'shared/error_messages' %>
+  <div class="signup_box" "round">
+  	<%= f.text_field :name, placeholder: "Full name" %><br />
+		<%= f.email_field :email, placeholder: "Email address" %><br />
+		<%= f.password_field :password, placeholder: "Password" %><br />
+		<%= f.password_field :password_confirmation, placeholder: "Type your password again" %>			
 		<%= f.submit "Get Started!" %>
 	</div>
 <% end %>	

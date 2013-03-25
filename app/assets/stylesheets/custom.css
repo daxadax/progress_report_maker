@@ -17,11 +17,17 @@
 }
 
 .header_title {
-	margin-right: auto;
-	margin-left:  auto;
+	margin: auto auto;
 	font-weight:  bold;
 	font-family:  Verdana;
 	color:        #C65622;
+}
+
+.round {
+	-moz-border-radius:    15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius:  15px;
+    border-radius:         15px;
 }
 
 body {
@@ -50,7 +56,8 @@ a {
 }
 
 a:hover {
-	color: #ddd;
+	color:  #ddd;
+	cursor: pointer;
 }
 
 nav {
@@ -80,12 +87,6 @@ nav ul li a:visited {
 	color: #fff;
 }
 
-.round {
-	-moz-border-radius:    10px;
-	-webkit-border-radius: 10px;
-	border-radius:         10px;
-}
-
 footer {
 	background: #fff;
 	text-align: right;
@@ -93,4 +94,46 @@ footer {
 	margin-top: 10px;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+/*FIELDS AND ERRORS!*/
+
+.signup_box {
+	margin-right: auto;
+	margin-left:  auto;
+	text-align:   center;
+	width:        250px;
+}
+
+.field {
+	
+}
+
+#error_explanation {
+	font-weight: bold;
+}
+
+.error {
+	margin:      auto auto;
+	font-size:   140%;
+	text-align:  center;
+	width:       550px;
+}
+
+.field_with_errors {
+	
+}
+
+
+/*placeholder text formatting*/
+/*For Webkit browsers (Chrome, Safari) */
+
+input::-webkit-input-placeholder {
+	font-weight: bold;
+}
+
+/* For Mozilla Firefox */
+
+input:-moz-placeholder {
+    font-weight: bold;
 }

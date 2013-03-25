@@ -16,7 +16,7 @@ end
     it "should have the right title" do
       get 'contact'
       response.should have_selector("title", 
-                                    :content => "#{@base_title}: Contact")
+                                    :content => "#{@base_title}| Contact")
     end      
   end         
 
@@ -29,7 +29,7 @@ end
     it "should have the right title" do
       get 'about'
       response.should have_selector("title", 
-                                    :content => "#{@base_title}: About")
+                                    :content => "#{@base_title}| About")
     end
   end
 
@@ -42,7 +42,7 @@ end
     it "should have the right title" do
       get 'help'
       response.should have_selector("title", 
-                                    :content => "#{@base_title}: Help")
+                                    :content => "#{@base_title}| Help")
     end
   end
 
