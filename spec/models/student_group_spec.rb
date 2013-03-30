@@ -2,11 +2,13 @@
 #
 # Table name: student_groups
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  subject    :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  subject     :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  type        :string(255)
+#  time_period :integer
 #
 
 require 'spec_helper'
@@ -15,8 +17,10 @@ describe StudentGroup do
 
   before(:each) do
     @attr = {
-      name: "class_name", 
-      subject: "subject 101"
+      name:         "class_name", 
+      subject:      "subject 101",
+      type:         "programming class",
+      time_period:  "8"
     }
   end
 
@@ -53,5 +57,27 @@ describe StudentGroup do
      wrong_subject_length_student_group = StudentGroup.new(@attr.merge(subject: long_name) || StudentGroup.new(@attr.merge(subject: short_name)))
      wrong_subject_length_student_group.should_not be_valid
    end 
+
+  # type
+
+  it "should require a type" do
+     no_type_student_group = StudentGroup.new(@attr.merge(type: ""))
+     no_type_student_group.should_not be_valid
+   end
+
+   it "should require a type between 3 and 40 characters" do
+     long_name = "a" * 41
+     short_name = "a" * 2
+
+     wrong_type_length_student_group = StudentGroup.new(@attr.merge(type: long_name) || StudentGroup.new(@attr.merge(type: short_name)))
+     wrong_type_length_student_group.should_not be_valid
+   end
+
+  # time_period
+  
+  it "should require a time period" do
+     no_time_period_student_group = StudentGroup.new(@attr.merge(time_period: ""))
+     no_time_period_student_group.should_not be_valid
+   end
 
 end

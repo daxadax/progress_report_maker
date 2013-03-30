@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem "autotest"
 gem 'autotest-growl'
 gem 'webrat'
+gem "json", "~> 1.4"
+gem "thor", "~> 0.17.0"
 
 #GROUPS 
 
@@ -40,6 +42,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
 end
 
 gem 'jquery-rails'

@@ -17,9 +17,9 @@ describe User do
   
   before(:each) do
     @attr = {
-      name: "user", 
-      email: "user@example.com", 
-      password: "password",
+      name:                  "user", 
+      email:                 "user@example.com", 
+      password:              "password",
       password_confirmation: "password"
     }
   end
