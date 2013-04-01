@@ -76,14 +76,14 @@ describe UsersController do
       
       before(:each) do
         @attr = {
-          name: "user", 
-          email: "user@example.com", 
-          password: "password",
+          name:                  "user", 
+          email:                 "user@example.com", 
+          password:              "password",
           password_confirmation: "password"
         }
       end
       
-      it "should not create a user" do
+      it "should create a user" do
         lambda do
           post :create, user: @attr
         end.should change(User, :count).by(1)

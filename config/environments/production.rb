@@ -1,6 +1,9 @@
 Ganesh::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # From: http://rubysnippets.com/2013/01/08/managing-the-asset-pipeline-in-rails-3/
+  config.assets.precompile += ['application.css', 'landing.css']
+  
   # Code is not reloaded between requests
   config.cache_classes = true
 

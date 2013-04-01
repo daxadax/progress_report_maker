@@ -36,13 +36,12 @@ body {
 
 header img {
 	margin-top: 1em;
-/*	float: left;*/
 }
 
 section {
 	margin-top: 2em;
-	font-size: 120%;
-	padding: 20px;
+	font-size:  120%;
+	padding:    20px;
 	background: #fff;
 }
 

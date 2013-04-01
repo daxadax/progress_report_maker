@@ -1,0 +1,59 @@
+body {
+  background-image: url('/assets/chalkboard.png');
+}
+
+h2 {
+  font:        400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;
+  color:       #ca7840;
+  text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15); 
+}
+
+#landing_text {
+  font-size:  70%;
+  text-align: left;
+  position:   absolute;
+  top:        10px;
+  right:      70px;
+  width:      600px;
+}
+
+#home_logo {
+  position:   absolute;
+  top:        180px;
+  right:      50px;
+  float:      right;
+  width:      400px;
+/*  height:     502px;*/
+}
+
+#sign_log_box {
+  position: absolute;
+  top:      200px;
+  right:    500px;
+  
+}
+
+.unselectable {
+	-webkit-user-select: 	none; /* Chrome/Safari */        
+	-moz-user-select: 		none; /* Firefox */
+	-ms-user-select: 		none; /* IE10+ */
+
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: 		none;
+	user-select: 			none;
+	
+	/*http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting*/
+	-webkit-touch-callout:  none;
+	-webkit-user-select:    none;
+	-khtml-user-select:     none;
+	-moz-user-select:       none;
+	-ms-user-select:        none;
+	user-select: 			none;
+}
+
+.round {
+	-moz-border-radius:    15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius:  15px;
+    border-radius:         15px;
+}

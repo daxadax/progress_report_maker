@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
   
   def home
+    render :layout => 'layouts/landing'
     @title = "Home"
   end
 
