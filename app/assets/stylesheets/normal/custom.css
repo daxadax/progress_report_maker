@@ -104,7 +104,14 @@ footer {
 	width:        250px;
 }
 
+.signin_button {
+}
+
 .field {
+	
+}
+
+.field_with_errors {
 	
 }
 
@@ -119,9 +126,7 @@ footer {
 	width:       550px;
 }
 
-.field_with_errors {
-	
-}
+
 
 
 /*placeholder text formatting*/

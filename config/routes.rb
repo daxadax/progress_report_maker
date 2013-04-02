@@ -1,6 +1,6 @@
 Ganesh::Application.routes.draw do
-  
-  # pages
+    
+  # static pages
   
   root              :to => 'pages#home' 
   match '/contact', :to => 'pages#contact'
@@ -10,6 +10,12 @@ Ganesh::Application.routes.draw do
   # users
   
   resources :users
-  match '/signup',   :to => 'users#new'
+  match '/signup', :to => 'users#new'
+  
+  # sessions
+  
+  resources :sessions, :only => [:new, :create, :destroy]
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
 
  end
