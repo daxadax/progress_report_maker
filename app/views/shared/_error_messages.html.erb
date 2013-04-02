@@ -1,8 +1,8 @@
 <% if @user.errors.any? %>
-	<div id="error_explanation">
-		<h2 class="error round">
+	<div>
+		<h4 class="error round">
 			Oh dear.  Looks like some<%= pluralize_without_count(@user.errors.count, "thing has", " things have") %> gone wrong.
-		</h2>
+		</h4>
 		<p>
 			<ul>
 			<% @user.errors.full_messages.each do |message| %>

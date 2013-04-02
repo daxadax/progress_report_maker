@@ -11,6 +11,10 @@
     border-radius:         15px;
 }
 
+.strong {
+	font-weight: bold;
+}
+
 /*more specifc stuff*/
 
 .container {
@@ -39,7 +43,7 @@
 }
 
 body {
-	background: #afc35a;
+	background: #000;
 }
 
 header img {
@@ -112,15 +116,18 @@ footer {
 	width:        250px;
 }
 
-.signin_button {
+.login_button {
 }
 
 .field {
 	
 }
 
+
+
 .field_with_errors {
-	
+	display:      block;
+	clear:        both;	
 }
 
 #error_explanation {
