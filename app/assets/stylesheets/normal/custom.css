@@ -1,3 +1,18 @@
+/*general design elements*/
+
+.center {
+	text-align: center;
+}
+
+.round {
+	-moz-border-radius:    15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius:  15px;
+    border-radius:         15px;
+}
+
+/*more specifc stuff*/
+
 .container {
 	width: 710px;
 }
@@ -23,15 +38,8 @@
 	color:        #C65622;
 }
 
-.round {
-	-moz-border-radius:    15px;
-    -webkit-border-radius: 15px;
-    -khtml-border-radius:  15px;
-    border-radius:         15px;
-}
-
 body {
-	background: #223D68;
+	background: #afc35a;
 }
 
 header img {
@@ -50,7 +58,7 @@ section h1 {
 }
 
 a {
-	color: #fff;
+	color: #000;
 	text-decoration: none;
 }
 
