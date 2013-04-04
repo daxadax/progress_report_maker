@@ -12,13 +12,15 @@ class SessionsController < ApplicationController
       flash.now[:login_error] = "Invalid email/password combination.  Have you #{ActionController::Base.helpers.link_to "forgotten your password?", '#'}".html_safe
       render 'new'
     else  
-      sign_in user
+      login user
       redirect_to user
     end
       
   end
   
   def destroy
+    logout
+    redirect_to '#'
   end
 
 end

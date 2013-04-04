@@ -16,6 +16,6 @@ Ganesh::Application.routes.draw do
   
   resources :sessions, :only => [:new, :create, :destroy]
   match '/login',   :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
+  match '/logout',  :to => 'sessions#destroy'
   
  end

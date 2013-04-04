@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
     end
   
   end
+  
   # PRIVATE METHODS
   
   private

@@ -49,10 +49,10 @@ describe SessionsController do
         @attr = { email: @user.email, password: @user.password }      
       end 
       
-      it "should sign the user in" do
+      it "should log the user in" do
         post :create, :session => @attr
         controller.current_user.should == @user
-        controller.should be_signed_in
+        controller.should be_logged_in
       end
       
       it "should redirect to the user show page" do
@@ -61,6 +61,21 @@ describe SessionsController do
       end
       
     end
+    
+  end
+
+  describe "DELETE 'destroy'" do
+    
+    it "should log the user out" do
+         test_login(Factory(:user))
+         delete :destroy
+         controller.should_not be_logged_in
+         # response.should flash 'you have logged out'  
+    end
+    
+    it "should redirect to ????" # do
+    #     where should this redirect on logout?
+    #     end    +fix in sessions_controller.rb:23
     
   end
 

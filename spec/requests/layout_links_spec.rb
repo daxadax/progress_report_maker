@@ -4,7 +4,7 @@ describe "LayoutLinks" do
 
   it "should have a home page at '/'" do
     get '/'
-    response.should have_selector('title', :content => " | Login or Sign up", )  
+    response.should have_selector('title', :content => " | Log in or Sign up", )  
   end
 
   it "should have an about page at '/about'" do
@@ -32,9 +32,9 @@ describe "LayoutLinks" do
       response.should have_selector('title', :content => "Log in", )  
   end
 
-  # it "should have a signout page at '/signout'" do
-  #     get '/signout'
-  #     response.should have_selector('title', :content => "Sign out", )  
+  # it "should have a logout page at '/logout'" do
+  #     get '/logout'
+  #     response.should have_selector('title', :content => "Log out", )  
   # end
   
 end

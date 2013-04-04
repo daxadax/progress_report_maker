@@ -1,14 +1,31 @@
+<header>
+	<section id="menu_box" class="unselectable">
+
+		<%= form_for(:session, :url => sessions_path) do |f| %>
+
+	    <div class="input email_input">
+		    <%= f.email_field :email, placeholder: "Email address" %><br />
+		  </div>
+
+		  <div class="input password_input">
+		    <%= f.password_field :password, placeholder: "Password" %><br />
+	    </div>		
+
+		  <div>
+				<%= f.submit "Log in", :class => 'login_button' %>
+	    </div>
+
+	  <% end %>
+
+	</section>
+</header>
+
  
 <div id="home_logo" class="unselectable">
-<%= image_tag("ganesh.png") %>
+  <%= image_tag("ganesh.png") %>
 </div>
-
-<!-- <%= link_to "Sign up now!", signup_path, class: "signup-button round" %> -->
 
 <div id="landing_text" class="unselectable">
 	<h2 unselectable="on">Ganesh is a tool to help define goals and evaluate how well they have been met</h2>
 </div>
 
-<div id="sign_log_box" class="unselectable round">
- 
-</div>

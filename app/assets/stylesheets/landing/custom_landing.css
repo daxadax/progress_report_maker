@@ -1,44 +1,101 @@
+/*  PINK     #FA6175    */
+/*  RED      #9E0519    */
+/*  YELLOW   #FFA600    */
+/*  BROWN    #762719    */
+/*  GREEN    #B1C465    */
+
+header {
+    background: #B1C465;
+}
+
+#menu_box {
+      /*STYLE*/
+  	background:    #FFA600;
+    border-bottom: 5px double #762719;
+    float:         left;
+	width:         100%;
+	height:        50px;
+	opacity:       0.95;
+	  /*POSITION*/
+	position:      absolute;
+	top:           0px;
+	left:          0px;	
+}
+
+.input{
+    text-align: center;
+}
+
+.input input{
+	width:   		   	   200px;
+	height: 			   30px;
+	font:        		   400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;	
+	font-size:  		   16px;
+	padding-left: 		   35px;	
+	opacity:               0.9;
+	/*Rounded*/
+	-moz-border-radius:    5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius:  5px;
+    border-radius:         5px;
+}
+
+input:focus {
+    border:  2px solid #9E0519;
+    opacity: 1.0;
+}
+
+.email_input input {
+	background: #444 url(/assets/mail.png) 1px 1px no-repeat;
+    position:   absolute;
+	top:        9px;
+	right:      385px;
+}
+
+.password_input input {
+	background: #444 url(/assets/key.png) 1px 2px no-repeat;
+    position:   absolute;
+	top:        9px;
+	right:      135px;
+}
+
+.login_button {
+	width:    100px;
+	position: absolute;
+	top:      15px;
+	right:    20px;
+}
+
+
 body {
   background-image: url('/assets/chalkboard.png');
 }
 
-/*b63968 - h2 - dull pink*/
-/*#597A1F - h2 - greenish*/
-/*#ca7840 - h2 - orange;*/
-/*#ededed - text shadow - white*/
-
-
 h2 {
   font:        400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;
-  color:       #ca7840; 
-  text-shadow: 1px 1px 0px #e62084, 4px 4px 0px rgba(0,0,0,0.15); 
+  color:       #B1C465; 
+  text-shadow: 3px 1px 3px #762719, 4px 4px 0px rgba(0,0,0,0.15); 
 }
 
 #landing_text {
   font-size:  70%;
   text-align: left;
+  width:      750px;
   position:   absolute;
-  top:        10px;
-  right:      70px;
-  width:      600px;
+  top:        40px;
+  left:       20px;
 }
 
 #home_logo {
   position:   absolute;
-  top:        180px;
+  bottom:     2%;
   right:      50px;
   float:      right;
   width:      400px;
-/*  height:     502px;*/
+  height:     502px;
 }
 
-#sign_log_box {
-  position: absolute;
-  top:      200px;
-  right:    500px;
-  
-}
-
+/*general classes*/
 .unselectable {
 	-webkit-user-select: 	none; /* Chrome/Safari */        
 	-moz-user-select: 		none; /* Firefox */
