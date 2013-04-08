@@ -67,15 +67,17 @@ describe SessionsController do
   describe "DELETE 'destroy'" do
     
     it "should log the user out" do
-         test_login(Factory(:user))
-         delete :destroy
-         controller.should_not be_logged_in
+      test_login(Factory(:user))
+      delete :destroy
+      controller.should_not be_logged_in
          # response.should flash 'you have logged out'  
     end
     
-    it "should redirect to ????" # do
-    #     where should this redirect on logout?
-    #     end    +fix in sessions_controller.rb:23
+    it "should redirect to '/logout'" do
+      test_login(Factory(:user))
+      delete :destroy
+      response.should redirect_to farewell_path
+    end
     
   end
 

@@ -1,17 +1,25 @@
-/*  PINK     #FA6175    */
-/*  RED      #9E0519    */
-/*  YELLOW   #FFA600    */
-/*  BROWN    #762719    */
-/*  GREEN    #B1C465    */
+/******color palette******/
+/*   http://colorschemedesigner.com/#2a31TfwpDw0w0   */
+
+/******Fonts******/
+/*BERKSHIRE SWISH*/
+/****HTML****/
+/*<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>*/
+/****CSS****/
+/*font:        400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;
+color:       #A283C5; 
+text-shadow: 3px 1px 3px #37195A, 4px 4px 0px rgba(0,0,0,0.15);*/
+
+
 
 header {
-    background: #B1C465;
+
 }
 
 #menu_box {
       /*STYLE*/
-  	background:    #FFA600;
-    border-bottom: 5px double #762719;
+  	background:    #88935E;
+    border-bottom: 5px double #6C7F21;
     float:         left;
 	width:         100%;
 	height:        50px;
@@ -29,8 +37,9 @@ header {
 .input input{
 	width:   		   	   200px;
 	height: 			   30px;
-	font:        		   400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;	
+    font:                  400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;
 	font-size:  		   16px;
+	color:                 #6C7F21;
 	padding-left: 		   35px;	
 	opacity:               0.9;
 	/*Rounded*/
@@ -41,29 +50,44 @@ header {
 }
 
 input:focus {
-    border:  2px solid #9E0519;
+    border:  2px solid #B1C465;
     opacity: 1.0;
 }
 
 .email_input input {
-	background: #444 url(/assets/mail.png) 1px 1px no-repeat;
+	background: #353743 url(/assets/mail.png) 1px 1px no-repeat;
     position:   absolute;
 	top:        9px;
 	right:      385px;
 }
 
 .password_input input {
-	background: #444 url(/assets/key.png) 1px 2px no-repeat;
+	background: #353743 url(/assets/key.png) 1px 2px no-repeat;
     position:   absolute;
 	top:        9px;
 	right:      135px;
 }
 
 .login_button {
-	width:    100px;
-	position: absolute;
-	top:      15px;
-	right:    20px;
+	width:           100px;
+	position:        absolute;
+	top:             10px;
+	right:           20px;	
+	background:      #88935E;
+	border:          2px #6C7F21 solid;
+	font:            400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;
+    color:           #37195A; 
+    text-shadow:     3px 1px 3px #6C7F21, 3px 3px 0px rgba(0,0,0,0.15);
+    font-size:       100%;
+	text-decoration: none;
+	text-align:      center;
+}
+
+.login_button:hover {
+	background:  #694D8A;
+	border:      2px #37195A solid;
+	color:       #6C7F21;
+	text-shadow: 3px 1px 3px #37195A, 3px 3px 0px rgba(0,0,0,0.15);
 }
 
 
@@ -71,28 +95,73 @@ body {
   background-image: url('/assets/chalkboard.png');
 }
 
-h2 {
-  font:        400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;
-  color:       #B1C465; 
-  text-shadow: 3px 1px 3px #762719, 4px 4px 0px rgba(0,0,0,0.15); 
-}
+
 
 #landing_text {
-  font-size:  70%;
-  text-align: left;
-  width:      750px;
-  position:   absolute;
-  top:        40px;
-  left:       20px;
+  	text-align: left;
+	width:      800px;
+	font-family: 'The Girl Next Door', cursive;
+}
+
+h2 {
+    font:        400 70px/1.3 'Berkshire Swash', Helvetica, sans-serif;
+    color:       #A283C5; 
+    letter-spacing: -1px;
+    text-shadow: 3px 1px 3px #37195A, 4px 4px 0px rgba(0,0,0,0.15);
+    position:    absolute;
+    top:         20px;
+    left:        20px;
+}
+
+h4 {
+    font-size:      160%;
+    font-weight:    115px;
+    text-align:     center;
+    letter-spacing: 0.8px;
+    color:          #B1C465;
+    width:          300px;
+    position:       absolute;
+    top:            150px;
+    left:           80px;
 }
 
 #home_logo {
-  position:   absolute;
-  bottom:     2%;
-  right:      50px;
-  float:      right;
-  width:      400px;
-  height:     502px;
+    position:   absolute;
+    bottom:     2%;
+    right:      60px;
+    float:      right;
+    width:      400px;
+    height:     502px;
+}
+
+#buttons {
+	position: absolute;
+	bottom:   13%;
+	left:     17%;
+}
+
+.big_button {
+	background:      #88935E;
+	border:          2px #6C7F21 solid;
+	font:            400 70px/1.3 'Berkshire Swash', Helvetica, sans-serif;
+    color:           #37195A; 
+    text-shadow:     3px 1px 3px #6C7F21, 3px 3px 0px rgba(0,0,0,0.15);
+	font-size:       200%;
+	text-decoration: none;
+	width: 		     300px;
+	margin-left:     auto;
+	margin-right:    auto;
+	margin-top:      25px;
+	padding:         20px;
+	display:         block;
+	text-align:      center;	
+}
+
+.big_button:hover {
+	background:  #694D8A;
+	border:      2px #37195A solid;
+	color:       #6C7F21;
+	text-shadow: 3px 1px 3px #37195A, 3px 3px 0px rgba(0,0,0,0.15);
 }
 
 /*general classes*/

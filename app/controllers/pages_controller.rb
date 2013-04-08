@@ -13,7 +13,10 @@ class PagesController < ApplicationController
   
   def home
     render :layout => 'layouts/landing'
-    @title = "Home"
   end
-
+  
+  def farewell
+    @title = "Farewell!"
+  end
+  
 end

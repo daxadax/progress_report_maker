@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   
   def destroy
     logout
-    redirect_to '#'
+    redirect_to farewell_path
   end
 
 end
