@@ -167,22 +167,4 @@ describe User do
     
   end
 
-  # log in
-  
-  describe "login" do
-    
-    describe "failure" do
-      it "should not log the user in" do
-        visit login_path
-        puts response.body
-        fill_in 'session_email',    with: ""
-        fill_in 'session_password', with: "" 
-        click_button
-        # response.should have_selector('div.login_error', content: "Invalid")
-        # response.should render_template('sessions/new')
-      end
-    end
-    
-  end
-
 end
