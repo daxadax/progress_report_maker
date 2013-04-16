@@ -4,11 +4,11 @@
 			Oh dear.  Looks like some<%= pluralize_without_count(@user.errors.count, "thing has", " things have") %> gone wrong.
 		</h4>
 		<p>
-			<ul>
-			<% @user.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>	
-			</ul>
+			<!-- <ul>
+						<% @user.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>	
+						</ul> -->
 		</p>
 	</div>
 <% end %>	

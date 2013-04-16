@@ -1,18 +1,37 @@
 <%= form_for(@user) do |f| %>
 	<%= render 'shared/error_messages' %>
-  <div class="signup_box" "round">
-	  <div>
-  	  <%= f.text_field :name, placeholder: "Full name" %>
+
+  <div class="form_section round">
+
+  	<div class="form_field round center">
+	  	  <%= f.text_field :name, placeholder: "Full name" %>
+	      	<div class="form_text">
+		      	Names can be up to 40 characters
+		      </div>
 		</div>
-		<div>
-		 <%= f.email_field :email, placeholder: "Email address" %>
+
+	  <div class="form_field round center">
+			  <%= f.email_field :email, placeholder: "Email address" %>
+			    <div class="form_text">
+		      	Emails are <strong>not</strong> case-sensitive
+		      </div>
 		</div>
-		<div>
-	  	<%= f.password_field :password, placeholder: "Password" %>
+
+	  <div class="form_field round center">
+		    <%= f.password_field :password, placeholder: "Password" %>
+		    	<div class="form_text">
+			      Passwords <strong>are</strong> case-sensitive and must be between 3-40 characters
+		      </div>
 		</div>
-		<div>
-		  <%= f.password_field :password_confirmation, placeholder: "Type your password again" %>			
+
+	  <div class="form_field round center">
+			  <%= f.password_field :password_confirmation, placeholder: "Re-type your password" %>			
 		</div>
-		<%= f.submit "Get Started!" %>
+				
+		<div class="center">
+		<%= f.submit "Get Started!", :class => 'submit_button round' %>
+		</div>
+		
 	</div>
-<% end %>	
+
+<% end %>

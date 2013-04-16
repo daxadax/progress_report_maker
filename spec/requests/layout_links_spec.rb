@@ -45,6 +45,11 @@ describe "LayoutLinks" do
                                          content: "Log in")
     end
     
+    it "should root to the home page" do
+      visit root_path
+      response.should have_selector('title', content: "Log in or Sign up")
+    end
+    
   end
   
   describe "when user is logged in" do
@@ -68,6 +73,11 @@ describe "LayoutLinks" do
       visit about_path
       response.should have_selector("a", href: user_path(@user),
                                          content: "Profile")
+    end
+    
+    it "should root to the user show page" do
+      visit root_path
+      response.should have_selector('title', content: "#{@user.name}")
     end
     
   end

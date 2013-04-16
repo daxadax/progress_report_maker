@@ -1,18 +1,23 @@
-<h2>Log in</h2>
-
 <%= form_for(:session, :url => sessions_path) do |f| %>
-	<div id="email_field">
-		<%= f.email_field :email, placeholder: "Email address" %><br />
-	</div>
-	<div id="password_field">	
-		<%= f.password_field :password, placeholder: "Password" %><br />
-	</div>	
-	<div class="Login_button">
-		<%= f.submit "Log in" %>
+	
+  <div class="form_section round">
+		<div class="form_field round center">
+			<%= f.email_field :email, placeholder: "Email address" %><br />
+		</div>
+		<div class="form_field round center">	
+			<%= f.password_field :password, placeholder: "Password" %><br />
+		</div>	
+		<div class="center">
+			<%= f.submit "Log in", :class => 'submit_button round' %>
+		</div>
 	</div>
 	
 <% end %>
 
+<br />
 <p class="center">
 	New user? <%= link_to "Sign up now!", signup_path %>
 </p>
+
+<%= "example@email.com +password" if Rails.env.development?  %><br />
+<%= "example+2@email.com +'C4$e_sensitive'" if Rails.env.development? %>

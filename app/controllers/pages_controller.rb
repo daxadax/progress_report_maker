@@ -12,7 +12,13 @@ class PagesController < ApplicationController
   end
   
   def home
-    render :layout => 'layouts/landing'
+    user = current_user  
+    
+    if logged_in? 
+      redirect_to user
+    else
+      render :layout => 'layouts/landing'
+    end
   end
   
   def farewell
