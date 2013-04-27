@@ -16,3 +16,6 @@
 
 #Ignore fucking DS_Store!
 .DS_Store
+
+#Ignore webrat.log
+webrat.log
