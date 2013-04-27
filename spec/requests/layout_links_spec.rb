@@ -34,7 +34,7 @@ describe "LayoutLinks" do
 
   it "should have a post-logout page at '/farewell'" do
           get '/farewell'
-          response.should have_selector('title', content: "Farewell!", )  
+          response.should have_selector('title', content: "Farewell!")  
   end
   
   describe "when user is not logged in" do
@@ -57,7 +57,6 @@ describe "LayoutLinks" do
     before(:each) do
       @user = Factory(:user)
       visit login_path
-      # puts response.body
       fill_in 'session_email',    with: @user.email
       fill_in 'session_password', with: @user.password
       click_button
@@ -69,16 +68,27 @@ describe "LayoutLinks" do
                                          content: "Log out")
     end
     
-    it "should have a 'profile' link" do
+    it "should have a 'home' link" do
       visit about_path
       response.should have_selector("a", href: user_path(@user),
-                                         content: "Profile")
+                                         content: "Home")
     end
     
     it "should root to the user show page" do
       visit root_path
       response.should have_selector('title', content: "#{@user.name}")
     end
+    
+    it "should have an edit link on the user#show page" do
+      visit user_path
+      response.should have_selector("a", href: edit_user_path(@user),
+                                         content: "edit")
+    end
+    
+    it "should have an 'edit user' page at /settings" # do
+    #       get '/settings'
+    #       response.should have_selector('title', content: "User settings")
+    #     end
     
   end
   

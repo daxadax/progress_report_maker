@@ -34,7 +34,7 @@ describe UsersController do
           response.should have_selector('h2', :content => @user.name )
         end
         
-      end
+  end
   
   describe "GET 'new'" do
   
@@ -101,6 +101,78 @@ describe UsersController do
       it "should sign the user in" do
         post :create, user: @attr
         controller.should be_logged_in
+      end
+      
+    end
+    
+  end
+
+  describe "GET 'edit'" do
+    
+    before(:each) do
+      @user = Factory(:user)
+      test_login(@user)
+    end
+    
+    it "should be successful" do
+      get :edit, id: @user
+      response.should be_success
+    end
+
+    it "should have the right title" do
+      get :edit, id: @user
+      response.should have_selector('title', content: "User settings")
+    end
+    
+  end
+
+  describe "PUT 'update'" do
+    
+    before(:each) do
+      @user = Factory(:user)
+      test_login(@user)
+    end
+    
+    describe "failure" do
+      
+      before(:each) do
+        @attr = {name: "", email: "", password: "", password_confirmation: ""}
+      end
+      
+      it "should render the 'edit' page" do
+        put :update, id: @user, user: @attr
+        response.should render_template('edit')
+      end
+      
+      it "should have the right title" do
+        put :update, id: @user, user: @attr
+        response.should have_selector('title', content: "User settings")
+      end
+      
+    end
+    
+    describe "success" do
+      
+      before(:each) do
+        @attr = { name: "New Name", 
+                  email: "new_example@email.com", 
+                  password: "pass-pass", 
+                  password_confirmation: "pass-pass" 
+                 }
+      end
+      
+      it "should change the user's attributes" do
+        put :update, id: @user, user: @attr
+        user = assigns(:user)
+        @user.reload
+        @user.name.should        == user.name
+        @user.email.should       == user.email
+        @user.encrypted_password == user.encrypted_password
+      end
+      
+      it "should flash 'Update successful'" do
+        put :update, id: @user, user: @attr
+        flash[:success].should =~ /update/i
       end
       
     end

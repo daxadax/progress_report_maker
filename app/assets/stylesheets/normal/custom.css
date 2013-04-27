@@ -1,4 +1,4 @@
-/*general design elements*/
+		/*general design elements*/
 
 .center {
 	text-align: center;
@@ -6,6 +6,10 @@
 
 .right {
 	text-align: right;
+}
+
+.float_right {
+	float:right;
 }
 
 .round {
@@ -37,9 +41,9 @@
 	user-select: 			none;
 }
 
-/*more specifc stuff*/
-
-/*  page layout*/
+		/*********************/
+		/**** page layout ****/
+		/*********************/
 
 .container {
 	width: 80%;
@@ -76,12 +80,12 @@ section h1 {
 }
 
 a {
-	color: #000;
+	color: #6C7F21;
 	text-decoration: none;
 }
 
 a:hover {
-	color:  #ddd;
+	color:  #37195A;
 	cursor: pointer;
 }
 
@@ -120,8 +124,64 @@ footer {
 	margin-left:  auto;
 }
 
-/*****   FIELDS AND ERRORS!   *****/
+		/*****************/
+		/**** buttons ****/
+		/*****************/
 
+.small_button {
+	width:           100px;
+	background:      #88935E;
+	border:          2px #6C7F21 solid;
+	font:            400 45px/1.3 'Berkshire Swash', Helvetica, sans-serif;
+    text-shadow:     3px 1px 3px #6C7F21, 3px 3px 0px rgba(0,0,0,0.15);
+    font-size:       100%;
+	text-decoration: none;
+	text-align:      center;	
+}
+
+.small_button a {
+	color: #37195A; 
+}
+
+.small_button:hover {
+	background:  #694D8A;
+	border:      2px #37195A solid;
+	text-shadow: 3px 1px 3px #37195A, 3px 3px 0px rgba(0,0,0,0.15);
+}
+
+.small_button:hover a {
+	color: #6C7F21;
+}
+
+.big_button {
+	background:      #88935E;
+	border:          2px #6C7F21 solid;
+	font:            400 70px/1.3 'Berkshire Swash', Helvetica, sans-serif;
+    color:           #37195A; 
+    text-shadow:     3px 1px 3px #6C7F21, 3px 3px 0px rgba(0,0,0,0.15);
+	font-size:       200%;
+	text-decoration: none;
+	width: 		     300px;
+	margin-top:      25px;
+	padding:         20px;
+	display:         block;
+	text-align:      center;
+	margin-top:      20px;
+	margin-left:     auto;
+    margin-right:    auto;
+}
+
+.big_button:hover {
+	background:  #694D8A;
+	border:      2px #37195A solid;
+	color:       #6C7F21;
+	text-shadow: 3px 1px 3px #37195A, 3px 3px 0px rgba(0,0,0,0.15);
+}
+
+
+		/***************************/
+		/**** fields and errors ****/
+		/***************************/
 
 .form_section {
 /*	float:      left;*/
@@ -153,80 +213,15 @@ footer {
 }
 
 .form_field input:focus {
-	background: #AB94C5;
+/*	background: #B1C465;*/
 	border:     2px #37195A solid;
-}
-
-.example-two:focus::-webkit-input-placeholder {
-  transition: text-indent 0.5s 0.5s ease; 
-  text-indent: -100%;
-  opacity: 1;
-}
-
-.form_text {
-	text-align:    left;
-	width:         300px;
-	font-size:     12px;
-	padding-top:    -2px;
-	margin-bottom: 5px;
-	padding-left:  40px;
-}
-
-/**** placeholder text ****/
-
-::-webkit-input-placeholder {
-    font-size:   15px;
-    opacity:     0.5;
-    color:       #37195A;
-}
-/* Firefox 18- */
-:-moz-placeholder {
-    font-size:   15px;
-    opacity:     0.5;
-    color:       #37195A;
-}
-/* Firefox 19+ */
-::-moz-placeholder {  
-    font-size:   15px;
-    opacity:     0.5;
-    color:       #37195A;
-}
-:-ms-input-placeholder {  
-    font-size:   15px;
-    opacity:     0.5;
-    color:       #37195A;
-}
-
-.submit_button {
-	background:      #88935E;
-	border:          2px #6C7F21 solid;
-	font:            400 70px/1.3 'Berkshire Swash', Helvetica, sans-serif;
-    color:           #37195A; 
-    text-shadow:     3px 1px 3px #6C7F21, 3px 3px 0px rgba(0,0,0,0.15);
-	font-size:       200%;
-	text-decoration: none;
-	width: 		     200px;
-	margin-top:      25px;
-	padding:         20px;
-	display:         block;
-	text-align:      center;
-	margin-top:      20px;
-	margin-left:     auto;
-    margin-right:    auto;
-}
-
-.submit_button:hover {
-	background:  #694D8A;
-	border:      2px #37195A solid;
-	color:       #6C7F21;
-	text-shadow: 3px 1px 3px #37195A, 3px 3px 0px rgba(0,0,0,0.15);
 }
 
 .field_with_errors input {
 	width:   		   	   300px;
 	height: 			   45px;
-	background:            #AB94C5;
-	border:                2px #37195A solid;
+	background:            #DDA2B1;
+	border:                2px #791F36 solid;
 	color:                 #37195A;
 	font-size:  		   15px;
 	padding-left: 		   15px;	
@@ -247,5 +242,46 @@ footer {
 	font-size:   140%;
 	text-align:  center;
 	width:       550px;
+}
+       
+
+        /**************************/
+        /**** placeholder text ****/
+        /**************************/
+
+input::-webkit-input-placeholder {
+    color:       #37195A;
+    font-size:   15px;
+}
+input::-moz-placeholder {
+    color:       #37195A;
+    font-size:   15px;
+}
+input:-moz-placeholder {   
+    color:       #37195A;
+    font-size:   15px;
+}
+input:-ms-input-placeholder { 
+    color:       #37195A;
+    font-size:   15px;
+}
+
+        /*placeholder for field_with_errors*/
+
+.field_with_errors input::-webkit-input-placeholder {
+    color:       #791F36;
+    font-size:   15px;
+}
+.field_with_errors input::-moz-placeholder {
+    color:       #791F36;
+    font-size:   15px;
+}
+.field_with_errors input:-moz-placeholder {   
+    color:       #791F36;
+    font-size:   15px;
+}
+.field_with_errors input:-ms-input-placeholder { 
+    color:       #791F36;
+    font-size:   15px;
 }
 

@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   
   def show
-    @user = User.find(params[:id])
+    # if logged_in?
+      @user = User.find(params[:id])
+    # else 
+    #   redirect_to login_path
+    # end
+    
     @title = @user.name
   end
   
@@ -18,6 +23,26 @@ class UsersController < ApplicationController
     else
       @title = "Sign up"
       render 'new'
+    end  
+  end
+  
+  def edit
+    # if logged_in?
+      @user = User.find(params[:id])
+    # else
+    #       redirect_to login_path
+    #     end
+
+    @title = "User settings"
+  end
+    
+  def update
+    @user  = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to @user, flash: { success: "Update successful"}
+    else  
+      @title = "User settings"
+      render 'edit'
     end  
   end
   
