@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
   
+  before_filter :authenticate, only: [:show, :edit, :update]
+  
   def show
-    # if logged_in?
-      @user = User.find(params[:id])
-    # else 
-    #   redirect_to login_path
-    # end
-    
+    @user = User.find(params[:id])
     @title = @user.name
   end
   
@@ -27,12 +24,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    # if logged_in?
-      @user = User.find(params[:id])
-    # else
-    #       redirect_to login_path
-    #     end
-
+    @user = User.find(params[:id])
     @title = "User settings"
   end
     
@@ -46,4 +38,10 @@ class UsersController < ApplicationController
     end  
   end
   
+  private
+  
+    def authenticate
+      deny_access unless logged_in?
+    end
+    
 end

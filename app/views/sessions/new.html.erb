@@ -1,13 +1,13 @@
 <%= form_for(:session, :url => sessions_path) do |f| %>
 	
-  <div class="form_section round">
-		<div class="form_field round center">
+  <div class="form_section round center">
+		<div class="form_field round">
 			<%= f.email_field :email, placeholder: "Email address" %><br />
 		</div>
-		<div class="form_field round center">	
+		<div class="form_field round">	
 			<%= f.password_field :password, placeholder: "Password" %><br />
 		</div>	
-		<div class="center">
+		<div>
 			<%= f.submit "Log in", :class => 'big_button round' %>
 		</div>
 	</div>

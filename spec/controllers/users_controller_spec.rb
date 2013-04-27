@@ -7,16 +7,8 @@ describe UsersController do
         
         before(:each) do
           @user = Factory(:user)
+          test_login(@user)
           @show = get :show, :id => @user
-        end
-        
-        it "should be sucessful" do
-          @show
-          if :auth_check? 
-            response.should be_success
-          else
-            response.should have_selector('title', content: "Log in or Sign up")
-          end
         end
         
         it "should find the right user" do
@@ -175,6 +167,30 @@ describe UsersController do
         flash[:success].should =~ /update/i
       end
       
+    end
+    
+  end
+
+  describe "authentication of show/edit/update actions" do
+    
+    before(:each) do
+      @user = Factory(:user)
+    end
+    
+    it "should deny access to 'show'" do
+      get :show, id: @user
+      response.should redirect_to login_path
+      flash[:notice].should =~ /must/
+    end
+    
+    it "should deny access to 'edit'" do
+      get :edit, id: @user
+      response.should redirect_to login_path
+    end
+    
+    it "should deny access to 'update'" do
+      put :update, id: @user
+      response.should redirect_to login_path
     end
     
   end

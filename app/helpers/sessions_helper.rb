@@ -27,6 +27,10 @@ module SessionsHelper
   def current_user
     @current_user ||= user_from_remember_token
   end
+  
+  def deny_access
+    redirect_to login_path, notice: "You must be logged in to access that page"
+  end
 
   # PRIVATE METHODS
   
