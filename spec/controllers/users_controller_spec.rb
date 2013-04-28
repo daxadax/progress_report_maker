@@ -177,20 +177,48 @@ describe UsersController do
       @user = Factory(:user)
     end
     
-    it "should deny access to 'show'" do
-      get :show, id: @user
-      response.should redirect_to login_path
-      flash[:notice].should =~ /must/
+    describe "for users that are not logged in" do
+      
+      it "should deny access to 'show'" do
+        get :show, id: @user
+        response.should redirect_to login_path
+        flash[:notice].should =~ /must/
+      end
+
+      it "should deny access to 'edit'" do
+        get :edit, id: @user
+        response.should redirect_to login_path
+      end
+
+      it "should deny access to 'update'" do
+        put :update, id: @user
+        response.should redirect_to login_path
+      end
+        
     end
     
-    it "should deny access to 'edit'" do
-      get :edit, id: @user
-      response.should redirect_to login_path
-    end
-    
-    it "should deny access to 'update'" do
-      put :update, id: @user
-      response.should redirect_to login_path
+    describe "for users that are logged in" do
+      
+      before(:each) do
+        wrong_user = Factory(:user, email: "wrong_user@example.com")
+        test_login(wrong_user)
+      end
+      
+      it "should require the correct user if viewing profile" do
+        get :show, id: @user
+        response.should redirect_to root_path
+      end
+      
+      it "should require the correct user if editting" do
+        get :edit, id: @user
+        response.should redirect_to root_path
+      end
+      
+      it "should require the correct user if updating" do
+        put :update, id: @user
+        response.should redirect_to root_path
+      end
+      
     end
     
   end
