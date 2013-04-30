@@ -3,6 +3,40 @@ require 'spec_helper'
 describe UsersController do
   render_views
     
+  describe "GET 'index" do
+    
+    describe "for users" do
+      
+      it "should deny access" # do
+      #         get :index
+      #         response.should redirect_to error_path
+      # end
+      
+    end
+    
+    describe "for superusers" do
+      
+      it "should be successful" do
+        get :index
+        response.should be_success
+      end
+      
+      it "should have the right title" do
+        get :index
+        response.should have_selector('title', content: "User index")
+      end
+      
+      it "should have an element for each user" do
+        get :index
+        User.all.each do |user|
+          response.should have_selector('li', content: "user.name")
+        end
+      end
+      
+    end
+    
+  end
+  
   describe "GET 'show" do
         
         before(:each) do
@@ -18,12 +52,12 @@ describe UsersController do
       
         it "should have the right title" do
           @show
-          response.should have_selector('title', :content => @user.name )
+          response.should have_selector('title', content: @user.name )
         end 
         
         it "should have the user's name as h2" do
           @show
-          response.should have_selector('h2', :content => @user.name )
+          response.should have_selector('h2', content: @user.name )
         end
         
   end
@@ -204,9 +238,10 @@ describe UsersController do
         test_login(wrong_user)
       end
       
-      it "should require the correct user if viewing profile" do
+      it "should only show the user their own profile" do
         get :show, id: @user
         response.should redirect_to root_path
+        flash[:access].should =~ /access a page/
       end
       
       it "should require the correct user if editting" do

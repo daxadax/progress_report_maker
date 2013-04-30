@@ -14,6 +14,9 @@ class PagesController < ApplicationController
   def home
     user = current_user  
     
+    #this is for users_controller.rb:58
+    flash.keep(:access)
+    
     if logged_in? 
       redirect_to user
     else
@@ -23,6 +26,10 @@ class PagesController < ApplicationController
   
   def farewell
     @title = "Farewell!"
+  end
+  
+  def error
+    @title = "Error"
   end
   
 end

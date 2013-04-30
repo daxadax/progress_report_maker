@@ -28,6 +28,10 @@ module SessionsHelper
     @current_user ||= user_from_remember_token
   end
   
+  #####################################
+  #Deny Access and Friendly Forwarding#
+  #####################################
+   
   def deny_access
     store_location
     redirect_to login_path, notice: "You must be logged in to access that page"

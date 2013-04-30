@@ -3,9 +3,14 @@ class UsersController < ApplicationController
   before_filter :authenticate, only: [:show, :edit, :update]
   before_filter :correct_user, only: [:show, :edit, :update]
   
+  def index
+    @users = User.all
+    @title = "User index"
+  end
+  
   def show
     @user = User.find(params[:id])
-    @title = @user.name
+    @title = @user.name      
   end
   
   def new
@@ -32,7 +37,7 @@ class UsersController < ApplicationController
   def update
     @user  = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to @user, flash: { success: "Update successful"}
+      redirect_to @user, flash: { success: "Update successful" }
     else  
       @title = "User settings"
       render 'edit'
@@ -47,7 +52,11 @@ class UsersController < ApplicationController
     
     def correct_user
       @user = User.find(params[:id])
-      redirect_to root_path unless @user == current_user
+      # redirect_to root_path unless @user == current_user 
+      unless @user == current_user
+        # EDIT THIS LATER TO INCLUDE LINK LOCATION! #see pages_controller.rb:18
+        redirect_to root_path, flash: { access: "Something has gone wrong.  If you're trying to access a page, try the links on your dashboard" }
+      end
     end  
     
 end

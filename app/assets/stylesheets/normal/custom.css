@@ -1,4 +1,6 @@
-		/*general design elements*/
+		/*******************************/
+		/****general design elements****/
+		/*******************************/
 
 .center {
 	text-align: center;
@@ -125,6 +127,21 @@ footer {
 	margin-right: auto;
 	margin-left:  auto;
 }
+
+		/******************************/
+		/**** specific page layout ****/
+		/******************************/
+
+	/* user#index */
+
+			ul.users {
+	margin-top: 1em;
+}
+
+			ul.users li {
+				margin:     10px 5px 10px 5px;
+				list-style: none;
+			}
 
 		/*****************/
 		/**** buttons ****/
@@ -268,22 +285,21 @@ input:-ms-input-placeholder {
     font-size:   15px;
 }
 
-        /*placeholder for field_with_errors*/
+	/*placeholder for field_with_errors*/
 
-.field_with_errors input::-webkit-input-placeholder {
+		.field_with_errors input::-webkit-input-placeholder {
     color:       #791F36;
     font-size:   15px;
 }
-.field_with_errors input::-moz-placeholder {
+		.field_with_errors input::-moz-placeholder {
     color:       #791F36;
     font-size:   15px;
 }
-.field_with_errors input:-moz-placeholder {   
+		.field_with_errors input:-moz-placeholder {   
     color:       #791F36;
     font-size:   15px;
 }
-.field_with_errors input:-ms-input-placeholder { 
+		.field_with_errors input:-ms-input-placeholder { 
     color:       #791F36;
     font-size:   15px;
 }
-
