@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   
-  before_filter :authenticate, only: [:show, :edit, :update]
+  before_filter :authenticate, only: [:show, :edit, :update, :destroy]
   before_filter :correct_user, only: [:show, :edit, :update]
+  before_filter :admin?,       only: :index
   
   def index
     @users = User.all
@@ -30,12 +31,10 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
     @title = "User settings"
   end
     
   def update
-    @user  = User.find(params[:id])
     if @user.update_attributes(params[:user])
       redirect_to @user, flash: { success: "Update successful" }
     else  
@@ -44,10 +43,15 @@ class UsersController < ApplicationController
     end  
   end
   
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to finalfarewell_path
+  end
+  
   private
   
     def authenticate
-      deny_access unless logged_in?
+      deny_access unless logged_in? 
     end
     
     def correct_user
@@ -59,4 +63,8 @@ class UsersController < ApplicationController
       end
     end  
     
+    def admin?
+      #http://stackoverflow.com/questions/15855138/undefined-method-admin-for-nilnilclass
+      redirect_to error_path unless current_user.try(:admin?)
+    end
 end

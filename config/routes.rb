@@ -5,11 +5,12 @@ Ganesh::Application.routes.draw do
   root                :to => 'pages#home'
 
   # static pages
-                      
-  match '/contact',   :to => 'pages#contact'
-  match '/about',     :to => 'pages#about'
-  match '/help',      :to => 'pages#help'
-  match '/error',     :to => 'pages#error'
+                        
+  match '/contact',       :to => 'pages#contact'
+  match '/about',         :to => 'pages#about'
+  match '/help',          :to => 'pages#help'
+  match '/error',         :to => 'pages#error'
+  match '/finalfarewell', :to => 'pages#final_farewell'
   
   # sessions
   

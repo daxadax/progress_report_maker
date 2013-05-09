@@ -9,6 +9,7 @@
 #  updated_at         :datetime         not null
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#  admin              :boolean
 #
 
 require 'spec_helper'
@@ -78,7 +79,7 @@ describe User do
     duplicate_email_user.should_not be_valid
   end
   
-  # passwords
+  # passwords/authentication
   
   describe "passwords" do
     
@@ -163,6 +164,24 @@ describe User do
     
     it "should return the user on email/password match" do
       User.authenticate(@attr[:email], @attr[:password]).should == @user
+    end
+    
+  end
+
+  # admin
+  
+  describe "admin users" do
+    
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+    
+    it "should respond to 'admin'" do
+      @user.should respond_to(:admin)
+    end
+    
+    it "should not be default" do
+      @user.should_not be_admin
     end
     
   end

@@ -7,31 +7,40 @@ describe UsersController do
     
     describe "for users" do
       
-      it "should deny access" # do
-      #         get :index
-      #         response.should redirect_to error_path
-      # end
+      before(:each) do
+        @user = Factory(:user)
+      end
+      
+      it "should deny access" do
+        get :index
+        response.should redirect_to error_path
+      end
       
     end
     
-    describe "for superusers" do
-      
-      it "should be successful" do
-        get :index
-        response.should be_success
-      end
-      
-      it "should have the right title" do
-        get :index
-        response.should have_selector('title', content: "User index")
-      end
-      
-      it "should have an element for each user" do
-        get :index
-        User.all.each do |user|
-          response.should have_selector('li', content: "user.name")
+    describe "for admin users" do 
+        before(:each) do
+          #describe the users here as admins 
+          @user = Factory(:user, email: "admin@example.com", admin: true)
+          test_login(@user)      
         end
-      end
+        
+        it "should be successful" do
+          get :index
+          response.should be_success
+        end
+        
+        it "should have the right title" do
+          get :index
+          response.should have_selector('title', content: "User index")
+        end
+        
+        it "should have an element for each user" do
+          get :index
+          User.all.each do |user|
+            response.should have_selector('li', content: "user")
+          end
+        end
       
     end
     
@@ -81,7 +90,10 @@ describe UsersController do
     describe "failure" do
       
       before(:each) do
-        @attr = {name: "", email: "", password: "", password_confirmation: ""}
+        @attr = {name:                  "", 
+                 email:                 "", 
+                 password:              "", 
+                 password_confirmation: ""}
       end
       
       it "should have the right title" do
@@ -201,6 +213,48 @@ describe UsersController do
         flash[:success].should =~ /update/i
       end
       
+    end
+    
+  end
+
+  describe "DELETE 'destroy'" do
+    
+    before(:each) do
+      @user = Factory(:user)
+    end
+    
+    describe "'guest' users" do
+      
+      it "should deny access" do
+        delete :destroy, id: @user
+        response.should redirect_to(login_path)
+      end
+      
+    end
+    
+    describe "logged-in users" do
+      
+      before(:each) do
+        test_login(@user)
+      end
+      
+      it "should confirm the action" # do
+      #         test_login(@user)
+      #         delete :destroy, id: @user
+      #         response.should redirect_to(confirmation_path) 
+      # end
+      
+      it "should destroy the user" do
+        lambda do
+          delete :destroy, id: @user
+        end.should change(User, :count).by(-1)
+      end
+      
+      it "should redirect to the 'farewell' page" do
+        delete :destroy, id: @user
+        response.should redirect_to(finalfarewell_path)
+      end
+            
     end
     
   end

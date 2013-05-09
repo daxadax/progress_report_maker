@@ -4,7 +4,9 @@ module SessionsHelper
   
   def login(user)
     cookies.permanent.signed[:remember_token] = [user.id, user.salt] # or? = user.remember_token
-    current_user = user
+    #http://stackoverflow.com/questions/7948756/why-are-my-rspec-tests-failing-but-my-app-is-working?lq=1
+    self.current_user = user
+    @current_user = user
   end
   
   def logged_in?
@@ -14,7 +16,9 @@ module SessionsHelper
   # log out
   
   def logout
-    current_user = nil
+    #http://stackoverflow.com/questions/7948756/why-are-my-rspec-tests-failing-but-my-app-is-working?lq=1
+    self.current_user = nil
+    @current_user = nil
     cookies.delete(:remember_token)
   end
   
