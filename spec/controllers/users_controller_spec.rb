@@ -238,19 +238,13 @@ describe UsersController do
         test_login(@user)
       end
       
-      it "should confirm the action" # do
-      #         test_login(@user)
-      #         delete :destroy, id: @user
-      #         response.should redirect_to(confirmation_path) 
-      # end
-      
       it "should destroy the user" do
         lambda do
           delete :destroy, id: @user
         end.should change(User, :count).by(-1)
       end
       
-      it "should redirect to the 'farewell' page" do
+      it "should redirect to the 'final farewell' page" do
         delete :destroy, id: @user
         response.should redirect_to(finalfarewell_path)
       end

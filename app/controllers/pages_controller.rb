@@ -1,10 +1,27 @@
 class PagesController < ApplicationController
+  def about
+    @title = "About"
+  end
+ 
+  def confirmation
+    @user = current_user
+    @title = "Confirm"
+  end
+
   def contact
     @title = "Contact"
   end
 
-  def about
-    @title = "About"
+  def error
+    @title = "Error"
+  end
+
+  def farewell
+    @title = "Farewell!"
+  end
+
+  def final_farewell
+    @title = "Smell you later forever"
   end
 
   def help
@@ -23,13 +40,5 @@ class PagesController < ApplicationController
       render :layout => 'layouts/landing'
     end
   end
-  
-  def farewell
-    @title = "Farewell!"
-  end
-  
-  def error
-    @title = "Error"
-  end
-  
+    
 end

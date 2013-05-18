@@ -4,32 +4,37 @@ describe "LayoutLinks" do
 
   it "should have a home page at '/'" do
     get '/'
-    response.should have_selector('title', content: " | Log in or Sign up", )  
+    response.should have_selector('title', content: " | Log in or Sign up" )  
   end
 
   it "should have an about page at '/about'" do
     get '/about'
-    response.should have_selector('title', content: "About", )  
+    response.should have_selector('title', content: "About" )  
   end
 
   it "should have a contact page at '/contact'" do
     get '/contact'
-    response.should have_selector('title', content: "Contact", )  
+    response.should have_selector('title', content: "Contact" )  
+  end
+
+  it "should have an error page at '/error" do
+    get '/error'
+    response.should have_selector('title', content: "Error")
   end
 
   it "should have a help page at '/help'" do
     get '/help'
-    response.should have_selector('title', content: "Help", )  
+    response.should have_selector('title', content: "Help" )  
   end
 
   it "should have a signup page at '/signup'" do
      get '/signup'
-     response.should have_selector('title', content: "Sign up", )  
+     response.should have_selector('title', content: "Sign up" )  
   end
   
   it "should have a login page at '/login'" do
       get '/login'
-      response.should have_selector('title', content: "Log in", )  
+      response.should have_selector('title', content: "Log in" )  
   end
 
   it "should have a post-logout page at '/farewell'" do
@@ -37,7 +42,7 @@ describe "LayoutLinks" do
           response.should have_selector('title', content: "Farewell!")  
   end
   
-  describe "when user is not logged in" do
+  describe "when user is NOT logged in" do
     
     it "should have a 'log in' link" do
       visit about_path
@@ -45,7 +50,7 @@ describe "LayoutLinks" do
                                          content: "Log in")
     end
     
-    it "should root to the home page" do
+    it "should root to the landing page" do
       visit root_path
       response.should have_selector('title', content: "Log in or Sign up")
     end
@@ -81,14 +86,19 @@ describe "LayoutLinks" do
     
     it "should have an edit link on the user#show page" do
       visit user_path
-      response.should have_selector("a", href: edit_user_path(@user),
-                                         content: "edit")
+      response.should have_selector("a", href: edit_user_path(@user))
     end
     
     it "should have an 'edit user' page at /settings" # do
     #       get '/settings'
     #       response.should have_selector('title', content: "User settings")
     #     end
+    
+    it "should confirm before deleting a user" do
+      visit edit_user_path
+      click_link "Delete your account"
+      response.should have_selector('title', content: "Confirm") 
+    end
     
   end
   

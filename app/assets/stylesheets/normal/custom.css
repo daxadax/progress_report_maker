@@ -16,6 +16,22 @@
 	float:right;
 }
 
+.float_left {
+	float:left;
+}
+
+.bottom_left {
+	position: absolute;
+	bottom:   10%;
+	left:     10%;
+}
+
+.bottom_right {
+	position:  absolute;
+	bottom:    10%;
+	right:     10%;
+}
+
 .round {
 	-moz-border-radius:    15px;
     -webkit-border-radius: 15px;
@@ -70,7 +86,6 @@ body {
 	background-image: url('/assets/Deco_Tile_Seamless_Pattern_by_jilbert.png');
 }
 
-
 section {
 	margin-top: 5em;
 	font-size:  120%;
@@ -116,6 +131,11 @@ nav ul li a {
 	color: #fff;
 }
 
+nav ul li a:hover {
+	color:  #37195A;
+	cursor: pointer;
+}
+
 nav ul li a:visited {
 	color: #fff;
 }
@@ -146,6 +166,10 @@ footer {
 		/*****************/
 		/**** buttons ****/
 		/*****************/
+#buttons {
+	position: relative;
+	margin-top: 12.5%;
+}
 
 .small_button {
 	width:           100px;
@@ -180,12 +204,10 @@ footer {
     text-shadow:     3px 1px 3px #6C7F21, 3px 3px 0px rgba(0,0,0,0.15);
 	font-size:       200%;
 	text-decoration: none;
-	width: 		     300px;
-	margin-top:      25px;
+	min-width:       300px;
+	margin:          5px 5px 5px 5px;
 	padding:         20px;
-	display:         block;
 	text-align:      center;
-	margin-top:      20px;
 	margin-left:     auto;
     margin-right:    auto;
 }

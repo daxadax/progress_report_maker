@@ -6,11 +6,13 @@ Ganesh::Application.routes.draw do
 
   # static pages
                         
-  match '/contact',       :to => 'pages#contact'
   match '/about',         :to => 'pages#about'
-  match '/help',          :to => 'pages#help'
+  match '/confirmation',  :to => 'pages#confirmation'
+  match '/contact',       :to => 'pages#contact'
   match '/error',         :to => 'pages#error'
+  match '/farewell',      :to => 'pages#farewell'
   match '/finalfarewell', :to => 'pages#final_farewell'
+  match '/help',          :to => 'pages#help'
   
   # sessions
   
@@ -18,7 +20,6 @@ Ganesh::Application.routes.draw do
   
   match '/login',     :to => 'sessions#new'
   match '/logout',    :to => 'sessions#destroy'
-  match '/farewell',  :to => 'pages#farewell'
                       
   # users
   

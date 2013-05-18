@@ -16,7 +16,7 @@ require "spec_helper"
          response.should render_template('sessions/new')
        end
 
-     end
+      end
 
       describe "success" do
         
