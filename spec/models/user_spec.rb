@@ -9,7 +9,7 @@
 #  updated_at         :datetime         not null
 #  encrypted_password :string(255)
 #  salt               :string(255)
-#  admin              :boolean
+#  admin              :boolean          default(FALSE)
 #
 
 require 'spec_helper'
@@ -182,6 +182,20 @@ describe User do
     
     it "should not be default" do
       @user.should_not be_admin
+    end
+    
+  end
+
+  # student_group association
+
+  describe "student_group associations" do
+    
+    before(:each) do
+      @user = User.create(@attr)
+    end
+    
+    it "should have a student_groups attribute" do
+      @user.should respond_to(:student_groups)
     end
     
   end

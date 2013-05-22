@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506202036) do
+ActiveRecord::Schema.define(:version => 20130522154204) do
+
+  create_table "student_groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "student_groups", ["user_id"], :name => "index_student_groups_on_user_id"
+
+  create_table "students", :force => true do |t|
+    t.string   "name"
+    t.binary   "gender",           :limit => 3
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "student_group_id"
+  end
+
+  create_table "subjects", :force => true do |t|
+    t.string   "name"
+    t.integer  "student_group_id"
+    t.integer  "student_id"
+    t.date     "end_date"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "subjects", ["student_group_id"], :name => "index_subjects_on_student_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

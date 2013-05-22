@@ -39,4 +39,25 @@ RSpec.configure do |config|
   def test_login(user)
     controller.login(user)
   end
+  
+  def association_attr
+    # User attritbutes 
+    @user = Factory(:user)
+  
+    # Student_group
+    @student_group = @user.student_groups.create(@student_group_attr)
+    # Student_group attributes
+    @student_group_attr = { name: "4a"}
+  
+    # Student 
+    @student = @student_group.students.create(@student_attr)
+    # Student attributes
+    @student_attr = { name: "Example Student", gender: "Transgender" }
+  
+    # Subject
+    @subject = @student.subjects.create!(@subject_attr)
+    # Subject attributes
+    @subject_attr = { name: "English", end_date: @date}
+    @date = Date.today+180
+  end
 end
