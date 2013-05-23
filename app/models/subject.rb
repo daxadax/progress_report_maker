@@ -15,5 +15,5 @@ class Subject < ActiveRecord::Base
   attr_accessible :end_date, :name
 
   belongs_to :student
-  
+  has_many   :goals
 end

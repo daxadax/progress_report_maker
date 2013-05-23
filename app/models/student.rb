@@ -14,6 +14,7 @@ class Student < ActiveRecord::Base
   attr_accessible :gender, :name
   
   belongs_to :student_group
-  has_many :subjects
+  has_many   :subjects
+  has_many   :characteristics
   
 end

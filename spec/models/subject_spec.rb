@@ -35,5 +35,13 @@ describe Subject do
     end 
     
   end
+  
+  describe "Goal associations" do
+    
+    it "should have a goal attribute" do
+      @subject.should respond_to(:goals)
+    end
+    
+  end
     
 end

@@ -47,7 +47,7 @@ RSpec.configure do |config|
     # Student_group
     @student_group = @user.student_groups.create(@student_group_attr)
     # Student_group attributes
-    @student_group_attr = { name: "4a"}
+    @student_group_attr = { name: "4a" }
   
     # Student 
     @student = @student_group.students.create(@student_attr)
@@ -57,7 +57,18 @@ RSpec.configure do |config|
     # Subject
     @subject = @student.subjects.create!(@subject_attr)
     # Subject attributes
-    @subject_attr = { name: "English", end_date: @date}
+    @subject_attr = { name: "English", end_date: @date }
     @date = Date.today+180
+    
+    # Goal
+    @goal = @subject.goals.create!(@goal_attr)
+    # Goal attributes
+    @goal_attr = { goal: "To unlearn the evil" }
+    
+    # Characteristic
+    @characteristic = @student.characteristics.create!(@char_attr)
+    # Characteristic attributes
+    @char_attr = { characteristic: "Dyslexic" }
+    
   end
 end

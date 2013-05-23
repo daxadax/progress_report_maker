@@ -19,7 +19,7 @@ describe Student do
   end
 
   it "should create a new instance with valid attributes" do
-    @student_group.students.create!(@attr).should be_valid
+    @student_group.students.create!(@student_attr).should be_valid
   end
 
   describe "Student_Group associations" do
@@ -41,6 +41,14 @@ describe Student do
       @student.should respond_to(:subjects)
     end
 
+  end
+
+  describe "Characteristic associations" do
+    
+    it "should have a characteristic attribute" do
+      @student.should respond_to(:characteristics)
+    end
+    
   end
 
 end
