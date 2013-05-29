@@ -4,7 +4,7 @@
 #
 #  id               :integer          not null, primary key
 #  name             :string(255)
-#  gender           :binary(3)
+#  gender           :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  student_group_id :integer
@@ -20,6 +20,11 @@ describe Student do
 
   it "should create a new instance with valid attributes" do
     @student_group.students.create!(@student_attr).should be_valid
+  end
+
+  it "should require a valid gender" do
+    wrong_gender_student = @student_group.students.new(@student_attr.merge(gender: "Zlorp"))
+    wrong_gender_student.should_not be_valid
   end
 
   describe "Student_Group associations" do
@@ -48,6 +53,13 @@ describe Student do
     it "should have a characteristic attribute" do
       @student.should respond_to(:characteristics)
     end
+    
+    it "should destroy associated characteristics" do
+      @student.destroy
+      [@characteristic, @characteristic2].each do |characteristic|
+        Characteristic.find_by_id(characteristic.id).should be_nil
+      end
+    end    
     
   end
 

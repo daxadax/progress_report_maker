@@ -18,7 +18,7 @@ describe Goal do
   end
   
   it "should create a new instance with valid attributes" do
-    @subject.goals.create!(@goal_attr).should be_valid
+    @subject.goals.new(@goal_attr).should be_valid
   end
   
   describe "Subject associations" do

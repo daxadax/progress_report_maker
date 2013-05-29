@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523134645) do
+ActiveRecord::Schema.define(:version => 20130527154638) do
+
+  create_table "ages", :force => true do |t|
+    t.integer  "student_group_id"
+    t.string   "age_group"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "characteristics", :force => true do |t|
     t.string   "characteristic"
@@ -38,9 +45,9 @@ ActiveRecord::Schema.define(:version => 20130523134645) do
 
   create_table "students", :force => true do |t|
     t.string   "name"
-    t.binary   "gender",           :limit => 3
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.string   "gender"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "student_group_id"
   end
 

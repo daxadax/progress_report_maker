@@ -45,30 +45,37 @@ RSpec.configure do |config|
     @user = Factory(:user)
   
     # Student_group
-    @student_group = @user.student_groups.create(@student_group_attr)
-    # Student_group attributes
-    @student_group_attr = { name: "4a" }
-  
-    # Student 
-    @student = @student_group.students.create(@student_attr)
+    @student_group = Factory(:student_group, user: @user)
+    @student_group2 = Factory(:student_group, user: @user, name: "Rainbow class")
+      
     # Student attributes
-    @student_attr = { name: "Example Student", gender: "Transgender" }
+    @student_attr = { gender: "Female", name: "Example Student" }
+    # Student 
+    @student = @student_group.students.new(@student_attr)
+    @student.save
+    @student2 = Factory(:student, student_group: @student_group)
   
-    # Subject
-    @subject = @student.subjects.create!(@subject_attr)
     # Subject attributes
     @subject_attr = { name: "English", end_date: @date }
     @date = Date.today+180
+    # Subject
+    @subject = @student.subjects.new(@subject_attr)
+    @subject.save
     
     # Goal
-    @goal = @subject.goals.create!(@goal_attr)
-    # Goal attributes
-    @goal_attr = { goal: "To unlearn the evil" }
+    @goal = Factory(:goal, subject: @subject)
+    @goal2 = Factory(:goal, subject: @subject, goal: "Should display appropriate classroom behavior")
     
     # Characteristic
-    @characteristic = @student.characteristics.create!(@char_attr)
-    # Characteristic attributes
-    @char_attr = { characteristic: "Dyslexic" }
+    @characteristic =  Factory(:characteristic, student: @student)
+    @characteristic2 = Factory(:characteristic, student: @student, characteristic: "Dyslexic")
+    
+    # Age attributes
+    @age_attr = { age_group: "Adults (16+)"}
+    # Age_group
+    # For has_one associations use 'create_object'
+    # http://stackoverflow.com/questions/7479083/ruby-on-rails-3-has-one-association-testing
+    @age = @student_group.create_age(@age_attr)
     
   end
 end

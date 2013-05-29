@@ -18,7 +18,7 @@ describe Characteristic do
   end
 
   it "should create a new instance with valid attributes" do
-    @student.characteristics.create!(@char_attr).should be_valid
+    @student.characteristics.new(@char_attr).should be_valid
   end
 
   describe "Student associations" do

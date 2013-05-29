@@ -20,7 +20,7 @@ describe Subject do
   end
   
   it "should create a new instance with valid attributes" do
-    @student.subjects.create!(@subject_attr).should be_valid
+    @student.subjects.new(@subject_attr).should be_valid
   end
   
   describe "Student associations" do
@@ -40,6 +40,13 @@ describe Subject do
     
     it "should have a goal attribute" do
       @subject.should respond_to(:goals)
+    end
+    
+    it "should destroy associated goals" do
+      @subject.destroy
+      [@goal, @goal2].each do |goal|
+        Goal.find_by_id(goal.id).should be_nil
+      end
     end
     
   end

@@ -13,6 +13,7 @@ class StudentGroup < ActiveRecord::Base
   attr_accessible :name
   
   belongs_to :user
-  has_many   :students
+  has_one    :age, dependent: :destroy
+  has_many   :students, dependent: :destroy
   
 end

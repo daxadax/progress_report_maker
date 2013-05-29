@@ -4,7 +4,7 @@
 #
 #  id               :integer          not null, primary key
 #  name             :string(255)
-#  gender           :binary(3)
+#  gender           :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  student_group_id :integer
@@ -15,6 +15,11 @@ class Student < ActiveRecord::Base
   
   belongs_to :student_group
   has_many   :subjects
-  has_many   :characteristics
+  has_many   :characteristics, dependent: :destroy
+  
+  VALID_GENDERS = %w(Male Female Transgender)
+  
+  validates :gender, inclusion: { :in => VALID_GENDERS,
+                                    :message => "%{value} is not a valid gender" }
   
 end

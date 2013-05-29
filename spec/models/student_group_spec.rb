@@ -36,10 +36,30 @@ describe StudentGroup do
 
   describe "Student associations" do
 
-    it "should have a student attritube" do
+    it "should have a student attribute" do
       @student_group.should respond_to(:students)
     end
 
+    it "should destroy associated students" do
+      @student_group.destroy
+      [@student, @student2].each do |student|
+        Student.find_by_id(student.id).should be_nil
+      end
+    end
+
+  end
+  
+  describe "Age associations" do
+    
+    it "should have an age attribute" do
+      @student_group.should respond_to(:age)
+    end
+    
+    it "should destroy associated age" do
+      @student_group.destroy
+      Age.find_by_id(@age).should be_nil
+    end
+    
   end
 
 end
