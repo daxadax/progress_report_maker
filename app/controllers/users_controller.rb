@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    render :layout => 'layouts/dashboard'
     @title = @user.name      
   end
   
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       login @user
+      # change this to 'walkthrough' later
       redirect_to @user
     else
       @title = "Sign up"

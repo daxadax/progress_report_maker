@@ -21,11 +21,19 @@ describe Age do
     @student_group.create_age(@age_attr).should be_valid
   end
   
-  it "should require a valid age group" do
-    wrong_age_group = @student_group.create_age(@age_attr.merge(age_group: "OLD PEOPLE"))
-    wrong_age_group.should_not be_valid
+  describe "validations" do
+    
+    it "should have a student_group_id" do
+      Age.new(@age_attr).should_not be_valid
+    end
+    
+    it "should require a valid age group" do
+      wrong_age_group = @student_group.create_age(@age_attr.merge(age_group: "OLD PEOPLE"))
+      wrong_age_group.should_not be_valid
+    end
+    
   end
-  
+
   describe "Student_group associations" do
 
     it "should have a Student_group attribute" do

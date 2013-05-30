@@ -22,9 +22,17 @@ describe Student do
     @student_group.students.create!(@student_attr).should be_valid
   end
 
-  it "should require a valid gender" do
-    wrong_gender_student = @student_group.students.new(@student_attr.merge(gender: "Zlorp"))
-    wrong_gender_student.should_not be_valid
+  describe "validations" do
+    
+    it "should have a student_group_id" do
+      Student.new(@student_attr).should_not be_valid
+    end
+
+    it "should require a valid gender" do
+      wrong_gender_student = @student_group.students.new(@student_attr.merge(gender: "Zlorp"))
+      wrong_gender_student.should_not be_valid
+    end
+    
   end
 
   describe "Student_Group associations" do

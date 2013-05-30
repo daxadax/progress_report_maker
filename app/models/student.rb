@@ -19,7 +19,8 @@ class Student < ActiveRecord::Base
   
   VALID_GENDERS = %w(Male Female Transgender)
   
-  validates :gender, inclusion: { :in => VALID_GENDERS,
-                                    :message => "%{value} is not a valid gender" }
+  validates :student_group_id, presence: true
+  validates :gender,           inclusion: { :in => VALID_GENDERS,
+                                            :message => "%{value} is not a valid gender" }
   
 end

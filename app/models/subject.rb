@@ -2,13 +2,12 @@
 #
 # Table name: subjects
 #
-#  id               :integer          not null, primary key
-#  name             :string(255)
-#  student_group_id :integer
-#  student_id       :integer
-#  end_date         :date
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  student_id :integer
+#  end_date   :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Subject < ActiveRecord::Base
@@ -16,5 +15,7 @@ class Subject < ActiveRecord::Base
 
   belongs_to :student
   has_many   :goals, dependent: :destroy
+  
+  validates :student_id, presence: true
   
 end

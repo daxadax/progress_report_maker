@@ -21,6 +21,14 @@ describe Characteristic do
     @student.characteristics.new(@char_attr).should be_valid
   end
 
+  describe "validations" do
+    
+    it "should have a student_id" do
+      Characteristic.new(characteristic: "ugly").should_not be_valid
+    end
+    
+  end
+
   describe "Student associations" do
 
     it "should have a student attribute" do

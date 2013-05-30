@@ -7,6 +7,7 @@
 #  subject_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  default    :boolean
 #
 
 require 'spec_helper'
@@ -19,6 +20,14 @@ describe Goal do
   
   it "should create a new instance with valid attributes" do
     @subject.goals.new(@goal_attr).should be_valid
+  end
+  
+  describe "validations" do
+    
+    it "should have a subject_id" do
+      Goal.new(@goal_attr).should_not be_valid
+    end
+    
   end
   
   describe "Subject associations" do

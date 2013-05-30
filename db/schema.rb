@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527154638) do
+ActiveRecord::Schema.define(:version => 20130530170722) do
 
   create_table "ages", :force => true do |t|
     t.integer  "student_group_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130527154638) do
     t.integer  "subject_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "default"
   end
 
   create_table "student_groups", :force => true do |t|
@@ -53,14 +54,11 @@ ActiveRecord::Schema.define(:version => 20130527154638) do
 
   create_table "subjects", :force => true do |t|
     t.string   "name"
-    t.integer  "student_group_id"
     t.integer  "student_id"
     t.date     "end_date"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "subjects", ["student_group_id"], :name => "index_subjects_on_student_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -18,7 +18,15 @@ describe StudentGroup do
   end
 
   it "should create a new instance with valid attributes" do
-    @user.student_groups.create!(@attr).should be_valid
+    @student_group.should be_valid
+  end
+  
+  describe "validations" do
+    
+    it "should have a user_id" do
+      StudentGroup.new(name: "class 3").should_not be_valid
+    end
+    
   end
 
   describe "User associations" do

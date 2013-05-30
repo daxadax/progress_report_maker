@@ -16,6 +16,8 @@ class Age < ActiveRecord::Base
   
   VALID_AGE_GROUPS = ['Nursery (0-5)', 'Primary (6-10)', 'Secondary (11-16)', 'Adults (16+)', 'Mixed']
   
-  validates :age_group, inclusion: { :in => VALID_AGE_GROUPS,
-                                     :message => "%{value} is not a valid age group" }
+  validates :student_group_id,  presence: true      
+  validates :age_group,         inclusion: { :in => VALID_AGE_GROUPS,
+                                             :message => "%{value} is not a valid age group" }
+                                     
 end

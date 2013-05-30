@@ -16,4 +16,6 @@ class StudentGroup < ActiveRecord::Base
   has_one    :age, dependent: :destroy
   has_many   :students, dependent: :destroy
   
+  validates :user_id, presence: true
+  
 end
