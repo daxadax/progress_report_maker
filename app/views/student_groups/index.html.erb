@@ -1,0 +1,8 @@
+<ul class="student_groups">
+  
+  <% @student_groups.each do |student_group| %>
+    <li>
+      <%= link_to student_group.name, classes_path(student_group) %>
+	  </li>
+  <% end %>
+</ul>

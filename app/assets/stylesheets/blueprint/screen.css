@@ -94,12 +94,13 @@ textarea {width:390px;height:250px;padding:5px;}
 form.inline {line-height:3;}
 form.inline p {margin-bottom:0;}
 /*Added .login_error items*/
-.login_error, .error, .alert, .notice, .success, .info, .access {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;line-height:1.25;margin-bottom:1.25em;text-align:center;font-size:125%;width:50%;margin:auto auto;
+.login_error, .error, .alert, .notice, .success, .info, .access {padding:0.8em;margin-bottom:1em;line-height:1.25;margin-bottom:1em;text-align:center;font-size:150%;margin:auto auto;
 														-moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;border-radius:5px;}
-.login_error, .error, .alert {background:#AB94C5;border-color:#37195A;}
+.login_error {color: #fff;}
+.error, .alert {color:#FF4F00;}
 .notice, .success, .access {background:#D5E1A5;border-color:#6C7F21;}
-.error a, .alert a, .login_error a {color:#791F36;}
-.error a:hover, .alert a:hover, .login_error a:hover {color:#BA6077;}
+/*.error a, .alert a, .login_error a {color:#791F36;}*/
+.error a:hover, .alert a:hover, .login_error a:hover {color:#fff;}
 .notice, .access a {color:#514721;}
 .success a {color:#264409;}
 .info a {color:#205791;}

@@ -17,6 +17,9 @@ class Student < ActiveRecord::Base
   has_many   :subjects
   has_many   :characteristics, dependent: :destroy
   
+  accepts_nested_attributes_for :subjects
+  accepts_nested_attributes_for :characteristics
+  
   VALID_GENDERS = %w(Male Female Transgender)
   
   validates :student_group_id, presence: true

@@ -16,6 +16,8 @@ class Subject < ActiveRecord::Base
   belongs_to :student
   has_many   :goals, dependent: :destroy
   
+  accepts_nested_attributes_for :goals  
+  
   validates :student_id, presence: true
   
 end

@@ -5,22 +5,21 @@ namespace :db do
   desc "Fill db with sample data"
   
   task populate: :environment do
-    Rake::Task['db:reset'].invoke
-    admin = User.create!(name:                  "Example User",
-                         email:                 "example@email.com",
-                         password:              "password",
-                         password_confirmation: "password")
-    admin.toggle!(:admin)                     
-    99.times do |n|
-      name = Faker::Name.name
-      email = "example_#{n+1}@example.com"
-      password = "password"
-      User.create!(name:                  name,
-                   email:                 email,
-                   password:              password,
-                   password_confirmation: password) 
-    end
-                 
-  end
+    require 'populator'
   
+    Rake::Task['db:reset'].invoke
+    User.populate 100 do |user|
+      first_name = Faker::Name.first_name
+      last_name = Faker::Name.last_name
+      user.name = first_name + " " + last_name
+      user.email = "#{first_name+last_name}@example.com"
+      user.encrypted_password = "password"
+      user.salt = "#{Time.now.utc}--#{user.encrypted_password}" 
+      StudentGroup.populate 2..5 do |group| 
+        group.user_id = user.id
+        group.name = Populator.words(1..3)
+        group.created_at = 2.years.ago..Time.now
+      end
+    end 
+  end
 end

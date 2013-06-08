@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    render :layout => 'layouts/dashboard'
     @title = @user.name      
   end
   

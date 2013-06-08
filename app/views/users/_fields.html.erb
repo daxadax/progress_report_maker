@@ -1,21 +1,19 @@
 <div class="form_field round">
- 	  <%= f.text_field :name, placeholder: "Full name" %>
-     	<div class="form_text">
-      	Names can be up to 40 characters
-      </div>
+ 	  <%= f.label :name, "Your full name:" %>
+    <%= f.text_field :name, placeholder: "..." %>
 </div>
 
 <div class="form_field round">
-	  <%= f.email_field :email, placeholder: "Email address" %>
+	  <%= f.label :email, "Your email address:" %>
+	  <%= f.email_field :email, placeholder: "..." %>
 </div>
 
 <div class="form_field round">
-    <%= f.password_field :password, placeholder: "Password" %>
-    	<div class="form_text">
-	      Passwords must be between 3-40 characters
-      </div>
+    <%= f.label :password, "Your password:" %>
+    <%= f.password_field :password, placeholder: "..." %>
 </div>
 
 <div class="form_field round">
-	  <%= f.password_field :password_confirmation, placeholder: "Re-type your password" %>			
+	  <%= f.label :password, "Confirm your password" %>
+	  <%= f.password_field :password_confirmation, placeholder: "..." %>			
 </div>

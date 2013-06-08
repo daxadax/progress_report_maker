@@ -20,6 +20,7 @@ group :development do
   gem "rspec-rails", "~> 2.13.0"
   gem 'annotate'
   gem 'faker', '~> 1.0.1'
+  gem 'populator'
     
 end
 

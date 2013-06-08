@@ -1,6 +1,15 @@
 Ganesh::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+# #### DAX ADDED THESE ####
+# Add the fonts path
+config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+# Precompile additional assets
+config.assets.precompile += %w( .svg .eot .woff .ttf )
+
+# ####
+
   # From: http://rubysnippets.com/2013/01/08/managing-the-asset-pipeline-in-rails-3/
   config.assets.precompile += ['application.css', 'landing.css']
   

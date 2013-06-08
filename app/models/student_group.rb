@@ -16,6 +16,8 @@ class StudentGroup < ActiveRecord::Base
   has_one    :age, dependent: :destroy
   has_many   :students, dependent: :destroy
   
+  accepts_nested_attributes_for :students
+  
   validates :user_id, presence: true
   
 end

@@ -4,7 +4,7 @@ describe "LayoutLinks" do
 
   it "should have a home page at '/'" do
     get '/'
-    response.should have_selector('title', content: " | Log in or Sign up" )  
+    response.should have_selector('title', content: " | Log In or Sign up" )  
   end
 
   it "should have an about page at '/about'" do
@@ -34,7 +34,7 @@ describe "LayoutLinks" do
   
   it "should have a login page at '/login'" do
       get '/login'
-      response.should have_selector('title', content: "Log in" )  
+      response.should have_selector('title', content: "Log In" )  
   end
 
   it "should have a post-logout page at '/farewell'" do
@@ -47,12 +47,12 @@ describe "LayoutLinks" do
     it "should have a 'log in' link" do
       visit about_path
       response.should have_selector("a", href: login_path,
-                                         content: "Log in")
+                                         content: "Log In")
     end
     
     it "should root to the landing page" do
       visit root_path
-      response.should have_selector('title', content: "Log in or Sign up")
+      response.should have_selector('title', content: "Log In or Sign up")
     end
     
   end
@@ -97,7 +97,7 @@ describe "LayoutLinks" do
     it "should confirm before deleting a user" do
       visit edit_user_path
       click_link "Delete your account"
-      response.should have_selector('title', content: "Confirm") 
+      response.should have_selector('title', content: "Are you sure?") 
     end
     
   end

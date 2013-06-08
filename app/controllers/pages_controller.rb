@@ -1,11 +1,12 @@
 class PagesController < ApplicationController
+  
   def about
     @title = "About"
   end
  
   def confirmation
     @user = current_user
-    @title = "Confirm"
+    @title = "Are you sure?"
   end
 
   def contact
