@@ -1,25 +1,26 @@
-require 'faker'
+require 'factory_girl_rails'
 
 namespace :db do
-  
+
   desc "Fill db with sample data"
-  
-  task populate: :environment do
-    require 'populator'
-  
+
+  task :populate, :environment do
+
+    # reset the database
+    puts "Resetting the database"
     Rake::Task['db:reset'].invoke
-    User.populate 100 do |user|
-      first_name = Faker::Name.first_name
-      last_name = Faker::Name.last_name
-      user.name = first_name + " " + last_name
-      user.email = "#{first_name+last_name}@example.com"
-      user.encrypted_password = "password"
-      user.salt = "#{Time.now.utc}--#{user.encrypted_password}" 
-      StudentGroup.populate 2..5 do |group| 
-        group.user_id = user.id
-        group.name = Populator.words(1..3)
-        group.created_at = 2.years.ago..Time.now
-      end
-    end 
+
+    # create 100 users
+    puts "Creating users"
+    new_users = FactoryGirl.create_list :user, 100
+
+    #create 3 student_groups for each user  
+    puts "Creating student groups for each user"
+    new_users.each do |u|
+      FactoryGirl.create_list :student_group, 3, :user_id => u.id
+    end
+
+    # success message
+    puts "The database has been populated successfully"
   end
 end

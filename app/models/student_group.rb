@@ -20,4 +20,6 @@ class StudentGroup < ActiveRecord::Base
   
   validates :user_id, presence: true
   
+  before_save { |group| group.name = name.humanize }
+  
 end

@@ -21,7 +21,8 @@ describe UsersController do
     describe "for admin users" do 
         before(:each) do
           #describe the users here as admins 
-          @user = Factory(:user, email: "admin@example.com", admin: true)
+          @user = Factory(:user, email: "admin@example.com")
+          @user.toggle(:admin)
           test_login(@user)      
         end
         
@@ -38,7 +39,7 @@ describe UsersController do
         it "should have an element for each user" do
           get :index
           User.all.each do |user|
-            response.should have_selector('li', content: "user")
+            response.should have_selector('li', content: user.name)
           end
         end
       

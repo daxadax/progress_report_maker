@@ -8,25 +8,30 @@ class StudentGroupsController < ApplicationController
     @title = "All classes"
   end
   
-  # def new
-
-  # end
+  def new
+    @student_group  = @user.student_groups.new
+    @title = "Create a new class"
+  end
 
   def show
     # this isn't finished!
-    @title = :group_by_id.name
+    @student_group = @user.student_groups.find(params[:id])
+    @title = "#{@student_group.name}"
   end
   
-  # def create
-  #   if group_by_id.save
-  # 
-  #     where should this go?
-  #     redirect_to @???
-  #   else
-  #     @title = "Sign up"
-  #     render 'new'
-  #   end  
-  # end
+  def create
+    @student_group = @user.student_groups.new(params[:student_group])
+    if @student_group.save
+      # flash ":name created! Next, add your students"
+      
+      # for now redirect to 
+      redirect_to @user.student_groups
+      # redirect_to new_student_group_student_path
+    else
+      @title = "Create a new class"
+      render 'new'
+    end  
+  end
   
   # def edit
   #   @title = "Edit Class"
@@ -49,10 +54,6 @@ class StudentGroupsController < ApplicationController
     # methods
   def get_user
     @user = User.find(current_user)
-  end
-  
-  def group_by_id
-    @user.student_group(params[:id])
-  end  
+  end 
   
 end

@@ -68,7 +68,6 @@ GEM
     multi_json (1.7.6)
     nokogiri (1.5.10)
     polyglot (0.3.3)
-    populator (1.0.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -146,7 +145,6 @@ DEPENDENCIES
   faker (~> 1.0.1)
   jquery-rails
   json (~> 1.4)
-  populator
   rails (= 3.2.13)
   rspec (~> 2.13.0)
   rspec-rails (~> 2.13.0)

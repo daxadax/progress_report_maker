@@ -1,8 +1,17 @@
-<ul class="student_groups">
+<table class="student_groups_index">
   
   <% @student_groups.each do |student_group| %>
-    <li>
-      <%= link_to student_group.name, classes_path(student_group) %>
-	  </li>
+	   <tbody> 
+	    <tr>
+	    	<th><%= link_to student_group.name, class_path(student_group) %></th>
+	    </tr>
+		  <tr>
+		  	<td> # of students </td>
+		    <td> subjects studied </td>
+		    <td> length of course </td>
+		    <td> goals </td>
+		  </tr>
+		</tbody>
   <% end %>
-</ul>
+
+</table>

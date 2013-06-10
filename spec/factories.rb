@@ -1,30 +1,39 @@
+require 'faker'
+
 FactoryGirl.define do
-  factory :user do |user|
-    user.name                   "user"
-    user.email                  "user@example.com"
-    user.password               "password"
-    user.password_confirmation  "password"
-  end
   
+  factory :user do
+    sequence(:name) { |n| "User #{n}"}
+    sequence(:email) { |n| "user#{n}@example.com"}
+    password "password"
+  end
+
   factory :student_group do |student_group|
-    student_group.name "class 1"
+    sequence(:name) {|n| "class #{n}"}
     student_group.association :user
   end
-  
+
   factory :student do |student|
-    student.name   "Tim Learningman"
-    student.gender "Male"
+    sequence(:name) { |n| "student #{n}" }
+    student.gender { %w[Male Female Transgender].sample }
     student.association :student_group
   end
-  
+
+  factory :subject do |subject|
+    subject.name { %w[Math Science Basket_Weaving Necromancy Potions Welding Alchemy Brainwashing War_Making Love_Making].sample }
+    subject.end_date Date.today+180
+  end  
+
   factory :characteristic do |characteristic|
-    characteristic.characteristic "Autistic"
+    # http://stackoverflow.com/questions/8223059/what-is-the-proper-way-to-select-an-item-randomly-from-an-array-when-writing-fac
+    characteristic.characteristic { %w[Autistic Dyslexic Violent Auditory_Dominant Young Blind Hearing_Impaired Visual_Dominant Kinesthetic_Dominant ADHD Gifted].sample }
     characteristic.association :student
   end
-  
+
   factory :goal do |goal|
-    goal.goal "To unlearn the evil"
+    goal.goal { ["Participate in class", "Respect others", "Spell common words correctly", "Drink 1 gallon of milk in under a minute without vomiting", "Stand for three rounds with Ali", "Make you smile", "Replace my soul with acid"].sample }
     goal.association :subject
   end
-  
+
 end  
+  

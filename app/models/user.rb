@@ -33,7 +33,10 @@ class User < ActiveRecord::Base
   
   before_save :encrypt_password
   before_save { |user| user.email = email.downcase }
+  before_save { |user| user.name  = name.titleize }
   
+    # Methods 
+
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
   end
