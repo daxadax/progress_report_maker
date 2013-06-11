@@ -98,7 +98,7 @@ form.inline p {margin-bottom:0;}
 .login_error, .error, .alert, .notice, .success, .info, .access {padding:0.8em;margin-bottom:1em;line-height:1.25;margin-bottom:1em;text-align:center;font-size:150%;margin:auto auto;
 														-moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;border-radius:5px;}
 .login_error {color: #fff;}
-.error, .alert {color:#FF4F00;}
+.header_error, .error, .alert {color:#FF4F00;}
 .notice, .success, .access {background:#D5E1A5;border-color:#6C7F21;}
 /*.error a, .alert a, .login_error a {color:#791F36;}*/
 .error a:hover, .alert a:hover, .login_error a:hover {color:#fff;}

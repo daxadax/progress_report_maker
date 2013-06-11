@@ -22,6 +22,7 @@ FactoryGirl.define do
   factory :subject do |subject|
     subject.name { %w[Math Science Basket_Weaving Necromancy Potions Welding Alchemy Brainwashing War_Making Love_Making].sample }
     subject.end_date Date.today+180
+    subject.association :student
   end  
 
   factory :characteristic do |characteristic|

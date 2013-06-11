@@ -27,6 +27,10 @@ describe StudentGroup do
       StudentGroup.new(name: "class 3").should_not be_valid
     end
     
+    it "should reject blank names" do
+      StudentGroup.new(name: "").should_not be_valid
+    end
+    
   end
 
   describe "User associations" do

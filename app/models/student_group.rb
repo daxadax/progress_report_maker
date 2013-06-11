@@ -19,6 +19,7 @@ class StudentGroup < ActiveRecord::Base
   accepts_nested_attributes_for :students
   
   validates :user_id, presence: true
+  validates :name,    presence: true
   
   before_save { |group| group.name = name.humanize }
   

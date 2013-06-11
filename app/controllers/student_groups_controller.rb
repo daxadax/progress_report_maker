@@ -20,16 +20,16 @@ class StudentGroupsController < ApplicationController
   end
   
   def create
-    @student_group = @user.student_groups.new(params[:student_group])
+    @student_group = @user.student_groups.create(params[:student_group])
     if @student_group.save
-      # flash ":name created! Next, add your students"
-      
+      # flash ":name created! Next, add your students" 
       # for now redirect to 
-      redirect_to @user.student_groups
+      redirect_to classes_path, flash: { success: "#{@student_group.name} created! Next, add some students" }
       # redirect_to new_student_group_student_path
     else
       @title = "Create a new class"
-      render 'new'
+      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      render 'new' 
     end  
   end
   
