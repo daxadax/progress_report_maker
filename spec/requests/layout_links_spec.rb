@@ -84,15 +84,36 @@ describe "LayoutLinks" do
       response.should have_selector('title', content: "#{@user.name}")
     end
     
-    it "should have an edit link on the user#show page" do
+    it "should have a 'settings' link on the user#show page" do
       visit user_path
-      response.should have_selector("a", href: edit_user_path(@user))
+      response.should have_selector("a", href: settings_path)
     end
     
-    it "should have an 'edit user' page at /settings" # do
-    #       get '/settings'
-    #       response.should have_selector('title', content: "User settings")
-    #     end
+    describe "settings page" do
+
+      it "should have a settings page at /settings" do
+        get '/settings'
+        response.should have_selector('title', content: "#{@user.name} > Edit")
+      end
+      
+      it "should link to user settings" do
+        get '/settings'
+        response.should have_selector("a", href: edit_user_path(@user))
+      end
+      
+      it "should link to student group settings" # do
+      #         get '/settings'
+      #         response.should have_selector("a", href: edit_user_student_group_path(@user, @group))
+      #       end
+      
+      it "should have an element for each student group" do
+        get '/settings'
+        @user.student_groups.all.each do |group|
+          content.should have_selector('a', content: "#{group.name}" )
+        end
+      end
+      
+    end    
     
     it "should confirm before deleting a user" do
       visit edit_user_path

@@ -42,4 +42,9 @@ class PagesController < ApplicationController
     end
   end
     
+  def settings
+    @user = current_user
+    @title = "#{@user.name} > Edit"
+  end
+    
 end

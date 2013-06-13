@@ -19,6 +19,7 @@ Ganesh::Application.routes.draw do
   match '/farewell',      :to => 'pages#farewell'
   match '/finalfarewell', :to => 'pages#final_farewell'
   match '/help',          :to => 'pages#help'
+  match '/settings',      :to => 'pages#settings'
   
   # sessions
   

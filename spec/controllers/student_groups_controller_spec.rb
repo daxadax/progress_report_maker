@@ -23,7 +23,7 @@ render_views
    
     it "should have the right title" do
        @index
-       response.should have_selector('title', content: "All classes")
+       response.should have_selector('title', content: "All groups")
      end
    
     it "should have an element for each class" do
@@ -65,23 +65,26 @@ render_views
 
     it "should have the right title" do
       @new
-      response.should have_selector('title', :content => "Create a new class" )
+      response.should have_selector('title', :content => "Create a new group" )
     end 
     
   end
   
   describe "POST 'create'" do
 
+    before(:each) do
+      @create = post :create, {user_id: @user.id, student_group: @attr}
+    end
+
     describe "failure" do
         
       before(:each) do
         @attr = {name: ""}
-        @create = post :create, {user_id: @user.id, student_group: @attr}
       end
       
       it "should have the right title" do
         @create
-        response.should have_selector('title', :content => "Create a new class" )
+        response.should have_selector('title', :content => "Create a new group" )
       end
       
       it "should render the 'new' page" do
@@ -91,7 +94,7 @@ render_views
       
       it "should not create a user" do
         lambda do
-          @create = post :create, {user_id: @user.id, student_group: @attr}
+          post :create, {user_id: @user.id, student_group: @attr}
         end.should_not change {@user.student_groups.count}
       end
       
@@ -106,7 +109,6 @@ render_views
                                    
       before(:each) do
         @attr = {name: "Example Class"}
-        @create = post :create, {user_id: @user.id, student_group: @attr}
       end
      
       it "should create a user" do  
@@ -115,16 +117,114 @@ render_views
         end.should change {@user.student_groups.count}.by(1)
       end
       
+      it "should flash a success message" do
+        post :create, {user_id: @user.id, student_group: @attr}
+        flash[:success].should =~ /students/i
+      end
+      
       it "should redirect to the student_group index (FOR NOW!)" do
-        @create
+        post :create, {user_id: @user.id, student_group: @attr}
         response.should redirect_to classes_path
       end
       
-      it "should flash a success message" do
-        @create
-        flash[:success].should =~ /students/i
-      end
+      it "should redirect to new_student_group_student_path" # do
+      #         and delete the above spec
+      # end
                                    
     end 
+  
   end
+
+  describe "GET 'edit" do
+    
+    before(:each) do
+      @edit = get :edit, id: @sg1.id, user_id: @user.id
+    end
+
+     it "should be successful" do
+       @edit
+       response.should be_success
+     end
+
+     it "should have the right title" do
+       @edit
+       response.should have_selector('title', content: "Edit group")
+     end
+    
+  end
+
+  describe "PUT 'update" do
+    
+    describe "failure" do
+      
+      before(:each) do
+        @attr = {name: ""}
+        @update = put :update, {user_id: @user.id, id: @sg1.id, student_group: @attr}
+      end
+      
+      it "should render the 'edit' page" do
+        @update
+        response.should render_template('edit')
+      end
+      
+      it "should have the right title" do
+        @update
+        response.should have_selector('title', content: "Edit group")
+      end
+      
+      it "should flash an error message" do
+        @update
+        flash[:error].should =~ /please/i
+      end
+      
+    end
+    
+    describe "success" do
+      
+      before(:each) do
+        @attr = {name: "Example Class"}
+        @update = put :update, {user_id: @user.id, id: @sg1.id, student_group: @attr}
+      end
+      
+      it "should change the user's attributes" do
+        @update
+        student_group = assigns(:student_group)
+        @user.reload
+        @user.student_groups.name.should == @user.student_groups.name
+      end
+      
+      it "should redirect to student_groups#index" do
+        @update
+        response.should redirect_to classes_path
+      end
+      
+      it "should flash 'Update successful'" do
+        @update
+        flash[:success].should =~ /update/i
+      end
+      
+    end
+    
+  end
+
+  describe "DELETE 'destroy'" do
+      
+    it "should destroy the user" do
+      lambda do
+        delete :destroy, id: @sg1.id, user_id: @user.id
+      end.should change {@user.student_groups.count}.by(-1)
+    end
+    
+    it "flash a success message" do
+      delete :destroy, id: @sg1.id, user_id: @user.id
+      flash[:success].should =~ /deleted/i
+    end
+    
+    it "should redirect to student_groups#index" do
+      delete :destroy, id: @sg1.id, user_id: @user.id
+      response.should redirect_to classes_path
+    end
+  
+  end
+    
 end 

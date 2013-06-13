@@ -1,0 +1,17 @@
+<p>
+  <%= link_to "Edit user settings", edit_user_path(current_user) %> to change your name, email or password.
+</p> 
+
+<p>
+	Edit your student groups: <br />
+	  <% @user.student_groups.all.each do |group| %>
+	    <%= link_to "x", {controller: 'student_groups', 
+		                    action: 'destroy', 
+		                    user_id: @user.id, 
+		                    id: group },
+                       {confirm: "Do you really want to delete #{group.name}?",
+	                      method: :delete, 
+	                      class: "superscript_x"} %>
+	    <%= link_to "#{group.name}", edit_user_student_group_path(@user, group) %><br />
+	  <% end %>
+</p>

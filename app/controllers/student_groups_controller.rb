@@ -5,12 +5,12 @@ class StudentGroupsController < ApplicationController
 
   def index
     @student_groups = @user.student_groups
-    @title = "All classes"
+    @title = "All groups"
   end
   
   def new
     @student_group  = @user.student_groups.new
-    @title = "Create a new class"
+    @title = "Create a new group"
   end
 
   def show
@@ -22,34 +22,38 @@ class StudentGroupsController < ApplicationController
   def create
     @student_group = @user.student_groups.create(params[:student_group])
     if @student_group.save
-      # flash ":name created! Next, add your students" 
       # for now redirect to 
       redirect_to classes_path, flash: { success: "#{@student_group.name} created! Next, add some students" }
       # redirect_to new_student_group_student_path
     else
-      @title = "Create a new class"
+      @title = "Create a new group"
       flash.now[:error] = "Something's gone wrong.  Please try again!"
       render 'new' 
     end  
   end
   
-  # def edit
-  #   @title = "Edit Class"
-  # end
+  def edit
+    @student_group = @user.student_groups.find(params[:id])
+    @title = "Edit group"
+  end
 
-  # def update
-  #   if @user.update_attributes(params[:user])
-  #     redirect_to @user, flash: { success: "Update successful" }
-  #   else  
-  #     @title = "User settings"
-  #     render 'edit'
-  #   end  
-  # end
+  def update
+    @student_group = @user.student_groups.find(params[:id])
+    if @user.student_groups.find(params[:id]).update_attributes(params[:student_group])
+      redirect_to classes_path, flash: { success: "#{@student_group.name} updated successfully" }
+    else  
+      @title = "Edit group"
+      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      render 'edit'
+    end  
+  end
 
-  # def destroy
-  #   User.find(params[:id]).destroy
-  #   redirect_to finalfarewell_path
-  # end
+  def destroy
+    @student_group = @user.student_groups.find(params[:id])
+    @student_group.destroy
+    flash.now[:success] = "#{@student_group.name} has been deleted"
+    redirect_to classes_path
+  end
   
     # methods
   def get_user

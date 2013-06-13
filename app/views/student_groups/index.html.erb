@@ -1,9 +1,11 @@
 <table class="student_groups_index">
   
-  <% @student_groups.each do |student_group| %>
+  <% @student_groups.each do |group| %>
 	   <tbody> 
 	    <tr>
-	    	<th><%= link_to student_group.name, class_path(student_group) %></th>
+	    	<th>
+	        <%= link_to group.name, class_path(group) %> <%= link_to "Edit", edit_user_student_group_path(@user, group), class: "lil_link" %>
+		    </th>
 	    </tr>
 		  <tr>
 		  	<td> # of students </td>
