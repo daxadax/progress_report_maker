@@ -51,8 +51,7 @@ class StudentGroupsController < ApplicationController
   def destroy
     @student_group = @user.student_groups.find(params[:id])
     @student_group.destroy
-    flash.now[:success] = "#{@student_group.name} has been deleted"
-    redirect_to classes_path
+    redirect_to classes_path, flash: { success: "#{@student_group.name} has been deleted" }
   end
   
     # methods

@@ -4,7 +4,16 @@
 	   <tbody> 
 	    <tr>
 	    	<th>
-	        <%= link_to group.name, class_path(group) %> <%= link_to "Edit", edit_user_student_group_path(@user, group), class: "lil_link" %>
+	        <%= link_to group.name, class_path(group) %> 
+	        <%= link_to "Edit", edit_user_student_group_path(@user, group), 
+	                            class: "lil_link" %>
+		      <%= link_to "Delete", {controller: 'student_groups', 
+				                         action: 'destroy', 
+				                         user_id: @user.id, 
+				                         id: group },
+		                             {confirm: "Do you really want to delete #{group.name}?",
+			                           method: :delete, 
+			                           class: "lil_link"} %>
 		    </th>
 	    </tr>
 		  <tr>
