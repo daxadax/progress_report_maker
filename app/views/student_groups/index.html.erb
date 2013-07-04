@@ -5,7 +5,7 @@
 	    <tr>
 	    	<th>
 	        <%= link_to group.name, class_path(group) %> 
-	        <%= link_to "Edit", edit_user_student_group_path(@user, group), 
+	        <%= link_to "Edit", edit_student_group_path(group), 
 	                            class: "lil_link" %>
 		      <%= link_to "Delete", {controller: 'student_groups', 
 				                         action: 'destroy', 
@@ -26,3 +26,7 @@
   <% end %>
 
 </table>
+
+<p>
+	<%= link_to "Create a new group", new_student_group_path %>
+</p>

@@ -1,11 +1,1 @@
-<%= form_for([@user, @student_group]) do |f| %>
-	
-  <div class="form_section round">
-		<div class="form_field round">
-			<%= f.label :name, "Enter a nickname for this class" %>
-			<%= f.text_field :name, placeholder: "..." %><br />	
-		</div>
-		<%= f.submit "Submit", :class => 'big_button round unselectable' %>
-  </div>
-
-<% end %>
+<%= render 'groups_form' %>

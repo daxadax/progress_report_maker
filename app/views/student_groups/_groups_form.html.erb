@@ -1,0 +1,29 @@
+<%= form_for @student_group do |f| %>
+
+  <p>
+    The name of this group is 
+    <span class="field form_field"><%= f.text_field :name %></span>
+    and it is a/an 
+    <span class="field dropdown"><%= f.select :type_of_group, [["select a group type", ""], "young learners class (0-6)", "primary class (7-12)", "secondary class (13-17)", "adult class (18+)", "children's sport team", "adult's sport team"]  %></span> 
+	  <!--  <span id="nos" class="field dropdown"><%#= f.select :number_of_students, (0..60) %></span>  -->
+  </p>
+
+
+  <table id="nos_header">
+	  <thead>
+        <tr>
+            <th>Student name:</th>
+            <th>Gender:</th>
+        </tr>
+    </thead>
+	  <tbody>    
+      <%= f.fields_for :students do |builder| %>
+        <%= render "student_fields", :f => builder %>
+      <% end %>
+      <td class="links"><%= link_to_add_association 'add student', f, :students %></td>
+	  </tbody>
+	</table>
+
+<%= f.submit "Submit", :class => 'big_button round unselectable'%>
+
+<% end %>

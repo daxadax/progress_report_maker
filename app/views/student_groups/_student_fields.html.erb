@@ -1,0 +1,5 @@
+<tr class="nested-fields">
+	<td class="field form_field"><%= f.text_field :name %></td>
+  <td class="field dropdown"><%= f.select :gender, [["select a gender", ""],'Female', 'Male', 'Transgender'] %></td>
+  <td><%= link_to_remove_association "remove student", f %></td>
+</tr>

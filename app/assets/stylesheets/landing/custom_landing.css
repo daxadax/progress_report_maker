@@ -1,8 +1,9 @@
 
 /******color palette******/
-/*   http://colorschemedesigner.com/#2a31TfwpDw0w0   */
+/*   http://colorschemedesigner.com/#3y31Syi--CMXl   */
 
 /******Fonts******/
+
 /*Shadows into light two*/
 /****HTML****/
 /*<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>*/
@@ -12,7 +13,7 @@
 
 #menu_box {
       /*STYLE*/
-  	background:    #1093FF;
+  	background:    #FFBF00;
 /*    border-bottom: 5px double #81c6ff;*/
     float:         left;
 	width:         100%;
@@ -62,28 +63,6 @@ input:focus {
 	right:      135px;
 }
 
-.login_button {
-	width:           100px;
-	position:        absolute;
-	top:             10px;
-	right:           20px;	
-	background:      #81c6ff;
-	border:          2px #1093FF solid;
-	font-family:     'Shadows Into Light Two', cursive;
-    color:           #37195A; 
-    text-shadow:     3px 1px 3px #1093FF, 3px 3px 0px rgba(0,0,0,0.15);
-    font-size:       100%;
-	text-decoration: none;
-	text-align:      center;	
-}
-
-.login_button:hover {
-	background:  #694D8A;
-	border:      2px #37195A solid;
-	color:       #1093FF;
-	text-shadow: 3px 1px 3px #37195A, 3px 3px 0px rgba(0,0,0,0.15);
-}
-
 body {
   background-image: url('/assets/chalkboard.png');
 }
@@ -97,7 +76,7 @@ body {
 h2 {
     font-family: 'Shadows Into Light Two', cursive;
     font-size:   400%;
-    color:       #902D00; 
+    color:       #FF4F00; 
     letter-spacing: -1px;
     text-shadow: 3px 1px 3px #37195A, 4px 4px 0px rgba(0,0,0,0.15);
     position:    absolute;
@@ -110,7 +89,7 @@ h4 {
     font-weight:    115px;
     text-align:     center;
     letter-spacing: 0.8px;
-    color:          #1093FF;
+    color:          #FFBF00;
     width:          300px;
     position:       absolute;
     top:            150px;
@@ -135,12 +114,34 @@ h4 {
 	left:     17%;
 }
 
+.login_button {
+	width:           100px;
+	position:        absolute;
+	top:             10px;
+	right:           20px;	
+	background:      #035090;
+	border:          2px #902D00 solid;
+	font-family:     'Shadows Into Light Two', cursive;
+    color:           #1093FF; 
+    text-shadow:     3px 1px 3px #902D00, 3px 3px 0px rgba(0,0,0,0.15);
+    font-size:       100%;
+	text-decoration: none;
+	text-align:      center;	
+}
+
+.login_button:hover {
+	background:  #FFBF00;
+	border:      2px #906C00 solid;
+	color:       #37195A;
+	text-shadow: 3px 1px 3px #906C00, 3px 3px 0px rgba(0,0,0,0.15);
+}
+
 .big_button {
-	background:      #81c6ff;
-	border:          2px #1093FF solid;
+	background:      #FFBF00;
+	border:          2px #906C00 solid;
 	font-family:     'Shadows Into Light Two', cursive;
     color:           #37195A; 
-    text-shadow:     3px 1px 3px #1093FF, 3px 3px 0px rgba(0,0,0,0.15);
+    text-shadow:     3px 1px 3px #906C00, 3px 3px 0px rgba(0,0,0,0.15);
 	font-size:       200%;
 	text-decoration: none;
 	width: 		     300px;
@@ -153,10 +154,10 @@ h4 {
 }
 
 .big_button:hover {
-	background:  #694D8A;
-	border:      2px #37195A solid;
+	background:  #FF4F00;
+	border:      2px #902D00 solid;
 	color:       #1093FF;
-	text-shadow: 3px 1px 3px #37195A, 3px 3px 0px rgba(0,0,0,0.15);
+	text-shadow: 3px 1px 3px #902D00, 3px 3px 0px rgba(0,0,0,0.15);
 }
 
 /*general classes*/

@@ -31,6 +31,10 @@ describe StudentGroup do
       StudentGroup.new(name: "").should_not be_valid
     end
     
+    it "should have a type" do
+      StudentGroup.new(type_of_group: "").should_not be_valid
+    end
+    
   end
 
   describe "User associations" do
