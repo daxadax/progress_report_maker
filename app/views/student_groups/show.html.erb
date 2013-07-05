@@ -1,5 +1,15 @@
 <table class="student_group_show">
 	
-	
+	<% @student_group.students.each do |student| %>
+	   <tbody> 
+	    <tr>
+	    	<th>
+	        <%= link_to student.name, student_path(student, {student_group_id: student.student_group_id})%> 
+		    </th>
+	    </tr>
+		</tbody>
+  <% end %>
 	
 </table>
+
+<%= link_to "Add students", new_student_group_student_path(@student_group, {student_group_id: @student_group.id}) %>

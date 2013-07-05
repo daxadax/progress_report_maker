@@ -1,5 +1,5 @@
 <p>
-  <%= link_to "Edit user settings", edit_user_path(current_user) %> to change your name, email or password.
+  Edit <%= link_to "user settings", edit_user_path(current_user) %> to change your name, email or password.
 </p> 
 
 <p>
@@ -12,6 +12,6 @@
                        {confirm: "Do you really want to delete #{group.name}?",
 	                      method: :delete, 
 	                      class: "superscript_x"} %>
-	    <%= link_to "#{group.name}", edit_user_student_group_path(@user, group) %><br />
+	    <%= link_to "#{group.name}", edit_student_group_path(group) %><br />
 	  <% end %>
 </p>

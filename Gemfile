@@ -11,6 +11,7 @@ gem 'autotest-growl'
 gem 'webrat'
 gem "json", "~> 1.4"
 gem "thor", "~> 0.17.0"
+gem "cocoon"
 
 #GROUPS 
 

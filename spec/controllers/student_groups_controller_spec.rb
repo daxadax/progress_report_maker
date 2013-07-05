@@ -38,7 +38,7 @@ render_views
   describe "GET 'show'" do
     
       before(:each) do
-        @show = get :show, id: @sg1.id, user_id: @user.id
+        @show = get :show, id: @sg1.id
       end
       
       it "should be successful" do
@@ -55,7 +55,7 @@ render_views
   describe "GET 'new'" do
   
     before(:each) do
-      @new = get :new, user_id: @user.id
+      @new = get :new
     end  
   
     it "should be successful" do
@@ -73,13 +73,13 @@ render_views
   describe "POST 'create'" do
 
     before(:each) do
-      @create = post :create, {user_id: @user.id, student_group: @attr}
+      @create = post :create
     end
 
     describe "failure" do
         
       before(:each) do
-        @attr = {name: ""}
+        @attr = {name: "", type_of_group: ""}
       end
       
       it "should have the right title" do
@@ -94,7 +94,7 @@ render_views
       
       it "should not create a user" do
         lambda do
-          post :create, {user_id: @user.id, student_group: @attr}
+          post :create, student_group: @attr
         end.should_not change {@user.student_groups.count}
       end
       
@@ -106,30 +106,33 @@ render_views
     end
       
     describe "success" do
-                                   
+      
       before(:each) do
-        @attr = {name: "Example Class"}
-      end
+        @attr = FactoryGirl.attributes_for(:student_group)
+        @student_attr = {name: "test", gender: "Male"}
+      end     
      
-      it "should create a user" do  
+      it "should create a student_group" do  
         lambda do
-          post :create, {user_id: @user.id, student_group: @attr}
+          post :create, student_group: @attr
         end.should change {@user.student_groups.count}.by(1)
       end
       
+      it "should create students" # do
+      #         lambda do
+      #           post :create, student_group: @attr, student: @student_attr
+      #         end.should change {@student_groups.students.count}.by(1)  
+      #       end  
+      
       it "should flash a success message" do
-        post :create, {user_id: @user.id, student_group: @attr}
-        flash[:success].should =~ /students/i
+        post :create, student_group: @attr
+        flash[:success].should =~ /has been added/i
       end
       
-      it "should redirect to the student_group index (FOR NOW!)" do
-        post :create, {user_id: @user.id, student_group: @attr}
-        response.should redirect_to classes_path
+      it "should redirect" do
+        post :create, student_group_id: @group, student_group: @attr
+        response.should be_redirect
       end
-      
-      it "should redirect to new_student_group_student_path" # do
-      #         and delete the above spec
-      # end
                                    
     end 
   
@@ -209,7 +212,7 @@ render_views
 
   describe "DELETE 'destroy'" do
       
-    it "should destroy the user" do
+    it "should destroy the group" do
       lambda do
         delete :destroy, id: @sg1.id, user_id: @user.id
       end.should change {@user.student_groups.count}.by(-1)

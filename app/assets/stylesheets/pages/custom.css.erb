@@ -12,6 +12,10 @@
 	text-align: right;
 }
 
+.clear {
+	clear: both;
+}
+
 .float_right {
 	float:right;
 }
@@ -72,6 +76,10 @@
 	color:          red;
 }
 
+.display {
+	display: inline;
+}
+
 		/*********************/
 		/**** page layout ****/
 		/*********************/
@@ -130,8 +138,8 @@ section p {
 }
 
 section a {
-	color: #FF4F00;
-	text-shadow:     -1px 2px 2px #035090, -2px 3px 3px rgba(0,0,0,0.25);
+	color: #FFBF00;
+/*	text-shadow:     -1px 2px 2px #035090, -2px 3px 3px rgba(0,0,0,0.25);*/
 	text-decoration: none;
 }
 
@@ -160,7 +168,7 @@ nav ul li {
 nav ul li a {
 	padding: 3px;
 	font-weight: bold;
-	color: #902D00;
+	color: #FFDD78;
 	text-decoration: none;
 }
 
@@ -223,7 +231,7 @@ ul.users li {
 }
 
 .small_button a {
-	color: #902D00; 
+	color: #B09137; 
 }
 
 .small_button:hover {
@@ -237,11 +245,11 @@ ul.users li {
 }
 
 .big_button {
-	background:      #1093FF;
+	background:      #B09137;
 	border:          2px #035090 solid;
 	font-family:     'Shadows Into Light Two', cursive;
-    color:           #902D00; 
-    text-shadow:     3px 1px 3px #035090, 3px 3px 0px rgba(0,0,0,0.15);
+    color:           #035090; 
+    text-shadow:     3px 1px 3px #81C6FF, 3px 3px 0px rgba(0,0,0,0.15);
 	font-size:       200%;
 	text-decoration: none;
 	min-width:       300px;
@@ -253,10 +261,10 @@ ul.users li {
 }
 
 .big_button:hover {
-	background:  #694D8A;
-	border:      2px #37195A solid;
-	color:       #6C7F21;
-	text-shadow: 3px 1px 3px #37195A, 3px 3px 0px rgba(0,0,0,0.15);
+	background:  #81C6FF;
+	border:      2px #035090 solid;
+	color:       #035090;
+	text-shadow: 3px 1px 3px #FFDD78, 3px 3px 0px rgba(0,0,0,0.15);
 }
 
 
@@ -273,28 +281,44 @@ ul.users li {
 	margin-top: 1em;
 }
 
+/*.dropdown {
+	width: 200px;
+	height: 45px;
+	overflow: hidden;
+	background: url(down_arrow_select.png) no-repeat right #ddd;
+	border: 1px solid #ccc;
+}*/
+
+/*.dropdown select {
+    background:    rgba(176, 145, 55, 50.0);
+    border:        1px solid #FFDD78;
+	width:         200px;
+	height:        45px;
+	padding-left:  15px;
+	color:         #fff;
+	font-size:     15px;
+	line-height:   1;
+	border:        0;
+	border-radius: 0;
+	-webkit-appearance: none;
+}*/
+
 .form_field {
-	color: #fff;
+	
 }
 
 .form_field input {
 	width:   		   	   300px;
 	height: 			   45px;
 	background:            rgba(0, 0, 0, 0.0);
-    border:                1px solid rgba(255, 148, 0, 0);
 	color:                 #fff;
 	font-size:  		   15px;
-	padding-left: 		   15px;	
-	/*Rounded*/
-	-moz-border-radius:    5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius:  5px;
-    border-radius:         5px;
+	padding-left: 		   15px;
 }
 
 .form_field input:focus {
 	background: rgba(0, 0, 0, 0.0);
-    border:     1px solid rgba(0, 0, 0, 0);
+    border:     1px solid #FFDD78;
 }
 
 .field_with_errors input {
@@ -317,14 +341,6 @@ ul.users li {
 	font-weight: bold;
 }
 
-.header_error {
-	margin:        auto auto;
-	font-size:     60%;
-	text-align:    center;
-/*	margin-bottom: -4em;
-	margin-top:    -3em;*/
-/*	width:       450px;*/
-}
        
 
         /**************************/
@@ -335,7 +351,15 @@ input::-webkit-input-placeholder {
     color:       #fff;
     font-size:   15px;
 }
+input:focus::-webkit-input-placeholder {
+    color:       #fff;
+    font-size:   15px;
+}
 input::-moz-placeholder {
+    color:       #fff;
+    font-size:   15px;
+}
+input:focus::-moz-placeholder {
     color:       #fff;
     font-size:   15px;
 }
@@ -343,7 +367,15 @@ input:-moz-placeholder {
     color:       #fff;
     font-size:   15px;
 }
+input:focus:-moz-placeholder {   
+    color:       #fff;
+    font-size:   15px;
+}
 input:-ms-input-placeholder { 
+    color:       #fff;
+    font-size:   15px;
+}
+input:focus:-ms-input-placeholder { 
     color:       #fff;
     font-size:   15px;
 }
@@ -351,21 +383,21 @@ input:-ms-input-placeholder {
 	/*placeholder for field_with_errors*/
 
 .field_with_errors input::-webkit-input-placeholder {
-    color:       #902D00;
+    color:       #B09137;
     font-size:   15px;
 }
 
 .field_with_errors input::-moz-placeholder {
-    color:       #902D00;
+    color:       #B09137;
     font-size:   15px;
 }
 
 .field_with_errors input:-moz-placeholder {
-    color:       #902D00;
+    color:       #B09137;
     font-size:   15px;
 }
-		
+	
 .field_with_errors input:-ms-input-placeholder { 
-    color:       #902D00;
+    color:       #B09137;
     font-size:   15px;
 }

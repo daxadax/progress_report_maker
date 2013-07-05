@@ -6,8 +6,8 @@ Ganesh::Application.routes.draw do
 
   # associations 
   
-  resources :users do # , except: [:show, :edit]
-    resources :student_groups
+  resources :student_groups do
+    resources :students
   end
 
   # static pages
@@ -29,6 +29,7 @@ Ganesh::Application.routes.draw do
   match '/logout', :to => 'sessions#destroy'
                       
   # users
+  resources :users
   
   match '/signup', :to => 'users#new'
   # match '/home',      :to => 'users#show'
@@ -38,4 +39,8 @@ Ganesh::Application.routes.draw do
   
   match '/classes',   :to => 'student_groups#index'
   match '/class/:id', :to => 'student_groups#show', :as => :class  
+  
+  # students
+  
+  match ':student_group_id/student/:id', :to => 'students#show', :as => :student  
 end

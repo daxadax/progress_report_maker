@@ -10,6 +10,7 @@ FactoryGirl.define do
 
   factory :student_group do |student_group|
     sequence(:name) {|n| "class #{n}"}
+    student_group.type_of_group { ["young learners class (0-6)", "primary class (7-12)", "secondary class (13-17)", "adult class (18+)", "children's sport team", "adult's sport team"].sample }
     student_group.association :user
   end
 

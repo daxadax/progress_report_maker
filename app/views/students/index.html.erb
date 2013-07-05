@@ -1,0 +1,13 @@
+<table class="students_index">
+  
+  <% @students.each do |student| %>
+	   <tbody> 
+	    <tr>
+	    	<th>
+	        <%= link_to student.name, student_group_student_path(@student_group, student) %> 
+		    </th>
+	    </tr>
+		</tbody>
+  <% end %>
+
+</table>

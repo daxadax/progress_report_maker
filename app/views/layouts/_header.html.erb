@@ -1,16 +1,13 @@
 <header class="unselectable">
 	<h2 class="float_left">
-	  <% if @user.try(:errors).present? %>
-      <%= render 'shared/error_messages' %>
-    <% else %>
-      <%= @title %>
-    <% end %>  
+    <%= @title %>
 	</h2>
 	
 	<nav class="round">
 		<ul>
 			<% if logged_in? %>
 			  <li><%= link_to "Home", current_user %></li>
+			  <li><%= link_to "Groups", classes_path %></li>
 			  <li><%= link_to "Settings", settings_path %></li>
 			  <li><%= link_to "Log out", logout_path %></li>
 			<% else %>
