@@ -79,7 +79,7 @@ render_views
     describe "failure" do
         
       before(:each) do
-        @attr = {name: ""}
+        @attr = {name: "", type_of_group: ""}
       end
       
       it "should have the right title" do
@@ -109,6 +109,7 @@ render_views
       
       before(:each) do
         @attr = FactoryGirl.attributes_for(:student_group)
+        @student_attr = {name: "test", gender: "Male"}
       end     
      
       it "should create a student_group" do  
@@ -116,6 +117,12 @@ render_views
           post :create, student_group: @attr
         end.should change {@user.student_groups.count}.by(1)
       end
+      
+      it "should create students" # do
+      #         lambda do
+      #           post :create, student_group: @attr, student: @student_attr
+      #         end.should change {@student_groups.students.count}.by(1)  
+      #       end  
       
       it "should flash a success message" do
         post :create, student_group: @attr

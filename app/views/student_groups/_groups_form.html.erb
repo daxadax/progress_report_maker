@@ -17,10 +17,12 @@
         </tr>
     </thead>
 	  <tbody>    
-      <%= f.fields_for :students do |builder| %>
+      <%= f.fields_for :students, @student, child_index: @student do |builder| %>
         <%= render "student_fields", :f => builder %>
       <% end %>
-      <td class="links"><%= link_to_add_association 'add student', f, :students %></td>
+      <tr>
+        <td class="links"><%= link_to_add_association 'add student', f, :students %></td>
+      </tr>
 	  </tbody>
 	</table>
 

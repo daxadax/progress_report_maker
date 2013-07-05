@@ -69,10 +69,6 @@ describe "GET 'new'" do
     response.should have_selector('title', :content => "Add a student" )
   end 
   
-  it "should split names by title and add each student invidually" # do
-  #     
-  #   end
-  
 end
 
 describe "POST 'create'" do

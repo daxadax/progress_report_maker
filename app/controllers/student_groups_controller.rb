@@ -21,8 +21,13 @@ class StudentGroupsController < ApplicationController
   def create
     @student_group = @user.student_groups.build(params[:student_group])
     if @student_group.save
+      if params[:student_group][:students_attributes].present?
+        params[:student_group][:students_attributes].values.each do |student|
+        @student_group.students.create(name:"#{student[:name]}", gender: "#{student[:gender]}")
+        end
+      end    
       # new subject path
-      redirect_to class_path(@student_group), flash: { success: "#{@student_group.name} has been added successfully" }     
+      redirect_to class_path(@student_group), flash: { success: "#{@student_group.name} has been added successfully" }   
     else
       @title = "Create a new group"
       flash.now[:error] = "Something's gone wrong.  Please try again!"

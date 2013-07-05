@@ -31,6 +31,11 @@ describe StudentGroup do
       StudentGroup.new(name: "").should_not be_valid
     end
     
+    it "should reject too long names" do
+      too_long_name = "a" * 26
+      StudentGroup.new(name: too_long_name).should_not be_valid
+    end
+    
     it "should have a type" do
       StudentGroup.new(type_of_group: "").should_not be_valid
     end

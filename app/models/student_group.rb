@@ -10,6 +10,7 @@
 #
 
 class StudentGroup < ActiveRecord::Base
+  attr_accessor :_destroy
   attr_accessible :name, :number_of_students, :type_of_group, :students_attributes
   
   belongs_to :user
@@ -21,7 +22,8 @@ class StudentGroup < ActiveRecord::Base
   VALID_TYPES = ["young learners class (0-6)", "primary class (7-12)", "secondary class (13-17)", "adult class (18+)", "children's sport team", "adult's sport team"]
   
   validates :user_id,          presence: true
-  validates :name,             presence: true
+  validates :name,             presence: true,
+                               length:   0..25
   validates :type_of_group,    inclusion: { :in => VALID_TYPES,
                                             :message => "%{value} is not a valid type" }
   

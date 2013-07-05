@@ -27,6 +27,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       @title = "Sign up"
+      flash.now[:error] = "Something's gone wrong.  Please try again!"
       render 'new'
     end  
   end
@@ -40,6 +41,7 @@ class UsersController < ApplicationController
       redirect_to @user, flash: { success: "Update successful" }
     else  
       @title = "User settings"
+      flash.now[:error] = "Something's gone wrong.  Please try again!"
       render 'edit'
     end  
   end
