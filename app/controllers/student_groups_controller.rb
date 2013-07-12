@@ -19,11 +19,14 @@ class StudentGroupsController < ApplicationController
   end
   
   def create
+    @params = params[:student_group][:students_attributes]
     @student_group = @user.student_groups.build(params[:student_group])
     if @student_group.save
-      if params[:student_group][:students_attributes].present?
-        params[:student_group][:students_attributes].values.each do |student|
-        @student_group.students.create(name:"#{student[:name]}", gender: "#{student[:gender]}")
+      ###   RE: 'defensive coding' http://stackoverflow.com/questions/14502508/undefined-method-for-nilnilclass-when-pushing-values-to-an-array  
+      if @params.present?
+        ### http://stackoverflow.com/questions/11355820/rails-3-2-iterate-through-an-array
+        @params.each do |student|
+          @student_group.students.create(name:"#{student[:name]}", gender: "#{student[:gender]}")
         end
       end    
       # new subject path
