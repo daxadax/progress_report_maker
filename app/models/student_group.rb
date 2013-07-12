@@ -10,6 +10,7 @@
 #
 
 class StudentGroup < ActiveRecord::Base
+  ### https://github.com/ryanb/nested_form/issues/222
   attr_accessor :_destroy
   attr_accessible :name, :number_of_students, :type_of_group, :students_attributes
   
@@ -27,6 +28,6 @@ class StudentGroup < ActiveRecord::Base
   validates :type_of_group,    inclusion: { :in => VALID_TYPES,
                                             :message => "%{value} is not a valid type" }
   
-  before_save { |group| group.name = name.humanize }
+  before_save { |group| group.name = name.titleize }
   
 end

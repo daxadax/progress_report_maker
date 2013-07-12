@@ -12,7 +12,6 @@ class StudentsController < ApplicationController
   end
   
   def new    
-    @number = @student_group.number_of_students
     @student = @student_group.students.build
     @title = "Add a student"
   end

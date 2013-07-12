@@ -1,4 +1,4 @@
-<tr>
-	<td class="form_field"><%= f.text_field :name %></td>
-  <td class="dropdown"><%= f.select :gender, ['Female', 'Male', 'Transgender'] %></td>
+<tr class="nested-fields">
+	<td id="student_name" class="field form_field"><%= f.text_field :name, placeholder: "Student name" %></td>
+  <td id="student_gender" class="field dropdown"><%= f.select :gender, [["select a gender", ""],'Female', 'Male', 'Transgender'] %></td>
 </tr>

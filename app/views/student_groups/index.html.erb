@@ -17,10 +17,12 @@
 		    </th>
 	    </tr>
 		  <tr>
-		  	<td> # of students </td>
-		    <td> subjects studied </td>
-		    <td> length of course </td>
-		    <td> goals </td>
+		  	<td> 
+		      <%= group.students.count%> 
+		      <%= pluralize_without_count(group.students.count, 'member', 'members')  %>  
+		      for y weeks.
+		    </td>		
+		    
 		  </tr>
 		</tbody>
   <% end %>
