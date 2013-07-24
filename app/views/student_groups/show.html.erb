@@ -1,24 +1,9 @@
-<table class="student_group_show">
-	
-	<% @student_group.students.each do |student| %>
-	   <tbody> 
-	    <tr>
-	    	<th>
-	        <%= link_to student.name, student_path(student, {student_group_id: student.student_group_id}), class: "name_link" %>
-	        <%= link_to "Edit", edit_student_group_student_path({student_group_id: student.student_group_id, id: student.id}), 
-	                            class: "lil_link" %>
-		      <%= link_to "X", {controller: 'students', 
-				                         action: 'destroy', 
-				                         student_group_id: @student_group, 
-				                         id: student },
-		                             {confirm: "Do you really want to remove #{student.name} from #{@student_group.name}?",
-			                           method: :delete, 
-			                           class: "lil_link"} %> 
-		    </th>
-	    </tr>
-		</tbody>
-  <% end %>
-	
-</table>
+<div class="center">
+  <% @student_group.students.each do |student| %>	  
+	  <%= render "student_window", :student => student %>
+	<% end %>
+</div>
 
+<p class="clear">
 <%= link_to "Add students", new_student_group_student_path(@student_group, {student_group_id: @student_group.id}) %>
+</p>

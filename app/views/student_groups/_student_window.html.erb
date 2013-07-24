@@ -1,0 +1,21 @@
+<div class="group_window center round"> 
+  <h4>
+    <%= link_to student.name, student_path(student, {student_group_id: student.student_group_id}) %>
+  </h4> 
+  <!-- EDIT AND DELETE BUTTONS -->
+  <div class="edit">
+  	<%= link_to "Edit", edit_student_group_student_path({student_group_id: student.student_group_id, id: student.id}), 
+		                    class: "lil_link" %>
+  </div>
+  <div class="delete">
+	  <%= link_to "X", {controller: 'students', 
+		                       action: 'destroy', 
+		                       student_group_id: @student_group, 
+		                       id: student },
+		                       {confirm: "Do you really want to remove #{student.name} from #{@student_group.name}?",
+		                       method: :delete, 
+		                       class: "lil_link"} %>
+  </div>
+</div>
+
+
