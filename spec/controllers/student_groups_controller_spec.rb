@@ -29,7 +29,7 @@ render_views
     it "should have an element for each class" do
        @index
        @student_groups.each do |student_group|
-         response.should have_selector('th', content: student_group.name)
+         response.should have_selector('h2', content: student_group.name)
        end
      end
      
@@ -72,14 +72,12 @@ render_views
   
   describe "POST 'create'" do
 
-    before(:each) do
-      @create = post :create
-    end
-
     describe "failure" do
         
       before(:each) do
         @attr = {name: "", type_of_group: ""}
+        @student_attr = [{name: "dax", gender: "Male"}, {name: "sally twotrees", gender: "Female"}]
+        @create = post :create, student_group: @attr, student: @student_attr
       end
       
       it "should have the right title" do
@@ -109,7 +107,7 @@ render_views
       
       before(:each) do
         @attr = FactoryGirl.attributes_for(:student_group)
-        @student_attr = {name: "test", gender: "Male"}
+        # @student_attr = {name: "test", gender: "Male"}
       end     
      
       it "should create a student_group" do  
@@ -161,7 +159,7 @@ render_views
     describe "failure" do
       
       before(:each) do
-        @attr = {name: ""}
+        @attr = {name: "", type_of_group: ""}
         @update = put :update, {user_id: @user.id, id: @sg1.id, student_group: @attr}
       end
       
@@ -185,7 +183,7 @@ render_views
     describe "success" do
       
       before(:each) do
-        @attr = {name: "Example Class"}
+        @attr = {name: "Example Class", type_of_group: "Primary class (7-12)"}
         @update = put :update, {user_id: @user.id, id: @sg1.id, student_group: @attr}
       end
       

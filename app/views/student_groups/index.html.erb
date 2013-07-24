@@ -1,34 +1,31 @@
-<table class="student_groups_index">
+<div class="center">
+	<% @student_groups.each do |group| %>
+	  <div class="group_window center round"> 
+	    <h2>
+	      <%= link_to group.name, class_path(group) %>
+	    </h2> 
+	    <p>
+      	<%= group.type_of_group %>
+      </p>
+      <p>
+        <%= render 'student_count', :group => group %>
+      </p>
+      <hr />
+      <div class="float_right">
+      	<%= link_to "edit", edit_student_group_path(group), 
+                            class: "lil_link" %> 
+			  <%= link_to "delete", {controller: 'student_groups', 
+                               action: 'destroy', 
+                               user_id: @user.id, 
+                               id: group },
+                               {confirm: "Do you really want to delete #{group.name}?",
+                               method: :delete, 
+                               class: "lil_link"} %>
+      </div>
+	  </div>
+	<% end %>
+</div>
   
-  <% @student_groups.each do |group| %>
-	   <tbody> 
-	    <tr>
-	    	<th>
-	        <%= link_to group.name, class_path(group) %> 
-	        <%= link_to "Edit", edit_student_group_path(group), 
-	                            class: "lil_link" %>
-		      <%= link_to "Delete", {controller: 'student_groups', 
-				                         action: 'destroy', 
-				                         user_id: @user.id, 
-				                         id: group },
-		                             {confirm: "Do you really want to delete #{group.name}?",
-			                           method: :delete, 
-			                           class: "lil_link"} %>
-		    </th>
-	    </tr>
-		  <tr>
-		  	<td> 
-		      <%= group.students.count%> 
-		      <%= pluralize_without_count(group.students.count, 'member', 'members')  %>  
-		      for y weeks.
-		    </td>		
-		    
-		  </tr>
-		</tbody>
-  <% end %>
-
-</table>
-
-<p>
+<p class="clear">
 	<%= link_to "Create a new group", new_student_group_path %>
 </p>

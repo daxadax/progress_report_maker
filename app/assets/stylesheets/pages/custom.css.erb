@@ -67,7 +67,7 @@
 
 .lil_link {
 	font-size:   50%;
-	color:       #81C6FF;
+/*	color:       #81C6FF;*/
 }
 
 .superscript_x {
@@ -124,10 +124,9 @@ section h1,h2 {
 }
 
 section h3,h4 {
-	font-family:     'Shadows Into Light Two', cursive;
-	letter-spacing:  5px;
+	font-size:       150%;
+	letter-spacing:  3px;
 	color:           #FFA278;
-	text-shadow:     3px 2px 2px #B05C37, 2px 3px 3px rgba(0,0,0,0.25);
 }
 
 section p {
@@ -207,14 +206,26 @@ ul.users li {
 
     /* student_group#index */
 
-.student_groups_index th {
-	font-size: 150%;
+.group_window {
+	position: relative;
+	background: #3E7CB0;
+	border: 1px solid black;
+	width: 30%;
+	height: 35%;
+	margin: 2em;
+	padding: 1em;
+	display: inline-block;
+	text-align: center;
 }
 
     /* student_group#new */
 
 #student_fields {
 	list-style-type: decimal;
+}
+
+.name_link {
+	font-size: 150%;
 }
 
 		/*****************/
@@ -327,15 +338,19 @@ ul.users li {
     border:     1px solid #FFDD78;
 }
 
+.field_with_errors {
+	
+}
+
 .field_with_errors input {
 	width:   		   	   300px;
 	height: 			   45px;
 	background:            rgba(0, 0, 0, 0.0);
-    border:                1px solid rgba(0, 0, 0, 0);
 	color:                 #fff;
 	font-size:  		   15px;
-	padding-left: 		   15px;	
-	opacity:               0.9;
+	padding-left: 		   15px;
+    border:                1px solid red;
+
 	/*Rounded*/
 	-moz-border-radius:    5px;
     -webkit-border-radius: 5px;

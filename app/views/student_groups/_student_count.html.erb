@@ -1,0 +1,5 @@
+<% if group.students.any? %> 
+  <%= group.students.count %> <%= pluralize_without_count(group.students.count, "member", "members")  %>
+<% else %>
+  No current members
+<% end %>

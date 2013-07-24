@@ -10,12 +10,12 @@ FactoryGirl.define do
 
   factory :student_group do |student_group|
     sequence(:name) {|n| "class #{n}"}
-    student_group.type_of_group { ["young learners class (0-6)", "primary class (7-12)", "secondary class (13-17)", "adult class (18+)", "children's sport team", "adult's sport team"].sample }
+    student_group.type_of_group { ["Young learners class (0-6)", "Primary class (7-12)", "Secondary class (13-17)", "Adult class (18+)", "Children's sport team", "Adult's sport team"].sample }
     student_group.association :user
   end
 
   factory :student do |student|
-    sequence(:name) { |n| "student #{n}" }
+    student.name { Faker::Name.name }
     student.gender { %w[Male Female Transgender].sample }
     student.association :student_group
   end
@@ -38,4 +38,3 @@ FactoryGirl.define do
   end
 
 end  
-  

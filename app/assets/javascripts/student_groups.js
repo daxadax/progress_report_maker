@@ -58,12 +58,21 @@ function refresh(new_count) {
 $(document).ready(function () {
     //hide table by default
     $('#students_form_table').hide();
-  
+    
+    //function to change the number of rows for student input
+    //based on the number of students selected  
     $('#nos').change(function () {
         var opt=$('#nos option:selected');
-          //alert(opt.text());
         refresh(opt.text());
     })
+   
+    //fadeout flash messages
+    $('.flash').fadeIn(function() {
+	    setTimeout(function() {
+	        $('.flash').fadeOut();
+	    }, '2000');
+	});
+
 
 
 	// $(".layout")

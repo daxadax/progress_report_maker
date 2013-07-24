@@ -4,7 +4,7 @@
     The name of this group is 
     <span class="field form_field"><%= f.text_field :name %></span>
     and it is a/an 
-    <span class="field dropdown"><%= f.select :type_of_group, [["select a group type", ""], "young learners class (0-6)", "primary class (7-12)", "secondary class (13-17)", "adult class (18+)", "children's sport team", "adult's sport team"]  %></span> 	  
+    <span class="field dropdown"><%= f.select :type_of_group, [["select a group type", ""], "Young learners class (0-6)", "Primary class (7-12)", "Secondary class (13-17)", "Adult class (18+)", "Children's sport team", "Adult's sport team"]  %></span> 	  
   </p>
 
   <p>
@@ -13,10 +13,9 @@
     students in this group.   
   </p>
 
-
   <table id="students_form_table">
 	  <tbody>
-			  <!-- http://stackoverflow.com/questions/11445831/how-to-submit-multiple-new-items-via-rails-3-2-mass-assignment -->
+			  <!-- http://stackoverflow.com/a/11474194/2128691 -->
         <%= fields_for 'student_group[students_attributes][]', @student, index: nil do |builder| %>
 				  <%= render "student_fields", :f => builder %>
         <% end %>

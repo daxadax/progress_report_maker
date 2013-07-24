@@ -44,7 +44,7 @@ class StudentsController < ApplicationController
   
   def destroy
     @student.destroy
-    redirect_to class_path, flash: { success: "#{@student.name} has been deleted" }
+    redirect_to class_path(@student.student_group_id), flash: { success: "#{@student.name} has been deleted" }
   end
 
   #methods

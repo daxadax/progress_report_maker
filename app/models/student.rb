@@ -26,4 +26,6 @@ class Student < ActiveRecord::Base
   validates :gender,           inclusion: { :in => VALID_GENDERS,
                                             :message => "%{value} is not a valid gender" }
   
+  before_save { |student| student.name = name.titleize }
+  
 end
