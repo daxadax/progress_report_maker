@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   before_filter :get_student, except: [:index, :new, :create]    
   def index
     @students = @student_group.students
-    @title = "All students in #{@student_group.name}"
+    @title = "All students"
   end  
 
   def show

@@ -24,7 +24,7 @@ describe "GET 'index" do
  
   it "should have the right title" do
      @index
-     response.should have_selector('title', content: "All students in #{@sg.name}")
+     response.should have_selector('title', content: "All students")
    end
  
   it "should have an element for each student" do

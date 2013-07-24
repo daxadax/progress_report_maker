@@ -72,13 +72,6 @@ RSpec.configure do |config|
     @characteristic =  Factory(:characteristic, student: @student)
     @characteristic2 = Factory(:characteristic, student: @student, characteristic: "Dyslexic")
     
-    # Age attributes
-    @age_attr = { age_group: "Adults (16+)"}
-    # Age_group
-    # For has_one associations use 'create_object'
-    # http://stackoverflow.com/questions/7479083/ruby-on-rails-3-has-one-association-testing
-    @age = @student_group.create_age(@age_attr)
-    
   end
   
 end

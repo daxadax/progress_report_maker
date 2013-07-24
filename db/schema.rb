@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130702081247) do
 
-  create_table "ages", :force => true do |t|
-    t.integer  "student_group_id"
-    t.string   "age_group"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
   create_table "characteristics", :force => true do |t|
     t.string   "characteristic"
     t.integer  "student_id"
