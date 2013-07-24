@@ -4,7 +4,7 @@
 	   <tbody> 
 	    <tr>
 	    	<th>
-	        <%= link_to student.name, student_group_student_path(@student_group, student) %> 
+	        <%= link_to student.name, student_path(student, {student_group_id: student.student_group_id}) %>
 		    </th>
 	    </tr>
 		</tbody>

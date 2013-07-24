@@ -1,9 +1,11 @@
 class StudentsController < ApplicationController
 
-  before_filter :get_student_group
+  before_filter :get_student_group, except: [:index]
   before_filter :get_student, except: [:index, :new, :create]    
+  
   def index
-    @students = @student_group.students
+    @user_group_ids = current_user.student_groups.map(&:id)
+    @students = Student.where('student_group_id IN (?)', @user_group_ids)
     @title = "All students"
   end  
 

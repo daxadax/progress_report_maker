@@ -42,5 +42,7 @@ Ganesh::Application.routes.draw do
   
   # students
   
-  match ':student_group_id/student/:id', :to => 'students#show', :as => :student  
+  match ':student_group_id/student/:id', :to => 'students#show', :as => :student
+  match 'students',                     :to => 'students#index'
+    
 end
