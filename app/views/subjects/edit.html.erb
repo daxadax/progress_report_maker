@@ -1,0 +1,25 @@
+<%= form_for([@student_group, @subject]) do |f| %>
+	
+  <div class="form_section round">
+    <p>
+    	What should the subject's name be?
+    </p>
+		<div class="form_field round">
+			<%= f.text_field :name %><br />	
+		</div>
+		<p>
+			What should the start date be?
+		</p>
+		<div class="form_field round">
+			<%#= f.select :start_date %><br />	
+		</div>
+		<p>
+			What should the end date be?
+		</p>
+		<div class="form_field round">
+			<%#= f.select :end_date %><br />	
+		</div>
+		<%= f.submit "Submit", :class => 'big_button round unselectable' %>
+  </div>
+
+<% end %>

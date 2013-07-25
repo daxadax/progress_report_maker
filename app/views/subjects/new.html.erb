@@ -1,0 +1,14 @@
+<%= form_for([@student_group, @subject]) do |f| %>
+  <table class="subject_input_form">
+	  <tbody>    
+	  	<tr>
+	      <td><%= f.label :name, "Subject name:" %></td>
+			  <td><%= f.label :gender, "Start date:" %></td>
+			  <td><%= f.label :end_date, "End date:" %></td>			
+	    </tr>
+        <%= render 'subject_fields', :f => f %>
+		</tbody>
+	</table>
+  <%= f.submit "Submit", :class => 'big_button round unselectable' %>
+
+<% end %>

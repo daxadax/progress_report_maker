@@ -4,7 +4,7 @@
   </h4> 
   <!-- EDIT AND DELETE BUTTONS -->
   <div class="edit">
-  	<%= link_to "Edit", edit_student_group_student_path({student_group_id: student.student_group_id, id: student.id}), 
+  	<%= link_to "Edit", edit_student_group_student_path({student_group_id: @student_group, id: student.id}), 
 		                    class: "lil_link" %>
   </div>
   <div class="delete">

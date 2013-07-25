@@ -1,20 +1,20 @@
 require 'spec_helper'
 
-describe StudentsController do
+describe SubjectsController do
 render_views
 
 before(:each) do
   @user = test_login(Factory(:user))
   @sg = Factory(:student_group, user: @user)
-  @s1 = Factory(:student, student_group: @sg)
-  @s2 = Factory(:student, student_group: @sg, name: "Bendegúz")
-  @students = [@s1, @s2]
+  @sub1 = Factory(:subject, student_group: @sg)
+  @sub2 = Factory(:subject, student_group: @sg, name: "Alchemy")
+  @subjects = [@sub1, @sub2]
 end
 
 describe "GET 'index" do
 
   before(:each) do
-    @index = get :index, student_group_id: @sg, id: @sg
+    @index = get :index, student_group_id: @sg
   end
       
   it "should be successful" do
@@ -27,19 +27,19 @@ describe "GET 'index" do
      response.should have_selector('title', content: "All students")
    end
  
-  it "should have an element for each student" do
-     @index
-     @students.each do |student|
-       response.should have_selector('th', content: student.name)
-     end
-  end
+  it "should have an element for each student" # do
+  #      @index
+  #      @subjects.each do |subject|
+  #        response.should have_selector('th', content: subject.name)
+  #      end
+  #   end
    
 end
 
 describe "GET 'show'" do
   
     before(:each) do
-      @show = get :show, student_group_id: @sg, id: @s1
+      @show = get :show, student_group_id: @sg, id: @sub1
     end
     
     it "should be successful" do
@@ -49,14 +49,14 @@ describe "GET 'show'" do
   
     it "should have the right title" do
       @show
-      response.should have_selector("title", content: @s1.name)
+      response.should have_selector("title", content: @sub1.name)
     end
 end
 
 describe "GET 'new'" do
 
   before(:each) do
-    @new = get :new, student_group_id: @sg, id: @sg
+    @new = get :new, student_group_id: @sg
   end  
 
   it "should be successful" do
@@ -66,7 +66,7 @@ describe "GET 'new'" do
 
   it "should have the right title" do
     @new
-    response.should have_selector('title', :content => "Add a student" )
+    response.should have_selector('title', :content => "Add a subject" )
   end 
   
 end
@@ -74,7 +74,7 @@ end
 describe "POST 'create'" do
 
   before(:each) do
-    @create = post :create, {student_group_id: @sg, id: @sg}
+    @create = post :create, {student_group_id: @sg}
   end
 
   describe "failure" do
@@ -83,7 +83,7 @@ describe "POST 'create'" do
     
     it "should have the right title" do
       @create
-      response.should have_selector('title', :content => "Add a student" )
+      response.should have_selector('title', :content => "Add a subject" )
     end
     
     it "should render the 'new' page" do
@@ -93,8 +93,8 @@ describe "POST 'create'" do
     
     it "should not create a student" do
       lambda do
-        post :create, {student_group_id: @sg, id: @sg, student: @attr}
-      end.should_not change {@sg.students.count}
+        post :create, {student_group_id: @sg, subject: @attr}
+      end.should_not change {@sg.subjects.count}
     end
     
     it "should flash an error message" do
@@ -105,20 +105,20 @@ describe "POST 'create'" do
   end
     
   describe "success" do
-                                 
+                                   
     before(:each) do
-      @attr = {name: "John", gender: "Transgender"}
+      @attr = {name: "English", start_date: Date.today+120, end_date: Date.today+180}
     end
    
     it "should create a student" do  
       lambda do
-        post :create, {student_group_id: @sg, id: @sg, student: @attr}
-      end.should change {@sg.students.count}.by(1)
+        post :create, {student_group_id: @sg, subject: @attr}
+      end.should change {@sg.subjects.count}.by(1)
     end
     
     it "should flash a success message" do
-      post :create, {student_group_id: @sg, id: @sg, student: @attr}
-      flash[:success].should =~ /student/i
+      post :create, {student_group_id: @sg, subject: @attr}
+      flash[:success].should =~ /subject/i
     end
                                  
   end 
@@ -128,7 +128,7 @@ end
 describe "GET 'edit" do
   
   before(:each) do
-    @edit = get :edit, {student_group_id: @sg.id, id: @s1.id}
+    @edit = get :edit, {student_group_id: @sg.id, id: @sub1.id}
   end
 
    it "should be successful" do
@@ -138,7 +138,7 @@ describe "GET 'edit" do
 
    it "should have the right title" do
      @edit
-     response.should have_selector('title', content: "Edit student")
+     response.should have_selector('title', content: "Edit subject")
    end
   
 end
@@ -148,8 +148,8 @@ describe "PUT 'update" do
   describe "failure" do
     
     before(:each) do
-      @attr = {name: "", gender: ""}
-      @update = put :update, {student_group_id: @sg.id, id: @s1.id, student: @attr}
+      @attr = {name: "", start_date: "", end_date: ""}
+      @update = put :update, {student_group_id: @sg.id, id: @sub1.id, subject: @attr}
     end
     
     it "should render the 'edit' page" do
@@ -159,7 +159,7 @@ describe "PUT 'update" do
     
     it "should have the right title" do
       @update
-      response.should have_selector('title', content: "Edit student")
+      response.should have_selector('title', content: "Edit subject")
     end
     
     it "should flash an error message" do
@@ -172,15 +172,15 @@ describe "PUT 'update" do
   describe "success" do
     
     before(:each) do
-      @attr = {name: "John", gender: "Transgender"}
-      @update = put :update, {student_group_id: @sg, id: @s1, student: @attr}
+      @attr = {name: "Maths 202", start_date: Date.today+100, end_date: Date.today+200}
+      @update = put :update, {student_group_id: @sg, id: @sub1, subject: @attr}
     end
     
     it "should change the user's attributes" do
       @update
-      student = assigns(:student)
+      subject = assigns(:subject)
       @user.reload
-      @sg.students.name.should == @sg.students.name
+      @sg.subjects.name.should == @sg.subjects.name
     end
     
     it "should redirect to student_groups#show" do
@@ -199,23 +199,22 @@ end
 
 describe "DELETE 'destroy'" do
     
-  it "should destroy the student" do
+  it "should destroy the subject" do
     lambda do
-      delete :destroy, {student_group_id: @sg, id: @s1}
-    end.should change {@sg.students.count}.by(-1)
+      delete :destroy, {student_group_id: @sg, id: @sub1}
+    end.should change {@sg.subjects.count}.by(-1)
   end
   
   it "flash a success message" do
-    delete :destroy, {student_group_id: @sg, id: @s1}
+    delete :destroy, {student_group_id: @sg, id: @sub1}
     flash[:success].should =~ /deleted/i
   end
   
   it "should redirect to student_groups#show" do
-    delete :destroy, {student_group_id: @sg, id: @s1}
+    delete :destroy, {student_group_id: @sg, id: @sub1}
     response.should redirect_to class_path
   end
 
 end
-
 
 end

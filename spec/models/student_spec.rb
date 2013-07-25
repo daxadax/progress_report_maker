@@ -48,14 +48,6 @@ describe Student do
 
   end
 
-  describe "Subject associations" do
-
-    it "should have a subject attribute" do
-      @student.should respond_to(:subjects)
-    end
-
-  end
-
   describe "Characteristic associations" do
     
     it "should have a characteristic attribute" do

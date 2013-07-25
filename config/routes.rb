@@ -7,7 +7,7 @@ Ganesh::Application.routes.draw do
   # associations 
   
   resources :student_groups do
-    resources :students
+    resources :students, :subjects
   end
 
   # static pages
@@ -43,6 +43,11 @@ Ganesh::Application.routes.draw do
   # students
   
   match ':student_group_id/student/:id', :to => 'students#show', :as => :student
-  match 'students',                     :to => 'students#index'
+  match 'students',                      :to => 'students#index'
+  
+  # subjects
+  
+  match ':student_group_id/subject/:id', :to => 'subjects#show', :as => :subject
+  match 'subjects',                      :to => 'subjects#index'
     
 end

@@ -72,4 +72,12 @@ describe StudentGroup do
 
   end
 
+  describe "Subject associations" do
+
+     it "should have a subject attribute" do
+       @student_group.should respond_to(:subjects)
+     end
+
+  end
+
 end

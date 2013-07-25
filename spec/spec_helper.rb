@@ -58,10 +58,11 @@ RSpec.configure do |config|
     @student2 = Factory(:student, student_group: @student_group)
   
     # Subject attributes
-    @subject_attr = { name: "English", end_date: @date }
-    @date = Date.today+180
+    @start_date = Date.today+120
+    @end_date = Date.today+180
+    @subject_attr = { name: "English", start_date: @start_date, end_date: @end_date }
     # Subject
-    @subject = @student.subjects.new(@subject_attr)
+    @subject = @student_group.subjects.new(@subject_attr)
     @subject.save
     
     # Goal

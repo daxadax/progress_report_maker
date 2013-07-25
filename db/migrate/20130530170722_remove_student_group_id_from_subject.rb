@@ -4,6 +4,7 @@ class RemoveStudentGroupIdFromSubject < ActiveRecord::Migration
   end
 
   def down
-    add_column :subjects, :student_group_id
+    remove_column :subjects, :student_id, :integer
+    add_column :subjects, :student_group_id, :integer
   end
 end

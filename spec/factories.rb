@@ -23,7 +23,7 @@ FactoryGirl.define do
   factory :subject do |subject|
     subject.name { %w[Math Science Basket_Weaving Necromancy Potions Welding Alchemy Brainwashing War_Making Love_Making].sample }
     subject.end_date Date.today+180
-    subject.association :student
+    subject.association :student_group
   end  
 
   factory :characteristic do |characteristic|
@@ -33,7 +33,7 @@ FactoryGirl.define do
   end
 
   factory :goal do |goal|
-    goal.goal { ["Participate in class", "Respect others", "Spell common words correctly", "Drink 1 gallon of milk in under a minute without vomiting", "Stand for three rounds with Ali", "Make you smile", "Replace my soul with acid"].sample }
+    goal.goal { ["Participate in class", "Respect others", "Spell common words correctly", "Drink 1 gallon of milk in under a minute without vomiting", "Stand for three rounds with Ali", "Make you smile", "Replace my soul with chocolate pudding"].sample }
     goal.association :subject
   end
 

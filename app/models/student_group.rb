@@ -18,8 +18,11 @@ class StudentGroup < ActiveRecord::Base
   
   belongs_to :user
   has_many   :students, dependent: :destroy
+  has_many   :subjects, dependent: :destroy
   
   accepts_nested_attributes_for :students, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :subjects, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  
   
   VALID_TYPES = ["Young learners class (0-6)", "Primary class (7-12)", "Secondary class (13-17)", "Adult class (18+)", "Children's sport team", "Adult's sport team"]
   

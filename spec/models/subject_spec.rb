@@ -2,12 +2,13 @@
 #
 # Table name: subjects
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  student_id :integer
-#  end_date   :date
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id               :integer          not null, primary key
+#  name             :string(255)
+#  end_date         :date
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  student_group_id :integer
+#  start_date       :date
 #
 
 require 'spec_helper'
@@ -19,26 +20,39 @@ describe Subject do
   end
   
   it "should create a new instance with valid attributes" do
-    @student.subjects.new(@subject_attr).should be_valid
+    @student_group.subjects.new(@subject_attr).should be_valid
   end
   
   describe "validations" do
     
-    it "should have a student_id" do
+    it "should have a student_group_id" do
       Subject.new(@subject_attr).should_not be_valid
     end
     
-  end
-  
-  describe "Student associations" do
-    
-    it "should have a student attribute" do
-      @subject.should respond_to(:student)
+    it "should have a name" do
+      no_name_subject = @student_group.subjects.new(@subject_attr.merge(name: ""))
+      no_name_subject.should_not be_valid
     end
     
-    it "should have the right associated student" do
-      @subject.student_id.should == @student.id
-      @subject.student.should == @student
+    it "should have a start/end date" # do
+    #       
+    #     end
+    
+    it "should have an end date that is later than the start date" # do
+    #       
+    #     end
+    
+  end
+  
+  describe "Student_Group associations" do
+    
+    it "should have a student_group attribute" do
+      @subject.should respond_to(:student_group)
+    end
+    
+    it "should have the right associated student_group" do
+      @subject.student_group_id.should == @student_group.id
+      @subject.student_group.should == @student_group
     end 
     
   end
