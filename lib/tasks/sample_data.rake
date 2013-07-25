@@ -18,6 +18,9 @@ namespace :db do
     #create students for each student_group
     create_students
     
+    #create subjects for each student_group
+    create_subjects
+    
     # success message
     puts "The database has been populated successfully"
   
@@ -45,10 +48,17 @@ namespace :db do
   end
   
   def create_students
-    puts "Create students for each student group"
+    puts "Creating students for each student group"
     StudentGroup.all.each do |sg|
       FactoryGirl.create_list :student, 7, student_group_id: sg.id
     end
   end
+  
+  def create_subjects
+    puts "Creating subjects for each student group"
+    StudentGroup.all.each do |sg|
+      FactoryGirl.create_list :subject, 4, student_group_id: sg.id
+    end
+  end  
   
 end
