@@ -4,5 +4,5 @@
   <tr><td><%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}), :class => "notecard_cell_#{index}" %></td></tr>
   <% end %>
 <% else %>
-  <tr>No subjects yet!</tr>
+  <tr><td><%= link_to "Add a subject", new_student_group_subject_path(group), :class => "notecard_cell_0" %></td></tr>
 <% end %>

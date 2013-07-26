@@ -36,9 +36,9 @@ function refresh(new_count) {
         $('tbody').append((new emptyRow()).obj);
     } else if (rows_difference < 0) //we need to remove rows ..
     {
-        var index_start = old_count + rows_difference - 1;
+        var index_start = old_count + rows_difference + 1;
         console.log("Index start= " + index_start);
-        $('tr:lt(' + index_start + ')').remove();
+        $('tr:gt(' + index_start + ')').remove();
         row_i += rows_difference;
     }
 }
