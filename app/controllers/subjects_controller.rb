@@ -6,7 +6,7 @@ class SubjectsController < ApplicationController
   def index
     @user_group_ids = current_user.student_groups.map(&:id)
     @subjects = Subject.where('student_group_id IN (?)', @user_group_ids)
-    @title = "All students"
+    @title = "All subjects"
   end  
   
    def show

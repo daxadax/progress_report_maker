@@ -24,7 +24,7 @@ describe "GET 'index" do
  
   it "should have the right title" do
      @index
-     response.should have_selector('title', content: "All students")
+     response.should have_selector('title', content: "All subjects")
    end
  
   it "should have an element for each student" # do
@@ -107,7 +107,7 @@ describe "POST 'create'" do
   describe "success" do
                                    
     before(:each) do
-      @attr = {name: "English", start_date: Date.today+120, end_date: Date.today+180}
+      @attr = {name: "English", start_date: Date.today+120, end_date: Date.today+180, contact_time: 50}
     end
    
     it "should create a student" do  

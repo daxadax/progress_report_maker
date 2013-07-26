@@ -5,5 +5,6 @@
 </div>
 
 <p class="clear">
-<%= link_to "Add students", new_student_group_student_path(@student_group, {student_group_id: @student_group.id}) %>
+<%= link_to "Add a student", new_student_group_student_path(@student_group) %><br />
+<%= link_to "Add a subject", new_student_group_subject_path(@student_group) %>
 </p>

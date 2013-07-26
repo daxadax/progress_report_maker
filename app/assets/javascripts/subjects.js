@@ -1,0 +1,25 @@
+jQuery(function() {
+    $( "#from" ).datepicker({
+      minDate: new Date(),
+      changeMonth: true,
+      showOtherMonths: true,
+      dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      // nextText: "Next",
+      // prevText: "Previous",
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      minDate: new Date("#from"),
+      changeMonth: true,
+      // numberOfMonths: 2,
+      changeYear: true,
+      yearRange: '-0:+5',
+      dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });

@@ -1,13 +1,18 @@
-<div class="group_window center round"> 
-  <h2>
+<div class="notecard float_left unselectable"> 
+  <p class="notecard_name">
     <%= link_to group.name, class_path(group) %>
-  </h2> 
+  </p> 
   <p>
-  	<%= group.type_of_group %>
+  	<%= group.type_of_group %> with <%= render 'student_count', :group => group %>
   </p>
+
   <p>
-    <%= render 'student_count', :group => group %>
+	  Subjects:
+	  <table>
+	    <%= render 'subject_list', :group => group %>
+    </table>
   </p>
+
   <!-- EDIT AND DELETE BUTTONS -->
   <div class="edit">
   	<%= link_to "edit", edit_student_group_path(group), 
@@ -15,10 +20,10 @@
   </div>
   <div class="delete">
 	  <%= link_to "X", {controller: 'student_groups', 
-                           action: 'destroy',
-                           id: group },
-                           {confirm: "Do you really want to delete #{group.name}?",
-                           method: :delete, 
-                           class: "lil_link"} %>
+                      action: 'destroy',
+                      id: group },
+                     {confirm: "Do you really want to delete #{group.name}?",
+                      method: :delete, 
+                      class: "lil_link"} %>
   </div>
 </div>

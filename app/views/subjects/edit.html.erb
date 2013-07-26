@@ -10,15 +10,22 @@
 		<p>
 			What should the start date be?
 		</p>
-		<div class="form_field round">
-			<%#= f.select :start_date %><br />	
+		<div id="from" class="dateselektor round">
+			<%= f.text_field :start_date %><br />	
 		</div>
 		<p>
 			What should the end date be?
 		</p>
-		<div class="form_field round">
-			<%#= f.select :end_date %><br />	
+		<div id="to" class="dateselektor round">
+			<%= f.text_field :end_date %><br />	
 		</div>
+		<p>
+			How many contact hours will you have in this subject each week?
+		</p>
+		<div class="dropdown round">
+			<%= f.select :contact_time, (0..40), placeholder: "0" %> hours each week<br />
+		</div>
+		<br />
 		<%= f.submit "Submit", :class => 'big_button round unselectable' %>
   </div>
 

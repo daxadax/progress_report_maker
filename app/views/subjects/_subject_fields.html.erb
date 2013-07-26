@@ -1,5 +1,11 @@
 <tr class="nested-fields">
-	<td class="form_field"><%= f.text_field :name, placeholder: "Subject name" %></td>
-  <!-- <td class="date_selektor"><%#= f.XXXXXX :start_date %></td>
-  <td class="date_selektor"><%#= f.XXXXXX :end_date %></td> -->
+	
+	<td class="form_field field"><%= f.text_field :name %></td>
+
+	<td class="datefield field"><%= f.text_field :start_date, :id => "from"%></td>
+	
+	<td class="datefield field"><%= f.text_field :end_date, :id => "to", :class => "form_field" %></td>
+
+	<td class="dropdown field"><%= f.select :contact_time, (0..40), placeholder: "0 hours each week" %></td>
+
 </tr>

@@ -1,3 +1,6 @@
+<div class="holder round">
+<h4>First, add some information about the group you'll be teaching.</h4>
+
 <%= form_for @student_group do |f| %>
 
   <p>
@@ -12,6 +15,7 @@
     <span id="nos" class="field dropdown"><%= f.select :number_of_students, (0..60) %></span>
     students in this group.   
   </p>
+</div>
 
   <table id="students_form_table">
 	  <tbody>

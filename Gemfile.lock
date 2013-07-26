@@ -58,9 +58,10 @@ GEM
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
-    jquery-rails (3.0.1)
+    jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery_datepicker (0.4)
     json (1.8.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -147,7 +148,8 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   factory_girl_rails (~> 1.0)
   faker (~> 1.0.1)
-  jquery-rails
+  jquery-rails (~> 2.3.0)
+  jquery_datepicker
   json (~> 1.4)
   rails (= 3.2.13)
   rspec (~> 2.13.0)

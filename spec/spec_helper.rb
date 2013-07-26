@@ -60,7 +60,8 @@ RSpec.configure do |config|
     # Subject attributes
     @start_date = Date.today+120
     @end_date = Date.today+180
-    @subject_attr = { name: "English", start_date: @start_date, end_date: @end_date }
+    
+    @subject_attr = { name: "English", start_date: @start_date, end_date: @end_date, contact_time: 50 }
     # Subject
     @subject = @student_group.subjects.new(@subject_attr)
     @subject.save

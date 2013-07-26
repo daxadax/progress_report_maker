@@ -12,6 +12,7 @@ gem 'webrat'
 gem "json", "~> 1.4"
 gem "thor", "~> 0.17.0"
 gem "cocoon"
+gem 'jquery_datepicker'
 
 #GROUPS 
 
@@ -46,7 +47,8 @@ group :assets do
 
 end
 
-gem 'jquery-rails'
+# gem 'jquery-rails' (http://stackoverflow.com/a/17053795/2128691)
+gem 'jquery-rails', '~> 2.3.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

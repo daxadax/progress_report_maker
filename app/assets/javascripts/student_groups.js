@@ -6,18 +6,6 @@
 // http://stackoverflow.com/questions/15130587/jquery-add-or-remove-table-row-based-on-inputs
 
 var row_i = 0;
-// var regex_for_id = /\dx[a-z\d]{14}/
-
-
-// var myRe = /d(b+)d/g;
-// var myArray = myRe.exec("cdbbdbsbz");
-// console.log("The value of lastIndex is " + myRe.lastIndex);
-// 
-// var re = /(\w+)\s(\w+)/;
-// var str = "John Smith";
-// var newstr = str.replace(re, "$2, $1");
-// console.log(newstr);
-
 
 function emptyRow() {
     row_i++;
@@ -48,9 +36,9 @@ function refresh(new_count) {
         $('tbody').append((new emptyRow()).obj);
     } else if (rows_difference < 0) //we need to remove rows ..
     {
-        var index_start = old_count + rows_difference + 1;
+        var index_start = old_count + rows_difference - 1;
         console.log("Index start= " + index_start);
-        $('tr:gt(' + index_start + ')').remove();
+        $('tr:lt(' + index_start + ')').remove();
         row_i += rows_difference;
     }
 }

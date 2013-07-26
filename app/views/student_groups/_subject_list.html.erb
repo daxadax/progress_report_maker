@@ -1,0 +1,8 @@
+
+<% if group.subjects.present? %>
+  <% group.subjects.all.each_with_index do |subject, index| %>
+  <tr><td><%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}), :class => "notecard_cell_#{index}" %></td></tr>
+  <% end %>
+<% else %>
+  <tr>No subjects yet!</tr>
+<% end %>

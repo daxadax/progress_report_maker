@@ -22,7 +22,9 @@ FactoryGirl.define do
 
   factory :subject do |subject|
     subject.name { %w[Math Science Basket_Weaving Necromancy Potions Welding Alchemy Brainwashing War_Making Love_Making].sample }
+    subject.start_date Date.today+120
     subject.end_date Date.today+180
+    subject.contact_time {[5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100, 200].sample}
     subject.association :student_group
   end  
 

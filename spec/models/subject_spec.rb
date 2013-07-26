@@ -9,6 +9,7 @@
 #  updated_at       :datetime         not null
 #  student_group_id :integer
 #  start_date       :date
+#  contact_time     :integer
 #
 
 require 'spec_helper'
@@ -34,13 +35,33 @@ describe Subject do
       no_name_subject.should_not be_valid
     end
     
-    it "should have a start/end date" # do
-    #       
-    #     end
+    it "should have a start date" do
+      no_start_date = @student_group.subjects.new(@subject_attr.merge(start_date: ""))
+      no_start_date.should_not be_valid
+    end
+    
+    it "should have an end date" do
+      no_end_date = @student_group.subjects.new(@subject_attr.merge(end_date: ""))
+      no_end_date.should_not be_valid
+    end
     
     it "should have an end date that is later than the start date" # do
     #       
     #     end
+    
+    describe "contact time" do
+      
+      it "should exist" do
+        no_contact_time = @student_group.subjects.new(@subject_attr.merge(contact_time: ""))
+        no_contact_time.should_not be_valid
+      end
+
+      it "should be an integer" do
+        non_numerical_contact_time = @student_group.subjects.new(@subject_attr.merge(contact_time: "string"))
+        non_numerical_contact_time.should_not be_valid
+      end
+
+    end
     
   end
   
