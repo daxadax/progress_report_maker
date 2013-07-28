@@ -1,12 +1,12 @@
-<div class="notecard float_left unselectable"> 
-  <p class="notecard_name">
+<div class="holder round float_left unselectable"> 
+  <p>
     <%= link_to group.name, class_path(group) %>
   </p> 
   <p>
   	<%= group.type_of_group %> with <%= render 'student_count', :group => group %>
   </p>
 
-  <p class="p2">
+  <p>
 	  Subjects:
 	  <table>
 	    <%= render 'subject_list', :group => group %>

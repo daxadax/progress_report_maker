@@ -30,7 +30,7 @@ describe "GET 'index" do
   it "should have an element for each student" do
      @index
      @students.each do |student|
-       response.should have_selector('th', content: student.name)
+       response.should have_selector('td', content: student.name)
      end
   end
    

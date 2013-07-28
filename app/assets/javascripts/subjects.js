@@ -1,5 +1,6 @@
 jQuery(function() {
     $( "#from" ).datepicker({
+      dateFormat: 'yy-mm-dd',
       minDate: new Date(),
       changeMonth: true,
       showOtherMonths: true,
@@ -11,7 +12,8 @@ jQuery(function() {
       }
     });
     $( "#to" ).datepicker({
-      defaultDate: "+1w",
+      dateFormat: 'yy-mm-dd',
+      // defaultDate: "+1w",
       minDate: new Date("#from"),
       changeMonth: true,
       // numberOfMonths: 2,

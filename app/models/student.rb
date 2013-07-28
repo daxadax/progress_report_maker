@@ -26,4 +26,16 @@ class Student < ActiveRecord::Base
   
   before_save { |student| student.name = name.titleize }
   
+  # methods
+  
+  # checks how long student since student has been created and returns "x weeks"
+  def student_for_weeks
+    time = (Time.now - self.created_at.to_time).round/1.week
+    if time < 1
+      "less than 1 week"
+    else
+      "#{time} weeks" 
+    end
+  end
+         
 end

@@ -5,7 +5,9 @@ class SubjectsController < ApplicationController
   
   def index
     @user_group_ids = current_user.student_groups.map(&:id)
-    @subjects = Subject.where('student_group_id IN (?)', @user_group_ids)
+    get_subjects = Subject.where('student_group_id IN (?)', @user_group_ids).includes(:student_group)
+    subjects_by_group = get_subjects.uniq {|s| s.student_group_id}
+    @subjects = subjects_by_group.group_by { |s| s.student_group }
     @title = "All subjects"
   end  
   

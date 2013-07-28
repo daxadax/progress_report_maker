@@ -1,13 +1,1 @@
-<table class="students_index">
-  
-  <% @subjects.each do |subject| %>
-	   <tbody> 
-	    <tr>
-	    	<th>
-	        <%= link_to subject.name, subject_path(subject, {student_group_id: subject.student_group_id}) %>
-		    </th>
-	    </tr>
-		</tbody>
-  <% end %>
-
-</table>
+<%= render 'subject_list' %>

@@ -4,11 +4,11 @@
 #
 #  id               :integer          not null, primary key
 #  name             :string(255)
-#  end_date         :date
+#  end_date         :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  student_group_id :integer
-#  start_date       :date
+#  start_date       :string(255)
 #  contact_time     :integer
 #
 
@@ -22,5 +22,16 @@ class Subject < ActiveRecord::Base
   
   validates :student_group_id, :name, :start_date, :end_date, :contact_time, presence: true
   validates :contact_time, numericality: true
+  
+  # methods
+  
+  def weeks_left
+    time = (self.end_date.to_time - Date.today.to_time).round/1.week
+    if time < 1
+      "less than 1 week"
+    else
+      "#{time} weeks" 
+    end
+  end
   
 end

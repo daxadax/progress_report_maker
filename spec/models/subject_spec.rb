@@ -4,11 +4,11 @@
 #
 #  id               :integer          not null, primary key
 #  name             :string(255)
-#  end_date         :date
+#  end_date         :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  student_group_id :integer
-#  start_date       :date
+#  start_date       :string(255)
 #  contact_time     :integer
 #
 

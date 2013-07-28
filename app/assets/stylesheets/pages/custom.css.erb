@@ -51,6 +51,10 @@
 	font-weight: bold;
 }
 
+.underline {
+	text-decoration: underline;
+}
+
 .unselectable {
 	-webkit-user-select: 	none; /* Chrome/Safari */        
 	-moz-user-select: 		none; /* Firefox */
@@ -122,9 +126,10 @@ section {
 
 .holder {
 	position: relative;
-	width: 85%;
+	width: 100%;
 	background: rgba(0,0,0,0.4);
     padding: 2em;
+    margin-bottom: 2em;
 }
 section h1,h2 {
 	font-family:     'Shadows Into Light Two', cursive;
@@ -200,6 +205,18 @@ footer {
 	margin-top:   10px;
 	margin-right: auto;
 	margin-left:  auto;
+}
+
+		/******************/
+		/***** tables *****/
+		/******************/
+tr.th {
+	background: rgba(0, 0, 0, 0.7);
+	font-size: 150%;
+}
+
+tr.even {
+	background: rgba(3, 80, 144, 0.7);
 }
 
 		/*****************/
@@ -421,91 +438,6 @@ input:focus:-ms-input-placeholder {
 		/**** layout for specific pages/elements ****/
 		/********************************************/
 
-.notecard {
-	position: relative;
-	width: 430px;
-	height: 220px;
-	margin: 2em;
-	padding-left: 1em;
-	padding-top: 38px;
-	background: url('/assets/3x5.png') no-repeat;
-}
-
-.notecard_name a {
-    position: absolute;
-    bottom: 83%;
-    font-weight: normal;
-    font-size: 24pt;
-    color: #035090;
-}
-
-.notecard a {
-	color: #035090;
-}
-
-.notecard a:hover {
-	color: #902D00;
-}
-
-.notecard p {
-	color: #000;
-	font-weight: bold;
-	text-align: left;
-}
-
-.p2 {
-	position: absolute;
-	top: 34%;
-}
-
-.notecard_cell_0 {
-	position: absolute;
-	bottom: 37%;
-	left: 7%;
-}
-
-.notecard_cell_1 {
-	position: absolute;
-	bottom: 27%;
-	left: 7%;
-}
-
-.notecard_cell_2 {
-	position: absolute;
-	bottom: 17%;
-	left: 7%;
-}
-
-.notecard_cell_3 {
-	position: absolute;
-	bottom: 7%;
-	left: 7%;
-}
-
-.notecard_cell_4 {
-	position: absolute;
-	bottom: 37%;
-	left: 57%;
-}
-
-.notecard_cell_5 {
-	position: absolute;
-	bottom: 27%;
-	left: 57%;
-}
-
-.notecard_cell_6 {
-	position: absolute;
-	bottom: 17%;
-	left: 57%;
-}
-
-.notecard_cell_7 {
-	position: absolute;
-	bottom: 7%;
-	left: 57%;
-}
-
 	/* user#index */
 
 ul.users {
@@ -516,6 +448,8 @@ ul.users li {
 	margin:     10px 5px 10px 5px;
 	list-style: none;
 }
+
+    /* student#index*/
 
     /* student_group#index & show*/
 

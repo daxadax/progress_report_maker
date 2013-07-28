@@ -1,13 +1,1 @@
-<table class="students_index">
-  
-  <% @students.each do |student| %>
-	   <tbody> 
-	    <tr>
-	    	<th>
-	        <%= link_to student.name, student_path(student, {student_group_id: student.student_group_id}) %>
-		    </th>
-	    </tr>
-		</tbody>
-  <% end %>
-
-</table>
+<%= render 'student_list' %> 

@@ -1,0 +1,17 @@
+<!-- if "Group_by_STUDENT_GROUP" -->
+
+<% @subjects.each do |group, subjects| %>
+  <div class="holder round">
+  <h3><%= group.name %></h3><hr />
+  <table>  
+		<tbody>
+		  <% subjects.each do |subject| %>
+		  <tr class="<%= cycle("odd", "even")%>">
+		    <td><%= link_to subject.name, subject_path(subject, {student_group_id: subject.student_group_id}) %></td>
+		    <td><%= subject.weeks_left %> remaining</td>
+		  </tr>
+		  <% end %>
+	  </tbody>
+	</table>
+	</div>
+<% end %>

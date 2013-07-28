@@ -1,8 +1,8 @@
 
 <% if group.subjects.present? %>
   <% group.subjects.all.each_with_index do |subject, index| %>
-  <tr><td><%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}), :class => "notecard_cell_#{index}" %></td></tr>
+  <tr><td><%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}) %></td></tr>
   <% end %>
 <% else %>
-  <tr><td><%= link_to "Add a subject", new_student_group_subject_path(group), :class => "notecard_cell_0" %></td></tr>
+  <tr><td><%= link_to "Add a subject", new_student_group_subject_path(group) %></td></tr>
 <% end %>
