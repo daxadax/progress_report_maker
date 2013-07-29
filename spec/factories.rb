@@ -35,7 +35,7 @@ FactoryGirl.define do
   end
 
   factory :goal do |goal|
-    goal.goal { ["Participate in class", "Respect others", "Spell common words correctly", "Drink 1 gallon of milk in under a minute without vomiting", "Stand for three rounds with Ali", "Make you smile", "Replace my soul with chocolate pudding"].sample }
+    goal.goal { ["Participate in class", "Respect others", "Spell common words correctly", "Drink 1 gallon of milk in under a minute without vomiting", "Stand for three rounds with Ali", "Burp the alphabet", "Lose 10 pounds by Easter", "Destroy He-Who-Must-Not-Be-Named" ].sample }
     goal.association :subject
   end
 

@@ -1,0 +1,8 @@
+<%= form_for([@subject, @goal]) do |f| %>
+
+		<%= f.label :goal %>
+    <%= f.text_field :goal %>
+  <br />
+  <%= f.submit "Submit", :class => 'big_button round unselectable' %>
+
+<% end %>

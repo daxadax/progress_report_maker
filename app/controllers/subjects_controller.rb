@@ -1,18 +1,16 @@
 class SubjectsController < ApplicationController
+  include IndexHelper
   
   before_filter :get_student_group, except: [:index]
   before_filter :get_subject, except: [:index, :new, :create]    
   
   def index
-    @user_group_ids = current_user.student_groups.map(&:id)
-    get_subjects = Subject.where('student_group_id IN (?)', @user_group_ids).includes(:student_group)
-    subjects_by_group = get_subjects.uniq {|s| s.student_group_id}
-    @subjects = subjects_by_group.group_by { |s| s.student_group }
+    index_helper
     @title = "All subjects"
   end  
   
    def show
-     @title = "#{@subject.name} (#{@student_group.name})"
+     @title = "#{@subject.name}"
    end
    
   def new    
@@ -48,6 +46,9 @@ class SubjectsController < ApplicationController
   def destroy
     @subject.destroy
     redirect_to class_path(@student_group), flash: { success: "#{@subject.name} has been deleted" }
+  end
+  
+  def stub
   end
   
   # #methods

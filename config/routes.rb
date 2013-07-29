@@ -10,6 +10,10 @@ Ganesh::Application.routes.draw do
     resources :students, :subjects
   end
 
+  resources :subjects, :only => :stub do
+    resources :goals
+  end 
+
   # static pages
                         
   match '/about',         :to => 'pages#about'
@@ -49,5 +53,10 @@ Ganesh::Application.routes.draw do
   
   match ':student_group_id/subject/:id', :to => 'subjects#show', :as => :subject
   match 'subjects',                      :to => 'subjects#index'
+    
+  # goals
+  
+  match ':subject_id/goal/:id', :to => 'goals#show', :as => :goal
+  match 'goals', :to => 'goals#index'
     
 end

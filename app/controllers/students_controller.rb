@@ -1,16 +1,11 @@
 class StudentsController < ApplicationController
+  include IndexHelper
 
   before_filter :get_student_group, except: [:index]
   before_filter :get_student, except: [:index, :new, :create]    
   
   def index
-    # http://stackoverflow.com/a/17835000/2128691
-    @user_group_ids = current_user.student_groups.map(&:id)
-    # http://stackoverflow.com/a/17904396/2128691
-    get_students = Student.where('student_group_id IN (?)', @user_group_ids).includes(:student_group)
-    # http://stackoverflow.com/a/10083791/2128691
-    students_by_group = get_students.uniq {|s| s.student_group_id}
-    @students = students_by_group.group_by { |s| s.student_group }
+    index_helper
     @title = "All students"
   end  
 

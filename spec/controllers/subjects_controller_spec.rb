@@ -27,12 +27,12 @@ describe "GET 'index" do
      response.should have_selector('title', content: "All subjects")
    end
  
-  it "should have an element for each student" # do
-  #      @index
-  #      @subjects.each do |subject|
-  #        response.should have_selector('th', content: subject.name)
-  #      end
-  #   end
+  it "should have an element for each student" do
+         @index
+         @subjects.each do |subject|
+           response.should have_selector('td', content: subject.name)
+         end
+      end
    
 end
 
@@ -176,7 +176,7 @@ describe "PUT 'update" do
       @update = put :update, {student_group_id: @sg, id: @sub1, subject: @attr}
     end
     
-    it "should change the user's attributes" do
+    it "should change the subjects's attributes" do
       @update
       subject = assigns(:subject)
       @user.reload

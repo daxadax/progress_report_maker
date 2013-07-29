@@ -21,6 +21,9 @@ namespace :db do
     #create subjects for each student_group
     create_subjects
     
+    #create goals for each subject
+    create_goals
+    
     # success message
     puts "The database has been populated successfully"
   
@@ -60,5 +63,12 @@ namespace :db do
       FactoryGirl.create_list :subject, 4, student_group_id: sg.id
     end
   end  
+  
+  def create_goals
+    puts "Create goals for each subject"
+    Subject.all.each do |s|
+      FactoryGirl.create_list :goal, 3, subject_id: s.id
+    end
+  end
   
 end

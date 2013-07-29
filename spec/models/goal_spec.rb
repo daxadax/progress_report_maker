@@ -19,13 +19,18 @@ describe Goal do
   end
   
   it "should create a new instance with valid attributes" do
-    @subject.goals.new(@goal_attr).should be_valid
+    @goal = Factory(:goal, subject: @subject)
+    @goal.should be_valid
   end
   
   describe "validations" do
     
     it "should have a subject_id" do
       Goal.new(@goal_attr).should_not be_valid
+    end
+    
+    it "should have a goal" do
+      Goal.create(goal: "").should_not be_valid
     end
     
   end

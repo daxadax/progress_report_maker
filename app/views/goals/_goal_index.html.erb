@@ -1,0 +1,19 @@
+<!-- if "Group_by_SUBJECT" -->
+
+<% @subjects.each do |group, subjects| %>
+  <div class="holder round">
+	  <h1><%= group.name %></h1>
+	  <% subjects.each do |subject|  %>
+  	<h3><%= subject.name %></h3><hr />
+	  <table>  
+			<tbody>
+				<% subject.goals.all.each do |goal| %>
+			  <tr class="<%= cycle("odd", "even")%>">
+			    <td><%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %></td>
+			  </tr>
+        <% end %>
+		  </tbody>
+		</table>
+		<% end %>
+	</div>
+<% end %>

@@ -15,6 +15,7 @@ class Goal < ActiveRecord::Base
   
   belongs_to :subject
   
-  validates :subject_id, presence: true
+  validates :subject_id, :goal, presence: true
+  
   
 end
