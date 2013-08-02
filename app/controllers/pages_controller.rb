@@ -26,13 +26,11 @@ class PagesController < ApplicationController
   end
   
   def home
-    user = current_user  
-    
-    #this is for users_controller.rb:58
+    #this is for users_controller.rb:~60
     flash.keep(:access)
     
     if logged_in? 
-      redirect_to classes_path
+      redirect_to groups_path
     else
       render :layout => 'layouts/landing'
     end

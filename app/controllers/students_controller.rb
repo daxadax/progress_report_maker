@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
     @student = @student_group.students.create(params[:student])
     if @student.save
       # for now redirect to (later this should be the subject#new action)
-      redirect_to class_path(@student_group, {id: @student_group.id}), flash: { success: "Student added successfully" }
+      redirect_to group_path(@student_group, {id: @student_group.id}), flash: { success: "Student added successfully" }
     else
       @title = "Add a student"
       flash.now[:error] = "Something's gone wrong.  Please try again!"
@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update_attributes(params[:student])
-      redirect_to class_path(@student_group, {id: @student_group.id}), flash: { success: "#{@student.name} updated successfully" }
+      redirect_to group_path(@student_group, {id: @student_group.id}), flash: { success: "#{@student.name} updated successfully" }
     else  
       @title = "Edit student"
       flash.now[:error] = "Something's gone wrong.  Please try again!"
@@ -49,7 +49,7 @@ class StudentsController < ApplicationController
   
   def destroy
     @student.destroy
-    redirect_to class_path(@student.student_group_id), flash: { success: "#{@student.name} has been deleted" }
+    redirect_to group_path(@student.student_group_id), flash: { success: "#{@student.name} has been deleted" }
   end
 
   #methods

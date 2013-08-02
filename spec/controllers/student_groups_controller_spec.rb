@@ -196,7 +196,7 @@ render_views
       
       it "should redirect to student_groups#index" do
         @update
-        response.should redirect_to classes_path
+        response.should redirect_to groups_path
       end
       
       it "should flash 'Update successful'" do
@@ -223,7 +223,7 @@ render_views
     
     it "should redirect to student_groups#index" do
       delete :destroy, id: @sg1.id, user_id: @user.id
-      response.should redirect_to classes_path
+      response.should redirect_to groups_path
     end
   
   end

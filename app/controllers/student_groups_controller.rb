@@ -46,7 +46,7 @@ class StudentGroupsController < ApplicationController
 
   def update
     if @student_group.update_attributes(params[:student_group])
-      redirect_to classes_path, flash: { success: "#{@student_group.name} updated successfully" }
+      redirect_to groups_path, flash: { success: "#{@student_group.name} updated successfully" }
     else  
       @title = "Edit group"
       flash.now[:error] = "Something's gone wrong.  Please try again!"
@@ -56,7 +56,7 @@ class StudentGroupsController < ApplicationController
 
   def destroy
     @student_group.destroy
-    redirect_to classes_path, flash: { success: "#{@student_group.name} has been deleted" }
+    redirect_to groups_path, flash: { success: "#{@student_group.name} has been deleted" }
   end
   
   #methods

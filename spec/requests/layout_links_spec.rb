@@ -156,7 +156,7 @@
 #       end
 #       
 #     # After creation of Student Group
-#       it "should redirect to class_path" do
+#       it "should redirect to group_path" do
 #         visit new_student_group_path
 #         fill_in 'student_group_name', with: @student_group.name
 #         fill_in 'student_group_type_of_group', with:@student_group.type_of_group

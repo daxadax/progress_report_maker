@@ -185,7 +185,7 @@ describe "PUT 'update" do
     
     it "should redirect to student_groups#show" do
       @update
-      response.should redirect_to class_path
+      response.should redirect_to group_path
     end
     
     it "should flash 'Update successful'" do
@@ -212,7 +212,7 @@ describe "DELETE 'destroy'" do
   
   it "should redirect to student_groups#show" do
     delete :destroy, {student_group_id: @sg, id: @s1}
-    response.should redirect_to class_path
+    response.should redirect_to group_path
   end
 
 end

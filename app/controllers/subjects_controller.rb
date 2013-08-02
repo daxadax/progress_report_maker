@@ -21,7 +21,7 @@ class SubjectsController < ApplicationController
   def create
     @subject = @student_group.subjects.create(params[:subject])
       if @subject.save
-        redirect_to class_path(@student_group, {id: @student_group.id}), flash: { success: "Subject added successfully" }
+        redirect_to group_path(@student_group, {id: @student_group.id}), flash: { success: "Subject added successfully" }
       else
         @title = "Add a subject"
         flash.now[:error] = "Something's gone wrong.  Please try again!"
@@ -35,7 +35,7 @@ class SubjectsController < ApplicationController
   
   def update
     if @subject.update_attributes(params[:subject])
-      redirect_to class_path(@student_group, {id: @student_group.id}), flash: { success: "#{@subject.name} updated successfully" }
+      redirect_to group_path(@student_group, {id: @student_group.id}), flash: { success: "#{@subject.name} updated successfully" }
     else  
       @title = "Edit subject"
       flash.now[:error] = "Something's gone wrong.  Please try again!"
@@ -45,7 +45,7 @@ class SubjectsController < ApplicationController
   
   def destroy
     @subject.destroy
-    redirect_to class_path(@student_group), flash: { success: "#{@subject.name} has been deleted" }
+    redirect_to group_path(@student_group), flash: { success: "#{@subject.name} has been deleted" }
   end
   
   def stub
