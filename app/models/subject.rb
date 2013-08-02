@@ -25,6 +25,7 @@ class Subject < ActiveRecord::Base
   
   # methods
   
+  # => "x weeks"
   def weeks_left
     time = (self.end_date.to_time - Date.today.to_time).round/1.week
     if time < 1
@@ -32,6 +33,21 @@ class Subject < ActiveRecord::Base
     else
       "#{time} weeks" 
     end
+  end
+  
+  # http://stackoverflow.com/a/1341318/2128691
+  def avg
+    @scores = []
+    # pull all evaluation data for model and populate @scores
+    self.goals.each do |goal|
+      goal.evaluations.each do |eval|
+        score = eval.score
+        @scores << score
+      end
+    end
+    # get average of scores and round to two decimal places
+    average = @scores.inject{ |sum, el| sum + el }.to_f / @scores.size
+    average.round(2)
   end
   
 end

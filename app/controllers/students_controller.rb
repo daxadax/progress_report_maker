@@ -10,6 +10,9 @@ class StudentsController < ApplicationController
   end  
 
   def show
+    @subjects = @student_group.subjects
+    @evals = @student.evaluations
+    @scores = []
     @title = "#{@student.name}"
   end
   

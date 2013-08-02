@@ -57,7 +57,7 @@ describe SessionsController do
       
       it "should redirect to the user show page" do
         post :create, :session => @attr
-        response.should redirect_to(user_path(@user))
+        response.should redirect_to(root_path)
       end
       
     end
@@ -76,7 +76,7 @@ describe SessionsController do
     it "should redirect to '/logout'" do
       test_login(Factory(:user))
       delete :destroy
-      response.should redirect_to farewell_path
+      response.should redirect_to login_path
     end
     
   end

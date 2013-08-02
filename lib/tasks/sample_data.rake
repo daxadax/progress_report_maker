@@ -6,13 +6,21 @@ namespace :db do
 
   task :populate, :environment do
 
+    # warning message
+    puts "##############################################################"
+    puts "# if this takes too long, reduce the number of created users #"
+    puts "##############################################################"
+    
     # reset the database
     reset_db
 
-    # create 100 users
+    # some messages
+    puts "Database reset. Database population started"
+    
+    # create users
     create_users
 
-    #create 3 student_groups for each user  
+    #create student_groups for each user  
     create_student_groups
     
     #create students for each student_group
@@ -23,6 +31,9 @@ namespace :db do
     
     #create goals for each subject
     create_goals
+    
+    #create evaluation data for each goal
+    create_evaluations
     
     # success message
     puts "The database has been populated successfully"
@@ -40,7 +51,7 @@ namespace :db do
 
   def create_users
     puts "Creating users"
-    FactoryGirl.create_list :user, 100
+    FactoryGirl.create_list :user, 3
   end
   
   def create_student_groups
@@ -65,10 +76,21 @@ namespace :db do
   end  
   
   def create_goals
-    puts "Create goals for each subject"
+    puts "Creating goals for each subject"
     Subject.all.each do |s|
       FactoryGirl.create_list :goal, 3, subject_id: s.id
     end
+  end  
+
+  def create_evaluations
+    puts "Creating evaluation data"
+    Student.all.each_with_index do |s, index|
+      @goals = Goal.all  
+      @goals.count.times do |i|
+        FactoryGirl.create_list :evaluation, 3, goal_id: @goals[i].id, student_id: s.id
+      end
+    puts "Created data for 'Student #{index}'"  
+    end
   end
-  
+
 end

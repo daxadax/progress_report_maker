@@ -1,0 +1,46 @@
+<div class="holder round unselectable"> 
+
+  <!-- Group Name -->
+
+  <h1 class="float_left">
+    <%= link_to group.name, class_path(group) %>
+  </h1> 
+  
+  <!-- Subjects -->
+  
+ 	<div class="clear indent-left">
+  	<h2>
+	  	<%= render 'subject_count', :group => group %>
+	  </h2>
+	  <div class="indent-left">
+	    <%= render 'subject_list', :group => group %>
+	  </div>
+  </div>
+
+  <!-- Students -->
+
+  <div class="indent-left">
+  	<h2>
+	    <%= render 'student_count', :group => group %>
+	  </h2>
+		<div class="indent-left">
+		  <%= render 'student_list', :group => group %>
+	  </div>
+  </div>
+  <br />
+
+
+  <!-- EDIT AND DELETE BUTTONS -->
+  <div class="edit">
+  	<%= link_to "edit", edit_student_group_path(group), 
+                        class: "lil_link" %> 
+  </div>
+  <div class="delete">
+	  <%= link_to "X", {controller: 'student_groups', 
+                      action: 'destroy',
+                      id: group },
+                     {confirm: "Do you really want to delete #{group.name}?",
+                      method: :delete, 
+                      class: "lil_link"} %>
+  </div>
+</div>

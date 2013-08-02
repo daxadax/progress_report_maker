@@ -1,13 +1,15 @@
-<p>Soon there will be something here. A <%= link_to "link", '#' %> perhaps?</p>
+<div class="holder round">
 
-<p> 
-	<!--  http://stackoverflow.com/questions/16614220/no-route-matches-controller-queue-videos-even-i-used-the-path-from-rake-ro -->
-	<%= link_to "All groups", classes_path %><br />
-	<%= link_to "All subjects", subjects_path %><br />	
-	<%= link_to "All students", students_path %><br />
-	<%= link_to "All goals", goals_path %>
-</p>
+	<p class="center"> 
+		<!--  http://stackoverflow.com/questions/16614220/no-route-matches-controller-queue-videos-even-i-used-the-path-from-rake-ro -->
+		<%= link_to "All groups", classes_path,  class: "big_button round unselectable" %>
+		<%= link_to "All subjects", subjects_path,  class: "big_button round unselectable" %>
+		<%= link_to "All students", students_path,  class: "big_button round unselectable" %>
+		<%= link_to "All goals", goals_path,  class: "big_button round unselectable" %>
+	</p>
 
-<p>
-  <%= link_to "Create a new group", new_student_group_path %>
-</p>
+	<p>
+	  <%= link_to "Create a new group", new_student_group_path %>
+	</p>
+
+</div>

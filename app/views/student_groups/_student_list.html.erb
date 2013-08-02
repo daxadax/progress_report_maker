@@ -1,0 +1,16 @@
+<table class="fixed">
+  <tbody>
+    <% if group.students.present? %>
+		  <% group.students.all.each do |student| %>
+  	    <tr class="<%= cycle("odd", "even", name: "students")%>">
+  	    	<td><%= link_to "#{student.name}", student_path({student_group_id: student.student_group_id, id: student.id})%></td>
+          <td><%= student.avg %></td>
+          <td></td>
+  	    </tr>
+			<% end %>
+			<% reset_cycle("students") %>
+		<% else %>
+			  <%= link_to "Add a student", new_student_group_student_path(group), class: "big_button round unselectable" %>
+			<% end %>
+  </tbody>
+</table>

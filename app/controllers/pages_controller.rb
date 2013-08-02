@@ -17,10 +17,6 @@ class PagesController < ApplicationController
     @title = "Error"
   end
 
-  def farewell
-    @title = "Farewell!"
-  end
-
   def final_farewell
     @title = "Smell you later forever"
   end
@@ -36,7 +32,7 @@ class PagesController < ApplicationController
     flash.keep(:access)
     
     if logged_in? 
-      redirect_to user
+      redirect_to classes_path
     else
       render :layout => 'layouts/landing'
     end

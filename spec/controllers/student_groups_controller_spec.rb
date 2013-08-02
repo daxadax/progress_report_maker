@@ -29,7 +29,7 @@ render_views
     it "should have an element for each class" do
        @index
        @student_groups.each do |student_group|
-         response.should have_selector('p', content: student_group.name)
+         response.should have_selector('h1', content: student_group.name)
        end
      end
      

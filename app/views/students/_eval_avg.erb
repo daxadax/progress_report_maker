@@ -1,0 +1,5 @@
+<% @evals.where("student_id = ? AND goal_id = ?", @student.id, goal.id).all.each do |eval| %>
+  <% score = eval.score %>
+  <% @scores << score %>
+<% end %>
+<% @average = @scores.inject{|sum,x| sum + x }.to_f / @scores.count %>

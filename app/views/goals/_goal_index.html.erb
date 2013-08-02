@@ -2,18 +2,24 @@
 
 <% @subjects.each do |group, subjects| %>
   <div class="holder round">
-	  <h1><%= group.name %></h1>
+	  <h1><%= link_to group.name, class_path(group) %></h1>
+	  <br />
 	  <% subjects.each do |subject|  %>
-  	<h3><%= subject.name %></h3><hr />
-	  <table>  
-			<tbody>
-				<% subject.goals.all.each do |goal| %>
-			  <tr class="<%= cycle("odd", "even")%>">
-			    <td><%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %></td>
-			  </tr>
-        <% end %>
-		  </tbody>
-		</table>
+	  <div class="holder2 round">
+  		<h2 class="float_left"><%= subject.name %></h2>
+	    <h4 class="float_right"><%= subject.weeks_left %> remaining</h4>
+	    <hr />
+		  <table class="fixed">  
+				<tbody>
+					<% subject.goals.all.each do |goal| %>
+				  <tr class="<%= cycle("odd", "even")%>">
+				    <td><%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %></td>
+				    <td><%= goal.avg %></td>
+				  </tr>
+	        <% end %>
+			  </tbody>
+			</table>
+		</div>
 		<% end %>
 	</div>
 <% end %>

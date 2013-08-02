@@ -14,7 +14,7 @@ describe "FriendlyForwardings" do
     fill_in 'session_email',    with: user.email
     fill_in 'session_password', with: user.password
     click_button
-    response.should render_template('users/show')
+    response.should render_template('student_groups/index')
   end
 
 end

@@ -16,6 +16,10 @@
 	clear: both;
 }
 
+.indent-left {
+	margin-left: 2em;
+}
+
 .float_right {
 	float:right;
 }
@@ -109,6 +113,7 @@ header {
 }
 
 header h2 {
+	font-family: verdana;
 	margin-left:   25px;
 	margin-top:    10px;
 }
@@ -131,13 +136,30 @@ section {
     padding: 2em;
     margin-bottom: 2em;
 }
+
+.holder2 {
+	position: relative;
+	width: 95%;
+	background: rgba(0,0,0,0.4);
+    padding: 2em;
+    margin-bottom: 2em;
+}
+
+.holder h2 {
+/*	margin-top: -15px;*/
+	font-weight: bold;
+	font-size: 250%;
+	color: #1093FF;
+}
+
+.holder h4 {
+	font-size: 110%;
+}
+
 section h1,h2 {
-	font-family:     'Shadows Into Light Two', cursive;
 	font-weight:     bold;
 	font-size:       350%;
-	letter-spacing:  5px;
 	color:           #81C6FF;
-/*	text-shadow:     3px 2px 2px #3E7CB0, 2px 3px 3px rgba(0,0,0,0.25);*/
 }
 
 section h3,h4 {
@@ -219,6 +241,19 @@ tr.even {
 	background: rgba(3, 80, 144, 0.7);
 }
 
+table.fixed {
+	table-layout: fixed;
+    width: 100%;
+}
+
+.goal_row {
+	width: 500px;
+}
+
+.avg_row {
+	width: 100px;
+}
+
 		/*****************/
 		/**** buttons ****/
 		/*****************/
@@ -253,14 +288,14 @@ tr.even {
 }
 
 .big_button {
-	background:      #B09137;
+	background:      #81C6FF;
 	border:          2px #035090 solid;
 	font-family:     'Shadows Into Light Two', cursive;
     color:           #035090; 
-    text-shadow:     3px 1px 3px #81C6FF, 3px 3px 0px rgba(0,0,0,0.15);
+/*    text-shadow:     3px 1px 3px #81C6FF, 3px 3px 0px rgba(0,0,0,0.15);*/
 	font-size:       200%;
 	text-decoration: none;
-	min-width:       300px;
+	width:           300px;
 	margin:          5px 5px 5px 5px;
 	padding:         20px;
 	text-align:      center;
@@ -269,10 +304,10 @@ tr.even {
 }
 
 .big_button:hover {
-	background:  #81C6FF;
+	background:  #B09137;
 	border:      2px #035090 solid;
 	color:       #035090;
-	text-shadow: 3px 1px 3px #FFDD78, 3px 3px 0px rgba(0,0,0,0.15);
+/*	text-shadow: 3px 1px 3px #FFDD78, 3px 3px 0px rgba(0,0,0,0.15);*/
 }
 
 

@@ -1,3 +1,16 @@
-<p>
-	<!-- make scope to count students in a given subject...???? -->
-</p>
+<div class="holder round">
+
+<h3>Members of <%= @subject.name %> in <%= @subject.student_group.name %> should:</h3> 
+
+	  <table class="fixed">
+		  <tbody>
+			  	<% @subject.goals.each do |goal| %>
+			  <tr>
+	        <td><%= link_to "#{goal.goal}", goal_path(goal, {subject_id: goal.subject.id}) %></td>
+	        <td><%= goal.avg %></td>
+	      </tr>
+	      <% end %>
+	    </tbody>
+    </table>
+
+</div>

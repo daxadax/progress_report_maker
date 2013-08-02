@@ -52,21 +52,6 @@ end
   
   end         
 
-  describe "GET 'farewell" do
-    
-    it "should return http success" do
-      get 'farewell'
-      response.should be_success
-    end
-    
-    it "should have the right title" do
-      get 'farewell'
-      response.should have_selector('title',
-                                    content: "#{@base_title} | Farewell!")
-    end
-    
-  end
-
   describe "GET 'final_farewell" do
     
     it "should return http success" do

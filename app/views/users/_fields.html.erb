@@ -1,19 +1,25 @@
-<div class="form_field round">
- 	  <%= f.label :name, "Your full name:" %>
-    <%= f.text_field :name %>
-</div>
+<div class="holder round">
+	<p>Your full name:
+		<div class="form_field round">
+		  <%= f.text_field :name %>
+		</div>
+	</p>
 
-<div class="form_field round">
-	  <%= f.label :email, "Your email address:" %>
-	  <%= f.email_field :email %>
-</div>
+	<p>Your email address:
+		<div class="form_field round">	
+			<%= f.email_field :email %>
+		</div>
+	</p>
 
-<div class="form_field round">
-    <%= f.label :password, "Your password:" %>
-    <%= f.password_field :password %>
-</div>
+	<p>Your password:
+		<div class="form_field round">
+		  <%= f.password_field :password %>
+		</div>
+	</p>
 
-<div class="form_field round">
-	  <%= f.label :password, "Confirm your password" %>
-	  <%= f.password_field :password_confirmation %>			
+	<p>Confirm your password:
+		<div class="form_field round">
+			<%= f.password_field :password_confirmation %>			
+		</div>
+	</p>
 </div>

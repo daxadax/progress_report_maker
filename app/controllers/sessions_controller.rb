@@ -13,14 +13,14 @@ class SessionsController < ApplicationController
       render 'new'
     else  
       login user
-      redirect_back_or user
+      redirect_back_or root_path
     end
       
   end
   
   def destroy
     logout
-    redirect_to farewell_path
+    redirect_to login_path
   end
 
 end

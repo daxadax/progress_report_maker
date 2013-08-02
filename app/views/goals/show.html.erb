@@ -1,5 +1,13 @@
-<p>
-	Goal of <%= link_to "#{@goal.subject.name}", subject_path(@subject) %>
-</p>
+<div class="holder round">
+<h3>
+	Members of <%= link_to "#{@goal.subject.name}", subject_path(@subject, {student_group_id: @subject.student_group_id}) %> in <%= @subject.student_group.name %> should be able to:
+</h3>
 
-<p><%= "#{@goal.goal}" %></p>
+<h1 class="center"><%= "#{@goal.goal}" %></h1>
+
+<p>The average for this goal is <%= @goal.avg %></p>
+
+
+
+</div>
+

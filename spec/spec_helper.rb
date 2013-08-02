@@ -74,6 +74,9 @@ RSpec.configure do |config|
     @characteristic =  Factory(:characteristic, student: @student)
     @characteristic2 = Factory(:characteristic, student: @student, characteristic: "Dyslexic")
     
+    # Evaluation
+    @eval = Factory(:evaluation, student: @student, goal: @goal)
+    
   end
   
 end

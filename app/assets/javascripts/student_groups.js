@@ -60,21 +60,5 @@ $(document).ready(function () {
 	        $('.flash').fadeOut();
 	    }, '2000');
 	});
-
-
-
-	// $(".layout")
-	//   .on('ajax:beforeSend', ".progress_bar", function(){ 
-	//     // get id of element to make visible
-	//     var progress_bar_id = '#' + this.getAttribute('data-progress-bar');
-	//     $(progress_bar_id).show();
-	//   })
-	
-	
-	//   <td id="student_name" class="field form_field">
-	// <input id="student_group_students_attributes___Student:0x00000103de4be0__name" 
-	// name="student_group[students_attributes][#&lt;Student:0x00000103de4be0&gt;][name]" 
-	// placeholder="Student name" size="30" type="text" />
-	// </td>
 	
  });

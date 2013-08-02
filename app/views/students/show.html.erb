@@ -1,3 +1,17 @@
-<p>
+<h3>
 	Member of <%= link_to "#{@student_group.name}", class_path(@student_group) %> for <%= @student.student_for_weeks %>
-</p>
+</h3>
+  
+<% @subjects.all.each do |subject| %>
+  <div class="holder round"> 
+    <h2 class="float_left">
+  	  <%= subject.name %>:
+    </h2>
+    
+	  <table>
+      <%= render "goals_by_subject", subject: subject %>
+    </table>
+  </div>
+<% end %>
+
+

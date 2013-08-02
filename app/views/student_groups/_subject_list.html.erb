@@ -1,8 +1,15 @@
-
-<% if group.subjects.present? %>
-  <% group.subjects.all.each_with_index do |subject, index| %>
-  <tr><td><%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}) %></td></tr>
-  <% end %>
-<% else %>
-  <tr><td><%= link_to "Add a subject", new_student_group_subject_path(group) %></td></tr>
-<% end %>
+<table class="fixed">
+  <tbody>
+		<% if group.subjects.present? %>
+		  <% group.subjects.all.each do |subject| %>
+		    <tr class="<%= cycle("odd", "even", name: 'subjects')%>">
+		      <td><%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}) %></td>
+          <td><%= subject.avg %></td>
+          <td><%= subject.weeks_left %> remaining</td>
+        </tr>
+		  <% end %>
+		<% else %>
+		  <%= link_to "Add a subject", new_student_group_subject_path(group), class: "big_button round unselectable" %>
+		<% end %>
+  </tbody>
+</table>

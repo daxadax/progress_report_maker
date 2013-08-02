@@ -1,0 +1,5 @@
+<% if group.subjects.any? %> 
+  <%= group.subjects.count %> <%= pluralize_without_count(group.subjects.count, "subject", "subjects")  %>
+<% else %>
+  No current lessons
+<% end %>

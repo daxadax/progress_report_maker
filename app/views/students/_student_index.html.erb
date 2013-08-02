@@ -2,14 +2,15 @@
 
 <% @students.each do |group, students| %>
   <div class="holder round">
-  	<h3><%= group.name %></h3><hr />
-	  <table>  
+  	<h2><%= group.name %></h2><hr />
+	  <table class="fixed">  
 			<tbody>
 			  <% students.each do |student| %>
 			  <tr class="<%= cycle("odd", "even")%>">
 			    <td><%= link_to student.name, student_path(student, {student_group_id: student.student_group_id}) %></td>
 			    <td><%= student.gender %></td>
 			    <td><%= student.student_for_weeks %></td>
+			    <td><%= student.avg %></td>
 			  </tr>
 			  <% end %>
 		  </tbody>
