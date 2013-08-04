@@ -8,7 +8,7 @@
 		<tr class="<%= cycle("odd", "even", name: "goals")%>">
       <td class="goal_row"><%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %></td>
 			<%= render 'eval_avg', goal: goal %>
-			<td><%= @average.round(2) %></td>
+			<td class="<%= @average.round(2) > goal.avg ? "greater" : "lesser" %>"><%= @average.round(2) %></td>
 			<td><%= goal.avg %></td>
 		</tr>
   </tbody>
