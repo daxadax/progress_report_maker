@@ -1,10 +1,14 @@
 <table class="fixed">
   <tbody>
+	  <tr>
+		  <th></th>
+	  	<th>Student average:</th>
+	  </tr>
     <% if group.students.present? %>
 		  <% group.students.all.each do |student| %>
   	    <tr class="<%= cycle("odd", "even", name: "students")%>">
   	    	<td><%= link_to "#{student.name}", student_path({student_group_id: student.student_group_id, id: student.id})%></td>
-          <td><%= student.avg %></td>
+          <td class="avg_row"><%= student.avg %></td>
           <td></td>
   	    </tr>
 			<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729092652) do
+ActiveRecord::Schema.define(:version => 20130806201339) do
 
   create_table "characteristics", :force => true do |t|
     t.string   "characteristic"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20130729092652) do
     t.integer  "goal_id"
   end
 
+  add_index "evaluations", ["goal_id"], :name => "index_evaluations_on_goal_id"
+
   create_table "goals", :force => true do |t|
     t.string   "goal"
     t.integer  "subject_id"
@@ -36,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20130729092652) do
     t.datetime "updated_at", :null => false
     t.boolean  "default"
   end
+
+  add_index "goals", ["subject_id"], :name => "index_goals_on_subject_id"
 
   create_table "student_groups", :force => true do |t|
     t.string   "name"
@@ -56,6 +60,8 @@ ActiveRecord::Schema.define(:version => 20130729092652) do
     t.integer  "student_group_id"
   end
 
+  add_index "students", ["student_group_id"], :name => "index_students_on_student_group_id"
+
   create_table "subjects", :force => true do |t|
     t.string   "name"
     t.string   "end_date"
@@ -65,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20130729092652) do
     t.string   "start_date"
     t.integer  "contact_time"
   end
+
+  add_index "subjects", ["student_group_id"], :name => "index_subjects_on_student_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
