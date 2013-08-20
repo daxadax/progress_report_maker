@@ -1,0 +1,7 @@
+<h2 class="eval_header">
+	Evaluating <br /><%= @student.name %>
+</h2>
+<h4 class="center">
+	Student <%= @student_number %> of <%= @student_group.students.count %> 
+	(<%= ((@student_number.to_f / @student_group.students.count) * 100).round %>% complete)
+</h4>

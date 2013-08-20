@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %> | Evaluating</title>
+  <%= csrf_meta_tags %>	
+  <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+  <%= render 'layouts/stylesheets' %>
+	<%= javascript_include_tag "application" %>
+</head>
+<body>
+	<div class="container">
+		<%= render 'layouts/eval_header' %>
+	  <!-- <section class="round"> -->
+      <% flash.each do |key, value| %>
+			  <div class="flash <%= key %>"><%= value %></div>
+			<% end %>
+			<%= yield %>
+    <!-- </section> -->
+  </div>
+</body>
+</html>
