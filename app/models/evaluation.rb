@@ -4,7 +4,6 @@
 #
 #  id         :integer          not null, primary key
 #  score      :integer
-#  date       :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  student_id :integer
@@ -12,12 +11,12 @@
 #
 
 class Evaluation < ActiveRecord::Base
-  attr_accessible :date, :score
+  attr_accessible :score, :student_id, :goal_id
 
   belongs_to :student
   belongs_to :goal
 
-  validates :score, :date, :student_id, :goal_id, presence: :true
+  validates :score, :goal_id, :student_id, presence: :true
   
   # methods
 

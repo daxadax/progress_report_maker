@@ -9,10 +9,15 @@
 		  <% group.subjects.all.each do |subject| %>
 	  <tr class="<%= cycle("odd", "even", name: 'subjects')%>">
 		  <td><%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}) %></td>
-      <td class="avg row"><%= subject.avg %></td>
+      <% if subject.avg.nan? %>
+			  <td class="strong">No data yet!</td>
+			<% else %>
+			  <td class="avg_row"><%= subject.avg %></td>
+			<% end %>
       <td><%= subject.weeks_left %></td>
     </tr>
 		  <% end %>
+		  <% reset_cycle("subjects") %>
 		<% else %>
 		  <%= link_to "Add a subject", new_student_group_subject_path(group), class: "big_button round unselectable" %>
 		<% end %>

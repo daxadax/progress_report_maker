@@ -3,29 +3,40 @@
   <!-- Group Name -->
 
   <h1 class="float_left">
-    <%= link_to group.name, group_path(group) %>
+    <%= group.name %>
   </h1> 
+  <br />
+
+  <!-- Evaluate Link -->
+
+  <h1 class="float_right evaluate">
+  	<%= link_to "Evaluate!", eval_note_path(group) %>
+  </h1>
   
   <!-- Subjects -->
   
  	<div class="clear indent-left">
-  	<h2>
-	  	<%= render 'subject_count', :group => group %>
-	  </h2>
-	  <div class="indent-left">
-	    <%= render 'subject_list', :group => group %>
-	  </div>
+  	<div class="holder2 round">
+  		<h2>
+		  	<%= render 'subject_count', :group => group %>
+		  </h2>
+		  <div class="indent-left">
+		    <%= render 'subject_list', :group => group %>
+		  </div>
+  	</div>
   </div>
 
   <!-- Students -->
 
   <div class="indent-left">
-  	<h2>
-	    <%= render 'student_count', :group => group %>
-	  </h2>
-		<div class="indent-left">
-		  <%= render 'student_list', :group => group %>
-	  </div>
+  	<div class="holder2 round">
+  		<h2>
+		    <%= render 'student_count', :group => group %>
+		  </h2>
+			<div class="indent-left">
+			  <%= render 'student_list', :group => group %>
+		  </div>
+  	</div>
   </div>
   <br />
 

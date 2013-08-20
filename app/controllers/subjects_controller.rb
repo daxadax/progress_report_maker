@@ -1,7 +1,7 @@
 class SubjectsController < ApplicationController
   include IndexHelper
   
-  before_filter :get_student_group, except: [:index]
+  before_filter :get_student_group, except: [:index] #in ApplicationController
   before_filter :get_subject, except: [:index, :new, :create]    
   
   def index
@@ -21,7 +21,8 @@ class SubjectsController < ApplicationController
   def create
     @subject = @student_group.subjects.create(params[:subject])
       if @subject.save
-        redirect_to group_path(@student_group, {id: @student_group.id}), flash: { success: "Subject added successfully" }
+        redirect_to new_subject_goal_path(@subject),
+        flash: { success: "Subject added successfully, now create some goals" }
       else
         @title = "Add a subject"
         flash.now[:error] = "Something's gone wrong.  Please try again!"
@@ -53,11 +54,6 @@ class SubjectsController < ApplicationController
   
   # #methods
   
-  def get_student_group
-    @user = current_user
-    @student_group = @user.student_groups.find(params[:student_group_id])
-  end
-  # 
   def get_subject
     @subject = @student_group.subjects.find(params[:id])
   end

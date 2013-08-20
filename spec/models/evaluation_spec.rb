@@ -4,7 +4,6 @@
 #
 #  id         :integer          not null, primary key
 #  score      :integer
-#  date       :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  student_id :integer
@@ -34,11 +33,7 @@ describe Evaluation do
     end
     
     it "should have a score" do
-      Evaluation.create(date: Date.today-2, score: "").should_not be_valid
-    end
-    
-    it "should have a date" do
-      Evaluation.create(score: 3, date: "").should_not be_valid
+      Evaluation.create(score: "").should_not be_valid
     end
     
   end

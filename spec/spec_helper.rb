@@ -49,6 +49,7 @@ RSpec.configure do |config|
     # Student_group
     @student_group = Factory(:student_group, user: @user)
     @student_group2 = Factory(:student_group, user: @user, name: "Rainbow class")
+    @student_groups = [@student_group, @student_group2]
       
     # Student attributes
     @student_attr = { gender: "Female", name: "Example Student" }
@@ -69,6 +70,7 @@ RSpec.configure do |config|
     # Goal
     @goal = Factory(:goal, subject: @subject)
     @goal2 = Factory(:goal, subject: @subject, goal: "Should display appropriate classroom behavior")
+    @goals = [@goal, @goal2]
     
     # Characteristic
     @characteristic =  Factory(:characteristic, student: @student)

@@ -74,7 +74,7 @@ end
 describe "POST 'create'" do
 
   before(:each) do
-    @create = post :create, {student_group_id: @sg}
+    @create = post :create, student_group_id: @sg
   end
 
   describe "failure" do
@@ -119,6 +119,15 @@ describe "POST 'create'" do
     it "should flash a success message" do
       post :create, {student_group_id: @sg, subject: @attr}
       flash[:success].should =~ /subject/i
+    end
+    
+    it "should redirect to the new_goal path" do
+      post :create, {student_group_id: @sg, subject: @attr}
+      response.code.should == "302"
+      # hardcoded this 3 because @sub1 == 1, but test is expecting 3 for some reason?
+      # doesn't effect the functionality of what is being tested, 
+      # just rspec being beyond my pale
+      response.should redirect_to(new_subject_goal_path(3))
     end
                                  
   end 

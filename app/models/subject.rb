@@ -23,6 +23,8 @@ class Subject < ActiveRecord::Base
   validates :student_group_id, :name, :start_date, :end_date, :contact_time, presence: true
   validates :contact_time, numericality: true
   
+  before_save { |subject| subject.name  = name.titleize }
+  
   # methods
   
   # => "x weeks"
@@ -40,7 +42,7 @@ class Subject < ActiveRecord::Base
     @scores = []
     # pull all evaluation data for model and populate @scores
     self.goals.each do |goal|
-      goal.evaluations.each do |eval|
+      goal.evaluations.all.each do |eval|
         score = eval.score
         @scores << score
       end

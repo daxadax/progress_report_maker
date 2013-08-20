@@ -8,7 +8,11 @@
 		  <% group.students.all.each do |student| %>
   	    <tr class="<%= cycle("odd", "even", name: "students")%>">
   	    	<td><%= link_to "#{student.name}", student_path({student_group_id: student.student_group_id, id: student.id})%></td>
-          <td class="avg_row"><%= student.avg %></td>
+          <% if student.avg.nan? %>
+					  <td class="strong">No data yet!</td>
+					<% else %>
+					  <td class="avg_row"><%= student.avg %></td>
+					<% end %>
           <td></td>
   	    </tr>
 			<% end %>

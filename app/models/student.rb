@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
   
   belongs_to :student_group
   has_many   :characteristics, dependent: :destroy
-  has_many   :evaluations
+  has_many   :evaluations, dependent: :destroy
   
   accepts_nested_attributes_for :characteristics
   
@@ -51,5 +51,10 @@ class Student < ActiveRecord::Base
     average = @scores.inject{ |sum, el| sum + el }.to_f / @scores.size
     average.round(2)
   end      
+  
+  # stackoverflow.com/a/7394804/2128691     
+  def next
+    Student.where("id > ?", id).order("id ASC").first
+  end    
          
 end

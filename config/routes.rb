@@ -13,6 +13,10 @@ Ganesh::Application.routes.draw do
   resources :subjects, :only => :stub do
     resources :goals
   end 
+  
+  resources :students, :goals, :only => :stub do
+    resources :evaluations, :only => [:new, :create]
+  end  
 
   # static pages
                         
@@ -58,5 +62,13 @@ Ganesh::Application.routes.draw do
   
   match ':subject_id/goal/:id', :to => 'goals#show', :as => :goal
   match 'goals', :to => 'goals#index'
-    
+  
+  # evaluations
+  match ':student_group_id/evaluation_note',     
+         :to => 'evaluations#note', :as => :eval_note
+  match 'evaluation_walkthrough',                 
+         :to => 'evaluations#help', :as => :eval_help
+  match ':student_group_id/evaluate/:student_id', 
+         :to => 'evaluations#new',  :as => :evaluate   
+
 end

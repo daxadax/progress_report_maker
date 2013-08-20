@@ -35,6 +35,5 @@ class StudentGroup < ActiveRecord::Base
   before_save { |group| group.name = name.titleize }
     
   # methods
-  
-  
+
 end

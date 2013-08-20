@@ -1,5 +1,5 @@
 <h3>
-	Member of <%= link_to "#{@student_group.name}", group_path(@student_group) %> for <%= @student.student_for_weeks %>
+	Member of <span class="name"><%= @student_group.name %></span> for <%= @student.student_for_weeks %>
 </h3>
   
 <% @subjects.all.each do |subject| %>
@@ -8,9 +8,12 @@
   	  <%= subject.name %>:
     </h2>
     
-	  <table>
-      <%= render "goals_by_subject", subject: subject %>
-    </table>
+	  <div class="holder2 round clear center">
+	  	<table>
+	      <%= render "goals_by_subject", subject: subject %>
+	    </table>
+	  </div>
+	
   </div>
 <% end %>
 

@@ -13,8 +13,8 @@
 
 #menu_box {
       /*STYLE*/
-  	background:    #FFBF00;
-/*    border-bottom: 5px double #81c6ff;*/
+  	background:    #035090;
+    border-bottom: 2px solid #81c6ff;
     float:         left;
 	width:         100%;
 	height:        50px;
@@ -70,30 +70,29 @@ body {
 #landing_text {
   	text-align: left;
 	width:      800px;
-	font-family: 'Shadows Into Light Two', cursive;
+/*	font-family: 'Shadows Into Light Two', cursive;*/
 }
 
 h2 {
     font-family: 'Shadows Into Light Two', cursive;
     font-size:   400%;
-    color:       #FF4F00; 
+    color:       #FFBF00; 
     letter-spacing: -1px;
-    text-shadow: 3px 1px 3px #37195A, 4px 4px 0px rgba(0,0,0,0.15);
     position:    absolute;
     top:         20px;
     left:        20px;
 }
 
 h4 {
-    font-size:      160%;
-    font-weight:    115px;
-    text-align:     center;
+    font-size:      180%;
+    font-weight:    bold;
+    text-align:     left;
     letter-spacing: 0.8px;
-    color:          #FFBF00;
-    width:          300px;
+    color:          #81C6FF;
+    width:          400px;
     position:       absolute;
     top:            150px;
-    left:           80px;
+    left:           100px;
 }
 
 #home_logo {
@@ -120,28 +119,25 @@ h4 {
 	top:             10px;
 	right:           20px;	
 	background:      #035090;
-	border:          2px #902D00 solid;
+	border:          2px #81C6FF solid;
+	color:           #81C6FF;
 	font-family:     'Shadows Into Light Two', cursive;
-    color:           #1093FF; 
-    text-shadow:     3px 1px 3px #902D00, 3px 3px 0px rgba(0,0,0,0.15);
     font-size:       100%;
 	text-decoration: none;
 	text-align:      center;	
 }
 
 .login_button:hover {
-	background:  #FFBF00;
-	border:      2px #906C00 solid;
-	color:       #37195A;
-	text-shadow: 3px 1px 3px #906C00, 3px 3px 0px rgba(0,0,0,0.15);
+	background:  #81C6FF;
+	border:      2px #035090 solid;
+    color:       #035090;
 }
 
 .big_button {
-	background:      #FFBF00;
-	border:          2px #906C00 solid;
+	background:      #81C6FF;
+	border:          2px #035090 solid;
 	font-family:     'Shadows Into Light Two', cursive;
-    color:           #37195A; 
-    text-shadow:     3px 1px 3px #906C00, 3px 3px 0px rgba(0,0,0,0.15);
+    color:           #035090;
 	font-size:       200%;
 	text-decoration: none;
 	width: 		     300px;
@@ -154,10 +150,9 @@ h4 {
 }
 
 .big_button:hover {
-	background:  #FF4F00;
-	border:      2px #902D00 solid;
-	color:       #1093FF;
-	text-shadow: 3px 1px 3px #902D00, 3px 3px 0px rgba(0,0,0,0.15);
+	background:  #035090;
+	border:      2px #81C6FF solid;
+	color:       #81C6FF;
 }
 
 /*general classes*/

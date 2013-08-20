@@ -19,7 +19,7 @@ class StudentGroupsController < ApplicationController
   end
   
   def create
-    @student_group = @user.student_groups.new(params[:student_group]) 
+    # @student_group = @user.student_groups.new(params[:student_group]) 
     @params = params[:student_group][:students_attributes]
     @student_group = @user.student_groups.build(params[:student_group])
     if @student_group.save
@@ -30,7 +30,7 @@ class StudentGroupsController < ApplicationController
           @student_group.students.create(name:"#{student[:name]}", gender: "#{student[:gender]}")
         end
       end 
-      redirect_to new_student_group_subject_path(@student_group), flash: { success: "#{@student_group.name} has been added successfully.  Next, add the subjects for this group" }   
+      redirect_to new_student_group_subject_path(@student_group), flash: { success: "#{@student_group.name} has been added successfully.  Next, add subjects" }   
     else
       ### http://railsforum.com/viewtopic.php?pid=40056#p40056  
       @student = @student_group.students.build

@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   include IndexHelper
 
-  before_filter :get_student_group, except: [:index]
+  before_filter :get_student_group, except: [:index] #in ApplicationController
   before_filter :get_student, except: [:index, :new, :create]    
   
   def index
@@ -53,11 +53,6 @@ class StudentsController < ApplicationController
   end
 
   #methods
-  
-  def get_student_group
-    @user = current_user
-    @student_group = @user.student_groups.find(params[:student_group_id])
-  end
 
   def get_student
     @student = @student_group.students.find(params[:id])

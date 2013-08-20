@@ -14,7 +14,7 @@ class Goal < ActiveRecord::Base
   attr_accessible :goal
   
   belongs_to :subject
-  has_many :evaluations
+  has_many :evaluations, dependent: :destroy
   
   validates :subject_id, :goal, presence: true
   

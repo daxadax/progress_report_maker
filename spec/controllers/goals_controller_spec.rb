@@ -30,12 +30,12 @@ render_views
         response.should have_selector('title', content: "All goals")
       end
    
-     it "should have an element for each student" do
-            @index
-            @goals.each do |goal|
-              response.should have_selector('td', content: goal.goal)
-            end
-         end
+     it "should have an element for each goal" do
+       @index
+       @goals.each do |goal|
+         response.should have_selector('td', content: goal.goal)
+       end
+     end
    
    end
    

@@ -21,7 +21,11 @@ class GoalsController < ApplicationController
   def create
     @goal = @subject.goals.create(params[:goal])
       if @goal.save
-        redirect_to subject_path(@subject, {student_group_id: @subject.student_group_id}), flash: { success: "Goal added successfully" }
+        if params[:another_subject].nil?
+          redirect_to groups_path, flash: { success: "Goal(s) added successfully!" }
+        else
+          render :new
+        end
       else
         @title = "Add a goal"
         flash.now[:error] = "Something's gone wrong.  Please try again!"

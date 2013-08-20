@@ -56,7 +56,7 @@ end
 describe "GET 'new'" do
 
   before(:each) do
-    @new = get :new, student_group_id: @sg, id: @sg
+    @new = get :new, student_group_id: @sg
   end  
 
   it "should be successful" do
@@ -74,7 +74,7 @@ end
 describe "POST 'create'" do
 
   before(:each) do
-    @create = post :create, {student_group_id: @sg, id: @sg}
+    @create = post :create, student_group_id: @sg
   end
 
   describe "failure" do
@@ -93,7 +93,7 @@ describe "POST 'create'" do
     
     it "should not create a student" do
       lambda do
-        post :create, {student_group_id: @sg, id: @sg, student: @attr}
+        post :create, {student_group_id: @sg, student: @attr}
       end.should_not change {@sg.students.count}
     end
     
@@ -112,12 +112,12 @@ describe "POST 'create'" do
    
     it "should create a student" do  
       lambda do
-        post :create, {student_group_id: @sg, id: @sg, student: @attr}
+        post :create, {student_group_id: @sg, student: @attr}
       end.should change {@sg.students.count}.by(1)
     end
     
     it "should flash a success message" do
-      post :create, {student_group_id: @sg, id: @sg, student: @attr}
+      post :create, {student_group_id: @sg, student: @attr}
       flash[:success].should =~ /student/i
     end
                                  

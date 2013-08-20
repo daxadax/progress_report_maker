@@ -4,16 +4,14 @@ describe StudentGroupsController do
 render_views
 
   before(:each) do
-    @user = test_login(Factory(:user))
-    @sg1 = Factory(:student_group, user: @user)
-    @sg2 = Factory(:student_group, user: @user, name: "class 2")
-    @student_groups = [@sg1, @sg2]
+    association_attr
+    @user = test_login(@user)
   end
 
   describe "GET 'index" do
   
     before(:each) do
-      @index = get :index, id: @user, user_id: @user.id
+      @index = get :index   
     end
         
     it "should be successful" do
@@ -33,12 +31,21 @@ render_views
        end
      end
      
+    it "should have an evaluation link" do
+      @index
+      response.should have_selector('a', 
+                                     href: eval_note_path({ 
+                                           student_group_id: @student_group.id, 
+                                           }),
+                                     content: "Evaluate!")
+      end
+     
   end
   
   describe "GET 'show'" do
     
       before(:each) do
-        @show = get :show, id: @sg1.id
+        @show = get :show, id: @student_group.id
       end
       
       it "should be successful" do
@@ -48,7 +55,7 @@ render_views
     
       it "should have the right title" do
         @show
-        response.should have_selector("title", content: @sg1.name)
+        response.should have_selector("title", content: @student_group.name)
       end
   end
   
@@ -107,7 +114,6 @@ render_views
       
       before(:each) do
         @attr = FactoryGirl.attributes_for(:student_group)
-        # @student_attr = {name: "test", gender: "Male"}
       end     
      
       it "should create a student_group" do  
@@ -128,7 +134,7 @@ render_views
       end
       
       it "should redirect" do
-        post :create, student_group_id: @group, student_group: @attr
+        post :create, student_group_id: @student_group, student_group: @attr
         response.should be_redirect
       end
                                    
@@ -139,7 +145,7 @@ render_views
   describe "GET 'edit" do
     
     before(:each) do
-      @edit = get :edit, id: @sg1.id, user_id: @user.id
+      @edit = get :edit, id: @student_group.id, user_id: @user.id
     end
 
      it "should be successful" do
@@ -160,7 +166,7 @@ render_views
       
       before(:each) do
         @attr = {name: "", type_of_group: ""}
-        @update = put :update, {user_id: @user.id, id: @sg1.id, student_group: @attr}
+        @update = put :update, {user_id: @user.id, id: @student_group.id, student_group: @attr}
       end
       
       it "should render the 'edit' page" do
@@ -184,7 +190,7 @@ render_views
       
       before(:each) do
         @attr = {name: "Example Class", type_of_group: "Primary class (7-12)"}
-        @update = put :update, {user_id: @user.id, id: @sg1.id, student_group: @attr}
+        @update = put :update, {user_id: @user.id, id: @student_group.id, student_group: @attr}
       end
       
       it "should change the user's attributes" do
@@ -212,17 +218,17 @@ render_views
       
     it "should destroy the group" do
       lambda do
-        delete :destroy, id: @sg1.id, user_id: @user.id
+        delete :destroy, id: @student_group.id, user_id: @user.id
       end.should change {@user.student_groups.count}.by(-1)
     end
     
     it "flash a success message" do
-      delete :destroy, id: @sg1.id, user_id: @user.id
+      delete :destroy, id: @student_group.id, user_id: @user.id
       flash[:success].should =~ /deleted/i
     end
     
     it "should redirect to student_groups#index" do
-      delete :destroy, id: @sg1.id, user_id: @user.id
+      delete :destroy, id: @student_group.id, user_id: @user.id
       response.should redirect_to groups_path
     end
   

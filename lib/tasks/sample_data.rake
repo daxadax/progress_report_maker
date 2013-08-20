@@ -51,7 +51,9 @@ namespace :db do
 
   def create_users
     puts "Creating users"
-    FactoryGirl.create_list :user, 3
+    # change the number of users here
+    FactoryGirl.create_list :user, 1
+    puts "--- Created #{User.all.count} user(s)"
   end
   
   def create_student_groups
@@ -59,6 +61,7 @@ namespace :db do
     User.all.each do |u|
       FactoryGirl.create_list :student_group, 3, user_id: u.id
     end
+    puts "--- Created #{StudentGroup.all.count} groups"
   end
   
   def create_students
@@ -66,13 +69,15 @@ namespace :db do
     StudentGroup.all.each do |sg|
       FactoryGirl.create_list :student, 7, student_group_id: sg.id
     end
+    puts "--- Created #{Student.all.count} students"
   end
   
   def create_subjects
     puts "Creating subjects for each student group"
     StudentGroup.all.each do |sg|
-      FactoryGirl.create_list :subject, 4, student_group_id: sg.id
+      FactoryGirl.create_list :subject, 3, student_group_id: sg.id
     end
+    puts "--- Created #{Subject.all.count} subjects"
   end  
   
   def create_goals
@@ -80,16 +85,19 @@ namespace :db do
     Subject.all.each do |s|
       FactoryGirl.create_list :goal, 3, subject_id: s.id
     end
+    puts "--- Created #{Goal.all.count} goals"
   end  
 
   def create_evaluations
-    puts "Creating evaluation data"
-    Student.all.each_with_index do |s, index|
-      @goals = Goal.all  
+    @students = Student.all
+    @goals = Goal.all
+    puts "Creating evaluation data for #{@students.count} students and #{@goals.count} goals"
+    @students.each_with_index do |s, index|
       @goals.count.times do |i|
         FactoryGirl.create_list :evaluation, 3, goal_id: @goals[i].id, student_id: s.id
       end
-    puts "Created data for 'Student #{index}'"  
+    # counter to track progress
+    puts "Created data for 'Student #{index +1}'"  
     end
   end
 
