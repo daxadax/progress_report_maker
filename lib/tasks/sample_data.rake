@@ -1,10 +1,9 @@
-require 'factory_girl_rails'
-
 namespace :db do
 
   desc "Fill db with sample data"
-
+  
   task :populate, :environment do
+  Rails.env = 'development'
 
     # warning message
     puts "##############################################################"
@@ -16,6 +15,9 @@ namespace :db do
 
     # some messages
     puts "Database reset. Database population started"
+    
+    # require factory_girl
+    require 'factory_girl_rails'
     
     # create users
     create_users
