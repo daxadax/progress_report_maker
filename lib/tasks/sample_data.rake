@@ -1,10 +1,10 @@
-require 'factory_girl_rails'
-
 namespace :db do
 
   desc "Fill db with sample data"
 
   task :populate, :environment do
+    
+    'factory_girl_rails'
 
     # warning message
     puts "##############################################################"
