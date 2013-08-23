@@ -1,0 +1,32 @@
+    /*buttonset jquery*/
+
+.ui-button-text {
+	font-size: 150%;
+	margin-left: .5em;
+	margin-right: .5em;
+}
+
+.ui-state-default {
+	background-image: none;
+	background:      #81C6FF;
+	border:          2px #035090 solid;
+/*	font-family:     'Shadows Into Light Two', cursive;*/
+    color:           #035090;
+    -moz-border-radius:    13px;
+    -webkit-border-radius: 13px;
+    -khtml-border-radius:  13px;
+    border-radius:         13px;
+}
+
+.ui-state-hover {
+	background:  #035090;
+	border:      2px #81C6FF solid;
+	color:       #81C6FF;
+}
+
+.ui-state-active {
+	background:  #035090;
+	border:      2px #81C6FF solid;
+	color:       #81C6FF;
+	font-weight: bold;
+}

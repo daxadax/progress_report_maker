@@ -1,7 +1,8 @@
 <% @subjects.each do |group, subjects| %>
   <% subjects.each do |subject| %>
     <h3><%= subject.name %></h3> 
-        <table class="fixed">
+      <div class="holder2 round">
+      	<table class="fixed">
 				  <tbody>
 					  <% if subject.goals.blank? %>
 					    <h2>There are no goals for <%= subject.name %> yet!</h2>
@@ -9,19 +10,21 @@
 					    <% subject.goals.each do |goal| %>
 							  <tr class="<%= cycle("odd", "even", name: "goals")%>">
 							    <td class="goal_row"><%= goal.goal %></td> 
-							    <td>
-									  <% [1, 2, 3, 4, 5].each do |score| %>
-									    <%#= f.radio_button :score, score %>
-									    <%= radio_button_tag "score_#{goal.id}", score%>
-									    <%= score %>
-									  <% end %>
-								  </td>
+										<td class="button_row float_right">
+											<div class="radio float_right">
+										  	<% [1, 2, 3, 4, 5].each do |score| %>
+											    <%= radio_button_tag "score_#{goal.id}", score %>
+											    <%= label_tag "score_#{goal.id}_#{score}", score %>
+											  <% end %>
+										  </div>
+									  </td>
 							  </tr>  
 							<% end %>
 							<% reset_cycle("goals") %>
 					  <% end %>
 				  </tbody>
 				</table>
+      </div>  
 				<br />
   <% end %>
 <% end %>
