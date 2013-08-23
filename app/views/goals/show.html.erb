@@ -5,9 +5,12 @@
 
 <h1 class="center"><%= "#{@goal.goal}" %></h1>
 
-<p>The average for this goal is <%= @goal.avg %></p>
+<p>
+	The overall average for this goal is <%= @goal.avg unless @goal.avg.nan? %>
+</p>
 
 
 
 </div>
+
 

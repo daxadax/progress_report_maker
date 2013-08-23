@@ -9,10 +9,15 @@
 		  <tr class="<%= cycle("odd", "even")%>">
 		    <td><%= link_to subject.name, subject_path(subject, {student_group_id: subject.student_group_id}) %></td>
 		    <td><%= subject.weeks_left %> remaining</td>
-		    <td><%= subject.avg %></td>
+		    <% if subject.avg.nan? %>
+				  <td class="strong">No data yet!</td>
+				<% else %>
+				  <td class="avg_row"><%= subject.avg %></td>
+				<% end %>
 		  </tr>
 		  <% end %>
 	  </tbody>
 	</table>
 	</div>
 <% end %>
+

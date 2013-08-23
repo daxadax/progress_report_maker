@@ -25,13 +25,6 @@ render_views
       response.should have_selector('title', :content => "Before you begin" )
     end
     
-    it "should have a 'help' link" do
-      @note
-      response.should have_selector("a",
-                                    :href => eval_help_path,
-                                    :content => "click here")
-    end
-    
     it "should have a 'confirm' link" do
       @note
       response.should have_selector("a",
@@ -45,28 +38,6 @@ render_views
                                     :href => root_path,
                                     :content => "Cancel")
     end
-    
-  end
-
-  describe "'help'" do
-    
-    before(:each) do
-      @help = get :help
-    end
-    
-    it "should be successful" do
-      @help
-      response.should be_success
-    end
-    
-    it "should have the right title" do
-      @help
-      response.should have_selector('title', :content => "How to evaluate")
-    end
-    
-    it "should be useful" # do
-     #      
-     #    end
     
   end
 
@@ -157,8 +128,8 @@ render_views
   
       it "should warn that scores cannot be edited once submitted" do
         post :create, @attr
-        response.should have_selector('p') do |p| 
-          p.should contain(/please take a moment/)
+        response.should have_selector('div') do |div| 
+          div.should contain(/please take a moment/)
         end             
       end
             

@@ -192,9 +192,9 @@ describe "PUT 'update" do
       @sg.subjects.name.should == @sg.subjects.name
     end
     
-    it "should redirect to student_groups#show" do
+    it "should redirect to groups index" do
       @update
-      response.should redirect_to group_path
+      response.should redirect_to groups_path(@sg)
     end
     
     it "should flash 'Update successful'" do

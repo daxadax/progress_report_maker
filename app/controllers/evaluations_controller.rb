@@ -4,14 +4,10 @@ include IndexHelper
   before_filter :get_student_group, except: :help
   
   def note
-    @title = "Before you begin"
+    @title = "Before you begin..."
   end
   
-  def help
-    @title = "How to evaluate"
-  end
-  
-  def no_goals
+  def eval_fail
     @subjects = @student_group.subjects
     @title = "Woops!"
   end
@@ -26,7 +22,6 @@ include IndexHelper
       @student_number = params[:student_number]
     end  
     @evaluation = @student.evaluations.build
-    @title = "Evaluating"
     render :layout => 'layouts/evaluation'
   end
     

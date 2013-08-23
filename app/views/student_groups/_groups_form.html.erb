@@ -1,29 +1,23 @@
 <div class="holder round">
-<h4>First, add some information about the group you'll be teaching.</h4>
+<h3>First, add some information about the group you'll be teaching.</h3>
 
 <%= form_for @student_group do |f| %>
 
-  <p>
+  <div class="holder2 round">
     The name of this group is 
     <span class="field form_field"><%= f.text_field :name %></span>
     and it is a/an 
     <span class="field dropdown"><%= f.select :type_of_group, [["select a group type", ""], "Young learners class (0-6)", "Primary class (7-12)", "Secondary class (13-17)", "Adult class (18+)", "Children's sport team", "Adult's sport team"]  %></span> 	  
-  </p>
+  </div>
 
-  <p>
-  	There are 
-    <span id="nos" class="field dropdown"><%= f.select :number_of_students, (0..60) %></span>
-    students in this group.   
-  </p>
+  <h3>
+		Next, add the students in this group:
+	</h3>
 
-  <table id="students_form_table">
-	  <tbody>
-			  <!-- http://stackoverflow.com/a/11474194/2128691 -->
-        <%= fields_for 'student_group[students_attributes][]', @student, index: nil do |builder| %>
-				  <%= render "student_fields", :f => builder %>
-        <% end %>
-		</tbody>	
-	</table>
+  <div class="holder2 round">
+    <%= render "student_fields", :f => f %>
+  </div>
+
 </div>
 <p>
 	<%= f.submit "Submit", :class => 'big_button round unselectable'%>

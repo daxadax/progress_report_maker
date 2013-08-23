@@ -1,0 +1,29 @@
+<div class="holder round">
+	
+	<p>
+		You've not made any goals yet, so there's nothing to evaluate!
+	</p>
+	
+	<p>
+		You can add goals to an existing subject,
+		<%= link_to "add a new subject", new_student_group_subject_path(@student_group) %>, 
+		or <%= link_to "go back", groups_path %> to your dashboard
+	</p>
+		
+	<% if @subjects.any? %>
+	<h4>
+		Add goals to: 
+	</h4>
+		<div id="buttons">
+			
+			<% @subjects.each do |subject| %>
+			  <%= link_to "#{subject.name}", 
+						new_subject_goal_path(subject), 
+						class: "big_button round unselectable" %>
+				<span class="horizontal_spacer"></span>
+			<% end %>
+		</div>
+	<% end %>
+
+	
+</div>

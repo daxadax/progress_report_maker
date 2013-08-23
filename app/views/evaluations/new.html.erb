@@ -1,17 +1,13 @@
 <div class="holder round clear eval_body">
 	<%= form_for([@student, @evaluation]) do |f|  %>
+	  
 	  <%= render "goal_eval", :f => f %>
-	  <!-- pass student_group_id for next student -->
-	  <%= hidden_field_tag "student_group_id", @student_group.id %>
-	  <%= hidden_field_tag "student_number", @student_number %>
-	  <%= f.submit "Next student", :class => 'big_button round unselectable eval_submit float_left' %>
-	  <p class="box center">
-	    Before continuing to the next student, 
-	    <br />please take a moment to review the scores for <%= @student.name %>.
-	    <br />  
-	    <span class='strong'>
-		    Once you have submitted them, they cannot be changed!
-		  </span>
-	  </p>
+	
+    <%= render 'eval_h_fields' %>
+	  
+	  <%= render 'eval_submit', :f => f %>
+	
+    <%= render 'review_please' %>
+	
 	<% end %>
 </div>

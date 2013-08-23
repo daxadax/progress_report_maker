@@ -10,7 +10,11 @@
   <!-- Evaluate Link -->
 
   <h1 class="float_right evaluate">
-  	<%= link_to "Evaluate!", eval_note_path(group) %>
+	  <% if group.has_goals? %>
+  	  <%= link_to "Evaluate!", eval_note_path(group) %>
+    <% else %>
+      <%= link_to "Evaluate!", eval_fail_path(group) %>
+    <% end %>
   </h1>
   
   <!-- Subjects -->

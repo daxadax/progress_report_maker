@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def final_farewell
-    @title = "Smell you later forever"
+    @title = "Smell you later...forever"
   end
 
   def help

@@ -4,6 +4,12 @@
 		What should this goal be?
 	</h3>
 
-  <%= render 'goal_fields' %>
+  <%= form_for([@subject, @goal]) do |f| %>
+		<div class="goal_field fields">
+		  <%= f.text_field :goal %>
+		</div>
+	  <br />
+	  <%= f.submit "Submit", :class => 'big_button round unselectable' %>
+	<% end %>
 
 </div>

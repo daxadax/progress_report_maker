@@ -62,7 +62,7 @@ end
     it "should have the right title" do
       get 'final_farewell'
       response.should have_selector('title',
-                                    content: "#{@base_title} | Smell you later forever")
+                                    content: "#{@base_title} | Smell you later...forever")
     end
     
   end

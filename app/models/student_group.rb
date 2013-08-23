@@ -14,7 +14,7 @@
 class StudentGroup < ActiveRecord::Base
   ### https://github.com/ryanb/nested_form/issues/222
   attr_accessor :_destroy
-  attr_accessible :name, :number_of_students, :type_of_group, :students_attributes
+  attr_accessible :name, :type_of_group, :students_attributes
   
   belongs_to :user
   has_many   :students, dependent: :destroy
@@ -35,5 +35,9 @@ class StudentGroup < ActiveRecord::Base
   before_save { |group| group.name = name.titleize }
     
   # methods
+
+  def has_goals?
+    subjects.any? { |subject| subject.goals.present? }
+  end
 
 end

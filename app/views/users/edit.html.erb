@@ -1,15 +1,17 @@
-<%= form_for(@user) do |f| %>
-	
-<div class="form_section round">
-	
-	<%= render 'fields', :f => f  %>
-	
-	<div>
-	  <%= f.submit "Update information", :class => 'big_button round unselectable' %>
+<div class="holder round">
+	<%= form_for(@user) do |f| %>
+
+	<div class="form_section round">
+
+		<%= render 'fields', :f => f  %>
+
+		<div>
+		  <%= f.submit "Update information", :class => 'big_button round unselectable' %>
+		</div>
+
 	</div>
-	
+
+	<% end %>
+
+	<%= link_to "Delete your account", confirmation_path %>
 </div>
-
-<% end %>
-
-<%= link_to "Delete your account", confirmation_path %>

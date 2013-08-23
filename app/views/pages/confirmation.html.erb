@@ -1,13 +1,27 @@
-<p>
-  If you delete your account, you'll lose all your data and won't be able to get it back.  Your data, your choice - but don't do this unless you really want to.  In either case, if you have the time please <%= link_to "tell us", contact_path, target: "_blank" %> about your experience using Ganesh, and/or why you're considering closing your account.	
-</p>
+<div class="holder round">
+	<p>
+		If you delete your account, you'll lose all your data and won't be able to get it back.  
+		Your data, your choice - but don't do this unless you really want to.
+	</p>
+	
+	<p>
+		In either case, if you have the time please 
+		<%= link_to "tell us", contact_path, target: "_blank" %> 
+		about your experience using Ganesh, and/or why you're considering closing your account.
+	</p>
 
-
-<!-- http://stackoverflow.com/questions/5869038/link-to-with-delete-and-own-controller-and-action -->
-<div id="buttons">
-  <%= link_to "Yes, delete this account", 
-              {controller: 'users', action: 'destroy', id: @user.id },
-              {method: :delete, class: "big_button round unselectable bottom_left"} %>
-  <%= link_to "No, don't delete this account", root_path, class: "big_button round unselectable bottom_right" %>
+	<!-- http://stackoverflow.com/questions/5869038/link-to-with-delete-and-own-controller-and-action -->
+	<p id="buttons">
+	  <%= link_to "Yes, delete this account", 
+	              {controller: 'users', 
+		  					 action: 'destroy', 
+								 id: @user.id },
+	              {method: :delete, 
+								 class: "big_button round unselectable bottom_left"} %>
+		<span class="horizontal_spacer"></span>
+	  <%= link_to "No, don't delete this account", 
+	  	  root_path, 
+				class: "big_button round unselectable bottom_right" %>
+	</p>
 </div>
 

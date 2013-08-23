@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820083955) do
+ActiveRecord::Schema.define(:version => 20130822125649) do
 
   create_table "characteristics", :force => true do |t|
     t.string   "characteristic"
@@ -44,9 +44,8 @@ ActiveRecord::Schema.define(:version => 20130820083955) do
   create_table "student_groups", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.integer  "number_of_students"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "type_of_group"
   end
 

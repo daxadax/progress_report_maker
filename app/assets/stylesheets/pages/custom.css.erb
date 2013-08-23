@@ -20,24 +20,16 @@
 	margin-left: 2em;
 }
 
+.horizontal_spacer {
+	margin: 2em;
+}
+
 .float_right {
 	float:right;
 }
 
 .float_left {
 	float:left;
-}
-
-.bottom_left {
-	position: absolute;
-	bottom:   10%;
-	left:     10%;
-}
-
-.bottom_right {
-	position:  absolute;
-	bottom:    10%;
-	right:     10%;
 }
 
 .padding-top {
@@ -94,14 +86,22 @@
 
 .highlight {
 	text-decoration: italic;
-	color: #FFDD78;
-	font-size: 80%;
+/*	color: #FFDD78;*/
+	font-size: 105%;
 	letter-spacing: 1px;
 }
 
 .name {
 	font-size: 120%;
-	text-decoration: bold;
+	font-weight: bold;
+}
+
+#help {
+	display: none;
+}
+
+.help {
+/*	font-size: 800%;*/
 }
 		/*********************/
 		/**** page layout ****/
@@ -147,6 +147,7 @@ section {
     padding: 2em;
     margin-bottom: 2em;
     color: #fff;
+/*    font-size: 105%;*/
 }
 
 .holder2 {
@@ -170,6 +171,11 @@ section {
 	font-size: 110%;
 }
 
+.holder2 h4 {
+	font-size: 110%;
+	color: #1093FF;
+}
+
 ul {
     list-style: none;
     padding:0;
@@ -178,7 +184,7 @@ ul {
 
 li { 
     padding-left: 1em; 
-    color: #1093FF;
+    color: #fff;
 }
 
 section h1,h2 {
@@ -195,7 +201,7 @@ section h3,h4 {
 }
 
 section p {
-	margin-top:  2em;
+/*	margin-top:  1em;*/
     font-family: Verdana, sans-serif;
 	font-size:   105%;
 	color:       #fff;
@@ -284,7 +290,30 @@ table.fixed {
 		/*****************/
 #buttons {
 	position: relative;
-	margin-top: 12.5%;
+	margin-top: 7%;
+	text-align: center;
+}
+
+.add_button {
+	background:      #81C6FF;
+	border:          2px #035090 solid;
+	font-family:     'Shadows Into Light Two', cursive;
+    color:           #035090; 
+	font-size:       200%;
+	text-decoration: none;
+	width:           300px;
+	margin:          5px 5px 5px 5px;
+	padding-right:   10px;
+	padding-left:    10px;
+	text-align:      center;
+	margin-left:     auto;
+    margin-right:    auto;
+}
+
+.add_button:hover {
+	background:  #035090;
+	border:      2px #81C6FF solid;
+	color:       #81C6FF;
 }
 
 .small_button {
@@ -316,7 +345,6 @@ table.fixed {
 	border:          2px #035090 solid;
 	font-family:     'Shadows Into Light Two', cursive;
     color:           #035090; 
-/*    text-shadow:     3px 1px 3px #81C6FF, 3px 3px 0px rgba(0,0,0,0.15);*/
 	font-size:       200%;
 	text-decoration: none;
 	width:           300px;
@@ -561,7 +589,6 @@ ul.users li {
 	color: #FF4F00;
 }
 
-
     /* student_group#index & show*/
 
 .evaluate {
@@ -587,8 +614,11 @@ ul.users li {
 
     /* student_group#new */
 
-#student_fields {
-	list-style-type: decimal;
+.student_add_remove {
+	position: absolute;
+	bottom: 60px;
+    right: 13%;
+    font-size: 200%;
 }
 
     /*  subject datepicker  */
@@ -692,6 +722,17 @@ ul.users li {
     color: #035090; 
 }
 
+#ui-datepicker-div { display:none } 
+
+    /*goal#new*/
+
+.goal_add_remove {
+	margin-top: -20px;
+	margin-bottom: 1.5em;
+	/* THE ILLUMINATUS IS REAL! */
+	margin-left: 23em;
+}
+
     /*evaluations#new*/
 
 .eval_header {
@@ -723,11 +764,12 @@ ul.users li {
 }
 
 .box {
-	position: relative;
-	bottom: 3px;
-	left: 10em;
+	position: absolute;
+	bottom: 3.5%;
+	right: 7%;
+	margin: 5px;
+	padding: 20px;
 	width: 50%;
-	height: 8%;
 	background: #B05C37;
 	border: 3px solid #902D00;
 	color: #fff;

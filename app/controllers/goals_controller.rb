@@ -19,12 +19,16 @@ class GoalsController < ApplicationController
   end
   
   def create
-    @goal = @subject.goals.create(params[:goal])
+    @goals = params[:goals]
+    @goals.each do |goal|
+      @goal = @subject.goals.create(goal: goal)
+    end
       if @goal.save
-        if params[:another_subject].nil?
-          redirect_to groups_path, flash: { success: "Goal(s) added successfully!" }
+        if params[:another_subject]
+          redirect_to new_student_group_subject_path(@subject.student_group_id),
+                      flash: { success: "Goal(s) added successfully!" }
         else
-          render :new
+          redirect_to groups_path, flash: { success: "Goal(s) added successfully!" }
         end
       else
         @title = "Add a goal"
@@ -39,7 +43,8 @@ class GoalsController < ApplicationController
   
   def update
     if @goal.update_attributes(params[:goal])
-      redirect_to subject_path(@subject, {student_group_id: @subject.student_group_id}), flash: { success: "Goal #{@goal.id} updated successfully" }
+      redirect_to subject_path(@subject, {student_group_id: @subject.student_group_id}), 
+                  flash: { success: "Goal updated successfully" }
     else  
       @title = "Edit goal"
       flash.now[:error] = "Something's gone wrong.  Please try again!"
@@ -49,7 +54,8 @@ class GoalsController < ApplicationController
   
   def destroy
     @goal.destroy
-    redirect_to subject_path(@subject), flash: { success: "#{@goal.id} has been deleted" }
+    redirect_to subject_path(@subject, student_group_id: @subject.student_group_id), 
+                flash: { success: "Goal deleted successfully" }
   end
   
   # #methods

@@ -66,9 +66,9 @@ Ganesh::Application.routes.draw do
   # evaluations
   match ':student_group_id/evaluation_note',     
          :to => 'evaluations#note', :as => :eval_note
-  match 'evaluation_walkthrough',                 
-         :to => 'evaluations#help', :as => :eval_help
   match ':student_group_id/evaluate/:student_id', 
          :to => 'evaluations#new',  :as => :evaluate   
+  match ':student_group_id/no_goals', 
+         :to => 'evaluations#eval_fail', :as => :eval_fail       
 
 end

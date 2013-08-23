@@ -36,7 +36,7 @@ class SubjectsController < ApplicationController
   
   def update
     if @subject.update_attributes(params[:subject])
-      redirect_to group_path(@student_group, {id: @student_group.id}), flash: { success: "#{@subject.name} updated successfully" }
+      redirect_to groups_path(@student_group), flash: { success: "#{@subject.name} updated successfully" }
     else  
       @title = "Edit subject"
       flash.now[:error] = "Something's gone wrong.  Please try again!"

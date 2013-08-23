@@ -1,7 +1,6 @@
 <div class="holder round">
 	<h2>
-		Before you evaluate "<%= @student_group.name %>", please note that 
-		this could take some time.
+		Please note that this could take some time.
 	</h2>
 	<p>
 		Remember, <span class="strong">this is a tool to help you help your students</span> and ultimately be a more 
@@ -12,15 +11,20 @@
 	</p>
 	
 	<p>
-		If this is your first time evaluating a class, please 
-		<%= link_to "click here", eval_help_path %> for a brief walkthrough.
+		If this is your first time evaluating a class (or you need a quick refresher course), 
+		please <%= content_tag("a", "click here", id: "show_help") %>.
 	</p>
 	
-	<div id="buttons">
+  <%= render 'eval_help' %>
+	
+	<br />
+	
+	<p id="buttons">
 	  <%= link_to "Begin evaluation", 
 	              {controller: 'evaluations', action: 'new', student_group_id: @student_group, student_id: @student_group.students.first },
 	              {class: "big_button round unselectable bottom_left"} %>
+		<span class="horizontal_spacer"></span>
 	  <%= link_to "Cancel", root_path, class: "big_button round unselectable bottom_right" %>
-	</div>
+	</p>
 	
 </div>

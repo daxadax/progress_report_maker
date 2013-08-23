@@ -18,6 +18,8 @@ class Goal < ActiveRecord::Base
   
   validates :subject_id, :goal, presence: true
   
+  before_save { |g| g.goal = goal.humanize }
+  
   # methods
   
   # http://stackoverflow.com/a/1341318/2128691
@@ -32,4 +34,10 @@ class Goal < ActiveRecord::Base
     average = @scores.inject{ |sum, el| sum + el }.to_f / @scores.size
     average.round(2)
   end
+  
+  # def first_eval
+  #   @evaluations = self.evaluations.order('evaluations.created_at ASC')
+  #   @evaluations_by_day = @evaluations.count( :group => "DATE( created_at )" )
+  # end
+  
 end

@@ -3,6 +3,7 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
+# 
 development:
   adapter: sqlite3
   database: db/development.sqlite3
@@ -23,3 +24,32 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
+# development:
+#   adapter: mysql
+#   encoding: utf8
+#   reconnect: false
+#   database: db/development
+#   pool: 5
+#   username: charlie kim
+#   password: /
+#   # socket: /tmp/mysql.sock
+# test:
+#   adapter: mysql
+#   encoding: utf8
+#   reconnect: false
+#   database: db/test
+#   pool: 5
+#   username: charlie kim
+#   password: /
+#   # socket: /tmp/mysql.sock
+# 
+# production:
+#   adapter: mysql
+#   encoding: utf8
+#   reconnect: false
+#   database: db/production
+#   pool: 5
+#   username: Charlie Kim
+#   password: /
+  # socket: /tmp/mysql.sock

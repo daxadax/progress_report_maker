@@ -14,7 +14,13 @@
 					<% subject.goals.all.each do |goal| %>
 				  <tr class="<%= cycle("odd", "even")%>">
 				    <td><%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %></td>
-				    <td><%= goal.avg %></td>
+				    <!-- <td>first evaluation average</td> -->
+				    <!-- <td>next evaluation average, etc</td> -->
+				    <% if goal.avg.nan? %>
+						  <td class="strong">No data yet!</td>
+						<% else %>
+						  <td class="avg_row"><%= goal.avg %></td>
+						<% end %>
 				  </tr>
 	        <% end %>
 			  </tbody>
@@ -23,3 +29,6 @@
 		<% end %>
 	</div>
 <% end %>
+
+
+

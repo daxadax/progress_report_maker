@@ -1,25 +1,31 @@
-<table class="fixed">
-  <tbody>
-		<tr>
-		  <th></th>
-		  <th>Subject average:</th>
-		  <th>Classtime remaining:</th>
-	  </tr>
-		<% if group.subjects.present? %>
-		  <% group.subjects.all.each do |subject| %>
-	  <tr class="<%= cycle("odd", "even", name: 'subjects')%>">
-		  <td><%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}) %></td>
-      <% if subject.avg.nan? %>
-			  <td class="strong">No data yet!</td>
-			<% else %>
-			  <td class="avg_row"><%= subject.avg %></td>
-			<% end %>
-      <td><%= subject.weeks_left %></td>
-    </tr>
-		  <% end %>
-		  <% reset_cycle("subjects") %>
-		<% else %>
-		  <%= link_to "Add a subject", new_student_group_subject_path(group), class: "big_button round unselectable" %>
-		<% end %>
-  </tbody>
-</table>
+<% if group.subjects.present? %>
+	<table>
+	  <tbody>
+			<tr>
+			  <th></th>
+			  <th>Subject average:</th>
+			  <th>Classtime remaining:</th>
+		  </tr>
+			  <% group.subjects.all.each do |subject| %>
+		  <tr class="<%= cycle("odd", "even", name: 'subjects')%>">
+			  <td>
+			    <%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}) %>
+				  <%= link_to "edit", edit_student_group_subject_path(group, subject), :class => "lil_link" %>
+				</td>
+	      <% if subject.avg.nan? %>
+				  <td class="strong">No data yet!</td>
+				<% else %>
+				  <td><%= subject.avg %></td>
+				<% end %>
+	      <td><%= subject.weeks_left %></td>
+	    </tr>
+			  <% end %>
+			  <% reset_cycle("subjects") %>
+		</tbody>
+	</table>
+<% else %>
+  <p>
+	  <br />
+  	<%= link_to "Add a subject", new_student_group_subject_path(group), class: "center big_button round unselectable" %>
+  </p>
+<% end %>

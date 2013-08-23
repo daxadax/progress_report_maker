@@ -76,11 +76,12 @@ render_views
   
   describe "POST 'create'" do
   
-    before(:each) do
-      @create = post :create, {subject_id: @sub1}
-    end
-  
     describe "failure" do
+  
+      before(:each) do
+        @goals = ["", ""]
+        @create = post :create, {goals: @goals, subject_id: @sub1}
+      end
   
       it "should have the right title" do
         @create
@@ -93,9 +94,8 @@ render_views
       end
   
       it "should not create a goal" do
-        @attr = {goal: ""}
         lambda do
-          post :create, {subject_id: @sub1, goal: @attr}
+          post :create, {subject_id: @sub1, goals: @goals}
         end.should_not change {@sub1.goals.count}
       end
   
@@ -107,19 +107,21 @@ render_views
     end
   
     describe "success" do
-  
+      
       before(:each) do
-        @attr = {goal: "Baste a turkey"}
+        @goals = %w[eat, pray, love]
+        @create = post :create, {goals: @goals, subject_id: @sub1}
       end
   
       it "should create a goal" do  
+        count = @goals.count
         lambda do
-          post :create, {subject_id: @sg, goal: @attr}
-        end.should change {@sub1.goals.count}.by(1)
+          post :create, {subject_id: @sg, goals: @goals}
+        end.should change {@sub1.goals.count}.by(count)
       end
   
       it "should flash a success message" do
-        post :create, {subject_id: @sub1, goal: @attr}
+        post :create, {subject_id: @sub1, goals: @goals}
         flash[:success].should =~ /goal/i
       end
   
