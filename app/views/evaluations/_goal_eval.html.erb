@@ -9,13 +9,14 @@
 					    <% subject.goals.each do |goal| %>
 							  <tr class="<%= cycle("odd", "even", name: "goals")%>">
 							    <td class="goal_row"><%= goal.goal %></td> 
-							    <td>
-									  <% [1, 2, 3, 4, 5].each do |score| %>
-									    <%#= f.radio_button :score, score %>
-									    <%= radio_button_tag "score_#{goal.id}", score%>
-									    <%= score %>
-									  <% end %>
-								  </td>
+									<div id="radio">
+										<td>
+										  <% [1, 2, 3, 4, 5].each do |score| %>
+										    <%= radio_button_tag "score_#{goal.id}", score %>
+										    <%= label_tag "score_#{goal.id}", score %>
+										  <% end %>
+									  </td>
+									</div>
 							  </tr>  
 							<% end %>
 							<% reset_cycle("goals") %>
