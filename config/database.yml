@@ -43,7 +43,6 @@ test:
   username: root
   password: password
   socket: /tmp/mysql.sock
-  
 production:
   adapter: mysql2
   encoding: utf8
