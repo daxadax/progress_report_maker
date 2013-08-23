@@ -13,33 +13,28 @@ gem "thor", "~> 0.17.0"
 gem "cocoon"
 gem 'jquery_datepicker'
 
+#DB
+
+gem "mysql"
+
 #GROUPS 
-
-#production
-group :production do
-  gem 'pg'
-end
-
-#development and test
-
-group :development, :test do
-  gem 'sqlite3'
-end
 
 #development
 
 group :development do
+  
   gem "rspec-rails"
-  gem 'annotate'
-  gem 'faker', '~> 1.0.1'
-    
+  gem "annotate"
+  gem "faker"
+
 end
 
 #test
 
 group :test do
+  
   gem "rspec"
-  gem "factory_girl_rails",   '~> 1.0'
+  gem "factory_girl_rails"
 
 end
 

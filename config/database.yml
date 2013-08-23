@@ -33,7 +33,7 @@ development:
   pool: 5
   username: charlie kim
   password: /
-  # socket: /tmp/mysql.sock
+  socket: /tmp/mysql.sock
 test:
   adapter: mysql
   encoding: utf8
@@ -42,8 +42,8 @@ test:
   pool: 5
   username: charlie kim
   password: /
-  # socket: /tmp/mysql.sock
-
+  socket: /tmp/mysql.sock
+  
 production:
   adapter: mysql
   encoding: utf8
@@ -52,4 +52,4 @@ production:
   pool: 5
   username: Charlie Kim
   password: /
-  # socket: /tmp/mysql.sock
+  socket: /tmp/mysql.sock
