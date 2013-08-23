@@ -15,7 +15,7 @@ gem 'jquery_datepicker'
 
 #DB
 
-gem "mysql"
+gem "mysql2"
 
 #GROUPS 
 
