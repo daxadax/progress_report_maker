@@ -107,7 +107,7 @@ describe "POST 'create'" do
   describe "success" do
                                    
     before(:each) do
-      @attr = {name: "English", start_date: Date.today+120, end_date: Date.today+180, contact_time: 50}
+      @attr = FactoryGirl.attributes_for(:subject)    
     end
    
     it "should create a student" do  
@@ -124,10 +124,9 @@ describe "POST 'create'" do
     it "should redirect to the new_goal path" do
       post :create, {student_group_id: @sg, subject: @attr}
       response.code.should == "302"
-      # hardcoded this 3 because @sub1 == 1, but test is expecting 3 for some reason?
-      # doesn't effect the functionality of what is being tested, 
-      # just rspec being beyond my pale
-      response.should redirect_to(new_subject_goal_path(3))
+      # regarding 'Subject.last'
+      # http://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
+      response.should redirect_to(new_subject_goal_path(Subject.last))
     end
                                  
   end 
@@ -221,7 +220,7 @@ describe "DELETE 'destroy'" do
   
   it "should redirect to student_groups#show" do
     delete :destroy, {student_group_id: @sg, id: @sub1}
-    response.should redirect_to group_path
+    response.should redirect_to group_path(@sg)
   end
 
 end

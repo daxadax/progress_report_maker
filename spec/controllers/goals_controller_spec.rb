@@ -116,7 +116,7 @@ render_views
       it "should create a goal" do  
         count = @goals.count
         lambda do
-          post :create, {subject_id: @sg, goals: @goals}
+          post :create, {subject_id: @sub1, goals: @goals}
         end.should change {@sub1.goals.count}.by(count)
       end
   
@@ -189,7 +189,7 @@ render_views
   
       it "should redirect to subjects#show" do
         @update
-        response.should redirect_to subject_path(@sub1)
+        response.should redirect_to subject_path(student_group_id: @sg, id: @sub1)
       end
   
       it "should flash 'Update successful'" do
@@ -216,7 +216,7 @@ render_views
   
     it "should redirect to subjects#show" do
       delete :destroy, {subject_id: @sub1, id: @g1}
-      response.should redirect_to subject_path(@sub1)
+      response.should redirect_to subject_path(student_group_id: @sg, id: @sub1)
     end
   
   end
