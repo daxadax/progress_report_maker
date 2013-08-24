@@ -30,7 +30,8 @@ class StudentGroupsController < ApplicationController
           @student_group.students.create(name:"#{student[:name]}", gender: "#{student[:gender]}")
         end
       end 
-      redirect_to new_student_group_subject_path(@student_group), flash: { success: "#{@student_group.name} has been added successfully." }   
+      redirect_to new_student_group_subject_path(@student_group), 
+                  flash: { success: "#{@student_group.name} has been added successfully." }   
     else
       ### http://railsforum.com/viewtopic.php?pid=40056#p40056  
       @student = @student_group.students.build
