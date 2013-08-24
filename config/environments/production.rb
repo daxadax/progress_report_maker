@@ -6,12 +6,18 @@ Ganesh::Application.configure do
 config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
 # Precompile additional assets
-config.assets.precompile += %w( .svg .eot .woff .ttf )
+config.assets.precompile += %w( .svg .eot .woff .ttf *.png 
+                                blueprint/screen.css 
+                                blueprint/print.css 
+                                blueprint/ie.css
+                                pages/custom.css
+                                pages/custom.css.erb
+                                pages/radio_buttons.css)
 
 # ####
 
   # From: http://rubysnippets.com/2013/01/08/managing-the-asset-pipeline-in-rails-3/
-  config.assets.precompile += ['application.css', 'landing.css']
+  config.assets.precompile += %w(application.css landing.css evaluation.css)
   
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -21,7 +27,7 @@ config.assets.precompile += %w( .svg .eot .woff .ttf )
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
