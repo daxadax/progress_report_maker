@@ -2,6 +2,8 @@ namespace :db do
 
   desc "Fill db with sample data"
 
+  require "factory_girl_rails"
+
   task :populate, :environment do
 
     # warning message
