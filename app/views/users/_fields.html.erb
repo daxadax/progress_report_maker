@@ -1,25 +1,25 @@
 <div>
-	<p>Your full name:
+	<p>
 		<div class="form_field round">
-		  <%= f.text_field :name %>
+		  <%= f.text_field :name, placeholder: "Full name" %>
 		</div>
 	</p>
 
-	<p>Your email address:
+	<p>
 		<div class="form_field round">	
-			<%= f.email_field :email %>
+			<%= f.email_field :email, placeholder: "Email address" %>
 		</div>
 	</p>
 
-	<p>Your password:
+	<p>
 		<div class="form_field round">
-		  <%= f.password_field :password %>
+		  <%= f.password_field :password, placeholder: "Password" %>
 		</div>
 	</p>
 
-	<p>Confirm your password:
+	<p>
 		<div class="form_field round">
-			<%= f.password_field :password_confirmation %>			
+			<%= f.password_field :password_confirmation, placeholder: "Re-type Password" %>			
 		</div>
 	</p>
 </div>

@@ -1,13 +1,20 @@
-<%= form_for(@user) do |f| %>
+<div class="holder round">
 
-<div class="form_section round">
+	<div id="new_user_logo">
+	  <%= image_tag("ganesh.png") %>
+  </div>
+	
+	<div id="new_user_fields" class="form_section">
+    <div class="holder2 round center">
+		  <%= form_for(@user) do |f| %>
+		    <%= render 'fields', :f => f  %>
 
-  <%= render 'fields', :f => f  %>
-
-	<div>
-	  <%= f.submit "Get Started!", :class => 'big_button round unselectable' %>
+			<div>
+			  <%= f.submit "Get Started!", :class => 'big_button round unselectable' %>
+			</div>
+    	<% end %>
+		</div>
 	</div>
 
-</div>
 
-<% end %>
+</div>

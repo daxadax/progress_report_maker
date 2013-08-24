@@ -1,31 +1,22 @@
-<%= form_for(:session, :url => sessions_path) do |f| %>
-	
-  <div class="form_section round">
-    <p>
-    	Enter your email address:
-    </p>
-		<div class="form_field round">
-			<%= f.email_field :email %><br />
-		</div>
-    <p>
-    	Enter your password:
-    </p>
-		<div class="form_field round">
-			<%= f.password_field :password %>
-		</div>
-		
-		<br />
-		
-		<div>
-			<%= f.submit "Log In", :class => 'big_button round' %>
+<div class="holder round">
+
+  <div id="new_session_logo">
+	  <%= image_tag("ganesh.png") %>
+  </div>
+
+  <div id="ganesh_sample">
+  	<%= render 'ganesh_info' %>
+  </div>
+  
+	<div id="new_session_fields" class="form_section">
+    <div class="holder2 round center">
+		  <%= form_for(:session, :url => sessions_path) do |f| %>
+		    <%= render 'fields', :f => f  %>
+
+			<div>
+			  <%= f.submit "Log In", :class => 'big_button round unselectable' %><br />
+				New user? Sign up <%= link_to "here", signup_path %>
+			</div>
+    	<% end %>
 		</div>
 	</div>
-	
-<% end %>
-
-<br />
-<p>
-	New user? <%= link_to "Sign up now!", signup_path %>
-</p>
-
-<%= "user'#n'@x.com +password" if Rails.env.development?  %>
