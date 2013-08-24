@@ -3,12 +3,8 @@ namespace :db do
   desc "Fill db with sample data"
   
   task :populate, :environment do
-<<<<<<< HEAD
-  Rails.env = 'development'
-=======
     
-    'factory_girl_rails'
->>>>>>> heroku
+    require "factory_girl_rails"
 
     # warning message
     puts "##############################################################"
