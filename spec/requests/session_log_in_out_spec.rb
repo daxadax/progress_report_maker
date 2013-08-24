@@ -21,7 +21,7 @@ require "spec_helper"
       describe "success" do
         
         it "should sign a user in AND out" do
-          user = Factory(:user)
+          user = FactoryGirl.create(:user)
           visit login_path
           fill_in 'session_email',    with: user.email
           fill_in 'session_password', with: user.password

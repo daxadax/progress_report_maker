@@ -2,13 +2,12 @@
 #
 # Table name: student_groups
 #
-#  id                 :integer          not null, primary key
-#  name               :string(255)
-#  user_id            :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  number_of_students :integer
-#  type_of_group      :string(255)
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  user_id       :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  type_of_group :string(255)
 #
 
 require 'spec_helper'

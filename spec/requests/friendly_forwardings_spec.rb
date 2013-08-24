@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "FriendlyForwardings" do
 
   it "should forward to the requested page after login" do
-    user = Factory(:user)
+    user = FactoryGirl.create(:user)
     visit edit_user_path(user)
     fill_in 'session_email',    with: user.email
     fill_in 'session_password', with: user.password

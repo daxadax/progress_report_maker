@@ -44,11 +44,11 @@ RSpec.configure do |config|
   
   def association_attr
     # User attritbutes 
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
   
     # Student_group
-    @student_group = Factory(:student_group, user: @user)
-    @student_group2 = Factory(:student_group, user: @user, name: "Rainbow class")
+    @student_group = FactoryGirl.create(:student_group, user: @user)
+    @student_group2 = FactoryGirl.create(:student_group, user: @user, name: "Rainbow class")
     @student_groups = [@student_group, @student_group2]
       
     # Student attributes
@@ -56,7 +56,7 @@ RSpec.configure do |config|
     # Student 
     @student = @student_group.students.new(@student_attr)
     @student.save
-    @student2 = Factory(:student, student_group: @student_group)
+    @student2 = FactoryGirl.create(:student, student_group: @student_group)
   
     # Subject attributes
     @start_date = Date.today+120
@@ -68,16 +68,16 @@ RSpec.configure do |config|
     @subject.save
     
     # Goal
-    @goal = Factory(:goal, subject: @subject)
-    @goal2 = Factory(:goal, subject: @subject, goal: "Should display appropriate classroom behavior")
+    @goal = FactoryGirl.create(:goal, subject: @subject)
+    @goal2 = FactoryGirl.create(:goal, subject: @subject, goal: "Should display appropriate classroom behavior")
     @goals = [@goal, @goal2]
     
     # Characteristic
-    @characteristic =  Factory(:characteristic, student: @student)
-    @characteristic2 = Factory(:characteristic, student: @student, characteristic: "Dyslexic")
+    @characteristic =  FactoryGirl.create(:characteristic, student: @student)
+    @characteristic2 = FactoryGirl.create(:characteristic, student: @student, characteristic: "Dyslexic")
     
     # Evaluation
-    @eval = Factory(:evaluation, student: @student, goal: @goal)
+    @eval = FactoryGirl.create(:evaluation, student: @student, goal: @goal)
     
   end
   

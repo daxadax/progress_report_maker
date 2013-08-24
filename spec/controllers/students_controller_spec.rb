@@ -4,10 +4,10 @@ describe StudentsController do
 render_views
 
 before(:each) do
-  @user = test_login(Factory(:user))
-  @sg = Factory(:student_group, user: @user)
-  @s1 = Factory(:student, student_group: @sg)
-  @s2 = Factory(:student, student_group: @sg, name: "Bendegúz")
+  @user = test_login(FactoryGirl.create(:user))
+  @sg = FactoryGirl.create(:student_group, user: @user)
+  @s1 = FactoryGirl.create(:student, student_group: @sg)
+  @s2 = FactoryGirl.create(:student, student_group: @sg, name: "Bendegúz")
   @students = [@s1, @s2]
 end
 

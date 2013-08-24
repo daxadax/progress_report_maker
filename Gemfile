@@ -35,8 +35,7 @@ end
 group :test do
   
   gem "rspec"
-  gem 'factory_girl_rails', :require => false
-
+  gem 'factory_girl_rails'
 end
 
 

@@ -45,7 +45,7 @@ describe SessionsController do
     describe "success" do
       
       before(:each) do
-        @user = Factory(:user)
+        @user = FactoryGirl.create(:user)
         @attr = { email: @user.email, password: @user.password }      
       end 
       
@@ -67,14 +67,14 @@ describe SessionsController do
   describe "DELETE 'destroy'" do
     
     it "should log the user out" do
-      test_login(Factory(:user))
+      test_login(FactoryGirl.create(:user))
       delete :destroy
       controller.should_not be_logged_in
          # response.should flash 'you have logged out'  
     end
     
     it "should redirect to '/logout'" do
-      test_login(Factory(:user))
+      test_login(FactoryGirl.create(:user))
       delete :destroy
       response.should redirect_to login_path
     end

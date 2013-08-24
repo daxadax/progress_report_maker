@@ -19,7 +19,7 @@ describe Goal do
   end
   
   it "should create a new instance with valid attributes" do
-    @goal = Factory(:goal, subject: @subject)
+    @goal = FactoryGirl.create(:goal, subject: @subject)
     @goal.should be_valid
   end
   

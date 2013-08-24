@@ -8,7 +8,7 @@ describe UsersController do
     describe "for users" do
       
       before(:each) do
-        @user = Factory(:user)
+        @user = FactoryGirl.create(:user)
       end
       
       it "should deny access" do
@@ -21,7 +21,7 @@ describe UsersController do
     describe "for admin users" do 
         before(:each) do
           #describe the users here as admins 
-          @user = Factory(:user, email: "admin@example.com")
+          @user = FactoryGirl.create(:user, email: "admin@example.com")
           @user.toggle(:admin)
           test_login(@user)      
         end
@@ -50,7 +50,7 @@ describe UsersController do
   describe "GET 'show" do
         
         before(:each) do
-          @user = Factory(:user)
+          @user = FactoryGirl.create(:user)
           test_login(@user)
           @show = get :show, :id => @user
         end
@@ -149,7 +149,7 @@ describe UsersController do
   describe "GET 'edit'" do
     
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       test_login(@user)
     end
     
@@ -168,7 +168,7 @@ describe UsersController do
   describe "PUT 'update'" do
     
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       test_login(@user)
     end
     
@@ -221,7 +221,7 @@ describe UsersController do
   describe "DELETE 'destroy'" do
     
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
     end
     
     describe "'guest' users" do
@@ -257,7 +257,7 @@ describe UsersController do
   describe "authentication of show/edit/update actions" do
     
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
     end
     
     describe "for users that are not logged in" do
@@ -283,7 +283,7 @@ describe UsersController do
     describe "for users that are logged in" do
       
       before(:each) do
-        wrong_user = Factory(:user, email: "wrong_user@example.com")
+        wrong_user = FactoryGirl.create(:user, email: "wrong_user@example.com")
         test_login(wrong_user)
       end
       

@@ -4,10 +4,10 @@ describe SubjectsController do
 render_views
 
 before(:each) do
-  @user = test_login(Factory(:user))
-  @sg = Factory(:student_group, user: @user)
-  @sub1 = Factory(:subject, student_group: @sg)
-  @sub2 = Factory(:subject, student_group: @sg, name: "Alchemy")
+  @user = test_login(FactoryGirl.create(:user))
+  @sg = FactoryGirl.create(:student_group, user: @user)
+  @sub1 = FactoryGirl.create(:subject, student_group: @sg)
+  @sub2 = FactoryGirl.create(:subject, student_group: @sg, name: "Alchemy")
   @subjects = [@sub1, @sub2]
 end
 
