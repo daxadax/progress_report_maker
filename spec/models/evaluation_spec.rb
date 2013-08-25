@@ -2,12 +2,13 @@
 #
 # Table name: evaluations
 #
-#  id         :integer          not null, primary key
-#  score      :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  student_id :integer
-#  goal_id    :integer
+#  id          :integer          not null, primary key
+#  score       :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  student_id  :integer
+#  goal_id     :integer
+#  eval_number :integer
 #
 
 require 'spec_helper'

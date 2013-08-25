@@ -16,19 +16,24 @@ include IndexHelper
     index_helper
     @subjects = @subjects.select{|key, hash| key["id"] == @student_group.id}
     @student = @student_group.students.find(params[:student_id])
+    # if no student number is set, set = 1, and increment eval_number count
     if params[:student_number].nil? 
       @student_number = 1 
+      @current_eval = Evaluation.last.set_eval_number
+    #   else student_number and eval_number are set from previous counts
     else
       @student_number = params[:student_number]
-    end  
+      @current_eval = @evaluation.last.eval_number
+    end
     @evaluation = @student.evaluations.build
     render :layout => 'layouts/evaluation'
   end
-    
+
   def create
     index_helper
     @student = @student_group.students.find(params[:student_id])
     @student_number = params[:student_number]
+    @current_eval = params[:current_eval]
     @subjects = @subjects.select{|key, hash| key["id"] == @student_group.id}
     @ids = []
     get_subject_ids = @subjects.each { |group, subjects| subjects.each { |subject| @ids << subject.id}}
@@ -37,7 +42,8 @@ include IndexHelper
     @goals.each do |goal|
       @evaluation = @student.evaluations.create(score: params["score_#{goal.id}"], 
                                                 student_id: @student, 
-                                                goal_id: goal.id)
+                                                goal_id: goal.id,
+                                                eval_number: @current_eval)
     end
     if @evaluation.save
       # increment student_number

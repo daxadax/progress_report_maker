@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822125649) do
+ActiveRecord::Schema.define(:version => 20130825070644) do
 
   create_table "characteristics", :force => true do |t|
     t.string   "characteristic"
@@ -22,12 +22,14 @@ ActiveRecord::Schema.define(:version => 20130822125649) do
 
   create_table "evaluations", :force => true do |t|
     t.integer  "score"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "student_id"
     t.integer  "goal_id"
+    t.integer  "eval_number"
   end
 
+  add_index "evaluations", ["eval_number"], :name => "index_evaluations_on_eval_number"
   add_index "evaluations", ["goal_id"], :name => "index_evaluations_on_goal_id"
   add_index "evaluations", ["student_id"], :name => "index_evaluations_on_student_id"
 
