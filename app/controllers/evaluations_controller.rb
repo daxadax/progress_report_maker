@@ -23,7 +23,7 @@ include IndexHelper
     #   else student_number and eval_number are set from previous counts
     else
       @student_number = params[:student_number]
-      @current_eval = @evaluation.last.eval_number
+      @current_eval = Evaluation.last.eval_number
     end
     @evaluation = @student.evaluations.build
     render :layout => 'layouts/evaluation'
