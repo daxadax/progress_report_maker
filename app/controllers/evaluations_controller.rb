@@ -1,7 +1,9 @@
 class EvaluationsController < ApplicationController
 include IndexHelper
+include EvaluationsHelper
 
   before_filter :get_student_group, except: :help
+  before_filter :get_student, only: [:new, :create]
   
   def note
     @title = "Before you begin..."
@@ -13,58 +15,37 @@ include IndexHelper
   end
    
   def new
-    index_helper
-    @subjects = @subjects.select{|key, hash| key["id"] == @student_group.id}
-    @student = @student_group.students.find(params[:student_id])
-    # if no student number is set, set = 1, and increment eval_number count
-    if params[:student_number].nil? 
-      @student_number = 1 
-      @current_eval = Evaluation.last.set_eval_number
-    #   else student_number and eval_number are set from previous counts
-    else
-      @student_number = params[:student_number]
-      @current_eval = Evaluation.last.eval_number
-    end
+    index_helper #inside index helper
+    get_subjects 
+    number_params #inside evaluation helper
     @evaluation = @student.evaluations.build
     render :layout => 'layouts/evaluation'
   end
 
   def create
     index_helper
-    @student = @student_group.students.find(params[:student_id])
+    get_subjects
     @student_number = params[:student_number]
     @current_eval = params[:current_eval]
-    @subjects = @subjects.select{|key, hash| key["id"] == @student_group.id}
-    @ids = []
-    get_subject_ids = @subjects.each { |group, subjects| subjects.each { |subject| @ids << subject.id}}
-    @goals = Goal.where('subject_id IN (?)', @ids)
-    # create evaluation data for each goal using params[score_x]
-    @goals.each do |goal|
-      @evaluation = @student.evaluations.create(score: params["score_#{goal.id}"], 
-                                                student_id: @student, 
-                                                goal_id: goal.id,
-                                                eval_number: @current_eval)
-    end
+    #next two inside evaluation helper
+    goals_by_subject 
+    create_evaluations
     if @evaluation.save
-      # increment student_number
-      @student_number = (@student_number.to_i + 1)
-      # if no students are left, stop
-      if @student_number > @student_group.students.count
-        redirect_to groups_path, 
-                    flash: { success: "Congratulations, 
-                                       you've completed the evaluation of 
-                                       #{@student_group.name}!" }
-      # if there are still students, keep going
-      else
-        redirect_to evaluate_path({ student_group_id: @student_group, 
-                                    student_id: @student.next, 
-                                    student_number: @student_number })
-      end
+      #inside evaluation helper
+      evaluation_save
     # if the evaluation didn't save, start over with the same student
     else  
       flash.now[:error] = "Something's gone wrong.  Have you filled in a score for each goal?"
       render :new, student_number: @student_number, :layout => 'layouts/evaluation'
     end
+  end
+
+  def get_subjects
+    @subjects = @subjects.select{|key, hash| key["id"] == @student_group.id}
+  end
+  
+  def get_student
+    @student = @student_group.students.find(params[:student_id])
   end
 
 end

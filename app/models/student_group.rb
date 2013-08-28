@@ -38,5 +38,10 @@ class StudentGroup < ActiveRecord::Base
   def has_goals?
     subjects.any? { |subject| subject.goals.present? }
   end
+  
+  def eval_count
+    #evals is a student method
+    students.first.evals.count
+  end
 
 end

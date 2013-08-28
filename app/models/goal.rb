@@ -35,9 +35,30 @@ class Goal < ActiveRecord::Base
     average.round(2)
   end
   
-  # def first_eval
-  #   @evaluations = self.evaluations.order('evaluations.created_at ASC')
-  #   @evaluations_by_day = @evaluations.count( :group => "DATE( created_at )" )
-  # end
+  def evals
+    self.evaluations.order("eval_number").group_by(&:student_id)
+  end
+  
+  def eval_avg(number)
+    evals = self.evals
+    scores = []
+    evals.values[number].each do |eval|
+      scores << eval.score
+    end  
+    (scores.sum.to_f / scores.size).round(2)
+  end
+  
+  def evals_by_number
+    self.evaluations.order("eval_number").group_by(&:eval_number)    
+  end
+  
+  def evals_by_number_avg(number)
+    evals = self.evals_by_number
+    scores = []
+    evals.values[number].each do |eval|
+      scores << eval.score
+    end
+    (scores.sum.to_f / scores.size).round(2)  
+  end
   
 end

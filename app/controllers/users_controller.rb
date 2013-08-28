@@ -62,7 +62,8 @@ class UsersController < ApplicationController
       # redirect_to root_path unless @user == current_user 
       unless @user == current_user
         # EDIT THIS LATER TO INCLUDE LINK LOCATION! #see pages_controller.rb:18
-        redirect_to root_path, flash: { access: "Something has gone wrong.  If you're trying to access a page, try the links on your dashboard" }
+        redirect_to root_path, flash: { access: "Something has gone wrong.  
+          If you're trying to access a page, try the links on the top right" }
       end
     end  
     

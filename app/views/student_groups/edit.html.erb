@@ -1,15 +1,19 @@
-<%= form_for([@student_group]) do |f| %>
-	
-  <div class="form_section round">
-		<div class="form_field round">
-			<p>Change the nickname for this group</p>
-			<%= f.text_field :name %><br />	
-		</div>
-		<div class="dropdown">
-			<p>Change the group type</p>
-			<%= f.select :type_of_group, [["select a group type", ""], "Young learners class (0-6)", "Primary class (7-12)", "Secondary class (13-17)", "Adult class (18+)", "Children's sport team", "Adult's sport team"] %>
-		</div><br />
-		<%= f.submit "Submit", :class => 'big_button round unselectable' %>
-  </div>
+<div class="holder round">
+	<%= form_for([@student_group]) do |f| %>
 
-<% end %>
+			<div class="form_field round">
+				<p>Change the nickname for this group</p>
+				<%= f.text_field :name %>
+			</div>
+			<br />
+			<div class="dropdown">
+				<p>Change the group type</p>
+				<%= f.select :type_of_group, [["select a group type", ""], "Young learners class (0-6)", "Primary class (7-12)", "Secondary class (13-17)", "Adult class (18+)", "Children's sport team", "Adult's sport team"] %>
+			</div>
+			
+			<br />
+			<%= f.submit "Submit", :class => 'big_button round unselectable clear' %>
+
+
+	<% end %>
+</div>

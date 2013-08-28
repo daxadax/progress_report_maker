@@ -1,19 +1,14 @@
-<%= form_for([@subject, @goal]) do |f| %>
+<table id="goal_form"> 
+    <tr>
+			<td class="goal_field fields">
+			  <%= text_field_tag 'goals[]', nil, :placeholder => "Students should..." %>
+			</td>
+		</tr>
+ </table>
+ 
+<%= render 'add_remove_goal' %>
 
-	<table id="goal_form"> 
-	    <tr>
-				<td class="goal_field fields">
-				  <%= text_field_tag 'goals[]', nil, :placeholder => "Students should..." %>
-				</td>
-			</tr>
-  </table>
-  
-  <%= render 'add_remove_goal' %>
+<%= render 'another_subject' %>
 
-  <%= render 'another_subject' %>
+<br />
 
-  <br />
-
-  <%= f.submit "Submit", :class => 'big_button round unselectable' %>
-	
-<% end %>

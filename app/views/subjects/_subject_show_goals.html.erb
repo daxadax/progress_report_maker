@@ -1,0 +1,26 @@
+<table class="fixed">
+  <tbody>
+	  	<% @subject.goals.each do |goal| %>
+	  <tr>
+      <td>
+        <%= link_to "#{goal.goal}", goal_path(goal, {subject_id: goal.subject.id}) %>
+        <%= link_to "edit", edit_subject_goal_path(@subject, goal), :class => "lil_link" %>
+			  <%= link_to "X", {controller: 'goals', 
+			                      action: 'destroy',
+			                      subject_id: @subject,
+			  										id: goal,
+														student_group_id: @student_group},
+			                     {confirm: "Do you really want to delete this goal?",
+			                      method: :delete, 
+			                      class: "lil_link"} %>
+			  </div>
+      </td>
+      <% if goal.avg.nan? %>
+			  <td class="strong">No data yet!</td>
+			<% else %>
+			  <td class="avg_row"><%= goal.avg %></td>
+			<% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

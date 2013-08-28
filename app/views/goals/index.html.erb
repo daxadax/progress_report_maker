@@ -1,1 +1,6 @@
-<%= render 'goal_index' %>
+<% @subjects.each do |group, subjects| %>	
+
+  <%= render 'goal_index', :group => group, :subjects => subjects %>
+  <div class="clear"></div>
+
+<% end %>

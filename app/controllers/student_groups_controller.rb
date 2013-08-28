@@ -58,7 +58,7 @@ class StudentGroupsController < ApplicationController
   def destroy
     @student_group.destroy
     redirect_to groups_path, flash: { success: "#{@student_group.name} has been deleted" }
-  end
+  end 
   
   #methods
   def get_user

@@ -30,6 +30,12 @@ class Evaluation < ActiveRecord::Base
       last_eval = 1   
     end 
   end
+  
+  # stackoverflow.com/a/7394804/2128691     
+  def next
+    Evaluation.where("id > ?", id).order("id ASC").first
+  end
+  
 
   private
 

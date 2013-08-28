@@ -1,11 +1,12 @@
-<div class="holder round unselectable"> 
-
-  <!-- Group Name -->
-
-  <h1 class="float_left">
+<!-- Group Name -->
+<div class="holderv round float_left">
+	<h1>
     <%= group.name %>
-  </h1> 
-  <br />
+  </h1>
+  	<%= content_tag("a", "∆", class: "toggle_group_name") %>
+</div>
+
+<div class="holder round clear group_name"> 
 
   <!-- Evaluate Link -->
 
@@ -38,12 +39,19 @@
 		    <%= render 'student_count', :group => group %>
 		  </h2>
 			<div class="indent-left">
-			  <%= render 'student_list', :group => group %>
+				<% if group.students.empty? %>   
+				  <p>
+				   	You don't have any students yet!
+				  </p>
+					<%= link_to "Add a student", new_student_group_student_path(group), class: "big_button round unselectable" %>
+				<% else %>
+				  <%= render 'student_list', :group => group %>
+			  <% end %>
 		  </div>
   	</div>
   </div>
   <br />
-
+	
 
   <!-- EDIT AND DELETE BUTTONS -->
   <div class="edit">

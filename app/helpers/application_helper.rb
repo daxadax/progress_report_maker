@@ -19,5 +19,12 @@ module ApplicationHelper
       count == 1 ? "#{singular}" : "#{plural}"
     end
   end
+  
+  # http://stackoverflow.com/a/17987612/2128691
+  def cond_class(condition, true_class, false_class = '')
+    condition ? true_class : false_class
+  end
  
 end
+
+

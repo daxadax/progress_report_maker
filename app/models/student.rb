@@ -56,5 +56,18 @@ class Student < ActiveRecord::Base
   def next
     Student.where("id > ?", id).order("id ASC").first
   end    
-         
+
+  def evals
+    evals = self.evaluations.order("eval_number").group_by(&:eval_number)
+  end
+  
+  def evals_avg(number)
+    evals = self.evals
+    scores = []
+    evals.values[number].each do |eval|
+      scores << eval.score
+    end  
+    (scores.sum.to_f / scores.size).round(2)  
+  end
+       
 end

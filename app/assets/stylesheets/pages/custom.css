@@ -154,17 +154,38 @@ section {
 	position: relative;
 	width: 90%;
 	background: rgba(0,0,0,0.4);
-    padding: 2em;
+    padding-top: 2em;
+    padding-right: 2em;
+    padding-left: 2em;
+    padding-bottom: 1em;
     margin: auto auto;
     margin-bottom: 2em;
     color: #fff;
+}
+
+.holderv {
+	position: relative;
+	width: auto;
+	background: rgba(0,0,0,0.4);
+    padding-top: 2em;
+    padding-right: 2em;
+    padding-left: 2em;
+    padding-bottom: 1em;
+    margin: auto auto;
+    margin-bottom: 2em;
+    color: #fff;
+}
+
+.holder h1 {
+	font-size: 250%;
+	color: #1093FF;
 }
 
 .holder h2 {
 /*	margin-top: -15px;*/
 	font-weight: bold;
 	font-size: 150%;
-	color: #1093FF;
+	color: #DBEFFF;
 }
 
 .holder h4 {
@@ -196,7 +217,7 @@ section h1,h2 {
 section h3,h4 {
 	font-size:       150%;
     font-family:     sans-serif;
-	color:           #DBEFFF;
+	color:           #81C6FF;
 	font-weight:     bold;
 }
 
@@ -279,7 +300,6 @@ table.fixed {
 
 .goal_row {
 	width: 50%;
-	font-size: 110%;
 }
 
 .button_row {
@@ -795,4 +815,17 @@ ul.users li {
 	background: #B05C37;
 	border: 3px solid #902D00;
 	color: #fff;
+}
+
+
+/* *** JS STUFF *** */
+
+.group_name {
+/*	display:none;*/
+}
+
+.toggle_group_name {
+	position: absolute;
+	top: 5%;
+	left: 10px;
 }

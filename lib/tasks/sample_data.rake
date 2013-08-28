@@ -8,7 +8,7 @@ namespace :db do
 
     # warning message
     puts "##############################################################"
-    puts "# if this takes too long, reduce the number of created users #"
+    puts "# at the moment, this doesn't work because of eval_number    #"
     puts "##############################################################"
     
     # reset the database
@@ -16,9 +16,6 @@ namespace :db do
 
     # some messages
     puts "Database reset. Database population started"
-    
-    # require factory_girl
-    require 'factory_girl_rails'
     
     # create users
     create_users
@@ -95,12 +92,19 @@ namespace :db do
     @students = Student.all
     @goals = Goal.all
     puts "Creating evaluation data for #{@students.count} students and #{@goals.count} goals"
+    # @eval_number = 1
     @students.each_with_index do |s, index|
       @goals.count.times do |i|
-        FactoryGirl.create_list :evaluation, 3, goal_id: @goals[i].id, student_id: s.id
+        FactoryGirl.create_list :evaluation, 3, 
+                                goal_id: @goals[i].id, 
+                                student_id: s.id
+                                # eval_number: @eval_number
+                               
       end
     # counter to track progress
     puts "Created data for 'Student #{index +1}'"  
+    # increment eval_number
+    # @eval_number += 1 
     end
   end
 

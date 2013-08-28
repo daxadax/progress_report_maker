@@ -1,42 +1,42 @@
-	<tbody>
+<tbody>
+	
+	<tr>
+		<th class="goal_row">Goal:</th>
+		<th class="avg_row">Student average:</th>
+		<th class="avg_row">Group average:</th>
+  </tr>
+	
+	<% subject.goals.each do |goal| %>	    
+	
+	<tr class="<%= cycle("odd", "even", name: "goals")%>">
+     
+     <td class="goal_row">
+       <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
+     </td>
 		
-		<tr>
-			<th class="goal_row">Goal:</th>
-			<th class="avg_row">Student average:</th>
-			<th class="avg_row">Group average:</th>
-	  </tr>
+		<%= render 'eval_avg', goal: goal %>
 		
-		<% subject.goals.each do |goal| %>	    
 		
-		<tr class="<%= cycle("odd", "even", name: "goals")%>">
-      
-      <td class="goal_row">
-        <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
-      </td>
-			
-			<%= render 'eval_avg', goal: goal %>
-			
-			
-			<% if @average.nan? %>
-			    <td class="strong">No data yet!</td>
-			<% else %>
-			  <td class="<%= @average.round(2) > goal.avg ? "greater" : "lesser" %>">
-			    <%= @average.round(2) %>
-			  </td>
-			<% end %>
-			
-		  <% if goal.avg.nan? %>
-			    <td class="strong">No data yet!</td>
-			<% else %>
-			  <td>
-			    <%= goal.avg %>
-			  </td>
-			<% end %>
+		<% if @average.nan? %>
+		    <td class="strong">No data yet!</td>
+		<% else %>
+		  <td class="<%= @average.round(2) > goal.avg ? "greater" : "lesser" %>">
+		    <%= @average.round(2) %>
+		  </td>
+		<% end %>
+		
+	  <% if goal.avg.nan? %>
+		    <td class="strong">No data yet!</td>
+		<% else %>
+		  <td>
+		    <%= goal.avg %>
+		  </td>
+		<% end %>
 
-			
-		</tr>
 		
-  </tbody>
+	</tr>
+	
+ </tbody>
 
-    <% end %>
-    <% reset_cycle("goals") %>
+   <% end %>
+   <% reset_cycle("goals") %>

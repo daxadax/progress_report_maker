@@ -1,24 +1,25 @@
-<table class="fixed">
-  <tbody>
-	  <tr>
+<table>
+  <tbody>      
+   	<tr>
 		  <th></th>
-	  	<th>Student average:</th>
+		  <% group.eval_count.times do |i|  %>                                                 
+	      <th>Evaluation <%= i+1 %></th>
+	    <% end %>
+	  	<th><%= "Student average" if group.eval_count > 0  %></th>
 	  </tr>
-    <% if group.students.present? %>
-		  <% group.students.all.each do |student| %>
-  	    <tr class="<%= cycle("odd", "even", name: "students")%>">
-  	    	<td><%= link_to "#{student.name}", student_path({student_group_id: student.student_group_id, id: student.id})%></td>
-          <% if student.avg.nan? %>
-					  <td class="strong">No data yet!</td>
-					<% else %>
-					  <td class="avg_row"><%= student.avg %></td>
-					<% end %>
-          <td></td>
-  	    </tr>
-			<% end %>
-			<% reset_cycle("students") %>
-		<% else %>
-			  <%= link_to "Add a student", new_student_group_student_path(group), class: "big_button round unselectable" %>
-			<% end %>
+    <% for student in group.students %>
+	    <tr class="<%= cycle("odd", "even", name: "students")%>">
+	    	<td>
+         <%= link_to "#{student.name}", 
+										 student_path({student_group_id: student.student_group_id, 
+																	 id: student.id})%>
+		    </td>
+        <% group.eval_count.times do |i| %>                                                 
+	        <td><%= student.evals_avg(i) %></td> 
+	      <% end %>
+			  <td><%= student.avg if group.eval_count > 0 %></td>
+	    </tr>
+	  <% end %>
+	  <% reset_cycle("students") %>
   </tbody>
 </table>

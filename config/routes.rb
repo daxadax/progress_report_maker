@@ -71,4 +71,5 @@ Ganesh::Application.routes.draw do
   match ':student_group_id/no_goals', 
          :to => 'evaluations#eval_fail', :as => :eval_fail       
 
+
 end

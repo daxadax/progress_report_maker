@@ -12,7 +12,11 @@
   
   <%= render 'goals_help' %>
 
-  <%= render 'goal_fields'%>    
-
+  <div class="holder2 round">
+		<%= form_for([@subject, @goal]) do |f| %>
+  	  <%= render 'goal_fields'%>    
+  </div>
+      <%= f.submit "Submit", :class => 'big_button round unselectable' %>
+    <% end %>
 </div>
 

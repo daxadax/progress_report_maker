@@ -1,11 +1,16 @@
-<h3>
-	Member of <span class="name"><%= @student_group.name %></span> for <%= @student.student_for_weeks %>
-</h3>
+<div class="holderv round float_left">
+	<h3>
+		Member of <span class="name"><%= @student_group.name %></span> for <%= @student.student_for_weeks %>
+	</h3>
+</div>
   
 <% @subjects.all.each do |subject| %>
-  <div class="holder round"> 
+  <div class="holder round clear"> 
     <h2 class="float_left">
-  	  <%= subject.name %>:
+  	  <%= @student.name %>'s average for 
+      <%= link_to subject.name, 
+									subject_path({student_group_id: @student_group, id: subject}) %> 
+			is ___
     </h2>
     
 	  <div class="holder2 round clear center">

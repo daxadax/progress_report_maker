@@ -1,11 +1,12 @@
 <div>
 	<% @student_groups.each do |group| %>
 	  <%= render "group_index", :group => group %>
+	  <div class="clear"></div>
 	<% end %>
 </div>
 
 <br />
   
-<p class="clear center">
-	<%= link_to "Create a new group", new_student_group_path, :class => 'big_button round unselectable' %>
+<p class="clear">
+	<%= link_to "Create a new group", new_student_group_path %>
 </p>
