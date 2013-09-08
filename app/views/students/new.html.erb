@@ -1,9 +1,9 @@
 <%= form_for([@student_group, @student]) do |f| %>
-  <table class="student_input_form">
-	  <tbody>    
-        <%= render 'student_fields', :f => f %>
-		</tbody>
-	</table>
+  
+  <div class="holder round">
+  	<%= render 'student_fields', :f => f %>
+  </div>
+
   <%= f.submit "Submit", :class => 'big_button round unselectable' %>
 
 <% end %>

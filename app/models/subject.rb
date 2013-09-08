@@ -52,4 +52,46 @@ class Subject < ActiveRecord::Base
     average.round(2)
   end
   
+  def avg_for(student)
+    @scores = []
+    self.goals.map do |goal|
+      goal.evals.map do |student_id, evals|
+        evals.select {student_id == student.id}.map do |eval|
+          @scores << eval.score
+        end
+      end
+    end
+    (@scores.sum.to_f / @scores.size).round(2)
+  end
+  
+  def avg_to_words(student)
+    average = self.avg_for(student)
+    if average >= 3.5
+      "Exceeds expectations"
+    elsif (2.75..3.5).include? average 
+      "Meets expectations"
+    else
+      "Struggling"
+    end  
+  end
+  
+  def status(student)
+    average = self.avg_for(student)
+    if average >= 3.5
+      :exceed
+    elsif (2.75..3.5).include? average 
+      :meet
+    else
+      :struggle
+    end
+  end
+  
+  def evals
+     evals = self.goals.first.evaluations.order("eval_number").group_by(&:eval_number)
+   end  
+
+   def eval_count
+     self.evals.keys.size
+   end
+  
 end

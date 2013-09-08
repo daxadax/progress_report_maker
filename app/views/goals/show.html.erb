@@ -1,19 +1,19 @@
-<div class="holder round">
-
-	<h1 class="center">
-		Members of <%= link_to "#{@goal.subject.name}", 
+<div class="holderv round float_left">
+	<h1>
+		Members of <br /><%= link_to "#{@goal.subject.name}", 
 		               subject_path({student_group_id: @subject.student_group_id, 
 			                           id: @subject}) %> 
-		should <%= "#{@goal.goal.downcase}" %>
 	</h1>
+	<h4>should <%= "#{@goal.goal.downcase}" %></h4>
+</div>
+<div class="holder round clear">
 
-  <div class="holder2 round">
     <% if @goal.avg.nan? %>
-      <p>
+      <h3 class=center>
         This goal has not been evaluated yet!
-  	</p>
+    	</h3>
     <% else %>	
       <%= render 'evaluations_by_goal' %>			
     <% end %>	
-  </div>
+
 <div/>

@@ -1,41 +1,30 @@
 <tbody>
 	
 	<tr>
-		<th class="goal_row">Goal:</th>
-		<th class="avg_row">Student average:</th>
-		<th class="avg_row">Group average:</th>
+		<th>Goal</th>
+		<% subject.eval_count.times do |i|  %>                                                 
+      <th class="center">Evaluation <%= i+1 %></th>
+    <% end %>
+		<th class="center">Goal average<br />(student)</th>
+		<th class="center">Goal average<br />(group)</th>
   </tr>
 	
 	<% subject.goals.each do |goal| %>	    
 	
 	<tr class="<%= cycle("odd", "even", name: "goals")%>">
-     
-     <td class="goal_row">
-       <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
-     </td>
-		
-		<%= render 'eval_avg', goal: goal %>
-		
-		
-		<% if @average.nan? %>
-		    <td class="strong">No data yet!</td>
-		<% else %>
-		  <td class="<%= @average.round(2) > goal.avg ? "greater" : "lesser" %>">
-		    <%= @average.round(2) %>
-		  </td>
-		<% end %>
-		
-	  <% if goal.avg.nan? %>
-		    <td class="strong">No data yet!</td>
-		<% else %>
-		  <td>
-		    <%= goal.avg %>
-		  </td>
-		<% end %>
-
-		
+    <td>
+      <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
+    </td>
+		<% subject.eval_count.times do |i|  %>                                                 
+      <td class="center"><%= goal.evals_for_student(@student, i) %></td> 
+    <% end %>
+		<td class="<%= goal.avg_for(@student) > goal.avg ? "greater" : "lesser" %> center">
+      <%= goal.avg_for(@student) %>
+		</td>
+	  <td class="center">
+	    <%= goal.avg %>
+	  </td>	
 	</tr>
-	
  </tbody>
 
    <% end %>

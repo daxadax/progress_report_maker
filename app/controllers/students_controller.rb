@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
     @student = @student_group.students.create(params[:student])
     if @student.save
       # for now redirect to (later this should be the subject#new action)
-      redirect_to group_path(@student_group, {id: @student_group.id}), flash: { success: "Student added successfully" }
+      redirect_to root_path, flash: { success: "Student added successfully" }
     else
       @title = "Add a student"
       flash.now[:error] = "Something's gone wrong.  Please try again!"

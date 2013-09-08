@@ -11,12 +11,6 @@ class GoalsController < ApplicationController
   
    def show
      index_helper
-     @evals = @goal.evals
-     @eval_count = @evals.first[1].count
-     @student_count = @evals.length
-     @loop_count = 0
-     @eval_count > 4 ? @limit_count = 4 : @limit_count = @eval_count
-     @title = ""
    end
    
   def new    

@@ -36,6 +36,15 @@ class Evaluation < ActiveRecord::Base
     Evaluation.where("id > ?", id).order("id ASC").first
   end
   
+  # def avg_for_eval(i)
+  #   self.evals.select
+  #     # where(:date => array_of_dates).
+  #     #         reduce(Hash.new(0)){ |h, r| h[r.date] = r.count;h}
+  #   #eval["#{i}"] = self.evals.fetch(self.eval_number_set(i))
+  #   # evals = self.evals.fetch(self.eval_number_set(i), "x")
+  #   # (scores.sum.to_f / scores.size).round(2)
+  # end
+  
 
   private
 
