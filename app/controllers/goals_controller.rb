@@ -11,7 +11,6 @@ class GoalsController < ApplicationController
   
    def show
      index_helper
-     @title = ""
    end
    
   def new    
