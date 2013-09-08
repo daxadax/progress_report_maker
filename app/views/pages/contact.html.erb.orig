@@ -1,0 +1,27 @@
+<div class="holder round">
+	<p>
+		Ganesh is currently in Beta.  If you have bugs to report, suggestions to make, or 
+	  any other input,  
+	  <%= link_to "please visit the subreddit", "http://www.reddit.com/r/ganesh_beta/", target: "_blank" %>
+	  associated with the beta test.
+	</p>
+
+<<<<<<< HEAD
+<p>
+	If you are not a reddit user, you can sign up 
+	<%= link_to "here", "http://www.reddit.com/register", :target => '_blank' %>. 
+</p>
+
+<br />
+<%= link_to "Ganesh subreddit", 
+            "http://www.reddit.com/r/ganesh_beta/", :target => '_blank',
+            class: "big_button round" %>
+=======
+	<p>
+		If you are not a reddit user, you can sign up 
+		<%= link_to "here", "http://www.reddit.com/register", target: "_blank" %>. 
+	</p>
+</div>
+
+ 
+>>>>>>> eval_number
