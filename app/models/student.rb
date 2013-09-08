@@ -57,16 +57,54 @@ class Student < ActiveRecord::Base
     Student.where("id > ?", id).order("id ASC").first
   end    
 
+  def eval_number_set(index)
+    numbers = self.student_group.students.first.evals.keys
+    # numbers = Evaluation.where('student_id = ?', self.id).uniq.pluck(:eval_number)
+    numbers[index]
+  end
+  
+  def reverse_eval_number_set(index)
+    numbers = self.student_group.students.first.evals.keys.reverse
+    numbers[index]
+  end
+  
+  def avg_for_eval(i)
+    scores = []
+    eval_number = self.reverse_eval_number_set(i)
+    count_differential = (self.student_group.eval_count - self.eval_count) - i
+    if self.student_group.eval_count == self.eval_count
+      for eval in self.evals.values[i] 
+        scores << eval.score
+      end
+      (scores.sum.to_f / scores.size).round(2)
+    else
+      if self.evals.values[count_differential]
+        for eval in self.evals.values[count_differential]
+          scores << eval.score
+        end
+        (scores.sum.to_f / scores.size).round(2)
+      else
+        "no data"
+      end  
+    end  
+  end
+
   def evals
     evals = self.evaluations.order("eval_number").group_by(&:eval_number)
+  end  
+  
+  def eval_count
+    self.evals.keys.size
   end
   
   def evals_avg(number)
     evals = self.evals
     scores = []
-    evals.values[number].each do |eval|
-      scores << eval.score
-    end  
+    if evals.values[number]
+      evals.values[number].each do |eval|
+        scores << eval.score
+      end
+    end    
     (scores.sum.to_f / scores.size).round(2)  
   end
        

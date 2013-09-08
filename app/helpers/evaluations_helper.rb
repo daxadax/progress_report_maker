@@ -2,8 +2,10 @@ module EvaluationsHelper
   
   def number_params
     # if no student number is set, set = 1, and increment eval_number count
-    if params[:student_number].nil? 
+    if params[:student_number].nil?
+      #  to set the student to be evaluated
       @student_number = 1 
+      #  to create the "eval_number" attribute
       @current_eval = Evaluation.last.set_eval_number
     #   else student_number and eval_number are set from previous counts
     else

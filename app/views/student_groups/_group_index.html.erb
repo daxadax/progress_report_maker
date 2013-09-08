@@ -7,20 +7,10 @@
 </div>
 
 <div class="holder round clear group_name"> 
-
-  <!-- Evaluate Link -->
-
-  <h1 class="float_right evaluate">
-	  <% if group.has_goals? %>
-  	  <%= link_to "Evaluate!", eval_note_path(group) %>
-    <% else %>
-      <%= link_to "Evaluate!", eval_fail_path(group) %>
-    <% end %>
-  </h1>
   
   <!-- Subjects -->
   
- 	<div class="clear indent-left">
+ 	<div class="clear">
   	<div class="holder2 round">
   		<h2>
 		  	<%= render 'subject_count', :group => group %>
@@ -28,42 +18,43 @@
 		  <div class="indent-left">
 		    <%= render 'subject_list', :group => group %>
 		  </div>
+		  <div class="new_x">
+		  	<%= link_to "add subject", new_student_group_subject_path(group) %>
+		  </div>
   	</div>
   </div>
 
   <!-- Students -->
 
-  <div class="indent-left">
+  <div>
   	<div class="holder2 round">
   		<h2>
 		    <%= render 'student_count', :group => group %>
 		  </h2>
 			<div class="indent-left">
 				<% if group.students.empty? %>   
-				  <p>
-				   	You don't have any students yet!
-				  </p>
-					<%= link_to "Add a student", new_student_group_student_path(group), class: "big_button round unselectable" %>
+				  <%= render 'no_student_list', :group => group %>
 				<% else %>
 				  <%= render 'student_list', :group => group %>
 			  <% end %>
 		  </div>
+      <div class="new_x">
+		  	<%= link_to "add student", new_student_group_student_path(group) %>
+		  </div>		
   	</div>
   </div>
   <br />
 	
+	<!-- Evaluate Link -->
+
+  <h1 class="evaluate">
+	  <% if group.has_goals? %>
+  	  <%= link_to "Evaluate!", eval_note_path(group) %>
+    <% else %>
+      <%= link_to "Evaluate!", eval_fail_path(group) %>
+    <% end %>
+  </h1>
 
   <!-- EDIT AND DELETE BUTTONS -->
-  <div class="edit">
-  	<%= link_to "edit", edit_student_group_path(group), 
-                        class: "lil_link" %> 
-  </div>
-  <div class="delete">
-	  <%= link_to "X", {controller: 'student_groups', 
-                      action: 'destroy',
-                      id: group },
-                     {confirm: "Do you really want to delete #{group.name}?",
-                      method: :delete, 
-                      class: "lil_link"} %>
-  </div>
+  <%= render 'groups_edit_delete', :group => group %>
 </div>

@@ -1,33 +1,35 @@
 <h3>The overall average for this goal is <%= @goal.avg %></h3>
 <br />
 
-<table class="fixed">                                                                            
-  <tr>                                                                             
-    <th>Student Name</th>
-    <!-- create as many <th> as there are evaluations -->
-    <% @limit_count.times do |i|  %>                                                 
-      <th>Evaluation <%= i+1 %></th>
-    <% end %>    
-    <th>Student Average <br />(for this goal)</th>              
-  </tr>                                                                           
+<div class="holder2 round">
+	<table>                                                                            
+	  <tr>                                                                             
+	    <th>Student Name</th>
+	    <!-- create as many <th> as there are evaluations -->
+	    <% @subject.student_group.eval_count.times do |i|  %>                                                 
+	      <th class="center">Evaluation <%= i+1 %></th>
+	    <% end %>    
+	    <th class="center">Student Average <br />(for this goal)</th>              
+	  </tr>                                                                           
 
-  <% for eval in @evals %>                    
-    <tr class="<%= cycle("odd", "even", name: "evals")%>">
-	    <!-- eval returns { s_id [eval],[eval]} -->
-      <td>
-        <%= link_to eval[1].first.student.name, 
-                    student_path({student_group_id: @goal.subject.student_group_id, 
-																	id: eval[1].first.student.id})%>
-      </td> 
-      <!-- in each student's row, print the score for each consecutive evaluation -->
-      <% @limit_count.times do |i|  %>                                                 
-        <td><%= eval[1][i].score %></td> 
-      <% end %>                                               
-        <td><%= @goal.eval_avg(@loop_count) %></td> 
-   
-    </tr>           
-   <% @loop_count += 1 %>  
-   <% end %>	 
-<% reset_cycle("evals") %>                                                                    
-</table>
+	  <% for eval in @goal.evals %>                    
+	    <tr class="<%= cycle("odd", "even", name: "evals")%>">
+		    <!-- eval returns { s_id [eval],[eval]} -->
+	      <td>
+	        <%= link_to eval[1].first.student.name, 
+	                    student_path({student_group_id: @goal.subject.student_group_id, 
+																		id: eval[1].first.student.id})%>
+	      </td> 
+	      <!-- in each student's row, print the score for each consecutive evaluation -->
+	      <% @subject.student_group.eval_count.times do |i|  %>                                                 
+	        <td class="center"><%= @goal.evals_for_student(eval[1].first.student, i) %></td> 
+	      <% end %>                                               
+	        <td class="center"><%= @goal.avg_for(eval[1].first.student) %></td> 
 
+	    </tr>           
+	   <% end %>	 
+	<% reset_cycle("evals") %>                                                                    
+	</table>
+</div>
+
+	

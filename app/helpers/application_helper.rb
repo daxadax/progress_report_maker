@@ -24,6 +24,7 @@ module ApplicationHelper
   def cond_class(condition, true_class, false_class = '')
     condition ? true_class : false_class
   end
+  
  
 end
 

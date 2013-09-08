@@ -1,25 +1,28 @@
 <div class="holderv round float_left">
-	<h3>
-		Member of <span class="name"><%= @student_group.name %></span> for <%= @student.student_for_weeks %>
-	</h3>
+	<h1><%= @student.name %></h1>
+	<h4>
+		Member of <span class="name"><%= @student_group.name %></span> 
+		for <%= @student.student_for_weeks %>
+	</h4>
 </div>
   
 <% @subjects.all.each do |subject| %>
   <div class="holder round clear"> 
     <h2 class="float_left">
-  	  <%= @student.name %>'s average for 
+	    <%= render('student_status', :subject => subject) unless subject.avg_for(@student).nan? %>
       <%= link_to subject.name, 
 									subject_path({student_group_id: @student_group, id: subject}) %> 
-			is ___
     </h2>
-    
-	  <div class="holder2 round clear center">
-	  	<table>
-	      <%= render "goals_by_subject", subject: subject %>
+	  <div class="holder2 round clear">
+	  	<table class="fixed">
+		    <% if subject.avg_for(@student).nan? %>
+		      <%= render "unevaluated_student", subject: subject %>
+		    <% else %>
+	        <%= render "goals_by_subject", subject: subject %>
+	      <% end %>
 	    </table>
 	  </div>
 	
   </div>
 <% end %>
-
 

@@ -92,8 +92,10 @@
 }
 
 .name {
-	font-size: 120%;
-	font-weight: bold;
+	font-size:       120%;
+    font-family:     sans-serif;
+	color:           #81C6FF;
+	font-weight:     bold;
 }
 
 #help {
@@ -145,7 +147,7 @@ section {
 	width: 95%;
 	background: rgba(0,0,0,0.4);
     padding: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
     color: #fff;
 /*    font-size: 105%;*/
 }
@@ -159,7 +161,8 @@ section {
     padding-left: 2em;
     padding-bottom: 1em;
     margin: auto auto;
-    margin-bottom: 2em;
+    margin-top:    1em;
+    margin-bottom: 1em;
     color: #fff;
 }
 
@@ -174,6 +177,10 @@ section {
     margin: auto auto;
     margin-bottom: 2em;
     color: #fff;
+}
+
+.holderv h1, h2 {
+	color: #81C6FF;
 }
 
 .holder h1 {
@@ -631,12 +638,24 @@ ul.users li {
 	color: #FF4F00;
 }
 
+.meet {
+	color: #FFDD78;
+}
+	
+.exceed {
+	color: #1093FF;	
+}
+	
+.struggle {
+	color: #FF4F00;
+}		
+
     /* student_group#index & show*/
 
 .evaluate {
     font-size: 200%;
+    text-align: right;
     margin-right: 1em;
-    margin-top: 1em;
 }
 
 .edit, .delete {
@@ -652,6 +671,11 @@ ul.users li {
 .delete {
 	top:      5px;
 	right:    15px;
+}
+
+.new_x {
+	text-align: right;
+	margin-right: 1em;
 }
 
     /* student_group#new */

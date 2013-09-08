@@ -9,29 +9,39 @@
 		
   		<%= render 'goal_subject_header', :subject => subject %>
 		
-		  <table>  
+		  <table class="fixed">  
 				<tbody>
 					<tr>
 						<th></th>
-						<% subject.student_group.eval_count.times do |i|  %>                                                 
-				      <th>Evaluation <%= i+1 %></th>
+						<% subject.goals.first.eval_count.times do |i|  %>                                                 
+				      <th class="center">Evaluation <%= i+1 %></th>
 				    <% end %>
-				    <th><%= "Student average" if subject.student_group.eval_count > 0  %></th>
+				    <th class="center"><%= "Goal average" if subject.goals.first.eval_count > 0  %></th>
 					</tr>
 					<% for goal in subject.goals %>
 				    <tr class="<%= cycle("odd", "even", name: "goals")%>">
 				    	<td>
 					      <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
 					    </td>
-				      <% subject.student_group.eval_count.times do |i| %>                                                 
-					      <td><%= goal.evals_by_number_avg(i) %></td>
-					    <% end %>
-							<td><%= goal.avg if subject.student_group.eval_count > 0 %></td>
+				      <% if goal.eval_count > 0 %>
+				        <% goal.eval_count.times do |i| %>                                                 
+					        <td class="<%= goal.eval_avg(i) > goal.avg ? "greater" : "lesser" %> center">
+					          <%= goal.eval_avg(i) %>
+					        </td>
+					      <% end %>
+							  <td class="center"><%= goal.avg %></td>
+							<% else %>
+							  <td>No data yet!</td>
+							<% end %>
 					  </tr>
 					<% end %>
-					<% reset_cycle("students") %>
+					<% reset_cycle("goals") %>
 			  </tbody>
 			</table>
 		</div>
 		<% end %>
-	</div>
+</div>
+
+
+
+

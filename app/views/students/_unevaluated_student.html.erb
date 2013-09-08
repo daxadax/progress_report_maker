@@ -1,0 +1,15 @@
+<tbody>
+	
+	<% subject.goals.each do |goal| %>	    
+	
+	<tr class="<%= cycle("odd", "even", name: "goals")%>">
+    <td>
+      <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
+    </td>
+    <td></td>
+    <td>No data yet!</td>
+	</tr>
+ </tbody>
+
+   <% end %>
+   <% reset_cycle("goals") %>
