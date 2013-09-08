@@ -8,30 +8,32 @@
                  "http://www.reddit.com/r/ganesh_beta/", :target => '_blank' %>
     and submit a new post detailing the issue.  
   </p>
+=======
+	<h3>
+		This will be filled in as problems arise.  If you have a persistent problem that isn't 
+		listed here, please visit the <%= link_to "Ganesh subreddit", 
+		"http://www.reddit.com/r/ganesh_beta/" %> where you can notify us about bugs, 
+		make suggestions and interact with other Ganesh users.
+	</h3>
+>>>>>>> first-timer
 
   <div class="holder2 round">
   	<h3>
 			I can't login!
 		</h3>
 		<p>
+<<<<<<< HEAD
 			If you're using Safari, check 'preferences' > 'privacy' and be sure that the 
 			'block cookies' option is set to 'From third parties and advertisers' 
 			(or 'Always' but this isn't recommended).
 		</p>
   </div>
 =======
-	This page will be updated as common issues are found.  If there is a problem that isn't on
-	this page,
-	<%= link_to "please visit the beta subreddit", "http://www.reddit.com/r/ganesh_beta/", 
-	                                               target: "_blank" %> 
-	and submit a post with details about the issue you are experiencing.
-	<div class="holder2 round">
-		<h3>
-			I can't login!
-		</h3>
-		<p>
-			If you're using Safari, check 'preferences' > 'privacy' and be sure that the 'block cookies' option is set to 'From third parties and advertisers' (or 'Always' but this isn't recommended).
+			If you're using Safari, check 'preferences' > 'privacy' and be sure that the 'block 
+			cookies' option is set to 'From third parties and advertisers' (or 'Always' but this isn't 
+			recommended).
 		</p>
-	</div>
->>>>>>> eval_number
+  </div>
+
+>>>>>>> first-timer
 </div>

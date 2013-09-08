@@ -23,8 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       login @user
-      # change this to 'walkthrough' later
-      redirect_to @user
+      redirect_to first_time_path
     else
       @title = "Sign up"
       flash.now[:error] = "Something's gone wrong.  Please try again!"

@@ -55,16 +55,31 @@ end
   describe "GET 'final_farewell" do
     
     it "should return http success" do
-      get 'final_farewell'
+      get :final_farewell
       response.should be_success
     end
     
     it "should have the right title" do
-      get 'final_farewell'
+      get :final_farewell
       response.should have_selector('title',
                                     content: "#{@base_title} | Smell you later...forever")
     end
     
+  end
+  
+  describe "GET 'first_time'" do
+    
+    it "should return http success" do
+      get :first_time
+      response.should be_success
+    end
+    
+    it "should have the right title" do
+      get :first_time
+      response.should have_selector("title", 
+                                    content: "#{@base_title} | Welcome!")
+    end
+
   end
 
   describe "GET 'help'" do

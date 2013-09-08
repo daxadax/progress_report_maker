@@ -21,6 +21,10 @@ class PagesController < ApplicationController
     @title = "Smell you later...forever"
   end
 
+  def first_time
+    @title = "Welcome!"
+  end
+  
   def help
     @title = "Help"
   end

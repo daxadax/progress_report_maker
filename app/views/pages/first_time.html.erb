@@ -1,0 +1,33 @@
+<div class="holder round">
+	<h1>Now what?</h1>
+	
+	<div class="holder2 round">
+		<p>
+			In a few moments you'll create your first group of students, so make sure you have any 
+			student lists, textbooks or other notes you think you might need.  
+		</p>
+    <p>
+    	We've tried to make everything as simple and straight-forward as possible, but if you
+      have any trouble, please visit the <%= link_to "contact", contact_path %> or 
+      <%= link_to "help", help_path %> links which can be found at the bottom of every page.
+    </p>
+		<p>
+			<em>Ganesh</em> is currently in beta, so while all of the main features are present,
+			there will be periodic updates, bug fixes and several planned features still to come.
+			You can help out with this process by visiting the <%= link_to "Ganesh subreddit", 
+			"http://www.reddit.com/r/ganesh_beta/" %> where you can notify us about bugs, make 
+			suggestions and interact with other Ganesh users.  
+		</p>
+		<p>
+			When you're ready, click the button below to get started.  
+		</p>
+	</div>
+	
+	<div id="buttons">
+    	<%= link_to "Create your first group", 
+		              new_student_group_path, 
+			  					class: "big_button round unselectable first_time_button" %>
+			
+	</div>
+	
+</div>
