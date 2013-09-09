@@ -24,10 +24,10 @@ class Evaluation < ActiveRecord::Base
   
   def set_eval_number
     last_eval = Evaluation.last.eval_number
-    if last_eval != nil
-      last_eval += 1
+    if last_eval.nil?
+      last_eval = 1
     else 
-      last_eval = 1   
+      last_eval += 1   
     end 
   end
   

@@ -6,7 +6,11 @@ module EvaluationsHelper
       #  to set the student to be evaluated
       @student_number = 1 
       #  to create the "eval_number" attribute
-      @current_eval = Evaluation.last.set_eval_number
+      if Evaluation.last.nil?
+        @current_eval = 1
+      else
+        @current_eval = Evaluation.last.set_eval_number
+      end
     #   else student_number and eval_number are set from previous counts
     else
       @student_number = params[:student_number]
