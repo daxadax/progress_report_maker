@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
                              params[:session][:password])
     if user.nil?
       @title = "Log In"
-      flash.now[:login_error] = "Invalid email/password combination.  Have you #{ActionController::Base.helpers.link_to "forgotten your password?", '#'}".html_safe
+      flash.now[:login_error] = "Invalid email/password combination.  
+      Have you #{ActionController::Base.helpers.link_to "forgotten your password?", 
+               new_password_reset_path}".html_safe
       render 'new'
     else  
       login user
