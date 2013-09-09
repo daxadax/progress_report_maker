@@ -18,5 +18,8 @@
 /tmp
 /*.log
 
-#Ignore fucking DS_Store!
+# Ignore fucking DS_Store!
 .DS_Store
+
+# Ignore public/assets
+/public/assets
