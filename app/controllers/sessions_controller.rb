@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   
   def new
     @title = "Log In"
+    @title_hide = "hide"
   end
   
   def create

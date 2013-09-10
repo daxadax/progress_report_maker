@@ -1,0 +1,10 @@
+<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+  <div class="holder round">
+  	<div class="field form_field">
+	    New password: <br /><%= f.password_field :password %><br />
+	    <br />
+	    Confirm: <br /><%= f.password_field :password_confirmation %>
+	  </div>
+	  <div id="buttons"><%= f.submit "Update Password", class: "big_button round unselectable" %></div>
+  </div>
+<% end %>

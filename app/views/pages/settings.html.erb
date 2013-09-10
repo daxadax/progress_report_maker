@@ -5,17 +5,6 @@
 	  email and/or password - or to delete your account!
   </p>
 
-	<p>
-		Edit your student groups: <br />
-		  <% @user.student_groups.all.each do |group| %>
-		    <%= link_to "x", {controller: 'student_groups', 
-			                    action: 'destroy', 
-			                    user_id: @user.id, 
-			                    id: group },
-	                       {confirm: "Do you really want to delete #{group.name}?",
-		                      method: :delete, 
-		                      class: "superscript_x"} %>
-		    <%= link_to "#{group.name}", edit_student_group_path(group) %><br />
-		  <% end %>
-	</p>
+	<% render "edit_student_groups" unless @user.student_groups.nil? %>
+	
 </div>

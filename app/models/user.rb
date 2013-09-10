@@ -2,20 +2,22 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  name               :string(255)
-#  email              :string(255)
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  encrypted_password :string(255)
-#  salt               :string(255)
-#  admin              :boolean          default(FALSE)
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  email                  :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  encrypted_password     :string(255)
+#  salt                   :string(255)
+#  admin                  :boolean          default(FALSE)
+#  password_reset_token   :string(255)
+#  password_reset_sent_at :datetime
 #
 
 class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
-  
+    
   has_many :student_groups, dependent: :destroy
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -32,13 +34,25 @@ class User < ActiveRecord::Base
                             :length       => 3..15
   
   before_save :encrypt_password
-  before_save { |user| user.email = email.downcase }
-  before_save { |user| user.name  = name.titleize }
+  before_save :normalize_attributes
   
     # Methods 
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
+  end
+  
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!(:validate => false)
+    UserMailer.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
   end
   
   class << self
@@ -62,6 +76,11 @@ class User < ActiveRecord::Base
     def encrypt_password
         self.salt = make_salt if new_record?
         self.encrypted_password = encrypt(password)
+    end
+    
+    def normalize_attributes
+      self.email = email.downcase if self.email
+      self.name = name.titleize if self.name
     end
     
     def encrypt(string)

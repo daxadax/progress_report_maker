@@ -65,11 +65,6 @@ describe UsersController do
           response.should have_selector('title', content: @user.name )
         end 
         
-        it "should have the user's name as h2" # do
-        #           @show
-        #           response.should have_selector('h2', content: @user.name )
-        #         end
-        
   end
   
   describe "GET 'new'" do
@@ -83,6 +78,11 @@ describe UsersController do
       get :new
       response.should have_selector('title', :content => "Sign up" )
     end 
+    
+    it "should hide the title" do
+      get :new
+      response.should_not have_selector('class', :content => "hide")
+    end
     
   end
   

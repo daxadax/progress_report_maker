@@ -1,0 +1,9 @@
+<div class="holder round">
+	<%= form_tag password_resets_path, :method => :post do %>
+	  <p>
+		  Please send password reset instructions to 
+	    <span class="field form_field"><%= text_field_tag :email, params[:email] %></span>
+	  </p>
+	  <div id="buttons"><%= submit_tag "Reset Password", class: "big_button round unselectable" %></div>
+	<% end %>
+</div>

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def new
     @user  = User.new
     @title = "Sign up"
+    @title_hide = "hide"
   end
   
   def create

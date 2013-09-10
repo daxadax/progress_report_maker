@@ -4,6 +4,20 @@ Ganesh::Application.routes.draw do
 
   root :to => 'pages#home'
 
+  # sessions
+  
+  resources :sessions, :only => [:new, :create, :destroy]
+  
+  match '/login',  :to => 'sessions#new'
+  match '/logout', :to => 'sessions#destroy'
+                      
+  # users
+  resources :users
+  
+  match '/signup', :to => 'users#new'
+  # match '/home',      :to => 'users#show'
+  # match '/settings',  :to => 'users#edit'
+  
   # associations 
   
   resources :student_groups do
@@ -29,20 +43,6 @@ Ganesh::Application.routes.draw do
   match '/help',          :to => 'pages#help'
   match '/settings',      :to => 'pages#settings'
   match '/first_time',    :to => 'pages#first_time'
-  
-  # sessions
-  
-  resources :sessions, :only => [:new, :create, :destroy]
-  
-  match '/login',  :to => 'sessions#new'
-  match '/logout', :to => 'sessions#destroy'
-                      
-  # users
-  resources :users
-  
-  match '/signup', :to => 'users#new'
-  # match '/home',      :to => 'users#show'
-  # match '/settings',  :to => 'users#edit'
   
   # student_groups
   
@@ -70,6 +70,9 @@ Ganesh::Application.routes.draw do
   match ':student_group_id/evaluate/:student_id', 
          :to => 'evaluations#new',  :as => :evaluate   
   match ':student_group_id/no_goals', 
-         :to => 'evaluations#eval_fail', :as => :eval_fail       
+         :to => 'evaluations#eval_fail', :as => :eval_fail 
+         
+  # password_resets
+  resources :password_resets, :only => [:new, :create, :edit, :update]
          
 end
