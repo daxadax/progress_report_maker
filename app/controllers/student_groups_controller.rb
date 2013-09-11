@@ -36,7 +36,7 @@ class StudentGroupsController < ApplicationController
       ### http://railsforum.com/viewtopic.php?pid=40056#p40056  
       @student = @student_group.students.build
       @title = "Create a new group"
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render 'new' 
     end  
   end
@@ -50,7 +50,7 @@ class StudentGroupsController < ApplicationController
       redirect_to groups_path, flash: { success: "#{@student_group.name} updated successfully" }
     else  
       @title = "Edit group"
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render 'edit'
     end  
   end

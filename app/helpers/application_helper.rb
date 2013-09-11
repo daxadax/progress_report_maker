@@ -28,6 +28,10 @@ module ApplicationHelper
   def login_or_signup?
     current_page?(:login) || current_page?(:signup)
   end 
+  
+  def flash_failure
+    flash.now[:error] = "Something's gone wrong.  Please try again!"
+  end
  
 end
 

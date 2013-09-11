@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
       redirect_to root_path, flash: { success: "Student added successfully" }
     else
       @title = "Add a student"
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render 'new' 
     end    
   end
@@ -43,7 +43,7 @@ class StudentsController < ApplicationController
                   flash: { success: "#{@student.name} updated successfully" }
     else  
       @title = "Edit student"
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render 'edit'
     end  
   end

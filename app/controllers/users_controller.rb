@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       redirect_to first_time_path
     else
       @title = "Sign up"
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render 'new'
     end  
   end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       redirect_to @user, flash: { success: "Update successful" }
     else  
       @title = "User settings"
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render 'edit'
     end  
   end

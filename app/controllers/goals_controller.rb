@@ -32,7 +32,7 @@ class GoalsController < ApplicationController
         end
       else
         @title = "Add a goal"
-        flash.now[:error] = "Something's gone wrong.  Please try again!"
+        view_context.flash_failure
         render 'new' 
       end    
   end
@@ -47,7 +47,7 @@ class GoalsController < ApplicationController
                   flash: { success: "Goal updated successfully" }
     else  
       @title = "Edit goal"
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render 'edit'
     end  
   end

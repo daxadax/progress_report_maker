@@ -25,7 +25,7 @@ class SubjectsController < ApplicationController
         flash: { success: "Subject added successfully, now create some goals" }
       else
         @title = "Add a subject"
-        flash.now[:error] = "Something's gone wrong.  Please try again!"
+        view_context.flash_failure
         render 'new' 
       end    
   end
@@ -39,7 +39,7 @@ class SubjectsController < ApplicationController
       redirect_to groups_path(@student_group), flash: { success: "#{@subject.name} updated successfully" }
     else  
       @title = "Edit subject"
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render 'edit'
     end  
   end

@@ -22,7 +22,7 @@ class PasswordResetsController < ApplicationController
     elsif @user.update_attributes(params[:user])
       redirect_to login_path, :notice => "Password has been reset!"
     else
-      flash.now[:error] = "Something's gone wrong.  Please try again!"
+      view_context.flash_failure
       render :edit
     end
   end
