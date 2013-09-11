@@ -25,6 +25,9 @@ module ApplicationHelper
     condition ? true_class : false_class
   end
   
+  def login_or_signup?
+    current_page?(:login) || current_page?(:signup)
+  end 
  
 end
 

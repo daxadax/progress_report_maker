@@ -1,15 +1,15 @@
-<div class="holder round">
+<div class="holder_clear round unselectable">
 
-  <div id="new_session_logo">
+  <span id="new_session_logo">
 	  <%= image_tag("ganesh.png") %>
-  </div>
+  </span>
 
   <div id="ganesh_sample">
   	<%= render 'ganesh_info' %>
   </div>
   
 	<div id="new_session_fields" class="form_section">
-    <div class="holder2 round center">
+    <div class="holderv round center">
 		  <%= form_for(:session, :url => sessions_path) do |f| %>
 		    <%= render 'fields', :f => f  %>
 

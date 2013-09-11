@@ -39,7 +39,8 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update_attributes(params[:student])
-      redirect_to group_path(@student_group, {id: @student_group.id}), flash: { success: "#{@student.name} updated successfully" }
+      redirect_to group_path(@student_group, {id: @student_group.id}), 
+                  flash: { success: "#{@student.name} updated successfully" }
     else  
       @title = "Edit student"
       flash.now[:error] = "Something's gone wrong.  Please try again!"

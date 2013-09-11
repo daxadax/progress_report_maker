@@ -154,10 +154,23 @@ section {
 	padding:    20px;
 }
 
+.login_section {
+	margin-top: 3em;
+}
+
 .holder {
 	position: relative;
 	width: 95%;
 	background: rgba(0,0,0,0.4);
+    padding: 2em;
+    margin-bottom: 3em;
+    color: #fff;
+/*    font-size: 105%;*/
+}
+
+.holder_clear {
+	position: relative;
+	width: 95%;
     padding: 2em;
     margin-bottom: 3em;
     color: #fff;
@@ -600,7 +613,7 @@ input:focus:-ms-input-placeholder {
 
 #new_session_logo {
 	position: relative;
-    left: 57%;
+    left: 59%;
     top: 10%;
 }
 
@@ -614,7 +627,7 @@ input:focus:-ms-input-placeholder {
 	position: absolute;
 	left: 5%;
 	top: 30px;
-	width: 555px;
+	width: 560px;
 	text-align: center;
     font-family: 'Shadows Into Light Two', cursive;
     font-size: 125%;
