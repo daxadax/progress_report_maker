@@ -32,6 +32,12 @@ module ApplicationHelper
   def flash_failure
     flash.now[:error] = "Something's gone wrong.  Please try again!"
   end
+  
+  # get average of scores and round to two decimal places
+  def avg(scores)
+    average = scores.inject{ |sum, el| sum + el }.to_f / scores.size
+    average.round(2)
+  end
  
 end
 
