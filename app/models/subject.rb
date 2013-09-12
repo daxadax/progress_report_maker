@@ -13,6 +13,8 @@
 #
 
 class Subject < ActiveRecord::Base
+  include Averageable
+  
   attr_accessible :name, :start_date, :end_date, :contact_time
 
   belongs_to :student_group
@@ -39,29 +41,28 @@ class Subject < ActiveRecord::Base
   
   # http://stackoverflow.com/a/1341318/2128691
   def avg
-    @scores = []
+    scores = []
     # pull all evaluation data for model and populate @scores
     self.goals.each do |goal|
       goal.evaluations.all.each do |eval|
         score = eval.score
-        @scores << score
+        scores << score
       end
     end
     # get average of scores and round to two decimal places
-    average = @scores.inject{ |sum, el| sum + el }.to_f / @scores.size
-    average.round(2)
+    average(scores)
   end
   
   def avg_for(student)
-    @scores = []
+    scores = []
     self.goals.map do |goal|
       goal.evals.map do |student_id, evals|
         evals.select {student_id == student.id}.map do |eval|
-          @scores << eval.score
+          scores << eval.score
         end
       end
     end
-    (@scores.sum.to_f / @scores.size).round(2)
+    average(scores)
   end
   
   def avg_to_words(student)
