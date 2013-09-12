@@ -11,6 +11,8 @@
 #
 
 class Student < ActiveRecord::Base
+  include Averageable
+  
   attr_accessible :gender, :name
   
   belongs_to :student_group
@@ -37,19 +39,18 @@ class Student < ActiveRecord::Base
     else
       "#{time} weeks" 
     end
-  end  
+  end
   
   # http://stackoverflow.com/a/1341318/2128691
   def avg
-    @scores = []
+    scores = []
     # pull all evaluation data for model and populate @scores
     self.evaluations.all.each do |eval|
       score = eval.score
-      @scores << score
+      scores << score
     end
     # get average of scores and round to two decimal places
-    average = @scores.inject{ |sum, el| sum + el }.to_f / @scores.size
-    average.round(2)
+    average(scores)
   end      
   
   # stackoverflow.com/a/7394804/2128691     
@@ -76,13 +77,13 @@ class Student < ActiveRecord::Base
       for eval in self.evals.values[i] 
         scores << eval.score
       end
-      (scores.sum.to_f / scores.size).round(2)
+      average(scores)
     else
       if self.evals.values[count_differential]
         for eval in self.evals.values[count_differential]
           scores << eval.score
         end
-        (scores.sum.to_f / scores.size).round(2)
+        average(scores)
       else
         "no data"
       end  
@@ -105,7 +106,7 @@ class Student < ActiveRecord::Base
         scores << eval.score
       end
     end    
-    (scores.sum.to_f / scores.size).round(2)  
+    average(scores)
   end
        
 end

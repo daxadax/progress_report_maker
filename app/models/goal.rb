@@ -11,6 +11,8 @@
 #
 
 class Goal < ActiveRecord::Base
+  include Averageable
+  
   attr_accessible :goal
   
   belongs_to :subject
@@ -24,23 +26,17 @@ class Goal < ActiveRecord::Base
   
   # http://stackoverflow.com/a/1341318/2128691
   def avg
-    @scores = []
+    scores = []
     # pull all evaluation data for model and populate @scores
     self.evaluations.all.each do |eval|
       score = eval.score
-      @scores << score
+      scores << score
     end
-    # get average of scores and round to two decimal places
-    average = @scores.inject{ |sum, el| sum + el }.to_f / @scores.size
-    average.round(2)
+    average(scores)
   end
   
   def evals
     self.evaluations.order("eval_number").group_by(&:student_id)
-  end
-  
-  def evals_by_number
-    self.evaluations.order("eval_number").group_by(&:eval_number)    
   end
   
   def evals_by(student)
@@ -67,7 +63,13 @@ class Goal < ActiveRecord::Base
         scores << eval.score
       end  
     end    
-    (scores.sum.to_f / scores.size).round(2)
+    average(scores)
+  end
+  
+  # methods using evals_by_(eval)number
+  
+  def evals_by_number
+    self.evaluations.order("eval_number").group_by(&:eval_number)    
   end
   
   def eval_avg(i)
@@ -78,7 +80,7 @@ class Goal < ActiveRecord::Base
         scores << eval.score
       end
     end
-    (scores.sum.to_f / scores.size).round(2)  
+    average(scores)
   end
   
   def eval_count

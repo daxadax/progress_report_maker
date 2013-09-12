@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   def get_student_group
     @user = current_user
     @student_group = @user.student_groups.find(params[:student_group_id])
-  end
-  
+  end 
   
 end

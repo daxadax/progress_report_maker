@@ -36,24 +36,5 @@ class Evaluation < ActiveRecord::Base
     Evaluation.where("id > ?", id).order("id ASC").first
   end
   
-  # def avg_for_eval(i)
-  #   self.evals.select
-  #     # where(:date => array_of_dates).
-  #     #         reduce(Hash.new(0)){ |h, r| h[r.date] = r.count;h}
-  #   #eval["#{i}"] = self.evals.fetch(self.eval_number_set(i))
-  #   # evals = self.evals.fetch(self.eval_number_set(i), "x")
-  #   # (scores.sum.to_f / scores.size).round(2)
-  # end
-  
-
-  private
-
-  # limit of one evaluation per student group per day
-  # def date_scope
-  #     if Evaluation.where("goal_id = ? AND student_id = ? AND DATE(created_at) = DATE(?)", self.goal_id, self.student_id, Time.now).all.any?
-  #       errors.add(:goal_id, "You can only evaluate a class once per day")
-  #     end
-  #   end
-  
 
 end
