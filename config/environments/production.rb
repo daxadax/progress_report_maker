@@ -81,9 +81,13 @@ config.assets.precompile += %w( .svg .eot .woff .ttf *.png
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
-  config.active_support.deprecation = :notify
+  config.active_support.deprecation = :log
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  
+  # test?
+  # Custom directories with classes and modules you want to be autoloadable.
+  config.autoload_paths += %W(#{config.root}/lib)
 end
