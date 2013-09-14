@@ -26,7 +26,7 @@ config.logger = Logger.new(STDOUT)
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
@@ -89,8 +89,4 @@ config.logger = Logger.new(STDOUT)
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  
-  # test?
-  # Custom directories with classes and modules you want to be autoloadable.
-  config.autoload_paths += %W(#{config.root}/lib)
 end
