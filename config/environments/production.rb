@@ -1,7 +1,7 @@
 Ganesh::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-# #### DAX ADDED THESE ####
+# #### I ADDED THESE ####
 # Add the fonts path
 config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
@@ -13,6 +13,9 @@ config.assets.precompile += %w( .svg .eot .woff .ttf *.png
                                 pages/custom.css
                                 pages/custom.css.erb
                                 pages/radio_buttons.css)
+
+# Enable logging on Heroku
+config.logger = Logger.new(STDOUT)
 
 # ####
 
