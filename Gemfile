@@ -12,7 +12,7 @@ gem "json", "~> 1.4"
 gem "thor", "~> 0.17.0"
 gem "cocoon"
 gem 'jquery_datepicker'
-# gem "newrelic_rpm", "~> 3.6.7.152"
+gem 'newrelic_rpm'
 
 #DB
 
