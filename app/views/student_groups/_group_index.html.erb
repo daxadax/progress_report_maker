@@ -3,7 +3,10 @@
 	<h1>
     <%= group.name %>
   </h1>
-  	<%= content_tag("a", "∆", class: "toggle_group_name") %>
+	<%= content_tag("a", "∆", class: "toggle_group_name") %>
+
+	<!-- EDIT AND DELETE BUTTONS -->
+	<%= render 'groups_edit_delete', :group => group %>
 </div>
 
 <div class="holder round clear group_name"> 
@@ -55,6 +58,4 @@
     <% end %>
   </h1>
 
-  <!-- EDIT AND DELETE BUTTONS -->
-  <%= render 'groups_edit_delete', :group => group %>
 </div>

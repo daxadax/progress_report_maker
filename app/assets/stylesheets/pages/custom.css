@@ -705,13 +705,13 @@ ul.users li {
 }
 
 .edit {
-	top:      5px;
-	right:    25px;
+	bottom:   5px;
+	right:    45px;
 }
 
 .delete {
-	top:      5px;
-	right:    15px;
+	bottom:   5px;
+	right:    10px;
 }
 
 .new_x {
