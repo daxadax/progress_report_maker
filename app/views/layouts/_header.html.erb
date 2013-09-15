@@ -1,9 +1,9 @@
-<header class="unselectable">
-	<div class="float_left <%= @title_hide %>">
-    <h2><%= link_to logo, root_path %> <%= @title %></h2>
+<header class="header unselectable">
+	<div class="float_left header-title <%= @title_hide %>">
+    <%= link_to Ganesh, root_path %> <%= @title %>
 	</div>
 	
-	<nav class="round">
+	<nav>
 		<ul>
 			<% if logged_in? %>
 			  <li><%= link_to "Groups", groups_path %></li>

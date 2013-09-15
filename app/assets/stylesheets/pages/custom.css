@@ -133,14 +133,20 @@ header {
 	left:          0px;	
 }
 
-header h2 {
-	font-family: verdana;
+.header {
+	background: rgba(0,0,0,0.6);
+    padding: .2em;
 }
 
-.header_title {
-	margin-left:   25px;
-/*	margin-top:    20px;*/
-	font-size: 50%;
+.header-title {
+	margin-left:   20px;
+    margin-top: 8px;
+	font-size: 30px;
+	color: #fff;
+}
+
+.header-title a {
+	text-decoration: none;	
 }
 
 body {
@@ -325,13 +331,17 @@ tr.odd {
 	background: rgba(3, 80, 144, 0.25);
 }
 
+tr.goals {
+	height: 50px;
+}
+
 table.fixed {
 	table-layout: fixed;
     width: 100%;
 }
 
 .goal_row {
-	width: 50%;
+	width: 40%;
 }
 
 .button_row {

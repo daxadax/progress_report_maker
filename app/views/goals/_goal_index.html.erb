@@ -9,7 +9,7 @@
 		
   		<%= render 'goal_subject_header', :subject => subject %>
 		
-		  <table class="fixed">  
+		  <table>  
 				<tbody>
 					<tr>
 						<th></th>
@@ -19,8 +19,8 @@
 				    <th class="center"><%= "Goal average" if subject.goals.first.eval_count > 0  %></th>
 					</tr>
 					<% for goal in subject.goals %>
-				    <tr class="<%= cycle("odd", "even", name: "goals")%>">
-				    	<td>
+				    <tr class="<%= cycle("odd", "even", name: "goals")%> goals">
+				    	<td class="goal_row">
 					      <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
 					    </td>
 				      <% if goal.eval_count > 0 %>
