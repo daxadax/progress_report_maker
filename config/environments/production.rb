@@ -17,6 +17,9 @@ config.assets.precompile += %w( .svg .eot .woff .ttf *.png
 # Enable logging on Heroku
 config.logger = Logger.new(STDOUT)
 
+# copied from application.rb to force loading of /lib
+config.autoload_paths += %W(#{config.root}/lib)
+
 # ####
 
   # From: http://rubysnippets.com/2013/01/08/managing-the-asset-pipeline-in-rails-3/
@@ -26,7 +29,7 @@ config.logger = Logger.new(STDOUT)
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
