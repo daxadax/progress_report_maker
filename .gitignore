@@ -26,3 +26,6 @@
 
 # ignore output from simple_cov
 /public/coverage
+
+# Ignore config.yml file!!
+/config/database.yml

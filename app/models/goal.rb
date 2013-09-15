@@ -12,7 +12,6 @@
 
 class Goal < ActiveRecord::Base
   include Averageable
-
   
   attr_accessible :goal
   
