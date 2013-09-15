@@ -39,7 +39,7 @@ $(document).ready(function () {
  //  collapse groups by name
 	$(function () {
 	    $('.toggle_group_name').click(function () {
-	        // $(this).closest('div').next('.group_name').toggle();
-	        $(this).next('.group_name').toggle();
+	        $(this).closest('div').next('.group_name').toggle();
+	        // $(this).next('.group_name').toggle();
 	    });
 	});
