@@ -11,7 +11,7 @@
 #
 
 class Goal < ActiveRecord::Base
-  include ::Averageable
+  # include ::Averageable
    
   attr_accessible :goal
   
@@ -24,11 +24,11 @@ class Goal < ActiveRecord::Base
   
   # methods
   
-  # def average(scores)
-  #   # get average of scores and round to two decimal places
-  #   average = scores.inject{ |sum, el| sum + el }.to_f / scores.size
-  #   average.round(2)
-  # end
+  def average(scores)
+    # get average of scores and round to two decimal places
+    average = scores.inject{ |sum, el| sum + el }.to_f / scores.size
+    average.round(2)
+  end
   
   # http://stackoverflow.com/a/1341318/2128691
   def avg
