@@ -3,8 +3,9 @@
 	  <tbody>
 			<tr>
 			  <th></th>
-			  <th>Subject average:</th>
-			  <th>Classtime remaining:</th>
+			  <th class="center">Subject average</th>
+			  <th class="center">Classtime remaining</th>
+			  <th class="center">Number of goals</th>
 		  </tr>
 			  <% group.subjects.all.each do |subject| %>
 		  <tr class="<%= cycle("odd", "even", name: 'subjects')%>">
@@ -15,9 +16,10 @@
 	      <% if subject.avg.nan? %>
 				  <td class="strong">No data yet!</td>
 				<% else %>
-				  <td><%= subject.avg %></td>
+				  <td class="center"><%= subject.avg %></td>
 				<% end %>
-	      <td><%= subject.weeks_left %></td>
+	      <%= render('subject_weeks_left', :subject => subject) %>
+	      <td class="center"><%= subject.goals.count %></td>
 	    </tr>
 			  <% end %>
 			  <% reset_cycle("subjects") %>

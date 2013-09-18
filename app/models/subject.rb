@@ -32,10 +32,27 @@ class Subject < ActiveRecord::Base
   # => "x weeks"
   def weeks_left
     time = (self.end_date.to_time - Date.today.to_time).round/1.week
-    if time < 1
+    if time <= 0
+      "completed"
+    elsif time < 1
       "less than 1 week"
+    elsif time == 1
+      "1 week"
     else
       "#{time} weeks" 
+    end
+  end
+  
+  def weeks_status
+    time = (self.end_date.to_time - Date.today.to_time).round/1.week
+    if time <= 0
+      :complete
+    elsif time < 1 
+      :struggle
+    elsif time <= 4
+      :meet
+    else
+      ""
     end
   end
   

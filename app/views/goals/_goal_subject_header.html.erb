@@ -1,3 +1,6 @@
-<h2 class="float_left"><%= subject.name %></h2>
-<h4 class="float_right"><%= subject.weeks_left %> remaining</h4>
+<h2 class="float_left">
+  <%= link_to subject.name, 
+              subject_path(student_group_id: subject.student_group_id,
+                           id: subject.id) %>
+</h2>
 <hr />

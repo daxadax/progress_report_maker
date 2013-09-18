@@ -1,9 +1,15 @@
 <div class="holder round">
+	
+	<h3>The overall average for this subject is <%= @subject.avg %></h3>
+	
+	<div class="holder2 round">
+		
+		<%= render 'subject_show_goals' %>
 
-<h3>Members of <span class="name"><%= @subject.name %></span> in <span class="name"><%= @subject.student_group.name %></span> should:</h3> 
-
-	  <div class="holder2 round">
-	  	<%= render 'subject_show_goals' %>
-	  </div>
+    <div class="new_x">
+  	  <%= link_to "Add goals", new_subject_goal_path(@subject) %>
+    </div>
+	</div>
 
 </div>
+

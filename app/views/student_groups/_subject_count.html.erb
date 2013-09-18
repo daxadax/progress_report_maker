@@ -1,5 +1,12 @@
-<% if group.subjects.any? %> 
-  <%= group.subjects.count %> <%= pluralize_without_count(group.subjects.count, "subject", "subjects")  %>
-<% else %>
-  No current lessons
-<% end %>
+<p>
+	<%= group.goal_count %> 
+	<%= link_to pluralize_without_count(group.goal_count, "goal", "goals"), goals_path  %>
+
+	across
+
+	<% if group.subjects.any? %> 
+	  <%= group.subjects.count %> <%= pluralize_without_count(group.subjects.count, "subject", "subjects")  %>
+	<% else %>
+	  No current subjects
+	<% end %>
+</p>

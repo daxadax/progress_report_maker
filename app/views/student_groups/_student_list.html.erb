@@ -7,7 +7,7 @@
 		  	<% student.eval_count.times do |i| %>                                             
 	    	  <th class="center">Evaluation <%= i + 1 %><br />(average)</th>
 	    	<% end %>
-	      <th><%= "Student average" if student.eval_count > 0  %></th>
+	      <th class="center"><%= "Student average" if student.eval_count > 0  %></th>
 	    <% end %>
 	  	
 	  </tr>

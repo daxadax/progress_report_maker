@@ -43,5 +43,13 @@ class StudentGroup < ActiveRecord::Base
     #evals is a student method
     students.first.evals.count
   end
+  
+  def goal_count
+    goals = []
+    self.subjects.each do |subject|
+      goals << subject.goals.count
+    end
+    goals.sum
+  end
 
 end
