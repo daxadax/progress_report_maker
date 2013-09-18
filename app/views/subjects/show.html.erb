@@ -4,7 +4,7 @@
 	
 	<div class="holder2 round">
 		
-		<%= render 'subject_show_goals' %>
+		<%= render 'subject_show_goals' if @subject.goals.present? %>
 
     <div class="new_x">
   	  <%= link_to "Add goals", new_subject_goal_path(@subject) %>
