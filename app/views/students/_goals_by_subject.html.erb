@@ -12,7 +12,7 @@
 	<% subject.goals.each do |goal| %>	    
 	
 	<tr class="<%= cycle("odd", "even", name: "goals")%>">
-    <td>
+    <td class="goal_row">
       <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
     </td>
 		<% subject.eval_count.times do |i|  %>                                                 

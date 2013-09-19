@@ -65,6 +65,132 @@ describe Subject do
     
   end
   
+  describe "methods" do
+    
+    describe "weeks_left" do
+      
+      it "should have the right methods" do
+        @subject.should respond_to(:weeks_left)
+        @subject.should respond_to(:weeks_status)
+      end
+      
+      it "should return appropriate data" do
+        completed = FactoryGirl.create(:subject,          student_group: @student_group, 
+                                                          end_date:      Date.today-10 )
+        less_than_one_week = FactoryGirl.create(:subject, student_group: @student_group, 
+                                                          end_date:      Date.today+1 )
+        one_week = FactoryGirl.create(:subject,           student_group: @student_group, 
+                                                          end_date:      Date.today+7 )
+        lots_of_time = FactoryGirl.create(:subject,       student_group: @student_group, 
+                                                          end_date:      Date.today+180 )
+                                            
+        completed.weeks_left.should eq "completed"
+        completed.weeks_status.should eq :complete
+        
+        less_than_one_week.weeks_left.should eq "less than 1 week"
+        less_than_one_week.weeks_status.should eq :struggle
+        
+        one_week.weeks_left.should eq "1 week"
+        one_week.weeks_status.should eq :meet
+        
+        lots_of_time.weeks_left.should eq "25 weeks"
+        lots_of_time.weeks_status.should eq ""                                                                  
+      end
+      
+    end
+    
+    describe "completed" do
+      
+      it "should respond to `completed`" do
+        @subject.should respond_to(:completed)                                                        
+      end
+
+      it "should return complete subjects" do
+        completed = FactoryGirl.create(:subject,          student_group: @student_group, 
+                                                          end_date:      Date.today-10 )
+        @student_group.subjects.completed.should include(completed)
+      end
+      
+    end
+    
+    describe "averages" do
+          
+      it "should calculate the average correctly with 'avg'" do
+        goal_subject = FactoryGirl.create(:subject, student_group: @student_group)
+        g1 = FactoryGirl.create(:goal, subject: goal_subject, goal: "goal 1")
+          g1e1 = FactoryGirl.create(:evaluation, goal: g1, student: @student, score: 3)
+          g1e2 = FactoryGirl.create(:evaluation, goal: g1, student: @student, score: 4)
+          g1e3 = FactoryGirl.create(:evaluation, goal: g1, student: @student, score: 4)
+        g2 = FactoryGirl.create(:goal, subject: goal_subject, goal: "goal 2")
+          g2e1 = FactoryGirl.create(:evaluation, goal: g2, student: @student, score: 3)
+          g2e2 = FactoryGirl.create(:evaluation, goal: g2, student: @student, score: 5)
+          g2e3 = FactoryGirl.create(:evaluation, goal: g2, student: @student, score: 1)
+          
+        goal_subject.avg.should eq 3.33
+      end
+      
+      it "should return the right status/avg_to_words using avg_for(student)" do
+        struggling_student = FactoryGirl.create(:student, student_group: @student_group)
+          ss_e1 = FactoryGirl.create(:evaluation, student: struggling_student,
+                                                  goal: @goal,
+                                                  score: 3)
+          ss_e2 = FactoryGirl.create(:evaluation, student: struggling_student,
+                                                  goal: @goal,
+                                                  score: 2)
+          ss_e3 = FactoryGirl.create(:evaluation, student: struggling_student,
+                                                  goal: @goal,
+                                                  score: 2)
+        good_student = FactoryGirl.create(:student, student_group: @student_group)
+          gs_e1 = FactoryGirl.create(:evaluation, student: good_student,
+                                                  goal: @goal,
+                                                  score: 4)
+          gs_e2 = FactoryGirl.create(:evaluation, student: good_student,
+                                                  goal: @goal,
+                                                  score: 3)
+          gs_e3 = FactoryGirl.create(:evaluation, student: good_student,
+                                                  goal: @goal,
+                                                  score: 3)   
+        amazing_student = FactoryGirl.create(:student, student_group: @student_group)
+          as_e1 = FactoryGirl.create(:evaluation, student: amazing_student,
+                                                  goal: @goal,
+                                                  score: 4)
+          as_e2 = FactoryGirl.create(:evaluation, student: amazing_student,
+                                                  goal: @goal,
+                                                  score: 4)
+          as_e3 = FactoryGirl.create(:evaluation, student: amazing_student,
+                                                  goal: @goal,
+                                                  score: 4)                                     
+                                                  
+        # struggling student
+        @subject.status(struggling_student).should eq :struggle
+        @subject.avg_to_words(struggling_student).should eq "Struggling"
+        # good student
+        @subject.status(good_student).should eq :meet
+        @subject.avg_to_words(good_student).should eq "Meets expectations"
+        # amazing student
+        @subject.status(amazing_student).should eq :exceed
+        @subject.avg_to_words(amazing_student).should eq "Exceeds expectations"
+      end
+                
+    end
+    
+    describe "eval_count" do
+      
+      it "should return the correct number of evaluations" do
+        goal_subject = FactoryGirl.create(:subject, student_group: @student_group)
+        g1 = FactoryGirl.create(:goal, subject: goal_subject, goal: "goal 1")
+          g1e1 = FactoryGirl.create(:evaluation, goal: g1, student: @student, eval_number: 1)
+          g1e2 = FactoryGirl.create(:evaluation, goal: g1, student: @student, eval_number: 2)
+          g1e3 = FactoryGirl.create(:evaluation, goal: g1, student: @student, eval_number: 3)
+          
+        puts goal_subject.evals
+        goal_subject.eval_count.should eq 3 
+      end
+      
+    end
+    
+  end
+  
   describe "Student_Group associations" do
     
     it "should have a student_group attribute" do

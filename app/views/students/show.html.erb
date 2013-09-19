@@ -14,7 +14,7 @@
 									subject_path({student_group_id: @student_group, id: subject}) %> 
     </h2>
 	  <div class="holder2 round clear">
-	  	<table class="fixed">
+	  	<table>
 		    <% if subject.avg_for(@student).nan? %>
 		      <%= render "unevaluated_student", subject: subject %>
 		    <% else %>

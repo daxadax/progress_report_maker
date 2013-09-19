@@ -27,12 +27,16 @@ class Subject < ActiveRecord::Base
   
   before_save { |subject| subject.name  = name.titleize }
   
+  # scopes
+  
+  scope :completed, ->{where("end_date <= ?", Time.now)}
+  
   # methods
   
   # => "x weeks"
   def weeks_left
     time = (self.end_date.to_time - Date.today.to_time).round/1.week
-    if time <= 0
+    if time < 0
       "completed"
     elsif time < 1
       "less than 1 week"
@@ -45,7 +49,7 @@ class Subject < ActiveRecord::Base
   
   def weeks_status
     time = (self.end_date.to_time - Date.today.to_time).round/1.week
-    if time <= 0
+    if time < 0
       :complete
     elsif time < 1 
       :struggle
@@ -65,7 +69,7 @@ class Subject < ActiveRecord::Base
   # http://stackoverflow.com/a/1341318/2128691
   def avg
     scores = []
-    # pull all evaluation data for model and populate @scores
+    # pull all evaluation data for model and populate scores
     self.goals.each do |goal|
       goal.evaluations.all.each do |eval|
         score = eval.score
@@ -76,6 +80,7 @@ class Subject < ActiveRecord::Base
     average(scores)
   end
   
+  # finds the subject average for a given student
   def avg_for(student)
     scores = []
     self.goals.map do |goal|
@@ -113,7 +118,8 @@ class Subject < ActiveRecord::Base
   def evals
      evals = self.goals.first.evaluations.order("eval_number").group_by(&:eval_number)
    end  
-
+   
+   # counts the number of times a subject has been evaluated
    def eval_count
      self.evals.keys.size
    end

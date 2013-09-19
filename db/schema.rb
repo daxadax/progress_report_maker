@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130909085721) do
+ActiveRecord::Schema.define(:version => 20130918155747) do
 
   create_table "characteristics", :force => true do |t|
     t.string   "characteristic"
@@ -66,11 +66,12 @@ ActiveRecord::Schema.define(:version => 20130909085721) do
   create_table "subjects", :force => true do |t|
     t.string   "name"
     t.string   "end_date"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "student_group_id"
     t.string   "start_date"
     t.integer  "contact_time"
+    t.boolean  "completed",        :default => false
   end
 
   add_index "subjects", ["student_group_id"], :name => "index_subjects_on_student_group_id"

@@ -1,6 +1,16 @@
 <div class="holder round">
-	
-	<h3>The overall average for this subject is <%= @subject.avg %></h3>
+
+		<% if @subject.avg.nan? %>
+		  <h2 class="center">
+		  	This subject has not yet been evaluated
+		  </h2>
+		<% else %>
+      <h3>
+      	The overall average for <span class="named"><%= @subject.name %></span> 
+			  is <%= @subject.avg %>
+      </h3>
+		<% end %>
+
 	
 	<div class="holder2 round">
 		
