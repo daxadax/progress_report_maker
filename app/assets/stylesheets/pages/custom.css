@@ -134,6 +134,7 @@ header {
 }
 
 .header {
+	width: 99%;
 	background: rgba(0,0,0,0.6);
     padding: .2em;
 }

@@ -14,7 +14,7 @@
 				  <%= link_to "edit", edit_student_group_subject_path(group, subject), :class => "lil_link" %>
 				</td>
 	      <% if subject.avg.nan? %>
-				  <td class="strong">No data yet!</td>
+				  <td class="strong center">No data yet!</td>
 				<% else %>
 				  <td class="center"><%= subject.avg %></td>
 				<% end %>
