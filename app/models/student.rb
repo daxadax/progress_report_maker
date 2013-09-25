@@ -91,7 +91,7 @@ class Student < ActiveRecord::Base
         end
         average(scores)
       else
-        "no data"
+        ""
       end  
     end  
   end
