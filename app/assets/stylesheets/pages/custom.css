@@ -892,7 +892,7 @@ ul.users li {
 }
 
 
-/* *** JS STUFF *** */
+/* *** JQuery STUFF *** */
 
 .group_name {
 /*	display:none;*/
@@ -902,4 +902,18 @@ ul.users li {
 	position: absolute;
 	top: 5%;
 	left: 10px;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    top: 6%;
+    right: 3%;
+    vertical-align:middle;
+    text-align: right;
+    font-size: 300%;
+}
+
+.avg_num {
+	display: none;
 }

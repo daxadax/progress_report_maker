@@ -93,8 +93,7 @@ class Subject < ActiveRecord::Base
     average(scores)
   end
   
-  def avg_to_words(student)
-    average = self.avg_for(student)
+  def avg_to_words(average)
     if average >= 3.5
       "Exceeds expectations"
     elsif (2.75..3.5).include? average 
@@ -104,8 +103,7 @@ class Subject < ActiveRecord::Base
     end  
   end
   
-  def status(student)
-    average = self.avg_for(student)
+  def status(average)
     if average >= 3.5
       :exceed
     elsif (2.75..3.5).include? average 

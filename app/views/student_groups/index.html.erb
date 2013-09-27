@@ -10,7 +10,5 @@
 <% if @student_groups.first.nil? %>
   <%= render "no_groups" %>
 <% else %>
-  <div id="buttons">
 	  <%= link_to "Create a new group", new_student_group_path %>
-  </div>
 <% end %>

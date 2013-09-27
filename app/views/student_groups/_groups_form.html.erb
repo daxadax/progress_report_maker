@@ -8,7 +8,15 @@
     <span class="field form_field"><%= f.text_field :name %></span>
     and it is a/an 
     <!-- FIX THIS -->
-    <span class="field dropdown"><%= f.select :type_of_group, [["select a group type", ""], "Young learners class (0-6)", "Primary class (7-12)", "Secondary class (13-17)", "Adult class (18+)", "Children's sport team", "Adult's sport team"]  %></span> 	  
+    <span class="field dropdown">
+      <%= f.select :type_of_group, [["select a group type", ""], 
+                                     "Young learners class (0-6)", 
+																		 "Primary class (7-12)", 
+																		 "Secondary class (13-17)", 
+																		 "Adult class (18+)", 
+																		 "Children's sport team", 
+																		 "Adult's sport team"]  %>
+    </span> 	  
   </div>
 
   <h3>

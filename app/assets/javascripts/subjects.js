@@ -1,3 +1,5 @@
+// subjects#new 
+
 jQuery(function() {
     $( "#from" ).datepicker({
       dateFormat: 'yy-mm-dd',
@@ -24,4 +26,15 @@ jQuery(function() {
         $( "#from" ).datepicker( "option", "maxDate", selectedDate );
       }
     });
-  });
+
+
+// student_group#index:_subject_status
+
+	$('.poppable').hover(function() {
+	    $(this).next('.popup').show();
+	}, function() {
+	    $(this).next('.popup').hide();
+	});
+	
+	
+});

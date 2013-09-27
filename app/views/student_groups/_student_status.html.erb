@@ -1,0 +1,8 @@
+<div class="switch <%= student.status(student.avg).to_s %>">
+	<div class="avg_words float_left">
+	  <%= student.avg_to_words(student.avg)  %>  
+	</div>
+	<div class="avg_num">
+		<%= student.avg %> / 3
+	</div>
+</div>

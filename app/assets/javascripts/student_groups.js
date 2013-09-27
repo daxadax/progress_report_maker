@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 
     //  add student field
@@ -33,13 +31,24 @@ $(document).ready(function () {
 	        $('.flash').fadeOut();
 	    }, '2000');
 	});
+	
+	 //  collapse groups by name
+		$(function () {
+		    $('.toggle_group_name').click(function () {
+		        $(this).closest('div').next('.group_name').toggle(); //this works in production
+		        // $(this).next('.group_name').toggle();  //this works in development (why?)
+		    });
+		});
+
+	// student_group#index:_student_status
+
+	$('.switch').hover(function() {
+	        $(this).find('.avg_words').hide();
+	        $(this).find('.avg_num').show();
+	    }, function() {
+	        $(this).find('.avg_num').hide();
+	        $(this).find('.avg_words').show();
+	});
 		
  });
 
- //  collapse groups by name
-	$(function () {
-	    $('.toggle_group_name').click(function () {
-	        $(this).closest('div').next('.group_name').toggle();
-	        // $(this).next('.group_name').toggle();
-	    });
-	});

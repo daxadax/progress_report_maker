@@ -162,14 +162,14 @@ describe Subject do
                                                   score: 4)                                     
                                                   
         # struggling student
-        @subject.status(struggling_student).should eq :struggle
-        @subject.avg_to_words(struggling_student).should eq "Struggling"
+        @subject.status(struggling_student.avg).should eq :struggle
+        @subject.avg_to_words(struggling_student.avg).should eq "Struggling"
         # good student
-        @subject.status(good_student).should eq :meet
-        @subject.avg_to_words(good_student).should eq "Meets expectations"
+        @subject.status(good_student.avg).should eq :meet
+        @subject.avg_to_words(good_student.avg).should eq "Meets expectations"
         # amazing student
-        @subject.status(amazing_student).should eq :exceed
-        @subject.avg_to_words(amazing_student).should eq "Exceeds expectations"
+        @subject.status(amazing_student.avg).should eq :exceed
+        @subject.avg_to_words(amazing_student.avg).should eq "Exceeds expectations"
       end
                 
     end

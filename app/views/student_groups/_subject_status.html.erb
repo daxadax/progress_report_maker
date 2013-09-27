@@ -1,0 +1,8 @@
+<div class="<%= subject.status(subject.avg).to_s %>">
+	<div class="poppable">
+	  <%= subject.avg_to_words(subject.avg)  %>  
+	</div>
+	<div class="popup">
+		<%= subject.avg %> / 3
+	</div>
+</div>

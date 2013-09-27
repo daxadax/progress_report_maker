@@ -3,7 +3,7 @@
 	  <tbody>
 			<tr>
 			  <th></th>
-			  <th class="center">Subject average</th>
+			  <th class="center">Status</th>
 			  <th class="center">Number of goals</th>
 			  <th class="center">Classtime remaining</th>
 		  </tr>
@@ -16,10 +16,10 @@
 	      <% if subject.avg.nan? %>
 				  <td class="strong center">No data yet!</td>
 				<% else %>
-				  <td class="center"><%= subject.avg %></td>
+				  <td class="center"><%= render "subject_status", :subject => subject %></td>
 				<% end %>
 	      <td class="center"><%= subject.goals.count %></td>
-	      <%= render('subject_weeks_left', :subject => subject) %>
+	      <%= render 'subject_weeks_left', :subject => subject  %>
 	    </tr>
 			  <% end %>
 			  <% reset_cycle("subjects") %>

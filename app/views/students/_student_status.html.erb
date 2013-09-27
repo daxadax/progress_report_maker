@@ -1,4 +1,4 @@
-<span class="<%= subject.status(@student).to_s %>">
-  <%= subject.avg_to_words(@student)  %> 
+<span class="<%= subject.status(subject.avg_for(@student)).to_s %>">
+  <%= subject.avg_to_words(subject.avg_for(@student))  %> 
 </span>
 in

@@ -41,6 +41,26 @@ class Student < ActiveRecord::Base
     end
   end
   
+  def avg_to_words(average)
+    if average >= 3.5
+      "Exceeds expectations"
+    elsif (2.75..3.5).include? average 
+      "Meets expectations"
+    else
+      "Struggling"
+    end  
+  end
+  
+  def status(average)
+    if average >= 3.5
+      :exceed
+    elsif (2.75..3.5).include? average 
+      :meet
+    else
+      :struggle
+    end
+  end
+  
   def average(scores)
     # get average of scores and round to two decimal places
     average = scores.inject{ |sum, el| sum + el }.to_f / scores.size
@@ -75,7 +95,8 @@ class Student < ActiveRecord::Base
     numbers[index]
   end
   
-  def avg_for_eval(i)
+  # student avg per evaluation for ALL evaluations
+  def avg_for_every_eval(i)
     scores = []
     eval_number = self.reverse_eval_number_set(i)
     count_differential = (self.student_group.eval_count - self.eval_count) - i
@@ -94,6 +115,23 @@ class Student < ActiveRecord::Base
         ""
       end  
     end  
+  end
+  
+  #student avg per evaluation for 'i' most recent evaluations
+  def avg_for_recent_evals(i)
+    scores = []
+    eval_number = self.reverse_eval_number_set(i)
+    this_eval = self.evaluations.where("eval_number = ?", eval_number)
+    for eval in this_eval 
+      scores << eval.score
+    end
+    average(scores) unless average(scores).nan?
+  end
+
+  def eval_header(i)
+    eval_number = self.reverse_eval_number_set(i)
+    this_eval = self.evaluations.where("eval_number = ?", eval_number)
+    this_eval.first.created_at.strftime("%d %b, %Y")
   end
 
   def evals
