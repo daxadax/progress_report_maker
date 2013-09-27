@@ -20,9 +20,24 @@ module ApplicationHelper
     end
   end
   
-  # http://stackoverflow.com/a/17987612/2128691
-  def cond_class(condition, true_class, false_class = '')
-    condition ? true_class : false_class
+  def avg_to_words(average)
+    if average >= 3.5
+      "Exceeds expectations"
+    elsif (2.75..3.5).include? average 
+      "Meets expectations"
+    else
+      "Struggling"
+    end  
+  end
+
+  def status(average)
+    if average >= 3.5
+      :exceed
+    elsif (2.75..3.5).include? average 
+      :meet
+    else
+      :struggle
+    end
   end
   
   def login_or_signup?

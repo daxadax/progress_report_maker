@@ -41,26 +41,6 @@ class Student < ActiveRecord::Base
     end
   end
   
-  def avg_to_words(average)
-    if average >= 3.5
-      "Exceeds expectations"
-    elsif (2.75..3.5).include? average 
-      "Meets expectations"
-    else
-      "Struggling"
-    end  
-  end
-  
-  def status(average)
-    if average >= 3.5
-      :exceed
-    elsif (2.75..3.5).include? average 
-      :meet
-    else
-      :struggle
-    end
-  end
-  
   def average(scores)
     # get average of scores and round to two decimal places
     average = scores.inject{ |sum, el| sum + el }.to_f / scores.size

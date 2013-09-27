@@ -1,0 +1,25 @@
+<tr>
+	<th></th>
+	<% subject.goals.first.eval_count.times do |i|  %>                                                 
+    <th class="center">Evaluation <%= i+1 %></th>
+  <% end %>
+  <th class="center"><%= "Status" if subject.goals.first.eval_count > 0  %></th>
+</tr>
+<% for goal in subject.goals %>
+  <tr class="<%= cycle("odd", "even", name: "goals")%> goals">
+    <%= render 'index_goal_name', :goal => goal %>
+    <% if goal.eval_count > 0 %>
+      <% goal.eval_count.times do |i| %>                                                 
+        <td class="<%= status(goal.eval_avg(i)) %> center">
+          <%= goal.eval_avg(i) %>
+        </td>
+      <% end %>
+		  <td class="center">
+        <%= render 'index_goal_status', :goal => goal %>
+			</td>
+		<% else %>
+		  <td>No data yet!</td>
+		<% end %>
+  </tr>
+<% end %>
+<% reset_cycle("goals") %>

@@ -13,6 +13,7 @@
 #
 
 require 'spec_helper'
+include ApplicationHelper
 
 describe Subject do
   
@@ -162,14 +163,14 @@ describe Subject do
                                                   score: 4)                                     
                                                   
         # struggling student
-        @subject.status(struggling_student.avg).should eq :struggle
-        @subject.avg_to_words(struggling_student.avg).should eq "Struggling"
+        status(struggling_student.avg).should eq :struggle
+        avg_to_words(struggling_student.avg).should eq "Struggling"
         # good student
-        @subject.status(good_student.avg).should eq :meet
-        @subject.avg_to_words(good_student.avg).should eq "Meets expectations"
+        status(good_student.avg).should eq :meet
+        avg_to_words(good_student.avg).should eq "Meets expectations"
         # amazing student
-        @subject.status(amazing_student.avg).should eq :exceed
-        @subject.avg_to_words(amazing_student.avg).should eq "Exceeds expectations"
+        status(amazing_student.avg).should eq :exceed
+        avg_to_words(amazing_student.avg).should eq "Exceeds expectations"
       end
                 
     end

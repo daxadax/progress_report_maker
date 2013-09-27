@@ -1,5 +1,6 @@
 class GoalsController < ApplicationController
   include IndexHelper
+  include ApplicationHelper
 
   before_filter :get_subject, except: [:index]
   before_filter :get_goal, except: [:index, :new, :create]   

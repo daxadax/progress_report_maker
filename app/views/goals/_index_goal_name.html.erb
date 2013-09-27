@@ -1,0 +1,13 @@
+<td class="goal_row">
+  <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
+  <%= link_to "edit", edit_subject_goal_path(goal, {subject_id: goal.subject_id}), 
+                      :class => "lil_link" %>
+  <%= link_to "X", {controller: 'goals', 
+                      action: 'destroy',
+                      subject_id: goal.subject_id,
+  										id: goal,
+											student_group_id: @student_group},
+                     {confirm: "Do you really want to delete this goal?",
+                      method: :delete, 
+                      class: "lil_link"} %>
+</td>

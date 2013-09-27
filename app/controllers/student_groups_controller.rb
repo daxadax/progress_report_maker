@@ -1,4 +1,5 @@
 class StudentGroupsController < ApplicationController
+  include ApplicationHelper
   
   before_filter :get_user
   before_filter :get_student_group, except: [:index, :new, :create]
