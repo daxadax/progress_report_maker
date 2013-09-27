@@ -128,10 +128,10 @@ class Student < ActiveRecord::Base
     average(scores) unless average(scores).nan?
   end
 
-  def eval_header(i)
+  def group_eval_header(i)
     eval_number = self.reverse_eval_number_set(i)
     this_eval = self.evaluations.where("eval_number = ?", eval_number)
-    this_eval.first.created_at.strftime("%d %b, %Y")
+    this_eval.first.created_at.strftime("%d %b, %Y") if this_eval.exists?
   end
 
   def evals
