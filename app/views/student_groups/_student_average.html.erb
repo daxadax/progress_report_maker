@@ -1,0 +1,9 @@
+<% if group.eval_count >= 3 %>
+  <% 2.downto(0) do |i| %>                                             
+    <td class="center"><%= student.avg_for_recent_evals(i) %></td>
+  <% end %>
+<% else %>
+  <% (student.eval_count - 1).downto(0) do |i| %>
+	  <td class="center"><%= student.avg_for_recent_evals(i) %></td>
+  <% end %>
+<% end %>

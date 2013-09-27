@@ -3,7 +3,8 @@
     <th class="center">Average on<br /><%= student.group_eval_header(i) %></th>
   <% end %>
 <% else %>
-  <% student.eval_count.downto(0) do |i| %>
+  <% (student.eval_count - 1).downto(0) do |i| %>
 	  <th class="center">Average on<br /><%= student.group_eval_header(i) %></th>
   <% end %>
 <% end %>
+

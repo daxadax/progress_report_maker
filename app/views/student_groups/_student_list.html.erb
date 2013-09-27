@@ -16,9 +16,9 @@
 									 student_path({student_group_id: student.student_group_id, 
 																 id: student.id})%>
 	    </td>
-      <% 2.downto(0) do |i| %>
-			  <td class="center"><%= student.avg_for_recent_evals(i) %></td>
-			<% end %>
+      <%= render("student_average", 
+								 :student => student, 
+								 :group => group) unless student.eval_count == 0 %>
  	    <td class="center">
         <%= render("student_status", :student => student) unless student.avg.nan? %>
       </td>
@@ -27,5 +27,6 @@
 	  <% reset_cycle("students") %>
   </tbody>
 </table>
+
 
 
