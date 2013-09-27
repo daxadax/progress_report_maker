@@ -25,16 +25,6 @@ jQuery(function() {
       onClose: function( selectedDate ) {
         $( "#from" ).datepicker( "option", "maxDate", selectedDate );
       }
-    });
-
-
-// student_group#index:_subject_status
-
-	$('.poppable').hover(function() {
-	    $(this).next('.popup').show();
-	}, function() {
-	    $(this).next('.popup').hide();
-	});
-	
+    });	
 	
 });

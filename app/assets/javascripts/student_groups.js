@@ -40,6 +40,14 @@ $(document).ready(function () {
 		    });
 		});
 
+	// student_group#index:_subject_status
+
+	$('.poppable').hover(function() {
+		    $(this).next('.popup').show();
+		}, function() {
+		    $(this).next('.popup').hide();
+	});
+
 	// student_group#index:_student_status
 
 	$('.switch').hover(function() {
