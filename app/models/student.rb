@@ -95,8 +95,12 @@ class Student < ActiveRecord::Base
     numbers[index]
   end
   
-  # student avg per evaluation for ALL evaluations
-  def avg_for_every_eval(i)
+=begin
+ 
+   # currently not used! 
+ 
+    # student avg per evaluation for ALL evaluations
+   def avg_for_every_eval(i)
     scores = []
     eval_number = self.reverse_eval_number_set(i)
     count_differential = (self.student_group.eval_count - self.eval_count) - i
@@ -115,7 +119,8 @@ class Student < ActiveRecord::Base
         ""
       end  
     end  
-  end
+   end
+=end
   
   #student avg per evaluation for 'i' most recent evaluations
   def avg_for_recent_evals(i)
@@ -128,8 +133,8 @@ class Student < ActiveRecord::Base
     average(scores) unless average(scores).nan?
   end
 
-  def group_eval_header(i)
-    eval_number = self.reverse_eval_number_set(i)
+  def group_eval_header(downfrom_i)
+    eval_number = self.reverse_eval_number_set(downfrom_i)
     this_eval = self.evaluations.where("eval_number = ?", eval_number)
     this_eval.first.created_at.strftime("%d %b, %Y") if this_eval.exists?
   end
