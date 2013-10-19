@@ -1,0 +1,16 @@
+<!-- in each student's row, print the score for each consecutive evaluation -->
+<% if @subject.eval_count >= 5 %>
+  <% 4.downto(0) do |i| %>                                             
+    <td class="center <%= status(@goal.evals_for_student(eval[1].first.student, i)).to_s %>">
+      <%= @goal.evals_for_student(eval[1].first.student, i) %> 
+    </td>
+  <% end %>
+<% else %>
+  <% (@subject.eval_count - 1).downto(0) do |i| %>
+	  <td class="center <%= status(@goal.evals_for_student(eval[1].first.student, i)).to_s %>">
+	    <%= @goal.evals_for_student(eval[1].first.student, i) %>
+	  </td>
+  <% end %>
+<% end %>
+
+

@@ -16,9 +16,8 @@
 									 student_path({student_group_id: student.student_group_id, 
 																 id: student.id})%>
 	    </td>
-      <%= render("student_average", 
-								 :student => student, 
-								 :group => group) unless student.eval_count == 0 %>
+      <%= render("student_average", :student => student, 
+								                    :group => group) unless student.eval_count == 0 %>
  	    <td class="center">
         <%= render("student_status", :student => student) unless student.avg.nan? %>
       </td>

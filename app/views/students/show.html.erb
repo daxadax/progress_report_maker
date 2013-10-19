@@ -9,9 +9,7 @@
 <% @subjects.all.each do |subject| %>
   <div class="holder round clear"> 
     <h2 class="float_left">
-	    <%= render('student_status', :subject => subject) unless subject.avg_for(@student).nan? %>
-      <%= link_to subject.name, 
-									subject_path({student_group_id: @student_group, id: subject}) %> 
+	    <%= render "show_header", subject: subject %>
     </h2>
 	  <div class="holder2 round clear">
 	  	<table>

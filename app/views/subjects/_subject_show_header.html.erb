@@ -1,0 +1,17 @@
+<% if @subject.avg.nan? %>
+  <h2 class="center">
+  	This subject has not yet been evaluated
+  </h2>
+<% else %>
+  <h2 class="left">
+  	<%= @subject.name %> 
+  </h2>
+	<h2 class="float_right">
+	  <span class="switch <%= status(@subject.avg) %>">
+	    <span class="avg_words"><%= avg_to_words(@subject.avg) %></span>
+	    <span class="avg_num"><%= @subject.avg %> / 3 </span>
+	  </span>
+	</h2>
+
+	<hr />
+<% end %>

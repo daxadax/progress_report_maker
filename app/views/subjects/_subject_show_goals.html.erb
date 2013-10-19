@@ -2,32 +2,25 @@
 	<tbody>
 		<tr>
 			<th></th>
-			<% @subject.goals.first.eval_count.times do |i|  %>                                                 
-	      <th class="center">Evaluation <%= i+1 %></th>
+			<% @subject.eval_count.times do |i|  %>                                                 
+	      <th class="center">
+	        <%= @subject.eval_date(i) %>
+	     </th>
 	    <% end %>
-	    <th class="center"><%= "Goal average" if @subject.goals.first.eval_count > 0  %></th>
+	    <th class="center"><%= "Goal average" if @subject.eval_count > 0  %></th>
 		</tr>
 		<% for goal in @subject.goals %>
 	    <tr class="<%= cycle("odd", "even", name: "goals")%> goals">
 	    	<td class="goal_row">
-		      <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
-		      <%= link_to "edit", edit_subject_goal_path(@subject, goal), :class => "lil_link" %>
-				  <%= link_to "X", {controller: 'goals', 
-				                      action: 'destroy',
-				                      subject_id: @subject,
-				  										id: goal,
-															student_group_id: @student_group},
-				                     {confirm: "Do you really want to delete this goal?",
-				                      method: :delete, 
-				                      class: "lil_link"} %>
+          <%= render "show_goal", :goal => goal %>
 		    </td>
 	      <% if goal.eval_count > 0 %>
 	        <% goal.eval_count.times do |i| %>                                                 
-		        <td class="<%= goal.eval_avg(i) > goal.avg ? "greater" : "lesser" %> center">
+		        <td class="<%= status(goal.eval_avg(i)) %> center">
 		          <%= goal.eval_avg(i) %>
 		        </td>
 		      <% end %>
-				  <td class="center"><%= goal.avg %></td>
+				  <td class="<%= status(goal.avg) %> center"><%= goal.avg %></td>
 				<% else %>
 				  <td></td>
 				<% end %>

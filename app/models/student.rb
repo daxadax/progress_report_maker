@@ -113,18 +113,41 @@ class Student < ActiveRecord::Base
     average(scores) unless average(scores).nan?
   end
 
+  def recent_evals(i, goal)
+    scores = []
+    eval_number = self.reverse_eval_number_set(i)
+    this_eval = self.evaluations.where("eval_number = ? AND goal_id = ?", eval_number, goal.id)
+    for eval in this_eval 
+      scores << eval.score
+    end
+    average(scores) unless average(scores).nan?
+  end
+
   def group_eval_header(downfrom_i)
     eval_number = self.reverse_eval_number_set(downfrom_i)
     this_eval = self.evaluations.where("eval_number = ?", eval_number)
-    this_eval.first.created_at.strftime("%d %b, %Y") if this_eval.exists?
+    this_eval.first.created_at.strftime("%d %b, %Y") unless this_eval.first.nil?
   end
 
   def evals
-    evals = self.evaluations.order("eval_number").group_by(&:eval_number)
+    @evals ||= self.evaluations.order("eval_number").group_by(&:eval_number)
+    @evals
   end  
   
+  # how many time student has been evaluated in total
   def eval_count
     self.evals.keys.size
+  end
+  
+  # returns hash of student's evaluations ordered by Eval_Number for x subject
+  def evals_for(subject)
+    sub_ids = subject.goals.map(&:id)
+    sub_evals = Evaluation.where('goal_id IN (?) AND student_id = ?', sub_ids, self.id).order("eval_number").group_by(&:eval_number)
+  end
+  
+  
+  def sub_eval_count(subject)
+    self.evals_for(subject).keys.size
   end
   
   def evals_avg(number)

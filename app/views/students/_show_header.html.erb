@@ -1,0 +1,3 @@
+<%= render('student_status', :subject => subject) unless subject.avg_for(@student).nan? %>
+<%= link_to subject.name, 
+						subject_path({student_group_id: @student_group, id: subject}) %>

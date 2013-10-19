@@ -5,20 +5,29 @@
 			  <th></th>
 			  <th class="center">Status</th>
 			  <th class="center">Number of goals</th>
+			  <th class="center">Evaluated</th>
 			  <th class="center">Classtime remaining</th>
 		  </tr>
 			  <% group.subjects.all.each do |subject| %>
 		  <tr class="<%= cycle("odd", "even", name: 'subjects')%>">
-			  <td>
+			  <!-- NAME -->
+			  <td> 
 			    <%= link_to "#{subject.name}", subject_path({student_group_id: subject.student_group_id, id: subject.id}) %>
 				  <%= link_to "edit", edit_student_group_subject_path(group, subject), :class => "lil_link" %>
 				</td>
 	      <% if subject.avg.nan? %>
-				  <td class="strong center">No data yet!</td>
+				  <td></td>
 				<% else %>
 				  <td class="center"><%= render "subject_status", :subject => subject %></td>
 				<% end %>
-	      <td class="center"><%= subject.goals.count %></td>
+				<!-- Number of goals -->
+				<td class="center"><%= subject.goals.count || "" %></td>
+				<!-- Evaluation count -->
+	      <td class="center">
+	        <%= subject.eval_count %>
+	        <%= pluralize_without_count(subject.eval_count, "time", "times") %>
+	      </td>
+	      <!-- Classtime remaining -->
 	      <%= render 'subject_weeks_left', :subject => subject  %>
 	    </tr>
 			  <% end %>

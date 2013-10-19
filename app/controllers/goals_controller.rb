@@ -7,7 +7,7 @@ class GoalsController < ApplicationController
   
   def index
     index_helper
-    @title = "All goals"      
+    @title = "All goals"
   end  
   
    def show

@@ -60,6 +60,18 @@ class Subject < ActiveRecord::Base
     end
   end
   
+  # def next
+  #   Student.where("id > ?", id).order("id ASC").first
+  # end
+  
+  # delegate here?  
+  def eval_date(i)
+    @evals ||= self.goals.first.evaluations.order("eval_number").group("eval_number").all
+    eval = @evals[i]
+    # eval = self.goals.first.evals_by_number.values[i]
+    eval.created_at.strftime("%b %d") unless eval.nil?
+  end
+  
   def average(scores)
     # get average of scores and round to two decimal places
     average = scores.inject{ |sum, el| sum + el }.to_f / scores.size

@@ -36,5 +36,9 @@ class Evaluation < ActiveRecord::Base
     Evaluation.where("id > ?", id).order("id ASC").first
   end
   
+  # def eval_numbers
+  #   Evaluation.where("eval_number > ?", eval_number).order("eval_number ASC").first  
+  # end
+  
 
 end

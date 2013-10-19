@@ -8,12 +8,28 @@
 	margin-right: auto;
 }
 
+.top {
+	vertical-align: top;
+}
+
+.bottom {
+	vertical-align: text-bottom;
+}
+
 .right {
 	text-align: right;
 }
 
 .left {
 	text-align: left;
+}
+
+.padding {
+	padding: 6px;
+}
+
+.margin {
+	margin: 6px;
 }
 
 .block {
@@ -106,10 +122,6 @@
 	font-weight:     bold;
 }
 
-#help {
-	display: none;
-}
-
 .hide {
 	display:none;
 }
@@ -118,13 +130,14 @@
 		/*********************/
 
 .container {
-	width: 88%;
+	width: 92%;
 }
 
 header {
 	font-family: 'Shadows Into Light Two', cursive;
 	font-size:     150%;
 	width:         100%;
+	overflow:      none;
 	height:        50px;
 /*	opacity:       0.95;*/
 	  /*POSITION*/
@@ -134,7 +147,7 @@ header {
 }
 
 .header {
-	width: 99%;
+	width: 100%;
 	background: rgba(0,0,0,0.6);
     padding: .2em;
 }
@@ -340,14 +353,15 @@ tr.goals {
 	height: 50px;
 }
 
+.goal_row {
+	width: 200px;
+}
+
 table.fixed {
 	table-layout: fixed;
     width: 100%;
 }
 
-.goal_row {
-	width: 40%;
-}
 
 .button_row {
 	width: 50%;
@@ -676,23 +690,21 @@ ul.users li {
 
     /* statuses */
 
-.greater {
-	color: #1093FF;
+.holderv .exceed
+
+.holderv + .meet {
+	background: #FFDD78;
 }
 
-.lesser {
-	color: #FF4F00;
+.greater, .exceed {
+	color: #1093FF;
 }
 
 .meet {
 	color: #FFDD78;
 }
-	
-.exceed {
-	color: #1093FF;	
-}
-	
-.struggle {
+
+.lesser, .struggle {
 	color: #FF4F00;
 }		
 
@@ -714,13 +726,13 @@ ul.users li {
 }
 
 .edit {
-	bottom:   5px;
-	right:    45px;
+	bottom:   2px;
+	right:    95px;
 }
 
 .delete {
-	bottom:   5px;
-	right:    10px;
+	bottom:   2px;
+	right:    60px;
 }
 
 .new_x {
@@ -894,14 +906,22 @@ ul.users li {
 
 /* *** JQuery STUFF *** */
 
-.group_name {
-/*	display:none;*/
+#help {
+	display: none;
 }
 
-.toggle_group_name {
-	position: absolute;
-	top: 5%;
-	left: 10px;
+.toggle_element {
+
+}
+
+.holderv_toggle {
+	position: relative;
+	top:      -23px;
+	right:    -10px;
+}
+
+.toggle_switch {
+
 }
 
 .popup {

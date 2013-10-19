@@ -1,6 +1,11 @@
-<h2 class="float_left">
+<h2 class="left">
   <%= link_to subject.name, 
               subject_path(student_group_id: subject.student_group_id,
                            id: subject.id) %>
 </h2>
-<hr />
+<h2 class="float_right">
+  <span class="switch <%= status(subject.avg) %>">
+    <span class="avg_words"><%= avg_to_words(subject.avg) %></span>
+    <span class="avg_num"><%= subject.avg %> / 3 </span>
+  </span>
+</h2>

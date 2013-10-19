@@ -1,0 +1,13 @@
+<% if @student.sub_eval_count(subject) >= 5 %>
+  <% 4.downto(0) do |i| %>                                             
+    <td class="center <%= status(@student.recent_evals(i, goal)).to_s %>">
+      <%= @student.recent_evals(i, goal) %> 
+    </td>
+  <% end %>
+<% else %>
+  <% (@student.sub_eval_count(subject) - 1).downto(0) do |i| %>
+	  <td class="center <%= status(@student.recent_evals(i, goal)).to_s %>">
+	    <%= @student.recent_evals(i, goal) %>
+	  </td>
+  <% end %>
+<% end %>

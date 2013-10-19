@@ -1,0 +1,21 @@
+<div class="holderv round left unselectable <%= status(group.avg) %>">
+		<%= content_tag("a", "∆", class: "toggle_switch holderv_toggle") %>
+		<h1 class="float_left">
+	    <%= group.name %>
+	  </h1>
+
+	<!-- EDIT AND DELETE BUTTONS -->
+	<br />
+	<div class="edit">
+		<%= link_to "edit", edit_student_group_path(group), 
+	                      class: "lil_link" %> 
+	</div>
+	<div class="delete">
+	  <%= link_to "delete", {controller: 'student_groups', 
+	                    action: 'destroy',
+	                    id: group },
+	                   {confirm: "Do you really want to delete #{group.name}?",
+	                    method: :delete, 
+	                    class: "lil_link"} %>
+	</div>
+</div>

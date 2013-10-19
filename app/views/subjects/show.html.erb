@@ -1,18 +1,9 @@
 <div class="holder round">
 
-		<% if @subject.avg.nan? %>
-		  <h2 class="center">
-		  	This subject has not yet been evaluated
-		  </h2>
-		<% else %>
-      <h3>
-      	The overall average for <span class="named"><%= @subject.name %></span> 
-			  is <%= @subject.avg %>
-      </h3>
-		<% end %>
+  <%= render 'subject_show_header' %>
 
 	
-	<div class="holder2 round">
+	<div class="holder2 round clear">
 		
 		<%= render 'subject_show_goals' if @subject.goals.present? %>
 
@@ -22,4 +13,3 @@
 	</div>
 
 </div>
-

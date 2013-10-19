@@ -1,5 +1,6 @@
 class StudentGroupsController < ApplicationController
   include ApplicationHelper
+  include StudentGroupsHelper
   
   before_filter :get_user
   before_filter :get_student_group, except: [:index, :new, :create]
@@ -24,13 +25,7 @@ class StudentGroupsController < ApplicationController
     @params = params[:student_group][:students_attributes]
     @student_group = @user.student_groups.build(params[:student_group])
     if @student_group.save
-      ###   RE: 'defensive coding' http://stackoverflow.com/questions/14502508/undefined-method-for-nilnilclass-when-pushing-values-to-an-array  
-      if @params.present?
-        ### http://stackoverflow.com/questions/11355820/rails-3-2-iterate-through-an-array
-        @params.each do |student|
-          @student_group.students.create(name:"#{student[:name]}", gender: "#{student[:gender]}")
-        end
-      end 
+      create_students if @params.present?
       redirect_to new_student_group_subject_path(@student_group), 
                   flash: { success: "#{@student_group.name} has been added successfully." }   
     else

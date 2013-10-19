@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: student_groups
@@ -50,6 +51,23 @@ class StudentGroup < ActiveRecord::Base
       goals << subject.goals.count
     end
     goals.sum
+  end
+  
+  def average(scores)
+    # get average of scores and round to two decimal places
+    average = scores.inject{ |sum, el| sum + el }.to_f / scores.size
+    average.round(2)
+  end
+  
+  def avg
+    scores = []
+    # pull all evaluation data for model and populate scores
+    self.subjects.each do |subject|
+      score = subject.avg
+      scores << score
+    end
+    # get average of scores and round to two decimal places
+    average(scores)
   end
 
 end

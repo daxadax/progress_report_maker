@@ -34,9 +34,9 @@ $(document).ready(function () {
 	
 	 //  collapse groups by name
 		$(function () {
-		    $('.toggle_group_name').click(function () {
-		        $(this).closest('div').next('.group_name').toggle(); //this works in production
-		        // $(this).next('.group_name').toggle();  //this works in development (why?)
+		    $('.toggle_switch').click(function () {
+		         $(this).closest('div').next('.toggle_element').toggle(); //this works in production
+		        // $(this).next('.toggle_element').toggle();  //this works in development (why?)
 		    });
 		});
 

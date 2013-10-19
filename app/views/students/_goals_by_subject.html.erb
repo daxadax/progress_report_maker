@@ -2,11 +2,11 @@
 	
 	<tr>
 		<th>Goal</th>
-		<% subject.eval_count.times do |i|  %>                                                 
-      <th class="center">Evaluation <%= i+1 %></th>
+		<% @student.sub_eval_count(subject).times do |i|  %>                                                 
+      <th class="center"><%= subject.eval_date(i) %></th>
     <% end %>
-		<th class="center">Goal average<br />(student)</th>
-		<th class="center">Goal average<br />(group)</th>
+		<th class="center">Status<br />(student)</th>
+		<th class="center">Status<br />(group)</th>
   </tr>
 	
 	<% subject.goals.each do |goal| %>	    
@@ -15,14 +15,15 @@
     <td class="goal_row">
       <%= link_to goal.goal, goal_path(goal, {subject_id: goal.subject_id}) %>
     </td>
-		<% subject.eval_count.times do |i|  %>                                                 
-      <td class="center"><%= goal.evals_for_student(@student, i) %></td> 
-    <% end %>
-		<td class="<%= goal.avg_for(@student) > goal.avg ? "greater" : "lesser" %> center">
-      <%= goal.avg_for(@student) %>
+    <%= render("show_student_eval_scores", :subject => subject, 
+                                           :goal => goal ) unless @student.eval_count == 0 %>
+		<td class="switch <%= status(goal.avg_for(@student)) %> center">
+			  <span class="avg_words"><%= avg_to_words(goal.avg_for(@student)) %></span>
+			  <span class="avg_num"><%= goal.avg_for(@student) %> / 3 </span>
 		</td>
-	  <td class="center">
-	    <%= goal.avg %>
+	  <td class="switch <%= status(goal.avg) %> center">
+		  <span class="avg_words"><%= avg_to_words(goal.avg) %></span>
+		  <span class="avg_num"><%= goal.avg %> / 3 </span>
 	  </td>	
 	</tr>
  </tbody>

@@ -31,7 +31,8 @@ module ApplicationHelper
   end
 
   def status(average)
-    if average >= 3.5
+    # set average.nil.to_f to return 0, for use when using as a css class
+    if average.to_f >= 3.5
       :exceed
     elsif (2.75..3.5).include? average 
       :meet

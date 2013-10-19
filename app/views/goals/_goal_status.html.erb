@@ -1,0 +1,8 @@
+<div class="switch <%= status(@goal.avg_for(eval[1].first.student)) %>">
+	<div class="avg_words">
+	  <%= avg_to_words(@goal.avg_for(eval[1].first.student))  %>  
+	</div>
+	<div class="avg_num">
+		<%= @goal.avg_for(eval[1].first.student) %> / 3
+	</div>
+</div>
