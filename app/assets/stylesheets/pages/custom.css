@@ -906,6 +906,13 @@ ul.users li {
 
 /* *** JQuery STUFF *** */
 
+#show_goal_help {
+	position: relative;
+	top: -49px;
+	left: 750px;
+	font-size: 150%;
+}
+
 #help {
 	display: none;
 }

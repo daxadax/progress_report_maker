@@ -30,7 +30,7 @@ function removeGoal()
 
 // hide help div
 $(function() {
-    $('#show_help').click(function() {
+    $('#show_goal_help').click(function() {
         $('#help').slideToggle();
     });
 });

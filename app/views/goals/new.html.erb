@@ -4,13 +4,11 @@
 		What goals do you have for <%= @subject.name %>?
 	</h3>
 
-  <div class="delete">
-    <span id="show_help">
-	    <%= content_tag("a", "hints for writing good goals") %>  
+    <span id="show_goal_help">
+	    <%= content_tag("a", "hints for writing good goals") %>
 	  </span>
-  </div>
   
-  <div id="help" class="holder2 round">
+  <div id="help" class="holder2 round clear">
     <%= render 'goals_help' %>
   </div>
 
