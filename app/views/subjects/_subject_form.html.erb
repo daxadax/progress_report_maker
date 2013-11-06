@@ -1,17 +1,50 @@
+<div class="holder round">
+	
+<h3>Subject information:</h3>
+
 <%= form_for([@student_group, @subject]) do |f| %>
 
-  <table class="holder round unselectable">
-  	<tr>
-	  	<th>Subject name:</th>
-	    <th>Start date:</th>
-	    <th>End date:</th>
-		  <th>Contact hours (per week)</th>
-	  </tr>
+  <div class="holder2 round">
+    The name of this subject is 
+    <span class="form_field field"><%= f.text_field :name %> <br />
+    
+    It runs 
+    <span class="dropdown field">
+      <%= f.select :contact_time, (0..40) %>
+    </span>
+    hours each week from 
+    <span class="datefield field center">
+      <%= f.text_field :start_date, :id => "from", placeholder: "start date" %>
+    </span>
+    to
+    <span class="datefield field">
+      <%= f.text_field :end_date, :id => "to", placeholder: "end date" %>
+    </span>
 
-      <%= render 'subject_fields', :f => f %>
+  </div>
 
-  </table>
   <br />
-  <%= f.submit "Submit", :class => 'big_button round unselectable' %>
+
+  <h3>
+		Goals:
+	</h3>
+  
+  <span id="show_goal_help">
+    <%= content_tag("a", "hints for writing good goals") %>
+  </span>
+
+  <div id="help" class="holder2 round">
+    <%= render 'goals/goals_help' %>
+  </div>
+
+  <div class="holder2 round">
+  	<%= render 'goals/goal_fields', f: f %>    
+  </div>
+
+
+</div>
+<p>
+	<%= f.submit "Submit", :class => 'big_button round unselectable'%>
+</p>
 
 <% end %>

@@ -48,6 +48,10 @@
 	margin: 2em;
 }
 
+.small-horizontal-spacer {
+	margin: 1em;
+}
+
 .float_right {
 	float:right;
 }
@@ -206,7 +210,7 @@ section {
     padding-left: 2em;
     padding-bottom: 1em;
     margin: auto auto;
-    margin-top:    1em;
+/*    margin-top:    1em;*/
     margin-bottom: 1em;
     color: #fff;
 }
@@ -537,14 +541,14 @@ input[type=radio] {
 }
 
 .datefield input {
-	width: 100px;
+	width: 110px;
 	height: 40px;
 	border: none;
-	background: url('/assets/calendar.png') no-repeat left;
+/*	background: url('/assets/calendar.png') no-repeat left;*/
 	color:                 #DBEFFF;
 	font-size:  		   15px;
 	font-weight:           bold;
-	padding-left: 40px;
+	padding-right: 20px;
 }
 
     /*ERROR FIELDS*/
@@ -855,7 +859,7 @@ ul.users li {
     /*goal#new*/
 
 .goal_add_remove {
-	margin-top: -20px;
+	margin-top: -5px;
 	margin-bottom: 1.5em;
 	/* THE ILLUMINATUS IS REAL! */
 	margin-left: 23em;
@@ -908,9 +912,9 @@ ul.users li {
 
 #show_goal_help {
 	position: relative;
-	top: -49px;
-	left: 750px;
-	font-size: 150%;
+	top: -39px;
+	left: 790px;
+	font-size: 120%;
 }
 
 #help {

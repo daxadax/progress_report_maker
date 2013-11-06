@@ -2,8 +2,12 @@
   <!-- http://stackoverflow.com/a/11474194/2128691 -->
   <%= fields_for 'student_group[students_attributes][]', @student, index: nil do |f| %>
     <tr>
-		  <td id="student_name" class="field form_field"><%= f.text_field :name, placeholder: "Student name" %></td>
-	    <td id="student_gender" class="field dropdown"><%= f.select :gender, [["select a gender", ""],'Female', 'Male', 'Transgender'] %></td>
+		  <td id="student_name" class="field form_field">
+		    <%= f.text_field :name, placeholder: "Student name" %>
+		  </td>
+	    <td id="student_gender" class="field dropdown">
+	      <%= f.select :gender, Student::VALID_GENDERS, prompt: "Gender" %>
+	    </td>
 	  </tr>
   <% end %>
 </table>

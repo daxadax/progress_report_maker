@@ -14,29 +14,28 @@ class GoalsController < ApplicationController
      index_helper
    end
    
-  def new    
-    @goal = @subject.goals.build
-    @title = "Add a goal"
-  end
-  
-  def create
-    @goals = params[:goals]
-    @goals.each do |goal|
-      @goal = @subject.goals.create(goal: goal)
-    end
-      if @goal.save
-        if params[:another_subject]
-          redirect_to new_student_group_subject_path(@subject.student_group_id),
-                      flash: { success: "Goal(s) added successfully!" }
-        else
-          redirect_to groups_path, flash: { success: "Goal(s) added successfully!" }
-        end
-      else
-        @title = "Add a goal"
-        view_context.flash_failure
-        render 'new' 
-      end    
-  end
+  # def new    
+  #   @goal = @subject.goals.build
+  #   @title = "Add a goal"
+  # end
+  # 
+  # def create
+  #   @goals = params[:goals]
+  #   @goals.each do |goal|
+  #     @goal = @subject.goals.create(goal: goal)
+  #   end
+  #     if @goal.save
+  #       if params[:another_subject]
+  #         redirect_to new_student_group_subject_path(@subject.student_group_id),
+  #                     flash: { success: "Goal(s) added successfully!" }
+  #       else
+  #         redirect_to groups_path, flash: { success: "Goal(s) added successfully!" }
+  #       end
+  #     else
+  #       @title = "Add a goal"
+  #       render 'new' 
+  #     end    
+  # end
   
   def edit
     @title = "Edit goal"

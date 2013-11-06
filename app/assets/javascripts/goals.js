@@ -11,7 +11,7 @@ $(function() {
 
 function addGoal()
 {
-    $('#goal_form').append('<tr><td class="goal_field fields"><input id="goals_" name="goals[]" placeholder="Students should..." type="text" /></td></tr>');
+    $('#goal_form').append('<div class="goal_field fields"><input id="goals_" name="goals[]" placeholder="Students should..." type="text" /></div>');
     count++;
 }
 
@@ -24,7 +24,7 @@ $(function() {
 
 function removeGoal() 
 {
-    $('#goal_form tr:last').remove();
+    $('#goal_form div:last').remove();
     count--;
 }
 

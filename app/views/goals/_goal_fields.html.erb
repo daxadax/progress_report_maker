@@ -1,14 +1,13 @@
-<table id="goal_form"> 
-    <tr>
-			<td class="goal_field fields">
-			  <%= text_field_tag 'goals[]', nil, :placeholder => "Students should..." %>
-			</td>
-		</tr>
- </table>
+<div id="goal_form"> 
+	<%= f.fields_for(:goals) do |gf| %>
+	  <div class="goal_field fields">
+		  <%= gf.text_field :goal %><br />
+		</div>
+		<% end %>
+</div>
  
-<%= render 'add_remove_goal' %>
+<%= render 'goals/add_remove_goal' %>
 
-<%= render 'another_subject' %>
+<%= render 'goals/another_subject' unless params[:action] == "edit" %>
 
 <br />
-

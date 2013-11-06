@@ -35,7 +35,7 @@ include EvaluationsHelper
       evaluation_save
     # if the evaluation didn't save, start over with the same student
     else  
-      flash.now[:error] = "Something's gone wrong.  Have you filled in a score for each goal?"
+      flash.now[:error] = "Something's gone wrong.  Have you missed a goal?"
       render :new, student_number: @student_number, :layout => 'layouts/evaluation'
     end
   end

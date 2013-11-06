@@ -15,7 +15,7 @@
 class Subject < ActiveRecord::Base
   # include ::Averageable
   
-  attr_accessible :name, :start_date, :end_date, :contact_time
+  attr_accessible :name, :start_date, :end_date, :contact_time, :goals_attributes
 
   belongs_to :student_group
   has_many   :goals, dependent: :destroy
@@ -30,6 +30,7 @@ class Subject < ActiveRecord::Base
   # scopes
   
   scope :completed, ->{where("end_date <= ?", Time.now)}
+  scope :active,    ->{where("end_date >= ?", Time.now)}
   
   # methods
   
@@ -106,12 +107,17 @@ class Subject < ActiveRecord::Base
   end
   
   def evals
-     evals = self.goals.first.evaluations.order("eval_number").group_by(&:eval_number)
+     goals = self.goals.first
+     goals.evaluations.order("eval_number").group_by(&:eval_number) if goals
    end  
    
    # counts the number of times a subject has been evaluated
    def eval_count
-     self.evals.keys.size
+     if self.evals.nil?
+       0
+     else
+       self.evals.keys.size
+     end
    end
   
 end

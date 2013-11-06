@@ -49,85 +49,81 @@ render_views
         @show
         response.should be_success
       end
-  
-      it "should have the right title" # do
-      #         @show
-      #         response.should have_selector("title", content: "Goal #{@g1.id}")
-      #       end
-  end
-  
-  describe "GET 'new'" do
-  
-    before(:each) do
-      @new = get :new, subject_id: @sub1
-    end  
-  
-    it "should be successful" do
-      @new
-      response.should be_success
-    end
-  
-    it "should have the right title" do
-      @new
-      response.should have_selector('title', :content => "Add a goal" )
-    end 
-  
-  end
-  
-  describe "POST 'create'" do
-  
-    describe "failure" do
-  
-      before(:each) do
-        @goals = ["", ""]
-        @create = post :create, {goals: @goals, subject_id: @sub1}
-      end
-  
-      it "should have the right title" do
-        @create
-        response.should have_selector('title', :content => "Add a goal" )
-      end
-  
-      it "should render the 'new' page" do
-        @create
-        response.should render_template('new')
-      end
-  
-      it "should not create a goal" do
-        lambda do
-          post :create, {subject_id: @sub1, goals: @goals}
-        end.should_not change {@sub1.goals.count}
-      end
-  
-      it "should flash an error message" do
-        @create
-        flash[:error].should =~ /please/i
-      end
-  
-    end
-  
-    describe "success" do
       
-      before(:each) do
-        @goals = %w[eat, pray, love]
-        @create = post :create, {goals: @goals, subject_id: @sub1}
-      end
-  
-      it "should create a goal" do  
-        count = @goals.count
-        lambda do
-          post :create, {subject_id: @sub1, goals: @goals}
-        end.should change {@sub1.goals.count}.by(count)
-      end
-  
-      it "should flash a success message" do
-        post :create, {subject_id: @sub1, goals: @goals}
-        flash[:success].should =~ /goal/i
-      end
-  
-    end 
-  
   end
+  
+  # describe "GET 'new'" do
+  #   
+  #     before(:each) do
+  #       @new = get :new, subject_id: @sub1
+  #     end  
+  #   
+  #     it "should be successful" do
+  #       @new
+  #       response.should be_success
+  #     end
+  #   
+  #     it "should have the right title" do
+  #       @new
+  #       response.should have_selector('title', :content => "Add a goal" )
+  #     end 
+  #   
+  #   end
+  #   
+  #   describe "POST 'create'" do
+  #   
+  #     describe "failure" do
+  #   
+  #       before(:each) do
+  #         @goals = ["", ""]
+  #         @create = post :create, {goals: @goals, subject_id: @sub1}
+  #       end
+  #   
+  #       it "should have the right title" do
+  #         @create
+  #         response.should have_selector('title', :content => "Add a goal" )
+  #       end
+  #   
+  #       it "should render the 'new' page" do
+  #         @create
+  #         response.should render_template('new')
+  #       end
+  #   
+  #       it "should not create a goal" do
+  #         lambda do
+  #           post :create, {subject_id: @sub1, goals: @goals}
+  #         end.should_not change {@sub1.goals.count}
+  #       end
+  #   
+  #       it "should flash an error message" do
+  #         @create
+  #         flash[:error].should =~ /please/i
+  #       end
+  #   
+  #     end
+  #   
+  #     describe "success" do
+  #       
+  #       before(:each) do
+  #         @goals = %w[eat, pray, love]
+  #         @create = post :create, {goals: @goals, subject_id: @sub1}
+  #       end
+  #   
+  #       it "should create a goal" do  
+  #         count = @goals.count
+  #         lambda do
+  #           post :create, {subject_id: @sub1, goals: @goals}
+  #         end.should change {@sub1.goals.count}.by(count)
+  #       end
+  #   
+  #       it "should flash a success message" do
+  #         post :create, {subject_id: @sub1, goals: @goals}
+  #         flash[:success].should =~ /goal/i
+  #       end
+  #   
+  #     end 
+  #   
+  #   end
   
   describe "GET 'edit" do
   
