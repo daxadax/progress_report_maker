@@ -1,7 +1,7 @@
 <div id="goal_form"> 
 	<%= f.fields_for(:goals) do |gf| %>
 	  <div class="goal_field fields">
-		  <%= gf.text_field :goal %><br />
+		  <%= gf.text_field :goal, placeholder: "Students should..." %><br />
 		</div>
 		<% end %>
 </div>

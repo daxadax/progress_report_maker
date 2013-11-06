@@ -15,6 +15,7 @@ class SubjectsController < ApplicationController
    
   def new    
     @subject = @student_group.subjects.build
+    @goals = @subject.goals.build
     @title = "Add a subject"
   end
   
